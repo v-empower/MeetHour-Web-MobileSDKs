@@ -61,7 +61,7 @@
 
 # Jisti Meet SDK
 
--keep class org.jitsi.meet.sdk.** { *; }
+-keep class go.meethour.io.MeetHourSDK.android.** { *; }
 
 # We added the following when we switched minifyEnabled on. Probably because we
 # ran the app and hit problems...

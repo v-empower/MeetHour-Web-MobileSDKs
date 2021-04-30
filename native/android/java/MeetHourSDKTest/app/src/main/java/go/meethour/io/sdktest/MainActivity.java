@@ -11,11 +11,11 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import org.jitsi.meet.sdk.BroadcastEvent;
-import org.jitsi.meet.sdk.BroadcastIntentHelper;
-import org.jitsi.meet.sdk.JitsiMeet;
-import org.jitsi.meet.sdk.JitsiMeetActivity;
-import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
+import go.meethour.io.MeetHourSDK.android.BroadcastEvent;
+import go.meethour.io.MeetHourSDK.android.BroadcastIntentHelper;
+import go.meethour.io.MeetHourSDK.android.MeetHour;
+import go.meethour.io.MeetHourSDK.android.MeetHourActivity;
+import go.meethour.io.MeetHourSDK.android.MeetHourConferenceOptions;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -36,17 +36,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize default options for Jitsi Meet conferences.
+        // Initialize default options for Meet Hour conferences.
         URL serverURL;
         try {
-            // When using JaaS, replace "https://meet.jit.si" with the proper serverURL
-            serverURL = new URL("https://meet.jit.si");
+            serverURL = new URL("https://meethour.io");
         } catch (MalformedURLException e) {
             e.printStackTrace();
             throw new RuntimeException("Invalid server URL!");
         }
-        JitsiMeetConferenceOptions defaultOptions
-                = new JitsiMeetConferenceOptions.Builder()
+        MeetHourConferenceOptions defaultOptions
+                = new MeetHourConferenceOptions.Builder()
                 .setServerURL(serverURL)
                 // When using JaaS, set the obtained JWT here
                 //.setToken("MyJWT")
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 // .setFeatureFlag("filmstrip.enabled", false)
                 .setWelcomePageEnabled(false)
                 .build();
-        JitsiMeet.setDefaultConferenceOptions(defaultOptions);
+        MeetHour.setDefaultConferenceOptions(defaultOptions);
 
         registerForBroadcastMessages();
     }
@@ -74,8 +73,8 @@ public class MainActivity extends AppCompatActivity {
         if (text.length() > 0) {
             // Build options object for joining the conference. The SDK will merge the default
             // one we set earlier and this one when joining.
-            JitsiMeetConferenceOptions options
-                    = new JitsiMeetConferenceOptions.Builder()
+            MeetHourConferenceOptions options
+                    = new MeetHourConferenceOptions.Builder()
                     .setRoom(text)
                     // Settings for audio and video
                     //.setAudioMuted(true)
@@ -83,14 +82,14 @@ public class MainActivity extends AppCompatActivity {
                     .build();
             // Launch the new activity with the given options. The launch() method takes care
             // of creating the required Intent and passing the options.
-            JitsiMeetActivity.launch(this, options);
+            MeetHourActivity.launch(this, options);
         }
     }
 
     private void registerForBroadcastMessages() {
         IntentFilter intentFilter = new IntentFilter();
 
-        /* This registers for every possible event sent from JitsiMeetSDK
+        /* This registers for every possible event sent from MeetHourSDK
            If only some of the events are needed, the for loop can be replaced
            with individual statements:
            ex:  intentFilter.addAction(BroadcastEvent.Type.AUDIO_MUTED_CHANGED.getAction());
@@ -104,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, intentFilter);
     }
 
-    // Example for handling different JitsiMeetSDK events
+    // Example for handling different MeetHourSDK events
     private void onBroadcastReceived(Intent intent) {
         if (intent != null) {
             BroadcastEvent event = new BroadcastEvent(intent);
@@ -120,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Example for sending actions to JitsiMeetSDK
+    // Example for sending actions to MeetHourSDK
     private void hangUp() {
         Intent hangupBroadcastIntent = BroadcastIntentHelper.buildHangUpIntent();
         LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(hangupBroadcastIntent);
