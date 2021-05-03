@@ -40,8 +40,7 @@ ext {
 
 allprojects {
     repositories {
-//        maven { url "https://repo.meethour.io/maven/releases/" }
-        maven { url "file://home/majayjayy/Desktop/vsynk/meethour-maven-repository/releases" }
+        maven { url "https://repo.meethour.io/maven/releases/" }
         google()
         jcenter()
     }
