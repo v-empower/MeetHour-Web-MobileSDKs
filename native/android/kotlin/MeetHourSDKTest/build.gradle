@@ -20,9 +20,7 @@ plugins {
 
 allprojects {
     repositories {
-        maven {
-            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
-        }
+        maven { url "https://repo.meethour.io/maven/releases/" }
         google()
         jcenter()
 

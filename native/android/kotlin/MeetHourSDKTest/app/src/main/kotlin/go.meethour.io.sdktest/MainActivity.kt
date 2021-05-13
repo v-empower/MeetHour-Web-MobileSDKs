@@ -1,4 +1,4 @@
-package net.jitsi.sdktest
+package go.meethour.io.sdktest;
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -9,10 +9,17 @@ import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import org.jitsi.meet.sdk.*
-import timber.log.Timber
+
+import go.meethour.io.MeetHourSDK.android.BroadcastEvent
+import go.meethour.io.MeetHourSDK.android.BroadcastIntentHelper
+import go.meethour.io.MeetHourSDK.android.MeetHour
+import go.meethour.io.MeetHourSDK.android.MeetHourActivity
+import go.meethour.io.MeetHourSDK.android.MeetHourConferenceOptions
+
 import java.net.MalformedURLException
 import java.net.URL
+
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,16 +33,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialize default options for Jitsi Meet conferences.
+        // Initialize default options for Meet Hour conferences.
         val serverURL: URL
         serverURL = try {
-            // When using JaaS, replace "https://meet.jit.si" with the proper serverURL
-            URL("https://meet.jit.si")
+            // When using JaaS, replace "https://meethour.io" with the proper serverURL
+            URL("https://meethour.io")
         } catch (e: MalformedURLException) {
             e.printStackTrace()
             throw RuntimeException("Invalid server URL!")
         }
-        val defaultOptions = JitsiMeetConferenceOptions.Builder()
+        val defaultOptions = MeetHourConferenceOptions.Builder()
                 .setServerURL(serverURL)
                 // When using JaaS, set the obtained JWT here
                 //.setToken("MyJWT")
@@ -44,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 //.setFeatureFlag("filmstrip.enabled", false)
                 .setWelcomePageEnabled(false)
                 .build()
-        JitsiMeet.setDefaultConferenceOptions(defaultOptions)
+        MeetHour.setDefaultConferenceOptions(defaultOptions)
 
         registerForBroadcastMessages()
     }
@@ -61,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         if (text.length > 0) {
             // Build options object for joining the conference. The SDK will merge the default
             // one we set earlier and this one when joining.
-            val options = JitsiMeetConferenceOptions.Builder()
+            val options = MeetHourConferenceOptions.Builder()
                     .setRoom(text)
                     // Settings for audio and video
                     //.setAudioMuted(true)
@@ -69,7 +76,7 @@ class MainActivity : AppCompatActivity() {
                     .build()
             // Launch the new activity with the given options. The launch() method takes care
             // of creating the required Intent and passing the options.
-            JitsiMeetActivity.launch(this, options)
+            MeetHourActivity.launch(this, options)
         }
     }
 
@@ -77,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     private fun registerForBroadcastMessages() {
         val intentFilter = IntentFilter()
 
-        /* This registers for every possible event sent from JitsiMeetSDK
+        /* This registers for every possible event sent from MeetHourSDK
            If only some of the events are needed, the for loop can be replaced
            with individual statements:
            ex:  intentFilter.addAction(BroadcastEvent.Type.AUDIO_MUTED_CHANGED.action);
@@ -91,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, intentFilter)
     }
 
-    // Example for handling different JitsiMeetSDK events
+    // Example for handling different MeetHourSDK events
     private fun onBroadcastReceived(intent: Intent?) {
         if (intent != null) {
             val event = BroadcastEvent(intent)
@@ -102,7 +109,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // Example for sending actions to JitsiMeetSDK
+    // Example for sending actions to MeetHourSDK
     private fun hangUp() {
         val hangupBroadcastIntent: Intent = BroadcastIntentHelper.buildHangUpIntent()
         LocalBroadcastManager.getInstance(org.webrtc.ContextUtils.getApplicationContext()).sendBroadcast(hangupBroadcastIntent)
