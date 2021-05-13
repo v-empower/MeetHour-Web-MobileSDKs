@@ -88,4 +88,4 @@
 -keep class com.facebook.hermes.unicode.** { *; }
 
 # This app
--keep class go.meethour.io.sdktest.** { *; }
+-keep class go.meethour.io.android.sdktest.** { *; }

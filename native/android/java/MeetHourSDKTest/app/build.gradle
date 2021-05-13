@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "go.meethour.io.sdktest"
+        applicationId "go.meethour.io.android.sdktest"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
