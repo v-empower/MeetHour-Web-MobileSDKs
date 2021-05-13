@@ -59,9 +59,9 @@
 -keep class org.webrtc.** { *; }
 -dontwarn org.chromium.build.BuildHooksAndroid
 
-# Jisti Meet SDK
+# Meet Hour SDK
 
--keep class org.jitsi.meet.sdk.** { *; }
+-keep class go.meethour.io.react.meet-hour-sdk.** { *; }
 
 # We added the following when we switched minifyEnabled on. Probably because we
 # ran the app and hit problems...
@@ -88,4 +88,4 @@
 -keep class com.facebook.hermes.unicode.** { *; }
 
 # This app
--keep class net.jitsi.sdktest.** { *; }
+-keep class go.meethour.io.react.meet-hour-sdk.** { *; }
