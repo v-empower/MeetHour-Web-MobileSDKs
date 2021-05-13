@@ -1,0 +1,2 @@
+include ':meethour-android-sdk'
+include ':app'
