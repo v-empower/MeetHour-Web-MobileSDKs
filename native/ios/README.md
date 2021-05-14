@@ -17,7 +17,7 @@ with the SDK.
 
 ## Using the SDK
 
-The recommended way for using the SDK is by using [CocoaPods](). In order to
+The recommended way for using the SDK is by using [CocoaPods](https://cocoapods.org/pods/MeetHourSDK). In order to
 do so, add the `MeetHourSDK` dependency to your existing `Podfile` or create
 a new one following this example:
 
