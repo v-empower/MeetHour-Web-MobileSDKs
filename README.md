@@ -8,5 +8,4 @@ Code consist of Meet Hour Mobile SDKs with an example to join the conference fro
  5. React Native
  6. Flutter
 
-For any issues or queries raise a issue in Github or send us an email to hello@meethour.io
-www.meethour.io
+For any issues or queries raise a issue in Github or send us an email to hello@meethour.io.
