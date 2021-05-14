@@ -49,7 +49,7 @@ class ViewController: UIViewController {
             builder.welcomePageEnabled = false
             builder.serverURL = URL(string: "https://meethour.io")
             builder.room = "MeetHourSDKiOS"
-            builder.setFeatureFlag("ios.recording", withBoolean: true)
+            builder.setFeatureFlag("ios.recording.enabled", withBoolean: true)
         }
         MHView.join(options)
 

@@ -24,6 +24,7 @@
         = [MeetHourConferenceOptions fromBuilder:^(MeetHourConferenceOptionsBuilder *builder) {
             builder.serverURL = [NSURL URLWithString:@"https://meethour.io"];
             builder.welcomePageEnabled = NO;
+            [builder setFeatureFlag:@"ios.recording.enabled" withBoolean:YES];
         }];
     [MeetHour sharedInstance].defaultConferenceOptions = defaultOptions;
 

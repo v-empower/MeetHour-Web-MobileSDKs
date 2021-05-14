@@ -30,6 +30,7 @@
             builder.room = self.room;
             // Settings for audio and video
             builder.audioMuted = YES;
+            [builder setFeatureFlag:@"ios.recording.enabled" withBoolean:YES];
             // builder.videoMuted = YES;
             // Set different feature flags
             // [builder setFeatureFlag:@"toolbox.enabled" withBoolean:NO];

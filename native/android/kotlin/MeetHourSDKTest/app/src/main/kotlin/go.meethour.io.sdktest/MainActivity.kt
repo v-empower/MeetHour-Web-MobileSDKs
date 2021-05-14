@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
                 // Different features flags can be set
                 //.setFeatureFlag("toolbox.enabled", false)
                 //.setFeatureFlag("filmstrip.enabled", false)
+                .setFeatureFlag("recording.enabled", true)
                 .setWelcomePageEnabled(false)
                 .build()
         MeetHour.setDefaultConferenceOptions(defaultOptions)

@@ -22,22 +22,18 @@ do so, add the `MeetHourSDK` dependency to your existing `Podfile` or create
 a new one following this example:
 
 ```
-platform :ios, '11.0'
-
-workspace 'MeetHourSDKTest.xcworkspace'
+platform :ios, '12.1'
 
 target 'MeetHourSDKTest' do
-  project 'MeetHourSDKTest.xcodeproj'
+    pod 'MeetHourSDK', '~> 3.5.0'
 
-  pod 'MeetHourSDK'
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['ENABLE_BITCODE'] = 'NO'
+    post_install do |installer|
+        installer.pods_project.targets.each do |target|
+            target.build_configurations.each do |config|
+                config.build_settings['ENABLE_BITCODE'] = 'NO'
+            end
+        end
     end
-  end
 end
 ```
 

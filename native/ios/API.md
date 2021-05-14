@@ -33,6 +33,44 @@ To get started:
 }
 ```
 
+```Swift
+// create and configure Meet Hour view
+    let MHView = MeetHourView()
+    MHView.delegate = self
+    self.MHView = MHView
+    let options = MeetHourConferenceOptions.fromBuilder { (builder) in
+      builder.welcomePageEnabled = false
+      builder.serverURL = URL(string: "https://meethour.io")
+      builder.room = “MeetHourSDKiOS”
+      builder.setFeatureFlag("ios.recording.enabled", withBoolean: true)
+    }
+    MHView.join(options)
+```
+
+```Swift (Picture-In-Picture)
+// create and configure Meet Hour view
+    let MHView = MeetHourView()
+    MHView.delegate = self
+    self.MHView = MHView
+    let options = MeetHourConferenceOptions.fromBuilder { (builder) in
+      builder.welcomePageEnabled = false
+      builder.serverURL = URL(string: "https://meethour.io")
+      builder.room = “MeetHourSDKiOS”
+      builder.setFeatureFlag("ios.recording.enabled", withBoolean: true)
+    }
+    MHView.join(options)
+
+// Enable meet hour view to be a view that can be displayed
+// on top of all the things, and let the coordinator to manage
+// the view state and interactions
+    pipViewCoordinator = PiPViewCoordinator(withView: MHView)
+    pipViewCoordinator?.configureAsStickyView(withParentView: view)
+
+    // animate in
+    MHView.alpha = 0
+    pipViewCoordinator?.show()
+```
+
 ### MeetHourView class
 
 The `MeetHourView` class is the entry point to the SDK. It a subclass of
