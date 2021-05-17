@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0336230339882EBFE470A33 /* libPods-MeetHourSDKTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF0596A924FC86DE544A9B7 /* libPods-MeetHourSDKTest.a */; };
 		DE0B06AB2254E6760042E09E /* ConferenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE0B06AA2254E6760042E09E /* ConferenceViewController.m */; };
 		DE6EE8BD2254E0620087FD5E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6EE8BC2254E0620087FD5E /* AppDelegate.m */; };
 		DE6EE8C02254E0620087FD5E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE6EE8BF2254E0620087FD5E /* ViewController.m */; };
@@ -17,7 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7DC76318C75771D19915DC7C /* Pods-MeetHourSDKTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.debug.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.debug.xcconfig"; sourceTree = "<group>"; };
+		2BE3FCE3B52693330E34BDC6 /* Pods-MeetHourSDKTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.debug.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.debug.xcconfig"; sourceTree = "<group>"; };
+		4F407C543F8277B0EDFFD647 /* Pods-MeetHourSDKTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.release.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.release.xcconfig"; sourceTree = "<group>"; };
+		8BF0596A924FC86DE544A9B7 /* libPods-MeetHourSDKTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeetHourSDKTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE0B06AA2254E6760042E09E /* ConferenceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConferenceViewController.m; sourceTree = "<group>"; };
 		DE0B06AC2254E6920042E09E /* ConferenceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConferenceViewController.h; sourceTree = "<group>"; };
 		DE6EE8B82254E0620087FD5E /* MeetHourSDKTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetHourSDKTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,7 +33,6 @@
 		DE6EE8C72254E0630087FD5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DE6EE8C92254E0630087FD5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE6EE8CA2254E0630087FD5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F2A411800967537B01702BD6 /* Pods-MeetHourSDKTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.release.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,26 +40,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0336230339882EBFE470A33 /* libPods-MeetHourSDKTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		240A6CF94E25800E4A2BE8A5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		264EA03F9682FDFEC6B3920D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7DC76318C75771D19915DC7C /* Pods-MeetHourSDKTest.debug.xcconfig */,
-				F2A411800967537B01702BD6 /* Pods-MeetHourSDKTest.release.xcconfig */,
+				2BE3FCE3B52693330E34BDC6 /* Pods-MeetHourSDKTest.debug.xcconfig */,
+				4F407C543F8277B0EDFFD647 /* Pods-MeetHourSDKTest.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B2AA3B099C9C704A04FE573D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BF0596A924FC86DE544A9B7 /* libPods-MeetHourSDKTest.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DE6EE8AF2254E0620087FD5E = {
@@ -66,7 +70,7 @@
 				DE6EE8BA2254E0620087FD5E /* MeetHourSDKTest */,
 				DE6EE8B92254E0620087FD5E /* Products */,
 				264EA03F9682FDFEC6B3920D /* Pods */,
-				240A6CF94E25800E4A2BE8A5 /* Frameworks */,
+				B2AA3B099C9C704A04FE573D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,12 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE6EE8CE2254E0630087FD5E /* Build configuration list for PBXNativeTarget "MeetHourSDKTest" */;
 			buildPhases = (
-				161FCF06D72195D636660CEB /* [CP] Check Pods Manifest.lock */,
-				8D39BA3456FA230CA40E4236 /* [CP] Prepare Artifacts */,
+				B88EF7A881BEC0D5304FCC8B /* [CP] Check Pods Manifest.lock */,
 				DE6EE8B42254E0620087FD5E /* Sources */,
 				DE6EE8B52254E0620087FD5E /* Frameworks */,
 				DE6EE8B62254E0620087FD5E /* Resources */,
-				E70609FB7362252EFC9A86FC /* [CP] Embed Pods Frameworks */,
+				4BE5529F6AEEC2A5064B58D5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,7 +173,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		161FCF06D72195D636660CEB /* [CP] Check Pods Manifest.lock */ = {
+		4BE5529F6AEEC2A5064B58D5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B88EF7A881BEC0D5304FCC8B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -190,40 +210,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8D39BA3456FA230CA40E4236 /* [CP] Prepare Artifacts */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-artifacts-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Prepare Artifacts";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-artifacts-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-artifacts.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E70609FB7362252EFC9A86FC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -378,7 +364,7 @@
 		};
 		DE6EE8CF2254E0630087FD5E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7DC76318C75771D19915DC7C /* Pods-MeetHourSDKTest.debug.xcconfig */;
+			baseConfigurationReference = 2BE3FCE3B52693330E34BDC6 /* Pods-MeetHourSDKTest.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -398,7 +384,7 @@
 		};
 		DE6EE8D02254E0630087FD5E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2A411800967537B01702BD6 /* Pods-MeetHourSDKTest.release.xcconfig */;
+			baseConfigurationReference = 4F407C543F8277B0EDFFD647 /* Pods-MeetHourSDKTest.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

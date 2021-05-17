@@ -1,0 +1,29 @@
+PODS:
+  - Flutter (1.0.0)
+  - meet_hour (0.0.1):
+    - Flutter
+    - MeetHourSDK (= 3.5.2)
+  - MeetHourSDK (3.5.2)
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - meet_hour (from `.symlinks/plugins/meet_hour/ios`)
+
+SPEC REPOS:
+  trunk:
+    - MeetHourSDK
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  meet_hour:
+    :path: ".symlinks/plugins/meet_hour/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  meet_hour: c103e0864175ae15a9129d80dce2e3e33d0f19fe
+  MeetHourSDK: 6af7e4586797598e19b4906cfea499aaaf7c986d
+
+PODFILE CHECKSUM: 8b1fb77d457bb929ce6ec43a5f3e2f24a2ab8172
+
+COCOAPODS: 1.10.1

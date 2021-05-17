@@ -15,6 +15,13 @@ It is **strongly advised** to use the provided WebRTC framework and not
 replace it with any other build, since the provided one is known to work
 with the SDK.
 
+## Required Files - Git LFS
+
+PLEASE INSTALL GIT LFS FROM THIS LOCATION - https://git-lfs.github.com/
+
+After Git LFS installation from above link, in your project directory run this command - git lfs install 
+(Note: You should above command before `pod install` command)
+
 ## Using the SDK
 
 The recommended way for using the SDK is by using [CocoaPods](https://cocoapods.org/pods/MeetHourSDK). In order to
@@ -25,7 +32,7 @@ a new one following this example:
 platform :ios, '12.1'
 
 target 'MeetHourSDKTest' do
-    pod 'MeetHourSDK', '~> 3.5.0'
+    pod 'MeetHourSDK', '~> 3.5.2'
 
     post_install do |installer|
         installer.pods_project.targets.each do |target|
@@ -55,6 +62,28 @@ Last, since the SDK shows and hides the status bar based on the conference state
 you may want to set `UIViewControllerBasedStatusBarAppearance` to `NO` in your
 `Info.plist` file.
 
+
+# POD INSTALL
+```
+pod install
+```
+
+## General Error - MeetHourSDKTest.app/Frameworks/WebRTC.framework/WebRTC: file too short
+
+As Github doesn't allow to upload file more than 100 MB and our WebRTC file is almost about 600 MB. We have used Git LFS to keep track of big files on Github. If you are not able to download the full version of WebRTC. Please use below command to reset it.
+
+```
+
+rm -rf ~/Library/Caches/CocoaPods/*
+rm -rf ~/Library/Developer/Xcode/DerivedData/*
+pod deintegrate 
+pod setup 
+pod cache clean --all
+git lfs install // Check whether git lfs has been downloaded before install pod. See above
+pod install
+
+```
+
 ## API
 
 The API is documented [here](API.md).
@@ -64,4 +93,4 @@ The API is documented [here](API.md).
 Please report all issues related to this SDK to the [Meet Hour]() repository.
 
 [CocoaPods]: https://cocoapods.org/pods/MeetHourSDK
-[Meet Hour]: https://github.com/v-empower/meethour-ios-sdk-releases
+[DownloadSDK]: https://github.com/v-empower/MeetHour-MobileSDKs
