@@ -16,7 +16,7 @@ complexity of building and installing your own SDK artifacts/binaries.
 
 In your project, add the Maven repository
 `https://repo.meethour.io/maven/releases` and the
-dependency `go.meethour.io.react:meet-hour-sdk:3.5.0` into your `build.gradle` files.
+dependency `go.meethour.io.react:meet-hour-sdk:3.5.2` into your `build.gradle` files.
 
 The repository typically goes into the `build.gradle` file in the root of your project:
 
@@ -37,6 +37,6 @@ Dependency definitions belong in the individual module `build.gradle` files:
 ```gradle
 dependencies {
     // (other dependencies)
-    implementation ('go.meethour.io.react:meet-hour-sdk:3.5.0') { transitive = true }
+    implementation ('go.meethour.io.react:meet-hour-sdk:3.5.2') { transitive = true }
 }
 ```
