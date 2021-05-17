@@ -4,6 +4,14 @@ Meet Hour Plugin for Flutter. Supports Android, iOS, and Web platforms.
 
 "Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc." 
 
+
+Pub dev - https://pub.dev/packages/meet_hour
+
+```
+  meet_hour: '>=1.0.0'
+```
+
+
 ## Table of Contents
   - [Configuration](#configuration)
     - [IOS](#ios)

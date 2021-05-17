@@ -19,7 +19,7 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
     3. iOS - https://apple.co/3k8Rpbn
 
 
-# MeetHour Mobile SDKs
+# MeetHour Mobile SDKs - Examples
 
     Code consist of Meet Hour Mobile SDKs with an example to join the conference from smart phone via
 

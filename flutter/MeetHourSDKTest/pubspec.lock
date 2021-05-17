@@ -77,10 +77,10 @@ packages:
   meet_hour:
     dependency: "direct main"
     description:
-      path: "../fluttersdk"
-      relative: true
-    source: path
-    version: "4.0.0"
+      name: meet_hour
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   meta:
     dependency: transitive
     description:
