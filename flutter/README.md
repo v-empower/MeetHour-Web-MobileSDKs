@@ -204,7 +204,7 @@ _joinMeeting() async {
  ------------------ | --------- | ----------------- | ----------- |
 | room              | Yes       | N/A               | Unique room name that will be appended to serverURL. Valid characters: alphanumeric, dashes, and underscores. |
 | subject           | No        | $room             | Meeting name displayed at the top of the meeting.  If null, defaults to room name where dashes and underscores are replaced with spaces and first characters are capitalized. |
-| userDisplayName   | No        | "Fellow Jitster"  | User's display name. |
+| userDisplayName   | No        | "Guest"  | User's display name. |
 | userEmail         | No        | none              | User's email address. |
 | audioOnly         | No        | false             | Start meeting without video. Can be turned on in meeting. |
 | audioMuted        | No        | false             | Start meeting with audio muted. Can be turned on in meeting. |
