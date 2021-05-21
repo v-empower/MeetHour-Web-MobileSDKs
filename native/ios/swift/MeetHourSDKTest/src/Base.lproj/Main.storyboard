@@ -17,28 +17,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QxY-C8-fwD">
-                                <rect key="frame" x="29.5" y="318.5" width="316" height="30"/>
+                                <rect key="frame" x="172.5" y="318.5" width="30" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Open Meet Hour - (Room - MeetHourSDKiOS)"/>
+                                <state key="normal" title="Join"/>
                                 <connections>
                                     <action selector="openMeetHourWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="79C-XR-05w"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nL2-2p-KnY">
+                                <rect key="frame" x="30" y="253.5" width="315" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="tmr-fF-OIn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="QxY-C8-fwD" firstAttribute="top" secondItem="nL2-2p-KnY" secondAttribute="bottom" constant="20" id="0v7-ja-I95"/>
                             <constraint firstItem="QxY-C8-fwD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6a6-l1-7Ct"/>
                             <constraint firstItem="QxY-C8-fwD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Hfg-TH-0g2"/>
+                            <constraint firstItem="nL2-2p-KnY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="ZRB-Zl-VQO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nL2-2p-KnY" secondAttribute="trailing" constant="30" id="sOs-Go-EEW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="txtRoomName" destination="nL2-2p-KnY" id="XtU-i9-Q91"/>
                         <outlet property="videoButton" destination="QxY-C8-fwD" id="Zwa-Hx-Zub"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="658.92053973013503"/>
+            <point key="canvasLocation" x="63" y="188"/>
         </scene>
     </scenes>
 </document>

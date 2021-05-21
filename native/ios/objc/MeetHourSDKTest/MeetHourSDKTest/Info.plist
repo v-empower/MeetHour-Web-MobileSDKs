@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>go.meethour.io.ios.sdk</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -20,12 +20,16 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>See your scheduled meetings in the app.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>CAN I HAZ THE CAMERA</string>
+	<string>Participate in meetings with video.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Require Contacts to send invitation</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>CAN I HAZ THE NET</string>
+	<string>Local network is used for establishing Peer-to-Peer connections.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>CAN I HAZ THE MIC</string>
+	<string>Participate in meetings with voice.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -55,5 +59,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>RTCAppGroupIdentifier</key>
+	<string>group.go.meethour.io.ios.sdk.broadextension</string>
+	<key>RTCScreenSharingExtension</key>
+	<string>go.meethour.io.ios.sdk.broadextension</string>
 </dict>
 </plist>

@@ -19,6 +19,7 @@ import MeetHourSDK
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var txtRoomName: UITextField!
     @IBOutlet weak var videoButton: UIButton?
 
     fileprivate var pipViewCoordinator: PiPViewCoordinator?
@@ -39,29 +40,36 @@ class ViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func openMeetHour(sender: Any?) {
+        txtRoomName.resignFirstResponder()
         cleanUp()
 
-        // create and configure Meet Hour view
-        let MHView = MeetHourView()
-        MHView.delegate = self
-        self.MHView = MHView
-        let options = MeetHourConferenceOptions.fromBuilder { (builder) in
-            builder.welcomePageEnabled = false
-            builder.serverURL = URL(string: "https://meethour.io")
-            builder.room = "MeetHourSDKiOS"
-            builder.setFeatureFlag("ios.recording.enabled", withBoolean: true)
+        if txtRoomName.text!.count > 0{
+            // create and configure Meet Hour view
+            let MHView = MeetHourView()
+            MHView.delegate = self
+            self.MHView = MHView
+            let options = MeetHourConferenceOptions.fromBuilder { (builder) in
+                builder.welcomePageEnabled = false
+                builder.serverURL = URL(string: "https://meethour.io")
+                builder.room = self.txtRoomName.text
+                builder.setFeatureFlag("ios.recording.enabled", withBoolean: true)
+            }
+            MHView.join(options)
+
+            // Enable meet hour view to be a view that can be displayed
+            // on top of all the things, and let the coordinator to manage
+            // the view state and interactions
+            pipViewCoordinator = PiPViewCoordinator(withView: MHView)
+            pipViewCoordinator?.configureAsStickyView(withParentView: view)
+
+            // animate in
+            MHView.alpha = 0
+            pipViewCoordinator?.show()
+        }else{
+            let alert = UIAlertController(title: "Alert", message: "Please enter room name.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
         }
-        MHView.join(options)
-
-        // Enable meet hour view to be a view that can be displayed
-        // on top of all the things, and let the coordinator to manage
-        // the view state and interactions
-        pipViewCoordinator = PiPViewCoordinator(withView: MHView)
-        pipViewCoordinator?.configureAsStickyView(withParentView: view)
-
-        // animate in
-        MHView.alpha = 0
-        pipViewCoordinator?.show()
     }
 
     fileprivate func cleanUp() {
