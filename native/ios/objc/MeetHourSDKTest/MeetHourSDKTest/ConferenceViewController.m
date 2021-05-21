@@ -27,11 +27,17 @@
     // Join the room.
     MeetHourConferenceOptions *options
         = [MeetHourConferenceOptions fromBuilder:^(MeetHourConferenceOptionsBuilder *builder) {
+            NSURL *url = [NSURL URLWithString:self.serverUrl];
+            builder.serverURL = url;
+            builder.subject = self.subject;
+            builder.userInfo.displayName = self.displayName;
+            builder.userInfo.email = self.email;
             builder.room = self.room;
+            
             // Settings for audio and video
-            builder.audioMuted = YES;
+            builder.audioMuted = self.isAudioMuted;
+            builder.videoMuted = self.isVideoOn;
             [builder setFeatureFlag:@"ios.recording.enabled" withBoolean:YES];
-            // builder.videoMuted = YES;
             // Set different feature flags
             // [builder setFeatureFlag:@"toolbox.enabled" withBoolean:NO];
             // [builder setFeatureFlag:@"filmstrip.enabled" withBoolean:NO];

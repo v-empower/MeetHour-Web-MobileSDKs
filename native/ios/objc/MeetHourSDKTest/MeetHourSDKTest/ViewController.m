@@ -17,8 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    _isAudio = YES;
+    _isVideoOn = YES;
+    self.txtServerURL.text = @"https://meethour.io";
     self.room = nil;
+}
+
+- (IBAction)aMethodAudio:(UISwitch *)sender {
+        self.isAudio = !self.isAudio;
+}
+- (IBAction)aMethodVideo:(UISwitch *)sender {
+    self.isVideoOn = !self.isVideoOn;
 }
 
 - (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
@@ -38,6 +47,12 @@
         // Attach the room to the new controller.
         ConferenceViewController *vc = [segue destinationViewController];
         vc.room = self.room;
+        vc.serverUrl = self.txtServerURL.text;
+        vc.subject = self.txtSubject.text;
+        vc.displayName = self.txtDisplayName.text;
+        vc.email = self.txtEmail.text;
+        vc.isVideoOn = _isVideoOn;
+        vc.isAudioMuted = _isAudio;
     }
 }
 

@@ -33,12 +33,20 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>See your scheduled meetings in the app.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>The camera is needed for making calls</string>
+	<string>Participate in meetings with video.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Require Contacts to send invitation</string>
 	<key>NSLocalNetworkUsageDescription</key>
-	<string>The local network is used for P2P connections.</string>
+	<string>Local network is used for establishing Peer-to-Peer connections.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>The microphone is needed for making calls</string>
+	<string>Participate in meetings with voice.</string>
+	<key>RTCAppGroupIdentifier</key>
+	<string>group.go.meethour.io.ios.sdk.broadextension</string>
+	<key>RTCScreenSharingExtension</key>
+	<string>go.meethour.io.ios.sdk.broadextension</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>

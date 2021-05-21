@@ -7,12 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6992C0692654E9B000A28BBB /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6992C0682654E9B000A28BBB /* ReplayKit.framework */; };
+		6992C06C2654E9B000A28BBB /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6992C06B2654E9B000A28BBB /* SampleHandler.swift */; };
+		6992C0702654E9B000A28BBB /* MeetHour_Broadcast_Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6992C0672654E9B000A28BBB /* MeetHour_Broadcast_Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6992C0872654F25700A28BBB /* SocketConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6992C0812654F25600A28BBB /* SocketConnection.m */; };
+		6992C0882654F25700A28BBB /* DarwinNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6992C0822654F25600A28BBB /* DarwinNotificationCenter.m */; };
+		6992C0892654F25700A28BBB /* SampleUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6992C0852654F25700A28BBB /* SampleUploader.m */; };
+		969E9ECDC23EF10D5D16BE14 /* libPods-MeetHourSDKTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9804E0E9D500E1212989F910 /* libPods-MeetHourSDKTest.a */; };
 		C6F99C3B204DE6BE0001F710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F99C3A204DE6BE0001F710 /* AppDelegate.swift */; };
 		C6F99C3D204DE6BE0001F710 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F99C3C204DE6BE0001F710 /* ViewController.swift */; };
 		C6F99C40204DE6BE0001F710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6F99C3E204DE6BE0001F710 /* Main.storyboard */; };
 		C6F99C42204DE6BE0001F710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6F99C41204DE6BE0001F710 /* Assets.xcassets */; };
 		C6F99C45204DE6BE0001F710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6F99C43204DE6BE0001F710 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6992C06E2654E9B000A28BBB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6F99C2F204DE6BE0001F710 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6992C0662654E9B000A28BBB;
+			remoteInfo = MeetHour_Broadcast_Extension;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		190804AF264DB4F200B5F1ED /* Embed Frameworks */ = {
@@ -25,11 +42,35 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6992C0712654E9B000A28BBB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6992C0702654E9B000A28BBB /* MeetHour_Broadcast_Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3AFE223B8F4067D383B22ADC /* Pods-MeetHourSDKTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.release.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.release.xcconfig"; sourceTree = "<group>"; };
-		4F8B610E52BD854848B8AB19 /* Pods-MeetHourSDKTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.debug.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.debug.xcconfig"; sourceTree = "<group>"; };
+		6992C0672654E9B000A28BBB /* MeetHour_Broadcast_Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeetHour_Broadcast_Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		6992C0682654E9B000A28BBB /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		6992C06B2654E9B000A28BBB /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
+		6992C06D2654E9B000A28BBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6992C0772654E9E700A28BBB /* MeetHour_Broadcast_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetHour_Broadcast_Extension.entitlements; sourceTree = "<group>"; };
+		6992C0782654E9FC00A28BBB /* MeetHourSDKTest.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetHourSDKTest.entitlements; sourceTree = "<group>"; };
+		6992C0802654F25600A28BBB /* MeetHour_Broadcast_Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetHour_Broadcast_Extension-Bridging-Header.h"; sourceTree = "<group>"; };
+		6992C0812654F25600A28BBB /* SocketConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocketConnection.m; sourceTree = "<group>"; };
+		6992C0822654F25600A28BBB /* DarwinNotificationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarwinNotificationCenter.m; sourceTree = "<group>"; };
+		6992C0832654F25600A28BBB /* DarwinNotificationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarwinNotificationCenter.h; sourceTree = "<group>"; };
+		6992C0842654F25700A28BBB /* SampleUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleUploader.h; sourceTree = "<group>"; };
+		6992C0852654F25700A28BBB /* SampleUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleUploader.m; sourceTree = "<group>"; };
+		6992C0862654F25700A28BBB /* SocketConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocketConnection.h; sourceTree = "<group>"; };
+		9804E0E9D500E1212989F910 /* libPods-MeetHourSDKTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeetHourSDKTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE73D228A976CD5D19224CB6 /* Pods-MeetHourSDKTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.debug.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.debug.xcconfig"; sourceTree = "<group>"; };
 		C6F99C37204DE6BE0001F710 /* MeetHourSDKTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetHourSDKTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F99C3A204DE6BE0001F710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6F99C3C204DE6BE0001F710 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,13 +78,23 @@
 		C6F99C41204DE6BE0001F710 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6F99C44204DE6BE0001F710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6F99C46204DE6BE0001F710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F793A7AB6DDEF4953279C8DE /* Pods-MeetHourSDKTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.release.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6992C0642654E9B000A28BBB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6992C0692654E9B000A28BBB /* ReplayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6F99C34204DE6BE0001F710 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				969E9ECDC23EF10D5D16BE14 /* libPods-MeetHourSDKTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,19 +104,47 @@
 		4AE24FC668E484B22902B8E0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4F8B610E52BD854848B8AB19 /* Pods-MeetHourSDKTest.debug.xcconfig */,
-				3AFE223B8F4067D383B22ADC /* Pods-MeetHourSDKTest.release.xcconfig */,
+				BE73D228A976CD5D19224CB6 /* Pods-MeetHourSDKTest.debug.xcconfig */,
+				F793A7AB6DDEF4953279C8DE /* Pods-MeetHourSDKTest.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		6992C06A2654E9B000A28BBB /* MeetHour_Broadcast_Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6992C0832654F25600A28BBB /* DarwinNotificationCenter.h */,
+				6992C0822654F25600A28BBB /* DarwinNotificationCenter.m */,
+				6992C0842654F25700A28BBB /* SampleUploader.h */,
+				6992C0852654F25700A28BBB /* SampleUploader.m */,
+				6992C0862654F25700A28BBB /* SocketConnection.h */,
+				6992C0812654F25600A28BBB /* SocketConnection.m */,
+				6992C0772654E9E700A28BBB /* MeetHour_Broadcast_Extension.entitlements */,
+				6992C06B2654E9B000A28BBB /* SampleHandler.swift */,
+				6992C06D2654E9B000A28BBB /* Info.plist */,
+				6992C0802654F25600A28BBB /* MeetHour_Broadcast_Extension-Bridging-Header.h */,
+			);
+			path = MeetHour_Broadcast_Extension;
+			sourceTree = "<group>";
+		};
+		9B13F6800452E223D869BF3B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9804E0E9D500E1212989F910 /* libPods-MeetHourSDKTest.a */,
+				6992C0682654E9B000A28BBB /* ReplayKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		C6F99C2E204DE6BE0001F710 = {
 			isa = PBXGroup;
 			children = (
-				C6F99C4D204DE79F0001F710 /* Frameworks */,
+				6992C0782654E9FC00A28BBB /* MeetHourSDKTest.entitlements */,
+				6992C06A2654E9B000A28BBB /* MeetHour_Broadcast_Extension */,
 				C6F99C38204DE6BE0001F710 /* Products */,
 				C6F99C4C204DE7230001F710 /* src */,
 				4AE24FC668E484B22902B8E0 /* Pods */,
+				9B13F6800452E223D869BF3B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				C6F99C37204DE6BE0001F710 /* MeetHourSDKTest.app */,
+				6992C0672654E9B000A28BBB /* MeetHour_Broadcast_Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,31 +170,42 @@
 			path = src;
 			sourceTree = "<group>";
 		};
-		C6F99C4D204DE79F0001F710 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C6F99C36204DE6BE0001F710 /* MeetHourSDKTest */ = {
+		6992C0662654E9B000A28BBB /* MeetHour_Broadcast_Extension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C6F99C49204DE6BE0001F710 /* Build configuration list for PBXNativeTarget "MeetHourSDKTest" */;
+			buildConfigurationList = 6992C0742654E9B000A28BBB /* Build configuration list for PBXNativeTarget "MeetHour_Broadcast_Extension" */;
 			buildPhases = (
-				CF3D622B8488FC9DA1542B91 /* [CP] Check Pods Manifest.lock */,
-				9AB36F40DED21CE424DB96EC /* [CP] Prepare Artifacts */,
-				C6F99C33204DE6BE0001F710 /* Sources */,
-				C6F99C34204DE6BE0001F710 /* Frameworks */,
-				C6F99C35204DE6BE0001F710 /* Resources */,
-				0FF8159FFF5597BC317F0531 /* [CP] Embed Pods Frameworks */,
-				190804AF264DB4F200B5F1ED /* Embed Frameworks */,
+				6992C0632654E9B000A28BBB /* Sources */,
+				6992C0642654E9B000A28BBB /* Frameworks */,
+				6992C0652654E9B000A28BBB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			name = MeetHour_Broadcast_Extension;
+			productName = MeetHour_Broadcast_Extension;
+			productReference = 6992C0672654E9B000A28BBB /* MeetHour_Broadcast_Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C6F99C36204DE6BE0001F710 /* MeetHourSDKTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6F99C49204DE6BE0001F710 /* Build configuration list for PBXNativeTarget "MeetHourSDKTest" */;
+			buildPhases = (
+				3B35D09D3D5C2F0207191FEB /* [CP] Check Pods Manifest.lock */,
+				C6F99C33204DE6BE0001F710 /* Sources */,
+				C6F99C34204DE6BE0001F710 /* Frameworks */,
+				C6F99C35204DE6BE0001F710 /* Resources */,
+				190804AF264DB4F200B5F1ED /* Embed Frameworks */,
+				06FBD0ACA0C01F6A5C753226 /* [CP] Embed Pods Frameworks */,
+				6992C0712654E9B000A28BBB /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6992C06F2654E9B000A28BBB /* PBXTargetDependency */,
 			);
 			name = MeetHourSDKTest;
 			productName = MeetHourSDKTest;
@@ -127,10 +218,15 @@
 		C6F99C2F204DE6BE0001F710 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Atlassian Inc";
 				TargetAttributes = {
+					6992C0662654E9B000A28BBB = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
+						ProvisioningStyle = Manual;
+					};
 					C6F99C36204DE6BE0001F710 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Manual;
@@ -156,11 +252,19 @@
 			projectRoot = "";
 			targets = (
 				C6F99C36204DE6BE0001F710 /* MeetHourSDKTest */,
+				6992C0662654E9B000A28BBB /* MeetHour_Broadcast_Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6992C0652654E9B000A28BBB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6F99C35204DE6BE0001F710 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -174,43 +278,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0FF8159FFF5597BC317F0531 /* [CP] Embed Pods Frameworks */ = {
+		06FBD0ACA0C01F6A5C753226 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MeetHourSDK/MeetHourSDK.framework/MeetHourSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/WebRTC/WebRTC.framework/WebRTC",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MeetHourSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9AB36F40DED21CE424DB96EC /* [CP] Prepare Artifacts */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-artifacts.sh",
-				"${PODS_ROOT}/MeetHourSDK/Frameworks/MeetHourSDK.xcframework",
-				"${PODS_ROOT}/MeetHourSDK/Frameworks/WebRTC.xcframework",
-			);
-			name = "[CP] Prepare Artifacts";
-			outputPaths = (
-				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-artifacts.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CF3D622B8488FC9DA1542B91 /* [CP] Check Pods Manifest.lock */ = {
+		3B35D09D3D5C2F0207191FEB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -235,6 +323,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6992C0632654E9B000A28BBB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6992C0872654F25700A28BBB /* SocketConnection.m in Sources */,
+				6992C0892654F25700A28BBB /* SampleUploader.m in Sources */,
+				6992C06C2654E9B000A28BBB /* SampleHandler.swift in Sources */,
+				6992C0882654F25700A28BBB /* DarwinNotificationCenter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C6F99C33204DE6BE0001F710 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -245,6 +344,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6992C06F2654E9B000A28BBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6992C0662654E9B000A28BBB /* MeetHour_Broadcast_Extension */;
+			targetProxy = 6992C06E2654E9B000A28BBB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C6F99C3E204DE6BE0001F710 /* Main.storyboard */ = {
@@ -266,6 +373,54 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6992C0722654E9B000A28BBB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = MeetHour_Broadcast_Extension/MeetHour_Broadcast_Extension.entitlements;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 7AAZ3ZK627;
+				INFOPLIST_FILE = MeetHour_Broadcast_Extension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = go.meethour.io.ios.sdk.broadextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "MeetHour Test SDK BroadCast Extension";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetHour_Broadcast_Extension/MeetHour_Broadcast_Extension-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6992C0732654E9B000A28BBB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_ENTITLEMENTS = MeetHour_Broadcast_Extension/MeetHour_Broadcast_Extension.entitlements;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 7AAZ3ZK627;
+				INFOPLIST_FILE = MeetHour_Broadcast_Extension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = go.meethour.io.ios.sdk.broadextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "MeetHour Test SDK BroadCast Extension";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetHour_Broadcast_Extension/MeetHour_Broadcast_Extension-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C6F99C47204DE6BE0001F710 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -379,9 +534,11 @@
 		};
 		C6F99C4A204DE6BE0001F710 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F8B610E52BD854848B8AB19 /* Pods-MeetHourSDKTest.debug.xcconfig */;
+			baseConfigurationReference = BE73D228A976CD5D19224CB6 /* Pods-MeetHourSDKTest.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MeetHourSDKTest.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7AAZ3ZK627;
 				ENABLE_BITCODE = NO;
@@ -397,9 +554,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = go.meethour.io.ios.sdkTest;
+				PRODUCT_BUNDLE_IDENTIFIER = go.meethour.io.ios.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = MeethourWatchOS;
+				PROVISIONING_PROFILE_SPECIFIER = MeetHourTestSDK;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -407,9 +564,11 @@
 		};
 		C6F99C4B204DE6BE0001F710 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3AFE223B8F4067D383B22ADC /* Pods-MeetHourSDKTest.release.xcconfig */;
+			baseConfigurationReference = F793A7AB6DDEF4953279C8DE /* Pods-MeetHourSDKTest.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MeetHourSDKTest.entitlements;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 7AAZ3ZK627;
 				ENABLE_BITCODE = NO;
@@ -425,9 +584,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = go.meethour.io.ios.sdkTest;
+				PRODUCT_BUNDLE_IDENTIFIER = go.meethour.io.ios.sdk;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = MeethourWatchOS;
+				PROVISIONING_PROFILE_SPECIFIER = MeetHourTestSDK;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -436,6 +595,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6992C0742654E9B000A28BBB /* Build configuration list for PBXNativeTarget "MeetHour_Broadcast_Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6992C0722654E9B000A28BBB /* Debug */,
+				6992C0732654E9B000A28BBB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C6F99C32204DE6BE0001F710 /* Build configuration list for PBXProject "MeetHourSDKTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
