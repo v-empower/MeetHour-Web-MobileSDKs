@@ -22,6 +22,9 @@ PLEASE INSTALL GIT LFS FROM THIS LOCATION - https://git-lfs.github.com/
 After Git LFS installation from above link, in your project directory run this command - git lfs install 
 (Note: You should above command before `pod install` command)
 
+## Screenshot
+![](screenshot.jpeg)
+
 ## Using the SDK
 
 The recommended way for using the SDK is by using [CocoaPods](https://cocoapods.org/pods/MeetHourSDK). In order to
