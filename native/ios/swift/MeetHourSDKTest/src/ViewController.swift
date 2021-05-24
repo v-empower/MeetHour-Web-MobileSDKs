@@ -43,9 +43,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+            view.addGestureRecognizer(gestureRecognizer)
+            gestureRecognizer.cancelsTouchesInView = false
         self.txtServerURL.text = "https://meethour.io"
     }
 
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     override func viewWillTransition(to size: CGSize,
                                      with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
@@ -70,7 +77,7 @@ class ViewController: UIViewController {
 
     @IBAction func openMeetHour(sender: Any?) {
         
-        txtRoomName.resignFirstResponder()
+        view.endEditing(true)
         cleanUp()
 
         if txtRoomName.text!.count > 0{
@@ -126,6 +133,13 @@ extension ViewController: MeetHourViewDelegate {
         DispatchQueue.main.async {
             self.pipViewCoordinator?.enterPictureInPicture()
         }
+    }
+}
+
+extension ViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

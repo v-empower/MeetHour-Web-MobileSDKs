@@ -17,10 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+       [self.view addGestureRecognizer:gestureRecognizer];
+       gestureRecognizer.cancelsTouchesInView = NO;
     _isAudio = YES;
     _isVideoOn = YES;
     self.txtServerURL.text = @"https://meethour.io";
     self.room = nil;
+}
+- (void)dismissKeyboard
+{
+     [self.view endEditing:YES];
 }
 
 - (IBAction)aMethodAudio:(UISwitch *)sender {
@@ -43,7 +50,9 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     if ([[segue identifier] isEqualToString:@"joinConference"]) {
+        [[self view] endEditing:YES];
         // Attach the room to the new controller.
         ConferenceViewController *vc = [segue destinationViewController];
         vc.room = self.room;
@@ -56,4 +65,8 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return  YES;
+}
 @end

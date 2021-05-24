@@ -63,5 +63,7 @@
 	<string>group.go.meethour.io.ios.sdk.broadextension</string>
 	<key>RTCScreenSharingExtension</key>
 	<string>go.meethour.io.ios.sdk.broadextension</string>
+    <key>UIUserInterfaceStyle</key>
+    <string>Light</string>
 </dict>
 </plist>

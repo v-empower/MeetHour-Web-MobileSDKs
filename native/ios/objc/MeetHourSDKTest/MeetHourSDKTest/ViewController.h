@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MHTextField.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UITextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet MHTextField *textField;
 @property (weak, nonatomic) IBOutlet MHTextField *txtServerURL;
