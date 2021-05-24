@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  MHTextField.h
 //  MeetHourSDKTest
 //
 //  Created by to MeetHour, LLC.
@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface MHTextField : UITextField
 
-@property (strong, nonatomic) UIWindow *window;
-
+@property (nonatomic, assign) UIEdgeInsets edgeInsets;
 
 @end
-

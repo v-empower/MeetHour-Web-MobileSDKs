@@ -2,8 +2,8 @@
 //  ViewController.m
 //  MeetHourSDKTest
 //
-//  Created by Saúl Ibarra Corretgé on 03/04/2019.
-//  Copyright © 2019 Saúl Ibarra Corretgé. All rights reserved.
+//  Created by to MeetHour, LLC.
+//  Copyright © Meet Hour, LLC. All rights reserved.
 //
 
 #import "ViewController.h"

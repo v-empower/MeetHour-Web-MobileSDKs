@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		691334522653D19500B952CF /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B2A5D226528DBD00A0C0CB /* ReplayKit.framework */; };
 		691334532653D19500B952CF /* ReplayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 69B2A5D226528DBD00A0C0CB /* ReplayKit.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		696B00372657BC7500152A93 /* CBRTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 696B00362657BC7500152A93 /* CBRTextField.m */; };
+		696B00372657BC7500152A93 /* MHTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 696B00362657BC7500152A93 /* MHTextField.m */; };
 		69B2A5D726528DBD00A0C0CB /* SampleHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B2A5D626528DBD00A0C0CB /* SampleHandler.m */; };
 		69B2A5DB26528DBD00A0C0CB /* MeetHour_Broadcast_Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 69B2A5D126528DBD00A0C0CB /* MeetHour_Broadcast_Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		69B2A5EA26528E2B00A0C0CB /* DarwinNotificationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B2A5E726528E2B00A0C0CB /* DarwinNotificationCenter.m */; };
@@ -62,8 +62,8 @@
 
 /* Begin PBXFileReference section */
 		1934C7C56416655F8E0261E5 /* Pods-MeetHourSDKTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.release.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.release.xcconfig"; sourceTree = "<group>"; };
-		696B00352657BC7500152A93 /* CBRTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBRTextField.h; sourceTree = "<group>"; };
-		696B00362657BC7500152A93 /* CBRTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CBRTextField.m; sourceTree = "<group>"; };
+		696B00352657BC7500152A93 /* MHTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MHTextField.h; sourceTree = "<group>"; };
+		696B00362657BC7500152A93 /* MHTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MHTextField.m; sourceTree = "<group>"; };
 		69B2A5D126528DBD00A0C0CB /* MeetHour_Broadcast_Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MeetHour_Broadcast_Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		69B2A5D226528DBD00A0C0CB /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		69B2A5D526528DBD00A0C0CB /* SampleHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SampleHandler.h; sourceTree = "<group>"; };
@@ -178,8 +178,8 @@
 				DE6EE8BF2254E0620087FD5E /* ViewController.m */,
 				DE0B06AC2254E6920042E09E /* ConferenceViewController.h */,
 				DE0B06AA2254E6760042E09E /* ConferenceViewController.m */,
-				696B00352657BC7500152A93 /* CBRTextField.h */,
-				696B00362657BC7500152A93 /* CBRTextField.m */,
+				696B00352657BC7500152A93 /* MHTextField.h */,
+				696B00362657BC7500152A93 /* MHTextField.m */,
 				DE6EE8C12254E0620087FD5E /* Main.storyboard */,
 				DE6EE8C42254E0630087FD5E /* Assets.xcassets */,
 				DE6EE8C62254E0630087FD5E /* LaunchScreen.storyboard */,
@@ -353,7 +353,7 @@
 				DE0B06AB2254E6760042E09E /* ConferenceViewController.m in Sources */,
 				DE6EE8C02254E0620087FD5E /* ViewController.m in Sources */,
 				DE6EE8CB2254E0630087FD5E /* main.m in Sources */,
-				696B00372657BC7500152A93 /* CBRTextField.m in Sources */,
+				696B00372657BC7500152A93 /* MHTextField.m in Sources */,
 				DE6EE8BD2254E0620087FD5E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

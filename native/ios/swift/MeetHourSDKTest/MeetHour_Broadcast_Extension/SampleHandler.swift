@@ -2,8 +2,8 @@
 //  SampleHandler.swift
 //  MeetHour_Broadcast_Extension
 //
-//  Created by Bharat Raj (VEMP) on 19/05/21.
-//  Copyright © 2021 Atlassian Inc. All rights reserved.
+//  Created by to MeetHour, LLC.
+//  Copyright © Meet Hour, LLC. All rights reserved.
 //
 
 import ReplayKit

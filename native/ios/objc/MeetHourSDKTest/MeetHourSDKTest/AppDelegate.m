@@ -2,8 +2,8 @@
 //  AppDelegate.m
 //  MeetHourSDKTest
 //
-//  Created by Saúl Ibarra Corretgé on 03/04/2019.
-//  Copyright © 2019 Saúl Ibarra Corretgé. All rights reserved.
+//  Created by to MeetHour, LLC.
+//  Copyright © Meet Hour, LLC. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -19,15 +19,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Initialize default options for joining conferences.
-//    MeetHourConferenceOptions *defaultOptions
-//        = [MeetHourConferenceOptions fromBuilder:^(MeetHourConferenceOptionsBuilder *builder) {
-//            builder.serverURL = [NSURL URLWithString:@"https://meethour.io"];
-//            builder.welcomePageEnabled = NO;
-//            [builder setFeatureFlag:@"ios.recording.enabled" withBoolean:YES];
-//        }];
-//    [MeetHour sharedInstance].defaultConferenceOptions = defaultOptions;
-
     return YES;
 }
 

@@ -2,14 +2,14 @@
 //  CBRTextFiled.m
 //  MeetHourSDKTest
 //
-//  Created by Bharat Raj (VEMP) on 21/05/21.
-//  Copyright © 2021 Saúl Ibarra Corretgé. All rights reserved.
+//  Created by to MeetHour, LLC.
+//  Copyright © Meet Hour, LLC. All rights reserved.
 //
 
-#import "CBRTextField.h"
+#import "MHTextField.h"
 
 
-@implementation CBRTextField
+@implementation MHTextField
 
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
