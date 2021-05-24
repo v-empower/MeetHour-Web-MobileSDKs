@@ -1,5 +1,5 @@
 //
-//  CBRTextFiled.m
+//  MHTextField.m
 //  MeetHourSDKTest
 //
 //  Created by MeetHour, LLC.
