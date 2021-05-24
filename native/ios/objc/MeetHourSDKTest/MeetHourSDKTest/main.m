@@ -2,7 +2,7 @@
 //  main.m
 //  MeetHourSDKTest
 //
-//  Created by to MeetHour, LLC.
+//  Created by MeetHour, LLC.
 //  Copyright © Meet Hour, LLC. All rights reserved.
 //
 
