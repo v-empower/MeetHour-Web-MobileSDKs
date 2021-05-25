@@ -31,6 +31,6 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
     6. Mobile - React Native
     7. Mobile - Flutter
 
-For any issues or queries raise a issue in Github or send us an email to hello@meethour.io.
+For any issues or queries raise a issue in Github or send us an email to hello@meethour.io or have Live Chat with our technical team at - https://bit.ly/35fVHZO
 
 Meet Hour, LLC
