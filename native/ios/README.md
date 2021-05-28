@@ -19,7 +19,7 @@ with the SDK.
 
 PLEASE INSTALL GIT LFS FROM THIS LOCATION - https://git-lfs.github.com/
 
-After Git LFS installation from above link, in your project directory run this command - git lfs install 
+After Git LFS installation from above link, in your project directory run this command to initialize it - `git lfs install` 
 (Note: You should above command before `pod install` command)
 
 ## Using the SDK
