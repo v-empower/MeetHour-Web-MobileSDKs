@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B518F634276B020F71CFE1D /* libPods-MeetHourSDKTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B8409B4557DAFA8645445E /* libPods-MeetHourSDKTest.a */; };
 		C6F99C3B204DE6BE0001F710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F99C3A204DE6BE0001F710 /* AppDelegate.swift */; };
 		C6F99C3D204DE6BE0001F710 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F99C3C204DE6BE0001F710 /* ViewController.swift */; };
 		C6F99C40204DE6BE0001F710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6F99C3E204DE6BE0001F710 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* Begin PBXFileReference section */
 		3AFE223B8F4067D383B22ADC /* Pods-MeetHourSDKTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.release.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.release.xcconfig"; sourceTree = "<group>"; };
 		4F8B610E52BD854848B8AB19 /* Pods-MeetHourSDKTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetHourSDKTest.debug.xcconfig"; path = "Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest.debug.xcconfig"; sourceTree = "<group>"; };
+		58B8409B4557DAFA8645445E /* libPods-MeetHourSDKTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeetHourSDKTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F99C37204DE6BE0001F710 /* MeetHourSDKTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetHourSDKTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F99C3A204DE6BE0001F710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6F99C3C204DE6BE0001F710 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B518F634276B020F71CFE1D /* libPods-MeetHourSDKTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +96,7 @@
 		C6F99C4D204DE79F0001F710 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58B8409B4557DAFA8645445E /* libPods-MeetHourSDKTest.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -105,7 +109,6 @@
 			buildConfigurationList = C6F99C49204DE6BE0001F710 /* Build configuration list for PBXNativeTarget "MeetHourSDKTest" */;
 			buildPhases = (
 				CF3D622B8488FC9DA1542B91 /* [CP] Check Pods Manifest.lock */,
-				9AB36F40DED21CE424DB96EC /* [CP] Prepare Artifacts */,
 				C6F99C33204DE6BE0001F710 /* Sources */,
 				C6F99C34204DE6BE0001F710 /* Frameworks */,
 				C6F99C35204DE6BE0001F710 /* Resources */,
@@ -181,33 +184,17 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/MeetHourSDK/MeetHourSDK.framework/MeetHourSDK",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/WebRTC/WebRTC.framework/WebRTC",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MeetHourSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebRTC.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9AB36F40DED21CE424DB96EC /* [CP] Prepare Artifacts */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-artifacts.sh",
-				"${PODS_ROOT}/MeetHourSDK/Frameworks/MeetHourSDK.xcframework",
-				"${PODS_ROOT}/MeetHourSDK/Frameworks/WebRTC.xcframework",
-			);
-			name = "[CP] Prepare Artifacts";
-			outputPaths = (
-				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetHourSDKTest/Pods-MeetHourSDKTest-artifacts.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CF3D622B8488FC9DA1542B91 /* [CP] Check Pods Manifest.lock */ = {
