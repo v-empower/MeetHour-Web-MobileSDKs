@@ -49,7 +49,7 @@
 
 - (BOOL)open {
   NSLog(@"Open socket connection");
-  
+    NSLog(@"%@", self.filePath);
   if (![[NSFileManager defaultManager] fileExistsAtPath:self.filePath]) {
       NSLog(@"failure: socket file missing");
       return false;

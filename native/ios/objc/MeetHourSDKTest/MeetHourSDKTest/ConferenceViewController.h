@@ -6,6 +6,7 @@
 
 @interface ConferenceViewController : UIViewController<MeetHourViewDelegate>
 
+
 @property (nonatomic, weak) NSString *room;
 @property (nonatomic, copy) NSString *serverUrl;
 @property (nonatomic, copy) NSString *subject;

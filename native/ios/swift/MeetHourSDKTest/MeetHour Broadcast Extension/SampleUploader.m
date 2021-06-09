@@ -40,7 +40,7 @@ static const NSInteger kBufferMaxLenght = 10 * 1024;
 - (instancetype)initWithConnection:(SocketConnection *)connection {
   self = [super init];
   if (self) {
-    self.serialQueue = dispatch_queue_create("go.meethour.io.broadcast.sampleUploader", DISPATCH_QUEUE_SERIAL);
+    self.serialQueue = dispatch_queue_create("go.meethour.io.ios.sdk.broadcast.sampleUploader", DISPATCH_QUEUE_SERIAL);
     
     self.connection = connection;
     [self setupConnection];

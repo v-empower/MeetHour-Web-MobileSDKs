@@ -1,9 +1,8 @@
 //
 //  SampleHandler.h
-//  MeetHour_Broadcast_Extension
+//  MeetHour Broadcast Extension
 //
-//  Created by MeetHour, LLC.
-//  Copyright © Meet Hour, LLC. All rights reserved.
+//  Created by Bharat Raj (VEMP) on 03/06/21.
 //
 
 #import <ReplayKit/ReplayKit.h>

@@ -97,9 +97,9 @@
       [weakSelf finishBroadcastWithError:error];
     }
     else {
-      NSInteger JMScreenSharingStopped = 10001;
+      NSInteger MHScreenSharingStopped = 10001;
       NSError *customError = [NSError errorWithDomain:RPRecordingErrorDomain
-                                                 code:JMScreenSharingStopped
+                                                 code:MHScreenSharingStopped
                                              userInfo:@{NSLocalizedDescriptionKey: @"Screen sharing stopped"}];
       [weakSelf finishBroadcastWithError:customError];
     }

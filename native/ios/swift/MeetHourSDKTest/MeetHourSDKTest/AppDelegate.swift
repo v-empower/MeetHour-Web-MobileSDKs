@@ -1,20 +1,25 @@
-//  Created by MeetHour, LLC.
-//  Copyright © Meet Hour, LLC. All rights reserved.
+//
+//  AppDelegate.swift
+//  MeetHourSDKTest
+//
+//  Created by Bharat Raj (VEMP) on 04/06/21.
+//
 
-
+import UIKit
 import MeetHourSDK
 
-@UIApplicationMain
+
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         guard let launchOptions = launchOptions else { return false }
         return MeetHour.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
-
+    
     // MARK: - Linking delegate methods
 
     func application(_ application: UIApplication,
@@ -27,3 +32,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return MeetHour.sharedInstance().application(app, open: url, options: options)
     }
 }
+

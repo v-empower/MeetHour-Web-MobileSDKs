@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1240"
+   LastUpgradeVersion = "1250"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "69B2A5D026528DBD00A0C0CB"
-               BuildableName = "MeetHour_Broadcast_Extension.appex"
-               BlueprintName = "MeetHour_Broadcast_Extension"
+               BlueprintIdentifier = "69936EC42668BBF4002418B9"
+               BuildableName = "MeetHour Broadcast Extension.appex"
+               BlueprintName = "MeetHour Broadcast Extension"
                ReferencedContainer = "container:MeetHourSDKTest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,7 +29,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DE6EE8B72254E0620087FD5E"
+               BlueprintIdentifier = "69936EA12668B59C002418B9"
                BuildableName = "MeetHourSDKTest.app"
                BlueprintName = "MeetHourSDKTest"
                ReferencedContainer = "container:MeetHourSDKTest.xcodeproj">
@@ -59,13 +59,13 @@
       launchAutomaticallySubstyle = "2">
       <RemoteRunnable
          runnableDebuggingMode = "0"
-         BundleIdentifier = "go.meethour.io"
-         RemotePath = "/var/containers/Bundle/Application/EB7657CF-B5D4-4BB5-864D-85BC5D91B6E6/MeetHourSDKTest.app">
+         BundleIdentifier = "go.meethour.io.ios.sdk"
+         RemotePath = "/var/containers/Bundle/Application/8550D780-4C83-4BB7-9DA2-5907F5092323/MeetHourSDKTest.app">
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DE6EE8B72254E0620087FD5E"
+            BlueprintIdentifier = "69936EA12668B59C002418B9"
             BuildableName = "MeetHourSDKTest.app"
             BlueprintName = "MeetHourSDKTest"
             ReferencedContainer = "container:MeetHourSDKTest.xcodeproj">
@@ -83,7 +83,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DE6EE8B72254E0620087FD5E"
+            BlueprintIdentifier = "69936EA12668B59C002418B9"
             BuildableName = "MeetHourSDKTest.app"
             BlueprintName = "MeetHourSDKTest"
             ReferencedContainer = "container:MeetHourSDKTest.xcodeproj">

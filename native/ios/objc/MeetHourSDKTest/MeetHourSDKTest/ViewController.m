@@ -3,14 +3,12 @@
 //  MeetHourSDKTest
 //
 //  Created by MeetHour, LLC.
-//  Copyright © Meet Hour, LLC. All rights reserved.
-//
+//  Copyright © Meet Hour, LLC. All rights reserved.//
 
 #import "ViewController.h"
 #import "ConferenceViewController.h"
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
@@ -24,6 +22,7 @@
     _isVideoOn = YES;
     self.txtServerURL.text = @"https://meethour.io";
     self.room = nil;
+    
 }
 - (void)dismissKeyboard
 {
@@ -69,4 +68,5 @@
     [textField resignFirstResponder];
     return  YES;
 }
+
 @end

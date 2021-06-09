@@ -57,6 +57,5 @@
     NSLog(@"Conference %@ terminated", self.room);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 @end
 
