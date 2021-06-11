@@ -9,12 +9,15 @@
 #import "ConferenceViewController.h"
 
 @interface ViewController ()
+
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _avatarUrl = @"https://st.depositphotos.com/1787196/1330/i/950/depositphotos_13301967-stock-photo-furry-blue-monster.jpg";
+    
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
        [self.view addGestureRecognizer:gestureRecognizer];
        gestureRecognizer.cancelsTouchesInView = NO;
@@ -22,6 +25,16 @@
     _isVideoOn = YES;
     self.txtServerURL.text = @"https://meethour.io";
     self.room = nil;
+    
+    dispatch_async(dispatch_get_global_queue(0,0), ^{
+        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: self->_avatarUrl]];
+            if ( data == nil )
+                return;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.imgAvatar.image = [UIImage imageWithData: data];
+            });
+
+        });
     
 }
 - (void)dismissKeyboard

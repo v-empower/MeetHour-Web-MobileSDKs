@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l1o-Jz-4Cj">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -13,14 +13,14 @@
             <objects>
                 <viewController id="l1o-Jz-4Cj" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q4e-OU-VHo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hoP-Is-ZwH">
-                                <rect key="frame" x="30" y="154" width="354" height="265"/>
+                                <rect key="frame" x="30" y="85" width="315" height="265"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Server URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xbh-Mz-cYa" customClass="MHTextField">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="lXW-Bd-8mg"/>
                                         </constraints>
@@ -40,7 +40,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Room Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="isj-p4-vKq" customClass="MHTextField">
-                                        <rect key="frame" x="0.0" y="55" width="354" height="45"/>
+                                        <rect key="frame" x="0.0" y="55" width="315" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                         <userDefinedRuntimeAttributes>
@@ -57,7 +57,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVv-DO-wKR" customClass="MHTextField">
-                                        <rect key="frame" x="0.0" y="110" width="354" height="45"/>
+                                        <rect key="frame" x="0.0" y="110" width="315" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -74,7 +74,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Display Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z6g-5B-WpY" customClass="MHTextField">
-                                        <rect key="frame" x="0.0" y="165" width="354" height="45"/>
+                                        <rect key="frame" x="0.0" y="165" width="315" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -91,7 +91,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7wT-Xe-IN7" customClass="MHTextField">
-                                        <rect key="frame" x="0.0" y="220" width="354" height="45"/>
+                                        <rect key="frame" x="0.0" y="220" width="315" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -116,7 +116,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Mute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhQ-OH-etb">
-                                <rect key="frame" x="30" y="439" width="87" height="30"/>
+                                <rect key="frame" x="30" y="370" width="87" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fna-x5-wCj"/>
                                 </constraints>
@@ -125,7 +125,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHr-8e-bZm">
-                                <rect key="frame" x="30" y="489" width="70.5" height="30"/>
+                                <rect key="frame" x="30" y="420" width="70.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="TQB-nH-ioW"/>
                                 </constraints>
@@ -134,22 +134,42 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oU1-YI-ApT">
-                                <rect key="frame" x="335" y="438.5" width="51" height="31"/>
+                                <rect key="frame" x="296" y="369.5" width="51" height="31"/>
                                 <connections>
                                     <action selector="aMethodAudio:" destination="l1o-Jz-4Cj" eventType="valueChanged" id="H7q-ii-6VK"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nT8-Tn-YSB">
-                                <rect key="frame" x="335" y="488.5" width="51" height="31"/>
+                                <rect key="frame" x="296" y="419.5" width="51" height="31"/>
                                 <connections>
                                     <action selector="aMethodVideo:" destination="l1o-Jz-4Cj" eventType="valueChanged" id="Kkv-BJ-zKK"/>
                                 </connections>
                             </switch>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MeetHour_logo" translatesAutoresizingMaskIntoConstraints="NO" id="9G6-hp-Amu">
+                                <rect key="frame" x="87.5" y="20" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="M5w-HK-s7j"/>
+                                    <constraint firstAttribute="width" constant="200" id="bfK-b1-GIC"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="US8-J8-riF">
+                                <rect key="frame" x="270" y="470.5" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="G92-gE-FJC"/>
+                                    <constraint firstAttribute="height" constant="75" id="vVb-Pa-zld"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avatar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFY-G2-rYm">
+                                <rect key="frame" x="30" y="498" width="48" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoB-ML-7N0">
-                                <rect key="frame" x="30" y="544" width="354" height="45"/>
+                                <rect key="frame" x="30" y="560.5" width="315" height="45"/>
                                 <color key="backgroundColor" red="0.29751488570000001" green="0.39951288699999998" blue="0.56472617390000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="cnh-0m-rNi"/>
+                                    <constraint firstAttribute="height" constant="45" id="Imh-Fp-24r"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Join Meeting">
@@ -165,25 +185,19 @@
                                     <segue destination="piH-yy-iPW" kind="presentation" identifier="joinConference" modalPresentationStyle="fullScreen" id="CkU-V3-VRn"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MeetHour_logo" translatesAutoresizingMaskIntoConstraints="NO" id="9G6-hp-Amu">
-                                <rect key="frame" x="107" y="89" width="200" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="M5w-HK-s7j"/>
-                                    <constraint firstAttribute="width" constant="200" id="bfK-b1-GIC"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rot-Qt-wk5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="IoB-ML-7N0" firstAttribute="leading" secondItem="Rot-Qt-wk5" secondAttribute="leading" constant="30" id="2GV-V2-0Rp"/>
+                            <constraint firstItem="US8-J8-riF" firstAttribute="top" secondItem="nT8-Tn-YSB" secondAttribute="bottom" constant="20" id="4Hb-PM-9Tr"/>
                             <constraint firstItem="9G6-hp-Amu" firstAttribute="centerX" secondItem="q4e-OU-VHo" secondAttribute="centerX" id="7Gw-af-47p"/>
                             <constraint firstItem="hoP-Is-ZwH" firstAttribute="leading" secondItem="Rot-Qt-wk5" secondAttribute="leading" constant="30" id="8ZW-pK-lib"/>
                             <constraint firstItem="hoP-Is-ZwH" firstAttribute="top" secondItem="9G6-hp-Amu" secondAttribute="bottom" constant="15" id="9K8-XF-mDL"/>
+                            <constraint firstItem="aFY-G2-rYm" firstAttribute="centerY" secondItem="US8-J8-riF" secondAttribute="centerY" id="AM9-Wo-vcT"/>
                             <constraint firstItem="nT8-Tn-YSB" firstAttribute="centerX" secondItem="oU1-YI-ApT" secondAttribute="centerX" id="AdQ-AX-ITu"/>
                             <constraint firstItem="oU1-YI-ApT" firstAttribute="trailing" secondItem="hoP-Is-ZwH" secondAttribute="trailing" id="CK2-iD-Qxo"/>
-                            <constraint firstItem="IoB-ML-7N0" firstAttribute="top" secondItem="nHr-8e-bZm" secondAttribute="bottom" constant="25" id="Ez4-Pi-eOw"/>
-                            <constraint firstItem="IoB-ML-7N0" firstAttribute="leading" secondItem="Rot-Qt-wk5" secondAttribute="leading" constant="30" id="F3R-9j-G1L"/>
-                            <constraint firstItem="Rot-Qt-wk5" firstAttribute="trailing" secondItem="IoB-ML-7N0" secondAttribute="trailing" constant="30" id="O5O-1o-OPq"/>
+                            <constraint firstItem="Rot-Qt-wk5" firstAttribute="trailing" secondItem="IoB-ML-7N0" secondAttribute="trailing" constant="30" id="SuS-2F-04J"/>
                             <constraint firstItem="Rot-Qt-wk5" firstAttribute="trailing" secondItem="hoP-Is-ZwH" secondAttribute="trailing" constant="30" id="Utz-92-Sha"/>
                             <constraint firstItem="nT8-Tn-YSB" firstAttribute="centerY" secondItem="nHr-8e-bZm" secondAttribute="centerY" id="W7R-fA-yMM"/>
                             <constraint firstItem="oU1-YI-ApT" firstAttribute="centerY" secondItem="bhQ-OH-etb" secondAttribute="centerY" id="YRY-BU-wIZ"/>
@@ -191,12 +205,16 @@
                             <constraint firstItem="bhQ-OH-etb" firstAttribute="leading" secondItem="Rot-Qt-wk5" secondAttribute="leading" constant="30" id="fJb-4C-RoU"/>
                             <constraint firstItem="nHr-8e-bZm" firstAttribute="top" secondItem="bhQ-OH-etb" secondAttribute="bottom" constant="20" id="gMx-HJ-ige"/>
                             <constraint firstItem="bhQ-OH-etb" firstAttribute="top" secondItem="hoP-Is-ZwH" secondAttribute="bottom" constant="20" id="kza-k9-5tz"/>
-                            <constraint firstItem="9G6-hp-Amu" firstAttribute="top" secondItem="Rot-Qt-wk5" secondAttribute="top" constant="45" id="vw3-EP-yYd"/>
+                            <constraint firstItem="aFY-G2-rYm" firstAttribute="leading" secondItem="nHr-8e-bZm" secondAttribute="leading" id="nIr-hI-4Zh"/>
+                            <constraint firstItem="US8-J8-riF" firstAttribute="trailing" secondItem="nT8-Tn-YSB" secondAttribute="trailing" id="owN-LW-ROk"/>
+                            <constraint firstItem="IoB-ML-7N0" firstAttribute="top" secondItem="US8-J8-riF" secondAttribute="bottom" constant="15" id="tgW-vS-7eE"/>
+                            <constraint firstItem="9G6-hp-Amu" firstAttribute="top" secondItem="Rot-Qt-wk5" secondAttribute="top" constant="20" id="vw3-EP-yYd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="audioSwitch" destination="oU1-YI-ApT" id="GF3-4m-JOK"/>
                         <outlet property="button" destination="IoB-ML-7N0" id="CVl-ix-AbW"/>
+                        <outlet property="imgAvatar" destination="US8-J8-riF" id="On5-LU-daf"/>
                         <outlet property="textField" destination="isj-p4-vKq" id="gdK-iK-v1S"/>
                         <outlet property="txtDisplayName" destination="z6g-5B-WpY" id="LID-gi-7gm"/>
                         <outlet property="txtEmail" destination="7wT-Xe-IN7" id="c8J-ym-qQn"/>
@@ -214,7 +232,7 @@
             <objects>
                 <viewController id="piH-yy-iPW" customClass="ConferenceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vb1-zR-F0L" customClass="MeetHourView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="njJ-9U-GDS"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -24,14 +24,17 @@
     MeetHourView *MHView = (MeetHourView*)self.view;
     MHView.delegate = self;
     
+    MeetHourUserInfo *info = [[MeetHourUserInfo alloc]init];
+    info.displayName = self.displayName;
+    info.email = self.email;
+    
     // Join the room.
     MeetHourConferenceOptions *options
         = [MeetHourConferenceOptions fromBuilder:^(MeetHourConferenceOptionsBuilder *builder) {
             NSURL *url = [NSURL URLWithString:self.serverUrl];
             builder.serverURL = url;
             builder.subject = self.subject;
-            builder.userInfo.displayName = self.displayName;
-            builder.userInfo.email = self.email;
+            builder.userInfo = info;
             builder.room = self.room;
             
             // Settings for audio and video

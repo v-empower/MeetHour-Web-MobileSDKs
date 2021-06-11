@@ -1,8 +1,7 @@
 //
 //  AppDelegate.swift
-//  MeetHourSDKTest
-//
-//  Created by Bharat Raj (VEMP) on 04/06/21.
+//  Created by MeetHour, LLC.
+//  Copyright © Meet Hour, LLC. All rights reserved.
 //
 
 import UIKit

@@ -65,5 +65,21 @@
     </array>
     <key>UIUserInterfaceStyle</key>
     <string>Light</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLName</key>
+        <string></string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>db-rzqav7t9sc63zta</string>
+        </array>
+      </dict>
+    </array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>dbapi-2</string>
+      <string>dbapi-8-emm</string>
+    </array>
 </dict>
 </plist>

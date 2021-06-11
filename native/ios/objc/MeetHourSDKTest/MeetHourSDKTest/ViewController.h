@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet MHTextField *txtServerURL;
 @property (weak, nonatomic) IBOutlet MHTextField *txtSubject;
 @property (weak, nonatomic) IBOutlet MHTextField *txtDisplayName;
+@property (weak, nonatomic) IBOutlet UIImageView *imgAvatar;
+
 @property (weak, nonatomic) IBOutlet MHTextField *txtEmail;
 @property (nonatomic, weak) IBOutlet UIButton *button;
 @property (weak, nonatomic) IBOutlet UISwitch *audioSwitch;
@@ -20,6 +22,6 @@
 @property (nonatomic, assign) BOOL isAudio;
 @property (nonatomic, assign) BOOL isVideoOn;
 @property (nonatomic, copy) NSString *room;
-
+@property (nonatomic, strong) NSString *avatarUrl;
 @end
 

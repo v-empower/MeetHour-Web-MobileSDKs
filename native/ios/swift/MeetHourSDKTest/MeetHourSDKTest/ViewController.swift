@@ -37,12 +37,25 @@ class ViewController: UIViewController {
     }
     
     @IBOutlet weak var videoButton: UIButton?
-
+    @IBOutlet weak var imgAvatar: UIImageView!
+    
+    
+    let imgUrl : String = "https://st.depositphotos.com/1787196/1330/i/950/depositphotos_13301967-stock-photo-furry-blue-monster.jpg"
+    
     fileprivate var pipViewCoordinator: PiPViewCoordinator?
     fileprivate var MHView: MeetHourView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let url = URL(string: imgUrl)!
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: url) {
+                    DispatchQueue.main.async {
+                        self.imgAvatar.image = UIImage(data: data)
+                    }
+                }
+            }
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
             view.addGestureRecognizer(gestureRecognizer)
             gestureRecognizer.cancelsTouchesInView = false
@@ -79,7 +92,12 @@ class ViewController: UIViewController {
         
         view.endEditing(true)
         cleanUp()
-
+        
+        let info: MeetHourUserInfo = MeetHourUserInfo()
+        info.displayName = self.txtDisplayName.text
+        info.email = self.txtEmail.text
+        info.avatar = URL(string: imgUrl)
+        
         if txtRoomName.text!.count > 0{
             // create and configure Meet Hour view
             let MHView = MeetHourView()
@@ -87,11 +105,11 @@ class ViewController: UIViewController {
             self.MHView = MHView
             let options = MeetHourConferenceOptions.fromBuilder { (builder) in
                 builder.welcomePageEnabled = false
+                builder.subject = self.txtSubject.text
                 builder.audioMuted = self.isAudioMute
                 builder.videoMuted = self.isVideoOn
                 builder.serverURL = URL(string: self.txtServerURL.text!)
-                builder.userInfo?.displayName = self.txtDisplayName.text
-                builder.userInfo?.email = self.txtEmail.text
+                builder.userInfo = info
                 builder.room = self.txtRoomName.text
                 builder.setFeatureFlag("ios.recording.enabled", withBoolean: true)
             }
