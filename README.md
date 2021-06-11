@@ -21,15 +21,16 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 
 # MeetHour Mobile SDKs - Examples
 
-    Code consist of Meet Hour Mobile SDKs with an example to join the conference from smart phone via
+    Code consist of Meet Hour Web & Mobile SDKs with an example to join the conference from smart phone via
 
-    1. Native Android (Java)
-    2. Native Android (Kotlin)
-    3. Native iOS (Objc)
-    4. Native iOS (Swift)
-    5. React Native
-    6. Flutter
+    1. Web (Javascript)
+    2. Mobile - Native Android (Java)
+    3. Mobile - Native Android (Kotlin)
+    4. Mobile - Native iOS (Objc)
+    5. Mobile - Native iOS (Swift)
+    6. Mobile - React Native
+    7. Mobile - Flutter
 
-For any issues or queries raise a issue in Github or send us an email to hello@meethour.io.
+For any issues or queries raise a issue in Github or send us an email to hello@meethour.io or have Live Chat with our technical team at - https://bit.ly/35fVHZO
 
 Meet Hour, LLC

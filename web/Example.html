@@ -1,0 +1,126 @@
+<html itemscope itemtype="http://schema.org/Product" prefix="og: http://ogp.me/ns#" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Meet Hour - Sample Integration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="https://meethour.io/images/logo.png?v=1" />
+</head>
+
+<body>
+    <style>
+        body {
+            margin: auto;
+        }
+
+        #loader {
+            border: 12px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 12px solid #444444;
+            width: 70px;
+            height: 70px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .center {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+    <div id="loader" class="center"></div>
+    <div id="conference"></div>
+    <script src="https://meethour.io/libs/external_api.min.js"></script>
+    <script>
+        document.onreadystatechange = function () {
+            if (document.readyState !== "complete") {
+                document.querySelector("body").style.visibility = "hidden";
+                document.querySelector("#loader").style.visibility =
+                    "visible";
+            } else {
+                document.querySelector("#loader").style.display = "none";
+                document.querySelector("body").style.visibility = "visible";
+            }
+        };
+    </script>
+    <script>
+        var domain = "meethour.io";
+        var options = {
+            roomName: "Organization-MeetingID",
+            // width: 700,
+            // height: 600,
+            parentNode: document.querySelector("#conference"),
+            userInfo: {
+                email: "user@gmail.com",
+            },
+            interfaceConfigOverwrite: {
+                APP_NAME: 'Meet Hour',
+                MOBILE_APP_PROMO: false,
+                ENABLE_MOBILE_BROWSER: true, // For running Meet Hour in mobile browser.
+                BRAND_WATERMARK_LINK: 'https://meethour.io',
+                DEFAULT_LOGO_URL: 'https://meethour.io/images/logo-deep-linking.png',                
+                TOOLBAR_BUTTONS: ['microphone','camera','closedcaptions','desktop','recording','fullscreen','fodeviceselection','hangup','chat','etherpad','sharedvideo','raisehand','videoquality','filmstrip','stats','settings','shortcuts','tileview','mute-everyone','security','zoomin','zoomout']
+            },
+        };
+        // Initialization of MeetHour External API
+        var api = new MeetHourExternalAPI(domain, options);
+
+        const commands = {
+            displayName: "John Peter",
+            avatarUrl: "https://pickaface.net/gallery/avatar/ChloeBannink55d5b309e9a10.png",
+        };
+        api.executeCommands(commands);
+
+        // set a room password from here. Not required for Enterprise integration. Just generate a secure room name.
+        // var pass = "12345";
+        // api.addEventListener("participantRoleChanged", function (event) {
+        //     // when host has joined the video conference
+        //     if (event.role == "moderator") {
+        //         api.executeCommand("password", pass);
+        //     } else {
+        //         setTimeout(() => {
+        //             // when guest is trying to enter in a locked room
+        //             api.addEventListener("passwordRequired", () => {
+        //                 api.executeCommand("password", pass);
+        //             });
+
+        //             // when guest has joined the video conference
+        //             api.addEventListener(
+        //                 "videoConferenceJoined",
+        //                 (response) => {
+        //                     setTimeout(function () {
+        //                         api.executeCommand("password", pass);
+        //                     }, 300);
+        //                 }
+        //             );
+        //         }, 10);
+        //     }
+        // });
+
+        // To close the window once hangup is done
+        api.addEventListener("readyToClose", () => {
+            this.window.close();
+        });
+
+                // To close the window once hangup is done
+        api.addEventListener("beforeunload", () => {
+            if (confirm("Conference in Progress. Want to exit?")) {
+                this.window.close();
+            } else {
+                // Do Nothing
+            }
+        });
+    </script>
+</body>
+
+</html>
