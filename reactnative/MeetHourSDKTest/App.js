@@ -1,66 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
   Switch,
   ImageBackground,
-  Dimensions
+  Image,
+  ScrollView
 } from 'react-native';
 import MeetHour, { MeetHourView } from 'react-native-meet-hour-sdk';
 
-const {width, height} = Dimensions.get("window")
+import styles from './styles/styles';
+import strings from './lang/strings';
 
 function App() {
  
-  const [showMain, setShowMain] = useState(true);  
   const [showMeet, setShowMeet] = useState();
-  const [serverUrl, setServerUrl] = useState('https://meethour.io/');
-  const [roomName, setRoomName] = useState('MeetHourSampleTest');
-  const [subject, setSubject] = useState();
-  const [displayName, setDisplayName] = useState();
-  const [email, setEmail] = useState();
+  const [serverUrl, setServerUrl] = useState();
+  const [roomName, setRoomName] = useState();
+  const [subject, setSubject] = useState('');
+  const [displayName, setDisplayName] = useState('');
+  const [email, setEmail] = useState('');
   const [audioMuted, setAudioMuted] = useState()
   const [videoMuted, setVideoMuted] = useState();
   
   const runMeet = () => {
     setShowMeet(true);
-    setShowMain(false);
-    const url = serverUrl + roomName;  
-    const userInfo = {
-      subject: subject,
-      displayName: displayName,
-      email: email
-    };
-    if (videoMuted) {
-      MeetHour.audioCall(url, userInfo);  
-    } else {
-      MeetHour.call(url, userInfo);
-    }
-  }
-
-  const leaveMeet = () => {
-    // MeetHour.leaveMeet()
-  }
-
-  const runActivity = () => {
-    // MeetHour.activityMode({
-    //   roomId: "cowboybtr125d44d5",
-    //   userInfo: {
-    //     displayName: "APJ"
-    //   }
-    // })
-  }
-
-  const muteAudio = () => {
-    // MeetHour.muteAudio(true)
-  }
-
-  function onConferenceTerminated(nativeEvent) {
-    /* Conference terminated event */
-    console.log(nativeEvent)
+    MeetHour.activityMode({
+      serverUrl: serverUrl,
+      roomId: roomName,
+      userInfo: {
+        displayName: displayName,
+        subject: subject,
+        email: email,
+        avatar: strings.avatar.avatarURL,
+      },
+      audioMuted: audioMuted,
+      videoMuted: videoMuted
+    })
+    cleanUp();
   }
 
   function onConferenceJoined(nativeEvent) {
@@ -71,6 +50,22 @@ function App() {
   function onConferenceWillJoin(nativeEvent) {
     /* Conference will join event */
     console.log(nativeEvent)
+  }
+
+  function onConferenceTerminated(nativeEvent) {
+    /* Conference terminated event */
+    console.log(nativeEvent)
+    setShowMeet(false);
+  }
+
+  function cleanUp() {
+    setServerUrl('')
+    setRoomName('')
+    setSubject('')
+    setDisplayName('')
+    setEmail('')
+    setAudioMuted(false)
+    setVideoMuted(false)
   }
 
   return (
@@ -88,8 +83,7 @@ function App() {
         />
       )}
 
-    {showMain && (
-      <View>
+      <ScrollView>
         <ImageBackground
           source={require('./images/MeetHour_logo.png')}
           style={styles.image}
@@ -98,86 +92,55 @@ function App() {
         <TextInput
           style={styles.textInput}
           value={serverUrl}
-          placeholder={"Server URL"}
+          placeholder={strings.placeholders.serverURL}
           onChangeText={text => setServerUrl(text)}
         />
         <TextInput
           style={styles.textInput}
           value={roomName}
-          placeholder={"Room Name"}
+          placeholder={strings.placeholders.roomname}
           onChangeText={text => setRoomName(text)}
         />
         <TextInput
           style={styles.textInput}
           value={subject}
-          placeholder={"Subject"}
+          placeholder={strings.placeholders.subject}
           onChangeText={text => setSubject(text)}
         />
         <TextInput
           style={styles.textInput}
           value={displayName}
-          placeholder={"Display Name"}
+          placeholder={strings.placeholders.displayName}
           onChangeText={text => setDisplayName(text)}
         />
         <TextInput
           style={styles.textInput}
           value={email}
-          placeholder={"Email"}
+          placeholder={strings.placeholders.email}
           onChangeText={text => setEmail(text)}
         />
         <View style={styles.switch}>
-          <Text>Start with audio muted</Text>
+          <Text>{strings.text.startWithAudioMuted}</Text>
           <Switch onValueChange={() => setAudioMuted(!audioMuted)} value={audioMuted} />
         </View>
         <View style={styles.switch}>
-          <Text>Start with video muted</Text>
+          <Text>{strings.text.startWithVideoMuted}</Text>
           <Switch onValueChange={() => setVideoMuted(!videoMuted)} value={videoMuted} />
         </View>
+        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around'}}>
+          <Text>{strings.avatar.avatar}</Text>
+          <Image
+            style={styles.avatar}
+            resizeMode='contain'
+            source={{uri:strings.avatar.avatarURL}}
+          />
+        </View>
         <TouchableOpacity onPress={runMeet} style={styles.button}>
-          <Text style={styles.buttonText}>Join Meeting</Text>
+          <Text style={styles.buttonText}>{strings.buttons.join}</Text>
         </TouchableOpacity>
-      </View>
-      )}
+      </ScrollView>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  image: {
-    margin: 10,
-    height: 50,
-  },
-  textInput: {
-    borderRadius: 10,
-    padding:10,
-    margin:5,
-    borderWidth:2,
-    borderColor: "gray",
-    justifyContent:"center",
-    alignItems:"center",
-  },
-  button: {
-    borderRadius: 10,
-    padding:10,
-    margin:10,
-    borderWidth:2,
-    borderColor: "gray",
-    justifyContent:"center",
-    alignItems:"center",
-    backgroundColor: "#007aff"
-  },
-  buttonText: {
-    color: "#fff"
-  },
-  switch: {
-    flexDirection: 'row',
-    margin: 5,
-    justifyContent: 'space-between'
-  }
-});
 
 export default App;
