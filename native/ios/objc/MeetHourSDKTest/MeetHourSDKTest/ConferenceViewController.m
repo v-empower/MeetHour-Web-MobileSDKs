@@ -24,14 +24,23 @@
     MeetHourView *MHView = (MeetHourView*)self.view;
     MHView.delegate = self;
     
+    MeetHourUserInfo *info = [[MeetHourUserInfo alloc]init];
+    info.displayName = self.displayName;
+    info.email = self.email;
+    
     // Join the room.
     MeetHourConferenceOptions *options
         = [MeetHourConferenceOptions fromBuilder:^(MeetHourConferenceOptionsBuilder *builder) {
+            NSURL *url = [NSURL URLWithString:self.serverUrl];
+            builder.serverURL = url;
+            builder.subject = self.subject;
+            builder.userInfo = info;
             builder.room = self.room;
+            
             // Settings for audio and video
-            builder.audioMuted = YES;
+            builder.audioMuted = self.isAudioMuted;
+            builder.videoMuted = self.isVideoOn;
             [builder setFeatureFlag:@"ios.recording.enabled" withBoolean:YES];
-            // builder.videoMuted = YES;
             // Set different feature flags
             // [builder setFeatureFlag:@"toolbox.enabled" withBoolean:NO];
             // [builder setFeatureFlag:@"filmstrip.enabled" withBoolean:NO];
@@ -51,6 +60,5 @@
     NSLog(@"Conference %@ terminated", self.room);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 @end
 

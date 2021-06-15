@@ -2,8 +2,8 @@ PODS:
   - Flutter (1.0.0)
   - meet_hour (0.0.1):
     - Flutter
-    - MeetHourSDK (= 3.5.2)
-  - MeetHourSDK (3.5.2)
+    - MeetHourSDK (= 3.5.3)
+  - MeetHourSDK (3.5.3)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
