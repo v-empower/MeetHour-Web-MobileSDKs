@@ -17,12 +17,12 @@ import strings from './lang/strings';
 function App() {
  
   const [showMeet, setShowMeet] = useState();
-  const [serverUrl, setServerUrl] = useState();
-  const [roomName, setRoomName] = useState();
+  const [serverUrl, setServerUrl] = useState('');
+  const [roomName, setRoomName] = useState('');
   const [subject, setSubject] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
-  const [audioMuted, setAudioMuted] = useState()
+  const [audioMuted, setAudioMuted] = useState();
   const [videoMuted, setVideoMuted] = useState();
   
   const runMeet = () => {
@@ -30,9 +30,9 @@ function App() {
     MeetHour.activityMode({
       serverUrl: serverUrl,
       roomId: roomName,
+      subject: subject,
       userInfo: {
         displayName: displayName,
-        subject: subject,
         email: email,
         avatar: strings.avatar.avatarURL,
       },
@@ -94,6 +94,8 @@ function App() {
           value={serverUrl}
           placeholder={strings.placeholders.serverURL}
           onChangeText={text => setServerUrl(text)}
+          keyboardType={'url'}
+          autoCapitalize={'none'}
         />
         <TextInput
           style={styles.textInput}
@@ -112,12 +114,14 @@ function App() {
           value={displayName}
           placeholder={strings.placeholders.displayName}
           onChangeText={text => setDisplayName(text)}
+          autoCapitalize={'words'}
         />
         <TextInput
           style={styles.textInput}
           value={email}
           placeholder={strings.placeholders.email}
           onChangeText={text => setEmail(text)}
+          keyboardType={'email-address'}
         />
         <View style={styles.switch}>
           <Text>{strings.text.startWithAudioMuted}</Text>
