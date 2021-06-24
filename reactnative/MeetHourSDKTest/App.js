@@ -24,10 +24,10 @@ class App extends Component {
     this.onConferenceWillJoin = this.onConferenceWillJoin.bind(this);
     this.state = {
       showMeet: false,
-      serverUrl: 'https://meethour.io',
-      roomName: 'majeed',
-      subject: 'This is my room',
-      displayName: 'MajeedMobile',
+      serverUrl: '',
+      roomName: '',
+      subject: '',
+      displayName: '',
       email: '',
       audioMuted: false,
       videoMuted: false
@@ -35,22 +35,36 @@ class App extends Component {
   }
 
   runMeet() {
-    this.setState({ showMeet: true })
-    const userInfo = {
+    this.setState({showMeet: true});
+    
+    const meetingInfo = {
       serverUrl: this.state.serverUrl,
       roomName: this.state.roomName,
       subject: this.state.subject,
       userInfo: {
-          displayName: this.state.displayName,
-          email: this.state.email,
-          avatar: strings.avatar.avatarURL,
+        displayName: this.state.displayName,
+        email: this.state.email,
+        avatar: strings.avatar.avatarURL,
       },
       audioMuted: this.state.audioMuted,
-      videoMuted: this.state.videoMuted
+      videoMuted: this.state.videoMuted,
     };
+
+    // Parameters for iOS devices
+    MeetHour.roomName = meetingInfo.roomName;
+    MeetHour.subject = meetingInfo.subject;
+    MeetHour.audioMuted = meetingInfo.audioMuted;
+    MeetHour.videoMuted = meetingInfo.videoMuted;
+
     setTimeout(() => {
-      MeetHour.call(userInfo);
+      (Platform.OS === 'ios') ?
+        MeetHour.call(
+          meetingInfo.serverUrl + '/' + meetingInfo.roomName,
+          meetingInfo.userInfo,
+        ) :
+        MeetHour.call(meetingInfo);
     }, 1000);
+  
     this.cleanUp();
   }
 
@@ -83,9 +97,6 @@ class App extends Component {
   }
 
   render() {
-
-    console.log('inside render ', this.state.showMeet);
-
     return (
       <View style={styles.container}>
         {this.state.showMeet ? (
