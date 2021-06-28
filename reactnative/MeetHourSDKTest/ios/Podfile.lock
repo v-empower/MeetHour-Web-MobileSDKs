@@ -19,7 +19,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - MeetHourSDK (3.5.3)
+  - MeetHourSDK (3.5.2)
   - RCTRequired (0.62.3)
   - RCTTypeSafety (0.62.3):
     - FBLazyVector (= 0.62.3)
@@ -184,7 +184,7 @@ PODS:
     - React-jsi (= 0.62.3)
   - React-jsinspector (0.62.3)
   - react-native-meet-hour-sdk (1.0.0):
-    - MeetHourSDK (= 3.5.3)
+    - MeetHourSDK (= 3.5.2)
     - React
   - React-RCTActionSheet (0.62.3):
     - React-Core/RCTActionSheetHeaders (= 0.62.3)
