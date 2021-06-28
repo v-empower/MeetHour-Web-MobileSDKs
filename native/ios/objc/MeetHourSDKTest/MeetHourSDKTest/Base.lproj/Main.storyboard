@@ -1,71 +1,249 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l1o-Jz-4Cj">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <scene sceneID="5WH-uU-63f">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController id="l1o-Jz-4Cj" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q4e-OU-VHo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rg4-ow-pE9">
-                                <rect key="frame" x="57" y="433" width="300" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hoP-Is-ZwH">
+                                <rect key="frame" x="30" y="85" width="315" height="265"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Server URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xbh-Mz-cYa" customClass="MHTextField">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="lXW-Bd-8mg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="l1o-Jz-4Cj" id="uQm-at-bh0"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Room Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="isj-p4-vKq" customClass="MHTextField">
+                                        <rect key="frame" x="0.0" y="55" width="315" height="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="l1o-Jz-4Cj" id="rzl-31-lVq"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVv-DO-wKR" customClass="MHTextField">
+                                        <rect key="frame" x="0.0" y="110" width="315" height="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="l1o-Jz-4Cj" id="3Gp-3z-rRx"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Display Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z6g-5B-WpY" customClass="MHTextField">
+                                        <rect key="frame" x="0.0" y="165" width="315" height="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="l1o-Jz-4Cj" id="v2e-gv-q7T"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7wT-Xe-IN7" customClass="MHTextField">
+                                        <rect key="frame" x="0.0" y="220" width="315" height="45"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="l1o-Jz-4Cj" id="eKu-B2-Gmt"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="VKn-2U-NWs"/>
-                                    <constraint firstAttribute="width" constant="300" id="chM-Os-7oE"/>
+                                    <constraint firstItem="xbh-Mz-cYa" firstAttribute="height" secondItem="CVv-DO-wKR" secondAttribute="height" id="2Hb-n3-es2"/>
+                                    <constraint firstItem="xbh-Mz-cYa" firstAttribute="height" secondItem="z6g-5B-WpY" secondAttribute="height" id="A3O-eY-pIm"/>
+                                    <constraint firstItem="xbh-Mz-cYa" firstAttribute="height" secondItem="isj-p4-vKq" secondAttribute="height" id="tCy-gN-b7h"/>
+                                    <constraint firstItem="xbh-Mz-cYa" firstAttribute="height" secondItem="7wT-Xe-IN7" secondAttribute="height" id="u2u-Tr-dg3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJl-fh-ncW">
-                                <rect key="frame" x="192" y="468" width="30" height="30"/>
-                                <state key="normal" title="Join"/>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Mute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhQ-OH-etb">
+                                <rect key="frame" x="30" y="370" width="87" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fna-x5-wCj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHr-8e-bZm">
+                                <rect key="frame" x="30" y="420" width="70.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="TQB-nH-ioW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oU1-YI-ApT">
+                                <rect key="frame" x="296" y="369.5" width="51" height="31"/>
                                 <connections>
-                                    <segue destination="IsO-cG-mhD" kind="presentation" identifier="joinConference" modalPresentationStyle="fullScreen" id="KXi-AC-sRp"/>
+                                    <action selector="aMethodAudio:" destination="l1o-Jz-4Cj" eventType="valueChanged" id="H7q-ii-6VK"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nT8-Tn-YSB">
+                                <rect key="frame" x="296" y="419.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="aMethodVideo:" destination="l1o-Jz-4Cj" eventType="valueChanged" id="Kkv-BJ-zKK"/>
+                                </connections>
+                            </switch>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MeetHour_logo" translatesAutoresizingMaskIntoConstraints="NO" id="9G6-hp-Amu">
+                                <rect key="frame" x="87.5" y="20" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="M5w-HK-s7j"/>
+                                    <constraint firstAttribute="width" constant="200" id="bfK-b1-GIC"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="US8-J8-riF">
+                                <rect key="frame" x="270" y="470.5" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="G92-gE-FJC"/>
+                                    <constraint firstAttribute="height" constant="75" id="vVb-Pa-zld"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avatar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFY-G2-rYm">
+                                <rect key="frame" x="30" y="498" width="48" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IoB-ML-7N0">
+                                <rect key="frame" x="30" y="560.5" width="315" height="45"/>
+                                <color key="backgroundColor" red="0.29751488570000001" green="0.39951288699999998" blue="0.56472617390000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Imh-Fp-24r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="Join Meeting">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="piH-yy-iPW" kind="presentation" identifier="joinConference" modalPresentationStyle="fullScreen" id="CkU-V3-VRn"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Rot-Qt-wk5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="wJl-fh-ncW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Ia-N6-9yc"/>
-                            <constraint firstItem="rg4-ow-pE9" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Bbc-ve-Skk"/>
-                            <constraint firstItem="wJl-fh-ncW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N78-kz-wIB"/>
-                            <constraint firstItem="wJl-fh-ncW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="35" id="gOa-PY-QBp"/>
-                            <constraint firstItem="rg4-ow-pE9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jZ0-Ea-KRn"/>
+                            <constraint firstItem="IoB-ML-7N0" firstAttribute="leading" secondItem="Rot-Qt-wk5" secondAttribute="leading" constant="30" id="2GV-V2-0Rp"/>
+                            <constraint firstItem="US8-J8-riF" firstAttribute="top" secondItem="nT8-Tn-YSB" secondAttribute="bottom" constant="20" id="4Hb-PM-9Tr"/>
+                            <constraint firstItem="9G6-hp-Amu" firstAttribute="centerX" secondItem="q4e-OU-VHo" secondAttribute="centerX" id="7Gw-af-47p"/>
+                            <constraint firstItem="hoP-Is-ZwH" firstAttribute="leading" secondItem="Rot-Qt-wk5" secondAttribute="leading" constant="30" id="8ZW-pK-lib"/>
+                            <constraint firstItem="hoP-Is-ZwH" firstAttribute="top" secondItem="9G6-hp-Amu" secondAttribute="bottom" constant="15" id="9K8-XF-mDL"/>
+                            <constraint firstItem="aFY-G2-rYm" firstAttribute="centerY" secondItem="US8-J8-riF" secondAttribute="centerY" id="AM9-Wo-vcT"/>
+                            <constraint firstItem="nT8-Tn-YSB" firstAttribute="centerX" secondItem="oU1-YI-ApT" secondAttribute="centerX" id="AdQ-AX-ITu"/>
+                            <constraint firstItem="oU1-YI-ApT" firstAttribute="trailing" secondItem="hoP-Is-ZwH" secondAttribute="trailing" id="CK2-iD-Qxo"/>
+                            <constraint firstItem="Rot-Qt-wk5" firstAttribute="trailing" secondItem="IoB-ML-7N0" secondAttribute="trailing" constant="30" id="SuS-2F-04J"/>
+                            <constraint firstItem="Rot-Qt-wk5" firstAttribute="trailing" secondItem="hoP-Is-ZwH" secondAttribute="trailing" constant="30" id="Utz-92-Sha"/>
+                            <constraint firstItem="nT8-Tn-YSB" firstAttribute="centerY" secondItem="nHr-8e-bZm" secondAttribute="centerY" id="W7R-fA-yMM"/>
+                            <constraint firstItem="oU1-YI-ApT" firstAttribute="centerY" secondItem="bhQ-OH-etb" secondAttribute="centerY" id="YRY-BU-wIZ"/>
+                            <constraint firstItem="nHr-8e-bZm" firstAttribute="leading" secondItem="bhQ-OH-etb" secondAttribute="leading" id="bjV-14-lWG"/>
+                            <constraint firstItem="bhQ-OH-etb" firstAttribute="leading" secondItem="Rot-Qt-wk5" secondAttribute="leading" constant="30" id="fJb-4C-RoU"/>
+                            <constraint firstItem="nHr-8e-bZm" firstAttribute="top" secondItem="bhQ-OH-etb" secondAttribute="bottom" constant="20" id="gMx-HJ-ige"/>
+                            <constraint firstItem="bhQ-OH-etb" firstAttribute="top" secondItem="hoP-Is-ZwH" secondAttribute="bottom" constant="20" id="kza-k9-5tz"/>
+                            <constraint firstItem="aFY-G2-rYm" firstAttribute="leading" secondItem="nHr-8e-bZm" secondAttribute="leading" id="nIr-hI-4Zh"/>
+                            <constraint firstItem="US8-J8-riF" firstAttribute="trailing" secondItem="nT8-Tn-YSB" secondAttribute="trailing" id="owN-LW-ROk"/>
+                            <constraint firstItem="IoB-ML-7N0" firstAttribute="top" secondItem="US8-J8-riF" secondAttribute="bottom" constant="15" id="tgW-vS-7eE"/>
+                            <constraint firstItem="9G6-hp-Amu" firstAttribute="top" secondItem="Rot-Qt-wk5" secondAttribute="top" constant="20" id="vw3-EP-yYd"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="wJl-fh-ncW" id="3je-Nj-XhO"/>
-                        <outlet property="textField" destination="rg4-ow-pE9" id="nsu-s2-1Zn"/>
+                        <outlet property="audioSwitch" destination="oU1-YI-ApT" id="GF3-4m-JOK"/>
+                        <outlet property="button" destination="IoB-ML-7N0" id="CVl-ix-AbW"/>
+                        <outlet property="imgAvatar" destination="US8-J8-riF" id="On5-LU-daf"/>
+                        <outlet property="textField" destination="isj-p4-vKq" id="gdK-iK-v1S"/>
+                        <outlet property="txtDisplayName" destination="z6g-5B-WpY" id="LID-gi-7gm"/>
+                        <outlet property="txtEmail" destination="7wT-Xe-IN7" id="c8J-ym-qQn"/>
+                        <outlet property="txtServerURL" destination="xbh-Mz-cYa" id="KXp-hP-fxU"/>
+                        <outlet property="txtSubject" destination="CVv-DO-wKR" id="5P8-KY-rOM"/>
+                        <outlet property="videoSwitch" destination="nT8-Tn-YSB" id="hxG-fg-gaa"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tcm-bd-IsZ" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-84" y="133.5832083958021"/>
+            <point key="canvasLocation" x="-815.20000000000005" y="-33.733133433283363"/>
         </scene>
         <!--Conference View Controller-->
-        <scene sceneID="2dd-7M-Dk0">
+        <scene sceneID="iya-42-Ynz">
             <objects>
-                <viewController id="IsO-cG-mhD" customClass="ConferenceViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="c3R-1L-S1S" customClass="MeetHourView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <viewController id="piH-yy-iPW" customClass="ConferenceViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vb1-zR-F0L" customClass="MeetHourView">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="O9F-gA-tbC"/>
+                        <viewLayoutGuide key="safeArea" id="njJ-9U-GDS"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qS1-w1-AvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ms9-DB-fnG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="668" y="138"/>
+            <point key="canvasLocation" x="65" y="-34"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MeetHour_logo" width="1266" height="286"/>
+    </resources>
 </document>

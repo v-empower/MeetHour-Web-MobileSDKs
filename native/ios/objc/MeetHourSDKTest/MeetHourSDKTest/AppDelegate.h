@@ -2,15 +2,12 @@
 //  AppDelegate.h
 //  MeetHourSDKTest
 //
-//  Created by Saúl Ibarra Corretgé on 03/04/2019.
-//  Copyright © 2019 Saúl Ibarra Corretgé. All rights reserved.
+//  Created by Bharat Raj (VEMP) on 03/06/21.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
 
 
 @end

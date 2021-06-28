@@ -2,15 +2,17 @@
 //  main.m
 //  MeetHourSDKTest
 //
-//  Created by Saúl Ibarra Corretgé on 03/04/2019.
-//  Copyright © 2019 Saúl Ibarra Corretgé. All rights reserved.
+//  Created by Bharat Raj (VEMP) on 03/06/21.
 //
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
 int main(int argc, char * argv[]) {
+    NSString * appDelegateClassName;
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        // Setup code that might create autoreleased objects goes here.
+        appDelegateClassName = NSStringFromClass([AppDelegate class]);
     }
+    return UIApplicationMain(argc, argv, nil, appDelegateClassName);
 }
