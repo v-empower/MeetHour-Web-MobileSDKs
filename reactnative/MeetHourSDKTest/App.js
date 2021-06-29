@@ -8,7 +8,6 @@ import {
   ImageBackground,
   Image,
   ScrollView,
-  Platform,
 } from 'react-native';
 
 import MeetHour, { MeetHourView } from 'react-native-meet-hour-sdk';
@@ -86,8 +85,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('inside render ', this.state.showMeet);
-
     return (
       <View style={styles.container}>
         {this.state.showMeet ? (
@@ -95,7 +92,6 @@ class App extends Component {
             onConferenceTerminated={this.onConferenceTerminated}
             onConferenceJoined={this.onConferenceJoined}
             onConferenceWillJoin={this.onConferenceWillJoin}
-            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               flex: 1,
               height: '100%',
