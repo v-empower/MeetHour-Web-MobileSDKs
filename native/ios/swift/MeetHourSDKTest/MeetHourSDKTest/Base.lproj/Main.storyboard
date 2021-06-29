@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dTE-hS-EcF">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Ums-69-e3R">
+            <objects>
+                <viewController id="dTE-hS-EcF" customClass="ViewController" customModule="MeetHourSDKTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Q6g-QY-xj4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MeetHour_logo" translatesAutoresizingMaskIntoConstraints="NO" id="xcS-7t-Ma6">
+                                <rect key="frame" x="87.5" y="30" width="200" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="0bz-dH-U4L"/>
+                                    <constraint firstAttribute="height" constant="50" id="4Eo-qX-itl"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hqH-fT-EjN">
+                                <rect key="frame" x="30" y="100" width="315" height="240"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Server URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NY4-4d-FEc">
+                                        <rect key="frame" x="0.0" y="0.0" width="315" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Eau-I8-2FQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="dTE-hS-EcF" id="3yM-m2-QXO"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Room Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vn0-GK-Lhu">
+                                        <rect key="frame" x="0.0" y="50" width="315" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="dTE-hS-EcF" id="iNY-Lb-378"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Subject" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="64W-ex-MvK">
+                                        <rect key="frame" x="0.0" y="100" width="315" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="dTE-hS-EcF" id="vYV-xD-ygQ"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Display Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IaA-TD-47B">
+                                        <rect key="frame" x="0.0" y="150" width="315" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="dTE-hS-EcF" id="Vag-gF-gWf"/>
+                                        </connections>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZpM-73-qUE">
+                                        <rect key="frame" x="0.0" y="200" width="315" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="dTE-hS-EcF" id="TnD-gg-1gl"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video On" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kq4-M0-6G5">
+                                <rect key="frame" x="30" y="410" width="70.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="t4g-8I-hEx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio Mute" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcJ-kl-uhk">
+                                <rect key="frame" x="30" y="360" width="100" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="OZP-0z-W5m"/>
+                                    <constraint firstAttribute="width" constant="100" id="ewZ-dv-sVd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hm7-jj-mnO">
+                                <rect key="frame" x="30" y="550.5" width="315" height="40"/>
+                                <color key="backgroundColor" red="0.29751488570000001" green="0.39951288699999998" blue="0.56472617390000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="1vW-Cu-H8k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <state key="normal" title="Join Meeting">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="openMeetHourWithSender:" destination="dTE-hS-EcF" eventType="touchUpInside" id="GYf-E4-no1"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BkD-7E-Dq5">
+                                <rect key="frame" x="296" y="359.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="aMethodAudio:" destination="dTE-hS-EcF" eventType="valueChanged" id="yXR-Xv-LwS"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Zw8-j5-AQQ">
+                                <rect key="frame" x="296" y="409.5" width="51" height="31"/>
+                                <connections>
+                                    <action selector="aMethodVideoOn:" destination="dTE-hS-EcF" eventType="valueChanged" id="uhw-vF-W1S"/>
+                                </connections>
+                            </switch>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cb2-Ol-gcA">
+                                <rect key="frame" x="270" y="460.5" width="75" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="jWX-WJ-hPQ"/>
+                                    <constraint firstAttribute="height" constant="75" id="qCM-KS-aec"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avatar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P73-Yn-SuQ">
+                                <rect key="frame" x="30" y="483" width="48" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="ejS-Fv-8E5"/>
+                                    <constraint firstAttribute="height" constant="30" id="n3G-k7-coh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ydK-XM-60k"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P73-Yn-SuQ" firstAttribute="centerY" secondItem="cb2-Ol-gcA" secondAttribute="centerY" id="22z-K7-Hy7"/>
+                            <constraint firstItem="Zw8-j5-AQQ" firstAttribute="centerY" secondItem="kq4-M0-6G5" secondAttribute="centerY" id="3d6-MP-RSv"/>
+                            <constraint firstItem="ydK-XM-60k" firstAttribute="trailing" secondItem="hqH-fT-EjN" secondAttribute="trailing" constant="30" id="7RD-U3-ffz"/>
+                            <constraint firstItem="ZcJ-kl-uhk" firstAttribute="top" secondItem="hqH-fT-EjN" secondAttribute="bottom" constant="20" id="7xq-Ho-3u6"/>
+                            <constraint firstItem="BkD-7E-Dq5" firstAttribute="centerY" secondItem="ZcJ-kl-uhk" secondAttribute="centerY" id="8Tl-fv-r76"/>
+                            <constraint firstItem="hqH-fT-EjN" firstAttribute="top" secondItem="xcS-7t-Ma6" secondAttribute="bottom" constant="20" id="DWD-g2-Nnd"/>
+                            <constraint firstItem="xcS-7t-Ma6" firstAttribute="centerX" secondItem="Q6g-QY-xj4" secondAttribute="centerX" id="FFk-Uh-Voj"/>
+                            <constraint firstItem="ZcJ-kl-uhk" firstAttribute="leading" secondItem="hqH-fT-EjN" secondAttribute="leading" id="KWt-CL-sNn"/>
+                            <constraint firstItem="kq4-M0-6G5" firstAttribute="top" secondItem="ZcJ-kl-uhk" secondAttribute="bottom" constant="20" id="PiR-Ni-khm"/>
+                            <constraint firstItem="kq4-M0-6G5" firstAttribute="leading" secondItem="ZcJ-kl-uhk" secondAttribute="leading" id="SCV-ng-FC2"/>
+                            <constraint firstItem="cb2-Ol-gcA" firstAttribute="trailing" secondItem="Zw8-j5-AQQ" secondAttribute="trailing" id="XDI-u2-Uoy"/>
+                            <constraint firstItem="xcS-7t-Ma6" firstAttribute="top" secondItem="ydK-XM-60k" secondAttribute="top" constant="30" id="enA-Ua-vh7"/>
+                            <constraint firstItem="hm7-jj-mnO" firstAttribute="top" secondItem="cb2-Ol-gcA" secondAttribute="bottom" constant="15" id="gsv-dD-EBh"/>
+                            <constraint firstItem="cb2-Ol-gcA" firstAttribute="top" secondItem="Zw8-j5-AQQ" secondAttribute="bottom" constant="20" id="jcW-ER-Yuc"/>
+                            <constraint firstItem="P73-Yn-SuQ" firstAttribute="leading" secondItem="kq4-M0-6G5" secondAttribute="leading" id="rym-cO-AgT"/>
+                            <constraint firstItem="ydK-XM-60k" firstAttribute="trailing" secondItem="hm7-jj-mnO" secondAttribute="trailing" constant="30" id="sm2-1S-5F5"/>
+                            <constraint firstItem="Zw8-j5-AQQ" firstAttribute="trailing" secondItem="BkD-7E-Dq5" secondAttribute="trailing" id="u1f-ae-GyP"/>
+                            <constraint firstItem="ydK-XM-60k" firstAttribute="trailing" secondItem="BkD-7E-Dq5" secondAttribute="trailing" constant="30" id="ulH-Hl-yUk"/>
+                            <constraint firstItem="hqH-fT-EjN" firstAttribute="leading" secondItem="ydK-XM-60k" secondAttribute="leading" constant="30" id="ygF-0s-Iwy"/>
+                            <constraint firstItem="hm7-jj-mnO" firstAttribute="leading" secondItem="ydK-XM-60k" secondAttribute="leading" constant="30" id="zja-fP-l2y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imgAvatar" destination="cb2-Ol-gcA" id="ByB-rB-gVV"/>
+                        <outlet property="txtDisplayName" destination="IaA-TD-47B" id="sGs-lS-34g"/>
+                        <outlet property="txtEmail" destination="ZpM-73-qUE" id="kjK-Wi-na4"/>
+                        <outlet property="txtRoomName" destination="vn0-GK-Lhu" id="ppH-l1-Ih6"/>
+                        <outlet property="txtServerURL" destination="NY4-4d-FEc" id="nWb-Vd-dC1"/>
+                        <outlet property="txtSubject" destination="64W-ex-MvK" id="QeY-2w-JHS"/>
+                        <outlet property="videoButton" destination="hm7-jj-mnO" id="uGe-be-OVq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sCM-UU-iRS" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-391.19999999999999" y="-36.431784107946029"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MeetHour_logo" width="1266" height="286"/>
+    </resources>
+</document>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   Text,
   TextInput,
@@ -7,7 +7,8 @@ import {
   Switch,
   ImageBackground,
   Image,
-  ScrollView
+  ScrollView,
+  Platform,
 } from 'react-native';
 
 import MeetHour, { MeetHourView } from 'react-native-meet-hour-sdk';
@@ -16,7 +17,6 @@ import styles from './styles/styles';
 import strings from './lang/strings';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.onConferenceTerminated = this.onConferenceTerminated.bind(this);
@@ -30,8 +30,8 @@ class App extends Component {
       displayName: '',
       email: '',
       audioMuted: false,
-      videoMuted: false
-    }
+      videoMuted: false,
+    };
   }
 
   runMeet() {
@@ -59,17 +59,17 @@ class App extends Component {
 
   onConferenceJoined(nativeEvent) {
     /* Conference joined event */
-    console.log(nativeEvent)
+    console.log(nativeEvent);
   }
 
   onConferenceWillJoin(nativeEvent) {
     /* Conference will join event */
-    console.log(nativeEvent)
+    console.log(nativeEvent);
   }
 
   onConferenceTerminated(nativeEvent) {
     /* Conference terminated event */
-    console.log(nativeEvent)
+    console.log(nativeEvent);
     this.setState({ showMeet: false });
   }
 
@@ -81,11 +81,13 @@ class App extends Component {
       displayName: '',
       email: '',
       audioMuted: false,
-      videoMuted: false
-    })
+      videoMuted: false,
+    });
   }
 
   render() {
+    console.log('inside render ', this.state.showMeet);
+
     return (
       <View style={styles.container}>
         {this.state.showMeet ? (
@@ -93,6 +95,7 @@ class App extends Component {
             onConferenceTerminated={this.onConferenceTerminated}
             onConferenceJoined={this.onConferenceJoined}
             onConferenceWillJoin={this.onConferenceWillJoin}
+            // eslint-disable-next-line react-native/no-inline-styles
             style={{
               flex: 1,
               height: '100%',
@@ -163,7 +166,7 @@ class App extends Component {
           </ScrollView>
           )}
       </View>
-    )
+    );
   }
 }
 

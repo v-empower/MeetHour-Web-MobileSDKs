@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1240"
+   LastUpgradeVersion = "1250"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DE6EE8B72254E0620087FD5E"
+               BlueprintIdentifier = "69936EA12668B59C002418B9"
                BuildableName = "MeetHourSDKTest.app"
                BlueprintName = "MeetHourSDKTest"
                ReferencedContainer = "container:MeetHourSDKTest.xcodeproj">
@@ -44,7 +44,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DE6EE8B72254E0620087FD5E"
+            BlueprintIdentifier = "69936EA12668B59C002418B9"
             BuildableName = "MeetHourSDKTest.app"
             BlueprintName = "MeetHourSDKTest"
             ReferencedContainer = "container:MeetHourSDKTest.xcodeproj">
@@ -61,7 +61,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DE6EE8B72254E0620087FD5E"
+            BlueprintIdentifier = "69936EA12668B59C002418B9"
             BuildableName = "MeetHourSDKTest.app"
             BlueprintName = "MeetHourSDKTest"
             ReferencedContainer = "container:MeetHourSDKTest.xcodeproj">
