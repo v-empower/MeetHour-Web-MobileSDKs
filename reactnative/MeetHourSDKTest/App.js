@@ -48,7 +48,7 @@ class App extends Component {
       audioMuted: this.state.audioMuted,
       videoMuted: this.state.videoMuted,
     };
-
+    console.log('load details:', meetingInfo);
     setTimeout(() => {
       MeetHour.join_meethour(meetingInfo);
     }, 1000);
@@ -85,8 +85,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('inside render ', this.state.showMeet);
-
     return (
       <View style={styles.container}>
         {this.state.showMeet ? (
@@ -171,7 +169,7 @@ class App extends Component {
               <Text>{strings.avatar.avatar}</Text>
               <Image
                 style={styles.avatar}
-                resizeMode="contain"
+                resizeMode="cover"
                 source={{uri: strings.avatar.avatarURL}}
               />
             </View>

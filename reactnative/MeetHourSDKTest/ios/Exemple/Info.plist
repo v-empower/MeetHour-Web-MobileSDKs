@@ -20,8 +20,24 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>db-rzqav7t9sc63zta</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>dbapi-2</string>
+		<string>dbapi-8-emm</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -43,6 +59,10 @@
 	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone Permission</string>
+	<key>RTCAppGroupIdentifier</key>
+	<string>group.go.meethour.io.ios.sdk.broadextension</string>
+	<key>RTCScreenSharingExtension</key>
+	<string>go.meethour.io.ios.sdk.broadextension</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
@@ -58,32 +78,10 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>RTCAppGroupIdentifier</key>
-	<string>group.go.meethour.io.ios.sdk.broadextension</string>
-	<key>RTCScreenSharingExtension</key>
-	<string>go.meethour.io.ios.sdk.broadextension</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string></string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>db-rzqav7t9sc63zta</string>
-			</array>
-		</dict>
-	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>dbapi-2</string>
-		<string>dbapi-8-emm</string>
-	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
