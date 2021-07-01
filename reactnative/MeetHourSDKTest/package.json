@@ -10,9 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "react": "16.11.0",
-    "react-native": "^0.62.3",
-    "react-native-meet-hour-sdk": "1.0.2"
+    "react": "16.13.1",
+    "react-native": "0.63.4",
+    "react-native-meet-hour-sdk": "1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
