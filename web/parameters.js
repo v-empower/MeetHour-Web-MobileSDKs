@@ -34,7 +34,6 @@ var parameters = {
 
     DEFAULT_BACKGROUND: '#474747',
     DEFAULT_LOCAL_DISPLAY_NAME: 'me',
-    DEFAULT_LOGO_URL: 'images/watermark.png',
     DEFAULT_REMOTE_DISPLAY_NAME: 'Guest',
     DEFAULT_WELCOME_PAGE_LOGO_URL: 'images/watermark.png',
 
