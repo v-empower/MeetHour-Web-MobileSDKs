@@ -36,6 +36,7 @@ Its constructor gets a number of options:
     * **parentNode**: (optional) HTML DOM Element where the iframe will be added as a child.
     * **noSSL**: (optional, defaults to true) Boolean indicating if the server should be contacted using HTTP or HTTPS.
     * **jwt**: (optional) [JWT](https://jwt.io/) token.
+    * **passcode**: (optional) Password of the meeting
     * **onload**: (optional) handler for the iframe onload event.
     * **invitees**: (optional) Array of objects containing information about new participants that will be invited in the call.
     * **devices**: (optional) A map containing information about the initial devices that will be used in the call.
