@@ -59,18 +59,7 @@
             roomName: "Organization-MeetingID",
             // width: 700,
             // height: 600,
-            parentNode: document.querySelector("#conference"),
-            userInfo: {
-                email: "user@gmail.com",
-            },
-            interfaceConfigOverwrite: {
-                APP_NAME: 'Meet Hour',
-                MOBILE_APP_PROMO: false,
-                ENABLE_MOBILE_BROWSER: true, // For running Meet Hour in mobile browser.
-                BRAND_WATERMARK_LINK: 'https://meethour.io',
-                DEFAULT_LOGO_URL: 'https://meethour.io/images/logo-deep-linking.png',                
-                TOOLBAR_BUTTONS: ['microphone','camera','closedcaptions','desktop','recording','fullscreen','fodeviceselection','hangup','chat','etherpad','sharedvideo','raisehand','videoquality','filmstrip','stats','settings','shortcuts','tileview','mute-everyone','security','zoomin','zoomout']
-            },
+            parentNode: document.querySelector("#conference")
         };
         // Initialization of MeetHour External API
         var api = new MeetHourExternalAPI(domain, options);
