@@ -34,7 +34,6 @@ Its constructor gets a number of options:
     * **width**: (optional) width for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
     * **height**: (optional) height for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
     * **parentNode**: (optional) HTML DOM Element where the iframe will be added as a child.
-    * **interfaceConfigOverwrite**: (optional) JS object with overrides for options defined in [parameters.js].
     * **noSSL**: (optional, defaults to true) Boolean indicating if the server should be contacted using HTTP or HTTPS.
     * **jwt**: (optional) [JWT](https://jwt.io/) token.
     * **onload**: (optional) handler for the iframe onload event.
