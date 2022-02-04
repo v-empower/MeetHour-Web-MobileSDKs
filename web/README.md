@@ -32,7 +32,7 @@ Its constructor gets a number of options:
 * **options**: object with properties - the optional arguments:
     * **roomName**: (required) name of the room to join.
     * **apiKey**: (required). You will get API key from your Developer Page - https://portal.meethour.io/customer/developers. Make sure you are on our Developer or higher plan. - https://meethour.io/#pricing
-    * **jwt**: (required) [JWT](https://jwt.io/) token. - You can generate this from here - https://docs.v-empower.com/docs/MeetHour-API/b3A6MzcwODk5MTQ-generate-jwt
+    * **jwt**: (optional) [JWT](https://jwt.io/) token. This is for the users who are part of meeting or used when Schedule a meeting API was created. You can generate this from here - https://docs.v-empower.com/docs/MeetHour-API/b3A6MzcwODk5MTQ-generate-jwt
     * **passcode**: (optional) Password of the meeting
     * **width**: (optional) width for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
     * **height**: (optional) height for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
