@@ -18,7 +18,7 @@ You can use the Meet Hour API to embed Meet Hour in to your application. You are
 To embed Meet Hour in your application you need to add the Meet Hour API library:
 
 ```javascript
-<script src='https://meethour.io/libs/external_api.min.js'></script>
+<script src='https://api.meethour.io/libs/v2.21/external_api.min.js'></script>
 ```
 ## API
 
