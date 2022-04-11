@@ -34,8 +34,10 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 
 # MeetHour SDK Implementation - Steps
 
-SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs
-API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
+1. SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs
+2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
+
+# Steps to Integrate:
 
 1. Signup for Meet Hour (https://meethour.io) and signup for Developer or Higher plan. Currently we offer 28 days free trial.
 2. Once you signup for developer plan, and go to our Dashboard - (https://portal.meethour.io) and tap on "Developers" menu.
@@ -47,10 +49,10 @@ API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
 
 
 # Library & SDK
-Android Maven - https://repo.meethour.io/maven/releases/
-iOS Cocoapods - https://cocoapods.org/pods/MeetHourSDK
-React Native NPM - https://www.npmjs.com/package/react-native-meet-hour-sdk
-Flutter Pub Dev - https://pub.dev/packages/meet_hour
+1. Android Maven - https://repo.meethour.io/maven/releases/
+2. iOS Cocoapods - https://cocoapods.org/pods/MeetHourSDK
+3. React Native NPM - https://www.npmjs.com/package/react-native-meet-hour-sdk
+4. Flutter Pub Dev - https://pub.dev/packages/meet_hour
 
 For any issues or queries raise a issue in Github or send us an email to hello@meethour.io or have Live Chat with our technical team at - https://bit.ly/35fVHZO
 
