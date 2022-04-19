@@ -10,9 +10,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "react": "16.13.1",
-    "react-native": "0.63.4",
-    "react-native-meet-hour-sdk": "1.0.3"
+    "react": "17.0.2",
+    "react-native": "0.66.4",
+    "react-native-meet-hour-sdk": "1.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -22,7 +22,7 @@
     "eslint": "^6.5.1",
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.58.0",
-    "react-test-renderer": "16.11.0"
+    "react-test-renderer": "17.0.2"
   },
   "jest": {
     "preset": "react-native"
