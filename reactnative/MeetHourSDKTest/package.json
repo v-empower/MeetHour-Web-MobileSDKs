@@ -1,6 +1,7 @@
 {
-  "name": "Exemple",
-  "version": "1.0.0",
+  "name": "MeetHourSDKTest",
+  "description": "Example app for Meet Hour React native SDK",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -10,21 +11,16 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "react": "17.0.2",
-    "react-native": "0.66.4",
-    "react-native-meet-hour-sdk": "1.0.7"
+    "react": "16.13.1",
+    "react-native": "0.63.4",
+    "react-native-meet-hour-sdk": "2.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/runtime": "^7.6.2",
-    "@react-native-community/eslint-config": "^2.0.0",
-    "babel-jest": "^24.9.0",
-    "eslint": "^6.5.1",
-    "jest": "^24.9.0",
-    "metro-react-native-babel-preset": "^0.58.0",
-    "react-test-renderer": "17.0.2"
-  },
-  "jest": {
-    "preset": "react-native"
+    "@babel/core": "^7.12.10",
+    "@babel/runtime": "^7.12.5",
+    "@types/react-native": "^0.65.1",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "metro-config": "^0.71.0",
+    "metro-react-native-babel-preset": "^0.64.0"
   }
 }

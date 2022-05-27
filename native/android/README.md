@@ -8,7 +8,7 @@ in a customizable way which you can embed in your apps.
 
 ## Build your own, or use a pre-build SDK artifacts/binaries
 
-Jitsi conveniently provides a pre-build SDK artifacts/binaries in its Maven repository. When you do not require any
+MeetHour conveniently provides a pre-build SDK artifacts/binaries in its Maven repository. When you do not require any
 modification to the SDK itself or any of its dependencies, it's suggested to use the pre-build SDK. This avoids the
 complexity of building and installing your own SDK artifacts/binaries.
 
