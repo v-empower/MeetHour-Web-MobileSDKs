@@ -32,6 +32,7 @@ const strings = {
   roomName: 'AliensParty',
   subject: 'Judgement day',
   displayName: 'Alien',
+  token: ""
 };
 
 export default strings;

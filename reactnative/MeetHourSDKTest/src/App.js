@@ -44,6 +44,7 @@ function App() {
     subject: strings.subject,
     audioMuted: false,
     videoMuted: false,
+    token: strings.token
   });
 
   const startMeetHourAsNativeController = async () => {
