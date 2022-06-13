@@ -4116,10 +4116,10 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
-"react-native-meet-hour-sdk@2.0.5":
-  "integrity" "sha512-jQYw/UYjhYg1x+MB1Md7NlU+2BDTAxd02ZB93tYJtCRteIn9/zi7unzJ+pGEAhq5Ocl+53CrZdoQz3hOo37KWw=="
-  "resolved" "https://registry.npmjs.org/react-native-meet-hour-sdk/-/react-native-meet-hour-sdk-2.0.5.tgz"
-  "version" "2.0.5"
+"react-native-meet-hour-sdk@2.0.6":
+  "integrity" "sha512-OmR8ocVIG1CeZRLImOQW1tg4H5E5GCH/rDMTWxSR5eAI2MnOKkbx3mYXAPSQjavnWbKUP0gHV+fbYGKdBHFPYg=="
+  "resolved" "https://registry.npmjs.org/react-native-meet-hour-sdk/-/react-native-meet-hour-sdk-2.0.6.tgz"
+  "version" "2.0.6"
 
 "react-native@*", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@0.63.4":
   "integrity" "sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw=="
