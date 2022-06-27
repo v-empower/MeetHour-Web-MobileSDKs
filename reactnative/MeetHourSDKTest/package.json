@@ -16,11 +16,16 @@
     "react-native-meet-hour-sdk": "2.0.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/runtime": "^7.12.5",
-    "@types/react-native": "^0.65.1",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "metro-config": "^0.71.0",
-    "metro-react-native-babel-preset": "^0.64.0"
+    "@babel/core": "7.18.5",
+    "@babel/runtime": "7.18.3",
+    "@react-native-community/eslint-config": "1.1.0",
+    "babel-jest": "25.5.1",
+    "eslint": "6.8.0",
+    "jest": "25.5.4",
+    "metro-react-native-babel-preset": "0.59.0",
+    "react-test-renderer": "16.13.1"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }

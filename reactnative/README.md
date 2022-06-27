@@ -1,7 +1,7 @@
 # react-native-meet-hour-sdk
 React native wrapper for Meet Hour SDK
 
-## Install
+## Install (Latest version 2.0.6)
 
 `npm install react-native-meet-hour-sdk --save` 
 ```
