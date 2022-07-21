@@ -20,11 +20,12 @@ class Meeting extends StatefulWidget {
 }
 
 class _MeetingState extends State<Meeting> {
-  final serverText = TextEditingController();
-  final roomText = TextEditingController(text: "plugintestroom");
-  final subjectText = TextEditingController(text: "My Plugin Test Meeting");
-  final nameText = TextEditingController(text: "Plugin Test User");
-  final emailText = TextEditingController(text: "fake@email.com");
+  final serverText = TextEditingController(text: "https://meethour.io");
+  final roomText = TextEditingController(text: "TestRoom");
+  final subjectText = TextEditingController(text: "Room Password: 12345");
+  final nameText = TextEditingController(text: "Developer");
+  final emailText = TextEditingController(text: "developer@email.com");
+  final token = TextEditingController();
   final iosAppBarRGBAColor =
       TextEditingController(text: "#0080FF80"); //transparent blue
   bool? isAudioOnly = true;
@@ -53,7 +54,7 @@ class _MeetingState extends State<Meeting> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Meet Hour Flutter Example App'),
         ),
         body: Container(
           padding: const EdgeInsets.symmetric(
@@ -145,6 +146,16 @@ class _MeetingState extends State<Meeting> {
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: "Email",
+            ),
+          ),
+          SizedBox(
+            height: 14.0,
+          ),
+          TextField(
+            controller: token,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: "Token",
             ),
           ),
           SizedBox(
@@ -256,7 +267,8 @@ class _MeetingState extends State<Meeting> {
       ..subject = subjectText.text
       ..userDisplayName = nameText.text
       ..userEmail = emailText.text
-      ..iosAppBarRGBAColor = iosAppBarRGBAColor.text
+      ..token = token.text
+      // ..iosAppBarRGBAColor = iosAppBarRGBAColor.text
       ..audioOnly = isAudioOnly
       ..audioMuted = isAudioMuted
       ..videoMuted = isVideoMuted

@@ -1,9 +1,9 @@
 const strings = {
   avatar: {
     avatar: 'Avatar:',
-    email: 'alien@meethour.com',
+    email: 'hello@meethour.io',
     avatarURL:
-      'https://thumbs.dreamstime.com/b/alien-head-headphones-vector-green-illustration-white-background-48885497.jpg',
+      'https://portal.meethour.io/dist/images/favicon.png',
   },
   buttons: {
     join: 'Tap to join',
@@ -29,9 +29,9 @@ const strings = {
     startWithVideoMuted: 'Start with video muted',
   },
   serverURL: 'https://meethour.io',
-  roomName: 'AliensParty',
-  subject: 'Judgement day',
-  displayName: 'Alien',
+  roomName: 'TestRoom',
+  subject: 'TestRoom - Subject',
+  displayName: 'Johnny',
   token: ""
 };
 
