@@ -8,7 +8,7 @@ Meet Hour Plugin for Flutter. Supports Android, iOS, and Web platforms.
 Pub dev - https://pub.dev/packages/meet_hour
 
 ```
-  meet_hour: '>=4.0.0'
+  meet_hour: '>=4.0.6'
 ```
 
 
