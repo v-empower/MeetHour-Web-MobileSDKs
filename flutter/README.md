@@ -41,7 +41,7 @@ Pub dev - https://pub.dev/packages/meet_hour
 #### Podfile
 Ensure in your Podfile you have an entry like below declaring platform of 11.0 or above and disable BITCODE.
 ```
-platform :ios, '11.0'
+platform :ios, '12.1'
 
 ...
 
@@ -49,6 +49,7 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['ENABLE_BITCODE'] = 'NO'
+      config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
     end
   end
 end
