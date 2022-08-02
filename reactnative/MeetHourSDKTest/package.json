@@ -13,7 +13,7 @@
   "dependencies": {
     "react": "16.13.1",
     "react-native": "0.63.4",
-    "react-native-meet-hour-sdk": "3.0.2"
+    "react-native-meet-hour-sdk": "3.0.3"
   },
   "devDependencies": {
     "@babel/core": "7.18.5",

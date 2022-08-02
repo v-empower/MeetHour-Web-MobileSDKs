@@ -18,7 +18,7 @@ id: dev-guide-android-sdk
 title: Meet Hour Android SDK
 ---
 
-## Latest Verion - 3.6.0
+## Latest Verion - 3.6.2
 
 The Meet Hour Android SDK provides the same user experience as the Meet Hour app,
 in a customizable way which you can embed in your apps.
@@ -54,6 +54,6 @@ Dependency definitions belong in the individual module `build.gradle` files:
 ```gradle
 dependencies {
     // (other dependencies)
-    implementation ('go.meethour.io.react:meet-hour-sdk:3.6.0') { transitive = true }
+    implementation ('go.meethour.io.react:meet-hour-sdk:3.6.2') { transitive = true }
 }
 ```

@@ -29,6 +29,15 @@ Pub dev - https://pub.dev/packages/meet_hour
 7. Once the meeting is genereate, in order to join a meeting you require to Generate JWT Token using this API (https://bit.ly/3ur5pFR) and pass it to the conference URL via MT Parameter - https://meethour.io?mt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImFjY2Vzc190b2tlbiI6ImV5SjBlWEFpT2lKS1YxUWlMQ0poYkdjaU9pSlNVekkxTmlKOS5leUpoZFdRaU9pSTVNemxrWmpVeE5pMDJNekEzTFRRNVkyUXRPVGMxTXkwek1XRTNNemRrT1RGaE1HWWlMQ0pxZEdraU9pSmtNMlUyT
 
 
+## For iOS - Pod Update
+
+Always run below command if you want to get latest MeetHourSDK Pod file.
+
+```
+pod update MeetHourSDK
+pod install --repo-update
+```
+
 ## Table of Contents
   - [Configuration](#configuration)
     - [IOS](#ios)

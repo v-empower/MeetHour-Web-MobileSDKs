@@ -20,7 +20,16 @@ id: dev-guide-ios-sdk
 title: Meet Hour iOS SDK
 ---
 
-## Latest Verion - 3.6.0
+## For iOS - Pod Update
+
+Always run below command if you want to get latest MeetHourSDK Pod file.
+
+```
+pod update MeetHourSDK
+pod install --repo-update
+```
+
+## Latest Verion - 3.6.2
 
 This repository contains the binaries for the **[Meet Hour]() iOS SDK**. Each
 release is tagged in this repository and is composed of 2 frameworks:
@@ -45,7 +54,7 @@ a new one following this example:
 platform :ios, '12.1'
 
 target 'MeetHourSDKTest' do
-    pod 'MeetHourSDK', '~> 3.6.0'
+    pod 'MeetHourSDK', '~> 3.6.2'
 
     post_install do |installer|
         installer.pods_project.targets.each do |target|
