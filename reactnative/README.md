@@ -50,9 +50,9 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 
 const conferenceOptions = {
-  room: 'ReactNativeMeetHourRoom',
+  room: 'TestRoom',
   userInfo: {
-    displayName: 'React Native Meet Hour Example',
+    displayName: 'John',
     email: 'example@test.com',
     avatar: 'https://picsum.photos/200',
   },
