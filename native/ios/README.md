@@ -29,7 +29,7 @@ pod update MeetHourSDK
 pod install --repo-update
 ```
 
-## Latest Verion - 3.6.6
+## Latest Verion - 4.0.1
 
 This repository contains the binaries for the **[Meet Hour]() iOS SDK**. Each
 release is tagged in this repository and is composed of 2 frameworks:

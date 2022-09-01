@@ -81,7 +81,7 @@ PODS:
     - glog
   - glog (0.3.5)
   - libevent (2.1.12)
-  - MeetHourSDK (3.6.4)
+  - MeetHourSDK (4.0.1)
   - OpenSSL-Universal (1.1.1100)
   - RCTRequired (0.63.4)
   - RCTTypeSafety (0.63.4):
@@ -249,8 +249,8 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-meet-hour-sdk (3.0.5):
-    - MeetHourSDK (= 3.6.4)
+  - react-native-meet-hour-sdk (3.0.8):
+    - MeetHourSDK (= 4.0.1)
     - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
@@ -458,7 +458,7 @@ SPEC CHECKSUMS:
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  MeetHourSDK: ab0774d2294045fe5cdc1085a2dc1857ae36d122
+  MeetHourSDK: 5f013eb884ab8ea0ce13984eae4ab95959168c05
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
@@ -470,7 +470,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-meet-hour-sdk: 52cedc63d80037e29b2623d72f130c60f76210e0
+  react-native-meet-hour-sdk: 170a8630b90d9b61009f40562f591ab970e2d980
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0

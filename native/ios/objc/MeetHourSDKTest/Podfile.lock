@@ -1,16 +1,16 @@
 PODS:
-  - MeetHourSDK (3.6.4)
+  - MeetHourSDK (4.0.1)
 
 DEPENDENCIES:
-  - MeetHourSDK (~> 3.6.4)
+  - MeetHourSDK (~> 4.0.1)
 
 SPEC REPOS:
   trunk:
     - MeetHourSDK
 
 SPEC CHECKSUMS:
-  MeetHourSDK: ab0774d2294045fe5cdc1085a2dc1857ae36d122
+  MeetHourSDK: 5f013eb884ab8ea0ce13984eae4ab95959168c05
 
-PODFILE CHECKSUM: be05be6043ddb3a7bfb27aa0fee9cd73e35e02c0
+PODFILE CHECKSUM: f8198edd0a075d0c3970f769ed6dd13a50791ef2
 
 COCOAPODS: 1.11.3
