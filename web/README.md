@@ -20,7 +20,7 @@ Check out the Example.html file and Javascript_API.md file for more details.
 You can also try Embed Meeting via below code. It is also using our javascript API to do render <iframe>
 
 ```
-<iframe allow="camera; microphone; fullscreen; display-capture; autoplay" src="https://meethour.io/MeetingID" style="height: 100%; width: 100%; border: 0px;"></iframe>
+<iframe allow="camera; microphone; display-capture; autoplay; clipboard-write" src="https://meethour.io/TestRoom#meet_hour_external_api_id=0&amp;interfaceConfig.disablePrejoinHeader=true&amp;interfaceConfig.disablePrejoinFooter=true&amp;interfaceConfig.SHOW_MEET_HOUR_WATERMARK=false&amp;interfaceConfig.HIDE_DEEP_LINKING_LOGO=true&amp;interfaceConfig.MOBILE_APP_PROMO=false&amp;interfaceConfig.ENABLE_MOBILE_BROWSER=true&amp;appData.localStorageContent=null" name="mhConferenceFrame0" id="mhConferenceFrame0" allowfullscreen="true" style="height: 99vh; width: 100%; border: 0px;" frameborder="0"></iframe>
 ```
 
   
