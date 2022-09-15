@@ -14,7 +14,10 @@
             margin: auto;
         }
 
-        #loader {
+    .btn-full {width:100%; background-color:#394186; color:#ffffff;}
+    .btn-full:hover {background-color:#d9271e; color:#ffffff;}
+
+ #loader {
             border: 12px solid #f3f3f3;
             border-radius: 50%;
             border-top: 12px solid #444444;
@@ -37,10 +40,37 @@
             right: 0;
             margin: auto;
         }
-    </style>
-    <div id="loader" class="center"></div>
-    <div id="conference"></div>
-    <script src="https://api.meethour.io/libs/v2.21/external_api.min.js"></script>
+
+        iframe#mhConferenceFrame0 {
+          display: block;
+          height: 98vh !important;
+          overflow: hidden;
+
+        }
+
+        .poweredby-mobile {display:contents}
+
+
+            @media  only screen and (max-device-width: 480px) { 
+            .mobile-nav-ul {padding:10px;}
+            
+        .poweredby-mobile {margin-top:20px; display:flex; margin-left:20px;}
+        .poweredby-mobile a {padding:0px!important; margin-top:-4px!important; margin-left:6px!important;}
+
+            }
+        .nav-menu > ul > li {
+            padding: 0px !important;
+        }
+</style>
+</head>
+
+<body>
+                         
+  <!-- ======= Hero Section ======= -->
+
+  <div id="loader" class="center"></div>
+    <div id="conference" style="height: 100%;"></div>
+    <script src="https://api.meethour.io/libs/v2.4.1/external_api.min.js?APIKey="></script>
     <script>
         document.onreadystatechange = function () {
             if (document.readyState !== "complete") {
@@ -56,10 +86,21 @@
     <script>
         var domain = "meethour.io";
         var options = {
-            roomName: "Organization-MeetingID",
+            roomName: "TestRoom", //Change to your Meeting ID
             // width: 700,
             // height: 600,
-            parentNode: document.querySelector("#conference")
+            parentNode: document.querySelector("#conference"),
+            jwt: "",
+            apiKey: "",
+            interfaceConfigOverwrite: {
+                disablePrejoinHeader: true,
+                disablePrejoinFooter: true,                
+                SHOW_MEET_HOUR_WATERMARK: false,
+                HIDE_DEEP_LINKING_LOGO: true,
+                MOBILE_APP_PROMO: false,
+                ENABLE_MOBILE_BROWSER: true
+            },
+
         };
         // Initialization of MeetHour External API
         var api = new MeetHourExternalAPI(domain, options);
@@ -69,32 +110,6 @@
             avatarUrl: "https://pickaface.net/gallery/avatar/ChloeBannink55d5b309e9a10.png",
         };
         api.executeCommands(commands);
-
-        // set a room password from here. Not required for Enterprise integration. Just generate a secure room name.
-        // var pass = "12345";
-        // api.addEventListener("participantRoleChanged", function (event) {
-        //     // when host has joined the video conference
-        //     if (event.role == "moderator") {
-        //         api.executeCommand("password", pass);
-        //     } else {
-        //         setTimeout(() => {
-        //             // when guest is trying to enter in a locked room
-        //             api.addEventListener("passwordRequired", () => {
-        //                 api.executeCommand("password", pass);
-        //             });
-
-        //             // when guest has joined the video conference
-        //             api.addEventListener(
-        //                 "videoConferenceJoined",
-        //                 (response) => {
-        //                     setTimeout(function () {
-        //                         api.executeCommand("password", pass);
-        //                     }, 300);
-        //                 }
-        //             );
-        //         }, 10);
-        //     }
-        // });
 
         // To close the window once hangup is done
         api.addEventListener("readyToClose", () => {
