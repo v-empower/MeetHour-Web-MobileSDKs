@@ -35,3 +35,6 @@ build/
 .gradle
 local.properties
 *.iml
+*.apk
+release
+*.hprof

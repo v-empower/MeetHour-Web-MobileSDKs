@@ -2,8 +2,8 @@ PODS:
   - Flutter (1.0.0)
   - meet_hour (0.0.1):
     - Flutter
-    - MeetHourSDK (= 4.0.1)
-  - MeetHourSDK (4.0.1)
+    - MeetHourSDK (= 4.1.0)
+  - MeetHourSDK (4.1.0)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -20,9 +20,9 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/meet_hour/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  meet_hour: 552b096423c02c83c8e129ae4aee3a4ceabecd93
-  MeetHourSDK: 5f013eb884ab8ea0ce13984eae4ab95959168c05
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  meet_hour: bda4f38db2d5deeb76be054dac8f10f8f86ec052
+  MeetHourSDK: 4f0a1df08eecc79bc00d0713d822ceea80fda680
 
 PODFILE CHECKSUM: a26cfb8acd7d8e66ffae7e19f0dc78ed0ddd3d1d
 

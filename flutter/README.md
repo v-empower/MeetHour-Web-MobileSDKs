@@ -10,7 +10,7 @@ Example Project is here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/t
 Pub dev - https://pub.dev/packages/meet_hour
 
 ```
-  meet_hour: '>=5.0.7'
+  meet_hour: '>=5.0.9'
 ```
 
 # MeetHour SDK Implementation - Steps
@@ -35,7 +35,12 @@ Always run below command if you want to get latest MeetHourSDK Pod file.
 
 ```
 pod update MeetHourSDK
-pod install --repo-update
+pod update MeetHourSDK or pod install --repo-update
+```
+
+```
+For Apple M1 Silicon Chip
+arch -x86_64 pod update MeetHourSDK or arch -x86_64 pod install --repo-update
 ```
 
 ## Table of Contents
