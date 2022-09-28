@@ -362,6 +362,7 @@ your Dropbox app key:
 <activity
     android:configChanges="keyboard|orientation"
     android:launchMode="singleTask"
+    android:exported="true"
     android:name="com.dropbox.core.android.AuthActivity">
   <intent-filter>
     <action android:name="android.intent.action.VIEW" />
