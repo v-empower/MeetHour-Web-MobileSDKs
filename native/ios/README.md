@@ -26,10 +26,15 @@ Always run below command if you want to get latest MeetHourSDK Pod file.
 
 ```
 pod update MeetHourSDK
-pod install --repo-update
+pod update MeetHourSDK or pod install --repo-update
 ```
 
-## Latest Verion - 4.0.1
+```
+For Apple M1 Silicon Chip
+arch -x86_64 pod update MeetHourSDK or arch -x86_64 pod install --repo-update
+```
+
+## Latest Verion - 4.1.0
 
 This repository contains the binaries for the **[Meet Hour]() iOS SDK**. Each
 release is tagged in this repository and is composed of 2 frameworks:
