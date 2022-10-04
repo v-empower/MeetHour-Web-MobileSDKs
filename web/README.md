@@ -17,7 +17,7 @@
 
 All the Conference UI is managed from this page - https://portal.meethour.io/customer/ui_settings
 
-You can also try Embed Meeting via below code. It is also using our javascript API to do render <iframe>
+You can also try Embed Meeting via below code. Change the Meeting URL in below <iframe>
 
 ```
 <html>
@@ -25,7 +25,7 @@ You can also try Embed Meeting via below code. It is also using our javascript A
         <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
     </head>
 <body>
-    <iframe allow="camera; microphone; display-capture; autoplay; clipboard-write" src="https://meethour.io/<YOUR_MEETING_ID>#interfaceConfig.applyMeetingSettings=true&" name="mhConferenceFrame0" id="mhConferenceFrame0" allowfullscreen="true" style="height: 800px; width: 100%; border: 0px;" frameborder="0"></iframe>
+    <iframe allow="camera; microphone; display-capture; autoplay; clipboard-write" src="https://meethour.io/TestRoom#interfaceConfig.applyMeetingSettings=true&" name="mhConferenceFrame0" id="mhConferenceFrame0" allowfullscreen="true" style="height: 800px; width: 100%; border: 0px;" frameborder="0"></iframe>
 </body>
 </html>
 ```
@@ -90,7 +90,7 @@ Its constructor gets a number of options:
         var api = new MeetHourExternalAPI(domain, options);
 
         // Passing room password dynamically.
-        var pass = '7856123';
+        var pass = '12345';
 
         setTimeout(() => {
             api.addEventListener('passwordRequired', () => {
