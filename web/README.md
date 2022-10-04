@@ -13,31 +13,40 @@
 6. Later go to Schedule Meeting API -> Pass all the parameters needed to generate a new meetings - (https://bit.ly/3riFLkx)
 7. Once the meeting is genereate, in order to join a meeting you require to Generate JWT Token using this API (https://bit.ly/3ur5pFR) and pass it to the conference URL via MT Parameter - https://meethour.io?mt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImFjY2Vzc190b2tlbiI6ImV5SjBlWEFpT2lKS1YxUWlMQ0poYkdjaU9pSlNVekkxTmlKOS5leUpoZFdRaU9pSTVNemxrWmpVeE5pMDJNekEzTFRRNVkyUXRPVGMxTXkwek1XRTNNemRrT1RGaE1HWWlMQ0pxZEdraU9pSmtNMlUyT
 
-# MeetHour Web Javascript iFrame.
+### MeetHour Embed Meeting
 
-Check out the Example.html file and Javascript_API.md file for more details.
+All the Conference UI is managed from this page - https://portal.meethour.io/customer/ui_settings
 
 You can also try Embed Meeting via below code. It is also using our javascript API to do render <iframe>
 
 ```
-<iframe allow="camera; microphone; display-capture; autoplay; clipboard-write" src="https://meethour.io/TestRoom#meet_hour_external_api_id=0&amp;interfaceConfig.disablePrejoinHeader=true&amp;interfaceConfig.disablePrejoinFooter=true&amp;interfaceConfig.SHOW_MEET_HOUR_WATERMARK=false&amp;interfaceConfig.HIDE_DEEP_LINKING_LOGO=true&amp;interfaceConfig.MOBILE_APP_PROMO=false&amp;interfaceConfig.ENABLE_MOBILE_BROWSER=true&amp;appData.localStorageContent=null" name="mhConferenceFrame0" id="mhConferenceFrame0" allowfullscreen="true" style="height: 99vh; width: 100%; border: 0px;" frameborder="0"></iframe>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
+    </head>
+<body>
+    <iframe allow="camera; microphone; display-capture; autoplay; clipboard-write" src="https://meethour.io/vempowerteamfollowup#interfaceConfig.applyMeetingSettings=true&" name="mhConferenceFrame0" id="mhConferenceFrame0" allowfullscreen="true" style="height: 800px; width: 100%; border: 0px;" frameborder="0"></iframe>
+</body>
+</html>
 ```
 
+![](Conference-UI.png)
   
-# Meet Hour External Javascript API - SDK
+#### Meet Hour External Javascript API - SDK (Checkout Example.html)
 
 You can use the Meet Hour API to embed Meet Hour in to your application. You are also welcome to use it for embedding the globally distributed and highly available deployment on meethour.io itself. The only thing we ask for in that case is that you please DO NOT remove the meethour.io logo from the top left corner.
 
 ## Installation
 
-To embed Meet Hour in your application you need to add the Meet Hour API library:
+To add Meet Hour programmatically, please use our Javascript API library:
 
-```javascript
-<script src='https://api.meethour.io/libs/v2.21/external_api.min.js'></script>
-```
-## API
+## API Documentation - https://docs.v-empower.com/docs/MeetHour-API/ 
+
+## Web SDK
 
 ### `api = new MeetHourExternalAPI(domain, options)`
+
+Config & User Interface Settings Parameters - Parameters - https://docs.v-empower.com/docs/MeetHour-API/281f2d9a6c539-generate-jwt
 
 The next step for embedding Meet Hour is to create the Meet Hour API object.
 Its constructor gets a number of options:
@@ -47,8 +56,7 @@ Its constructor gets a number of options:
 * **options**: object with properties - the optional arguments:
     * **roomName**: (required) name of the room to join.
     * **apiKey**: (required). You will get API key from your Developer Page - https://portal.meethour.io/customer/developers. Make sure you are on our Developer or higher plan. - https://meethour.io/#pricing
-    * **jwt**: (optional) [JWT](https://jwt.io/) token. This is for the users who are part of meeting or used when Schedule a meeting API was created. You can generate this from here - https://docs.v-empower.com/docs/MeetHour-API/b3A6MzcwODk5MTQ-generate-jwt
-    * **passcode**: (optional) Password of the meeting
+    * **jwt**: (required - If you to start meeting or join or moderator) - https://docs.v-empower.com/docs/MeetHour-API/b3A6MzcwODk5MTQ-generate-jwt
     * **width**: (optional) width for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
     * **height**: (optional) height for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
     * **parentNode**: (optional) HTML DOM Element where the iframe will be added as a child.
@@ -57,6 +65,44 @@ Its constructor gets a number of options:
     * **invitees**: (optional) Array of objects containing information about new participants that will be invited in the call.
     * **devices**: (optional) A map containing information about the initial devices that will be used in the call.
     * **userInfo**: (optional) JS object containing information about the participant opening the meeting, such as `email`.
+
+
+```Javascript Standard Example
+<script src='https://api.meethour.io/libs/v2.4.1/external_api.min.js'></script>
+<div id="conference" style="height: 100%;"></div>
+ <script>
+        var domain = "meethour.io";
+        var options = {
+            roomName: "TestRoom", //Change to your Meeting ID
+            parentNode: document.querySelector("#conference"),
+            jwt: "",
+            apiKey: "",
+            interfaceConfigOverwrite: {
+                applyMeetingSettings: true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings
+                disablePrejoinHeader: true,
+                disablePrejoinFooter: true,                
+                SHOW_MEET_HOUR_WATERMARK: false,
+                HIDE_DEEP_LINKING_LOGO: true,
+                MOBILE_APP_PROMO: false,
+                ENABLE_MOBILE_BROWSER: true
+            },
+
+        };
+        // Initialization of MeetHour External API
+        var api = new MeetHourExternalAPI(domain, options);
+
+        // Passing room password dynamically.
+        var pass = '7856123';
+
+        setTimeout(() => {
+            api.addEventListener('passwordRequired', () => {
+                api.executeCommand('password', pass);
+            });
+
+        }, 200);
+ </script>
+```
+
 
 Example:
 
@@ -132,26 +178,26 @@ Device management `MeetHourExternalAPI` methods:
 
 ```javascript
 api.getAvailableDevices().then(devices => {
-    // devices = {
-    //     audioInput: [{
-    //         deviceId: 'ID'
-    //         groupId: 'grpID'
-    //         kind: 'audioinput'
-    //         label: 'label'
-    //     },....],
-    //     audioOutput: [{
-    //         deviceId: 'ID'
-    //         groupId: 'grpID'
-    //         kind: 'audioOutput'
-    //         label: 'label'
-    //     },....],
-    //     videoInput: [{
-    //         deviceId: 'ID'
-    //         groupId: 'grpID'
-    //         kind: 'videoInput'
-    //         label: 'label'
-    //     },....]
-    // }
+    devices = {
+        audioInput: [{
+            deviceId: 'ID'
+            groupId: 'grpID'
+            kind: 'audioinput'
+            label: 'label'
+        },....],
+        audioOutput: [{
+            deviceId: 'ID'
+            groupId: 'grpID'
+            kind: 'audioOutput'
+            label: 'label'
+        },....],
+        videoInput: [{
+            deviceId: 'ID'
+            groupId: 'grpID'
+            kind: 'videoInput'
+            label: 'label'
+        },....]
+    }
     ...
 });
 ```
@@ -159,26 +205,26 @@ api.getAvailableDevices().then(devices => {
 
 ```javascript
 api.getCurrentDevices().then(devices => {
-    // devices = {
-    //     audioInput: {
-    //         deviceId: 'ID'
-    //         groupId: 'grpID'
-    //         kind: 'videoInput'
-    //         label: 'label'
-    //     },
-    //     audioOutput: {
-    //         deviceId: 'ID'
-    //         groupId: 'grpID'
-    //         kind: 'videoInput'
-    //         label: 'label'
-    //     },
-    //     videoInput: {
-    //         deviceId: 'ID'
-    //         groupId: 'grpID'
-    //         kind: 'videoInput'
-    //         label: 'label'
-    //     }
-    // }
+    devices = {
+        audioInput: {
+            deviceId: 'ID'
+            groupId: 'grpID'
+            kind: 'videoInput'
+            label: 'label'
+        },
+        audioOutput: {
+            deviceId: 'ID'
+            groupId: 'grpID'
+            kind: 'videoInput'
+            label: 'label'
+        },
+        videoInput: {
+            deviceId: 'ID'
+            groupId: 'grpID'
+            kind: 'videoInput'
+            label: 'label'
+        }
+    }
     ...
 });
 ```
@@ -505,6 +551,8 @@ changes. The listener will receive an object with the following structure:
 
 * **passwordRequired** - event notifications fired when failing to join a room because it has a password.
 
+
+
 * **videoConferenceJoined** - event notifications fired when the local user has joined the video conference. The listener will receive an object with the following structure:
 ```javascript
 {
@@ -650,8 +698,3 @@ You can remove the embedded Meet Hour Conference with the following API function
 api.dispose();
 ```
 
-NOTE: It's a good practice to remove the conference before the page is unloaded.
-
-[config.js]: https://github.com/meethour/meethour-meet/blob/master/config.js
-[interface_config.js]: https://github.com/meethour/meethour-meet/blob/master/interface_config.js
-[EventEmitter]: https://nodejs.org/api/events.html
