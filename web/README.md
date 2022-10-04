@@ -34,8 +34,6 @@ You can also try Embed Meeting via below code. It is also using our javascript A
   
 #### Meet Hour External Javascript API - SDK (Checkout Example.html)
 
-You can use the Meet Hour API to embed Meet Hour in to your application. You are also welcome to use it for embedding the globally distributed and highly available deployment on meethour.io itself. The only thing we ask for in that case is that you please DO NOT remove the meethour.io logo from the top left corner.
-
 ## Installation
 
 To add Meet Hour programmatically, please use our Javascript API library:
