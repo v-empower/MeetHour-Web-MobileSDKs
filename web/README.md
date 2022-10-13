@@ -25,7 +25,7 @@ You can also try Embed Meeting via below code. Change the Meeting URL in below <
         <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
     </head>
 <body>
-    <iframe allow="camera; microphone; display-capture; autoplay; clipboard-write" src="https://meethour.io/TestRoom#interfaceConfig.applyMeetingSettings=true" name="mhConferenceFrame0" id="mhConferenceFrame0" allowfullscreen="true" style="height: 800px; width: 100%; border: 0px;" frameborder="0"></iframe>
+    <iframe allow="camera; microphone; display-capture; autoplay; clipboard-write" src="https://meethour.io/TestRoom#interfaceConfig.applyMeetingSettings=true&interfaceConfig.disablePrejoinHeader=true&interfaceConfig.disablePrejoinFooter=true&interfaceConfig.SHOW_MEET_HOUR_WATERMARK=false&interfaceConfig.HIDE_DEEP_LINKING_LOGO=true&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.ENABLE_MOBILE_BROWSER=true&appData.localStorageContent=null" name="mhConferenceFrame0" id="mhConferenceFrame0" allowfullscreen="true" style="height: 100%; width: 600px; border: 0px;"></iframe>
 </body>
 </html>
 ```
