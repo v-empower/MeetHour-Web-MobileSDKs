@@ -10,7 +10,7 @@ Example Project is here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/t
 Pub dev - https://pub.dev/packages/meet_hour
 
 ```
-  meet_hour: '>=5.0.9'
+  meet_hour: '>=5.0.10'
 ```
 
 # MeetHour SDK Implementation - Steps
