@@ -1,4 +1,4 @@
-import MeetHour, { MeetHourView } from 'react-native-meet-hour-sdk';
+import MeetHour, { MeetHourView } from '../node_modules/react-native-meet-hour-sdk';
 import React, { useState } from 'react';
 import {
   StyleSheet,
@@ -26,6 +26,7 @@ const conferenceOptions = {
   featureFlags: {
     'live-streaming.enabled': false,
   },
+  token: ''
 };
 
 function App() {
