@@ -34,7 +34,7 @@ For Apple M1 Silicon Chip
 arch -x86_64 pod update MeetHourSDK or arch -x86_64 pod install --repo-update
 ```
 
-## Latest Verion - 4.1.2
+## Latest Verion - 4.1.3
 
 This repository contains the binaries for the **[Meet Hour]() iOS SDK**. Each
 release is tagged in this repository and is composed of 2 frameworks:
