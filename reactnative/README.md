@@ -407,8 +407,8 @@ implementation(project(':react-native-meet-hour-sdk')) {
 }
 ```
 
-
-```// required to avoid crash on Android 12 API 31
+// required to avoid crash on Android 12 API 31
+```
   
   implementation 'androidx.work:work-runtime-ktx:2.7.0'
 
