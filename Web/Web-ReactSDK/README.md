@@ -39,7 +39,8 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 7. Once the meeting is generated, in order to join a meeting you're required to Generate a JWT Token using this API (https://bit.ly/3sJaojD) and pass it to the conference URL via JWT Parameter in <MeetHourMeeting Component.
 
 
-        ```<MeetHourMeeting
+        ```js
+        <MeetHourMeeting
             roomName = { meetingID() }
             spinner = { renderSpinner }
 
