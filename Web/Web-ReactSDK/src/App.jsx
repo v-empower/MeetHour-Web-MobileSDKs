@@ -209,8 +209,7 @@ const App = () => {
                 jwt = {''} // You need to generate JWT from here - https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
                 configOverwrite = {{
                     subject: 'TestRoom',
-                    hideConferenceSubject: false,
-                    prejoinPageEnabled: false
+                    hideConferenceSubject: false
                 }}
                 interfaceConfigOverwrite = {{
                     applyMeetingSettings: true,
