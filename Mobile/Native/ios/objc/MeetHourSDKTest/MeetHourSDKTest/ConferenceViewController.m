@@ -36,6 +36,7 @@
             builder.subject = self.subject;
             builder.userInfo = info;
             builder.room = self.room;
+            builder.pcode = self.pcode;
             
             // Settings for audio and video
             builder.audioMuted = self.isAudioMuted;

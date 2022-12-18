@@ -111,6 +111,7 @@ class ViewController: UIViewController {
                 builder.serverURL = URL(string: self.txtServerURL.text!)
                 builder.userInfo = info
                 builder.room = self.txtRoomName.text
+                builder.pcode = "@5b40602cfea7708895781a8cad71be5b"
                 builder.setFeatureFlag("ios.recording.enabled", withBoolean: true)
             }
             MHView.join(options)

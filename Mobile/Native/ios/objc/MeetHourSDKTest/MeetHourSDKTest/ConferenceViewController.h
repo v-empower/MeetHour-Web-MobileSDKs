@@ -12,6 +12,7 @@
 @property (nonatomic, copy) NSString *subject;
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, copy) NSString *email;
+@property (nonatomic, copy) NSString *pcode;
 @property (nonatomic, assign) BOOL isAudioMuted;
 @property (nonatomic, assign) BOOL isVideoOn;
 

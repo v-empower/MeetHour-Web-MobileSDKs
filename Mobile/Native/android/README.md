@@ -54,6 +54,6 @@ Dependency definitions belong in the individual module `build.gradle` files:
 ```gradle
 dependencies {
     // (other dependencies)
-    implementation ('go.meethour.io.react:meet-hour-sdk:4.1.2') { transitive = true }
+    implementation ('go.meethour.io.react:meet-hour-sdk:4.2.1') { transitive = true }
 }
 ```

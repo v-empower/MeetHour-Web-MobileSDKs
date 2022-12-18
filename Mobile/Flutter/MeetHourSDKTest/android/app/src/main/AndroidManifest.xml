@@ -8,7 +8,7 @@
          FlutterApplication and put your custom class here. -->
       <application
         android:allowBackup="false"
-        tools:replace="android:allowBackup"
+        tools:replace="android:allowBackup,android:label"
         android:name="${applicationName}"
         android:label="MeetHourSDKTest"
         android:icon="@mipmap/ic_launcher">

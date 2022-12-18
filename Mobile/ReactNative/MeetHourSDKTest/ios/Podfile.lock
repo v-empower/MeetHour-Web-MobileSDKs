@@ -73,7 +73,7 @@ PODS:
   - fmt (6.2.1)
   - glog (0.3.5)
   - libevent (2.1.12)
-  - MeetHourSDK (4.1.3)
+  - MeetHourSDK (4.2.1)
   - OpenSSL-Universal (1.1.180)
   - RCT-Folly (2021.06.28.00-v2):
     - boost
@@ -273,8 +273,8 @@ PODS:
   - React-jsinspector (0.66.4)
   - React-logger (0.66.4):
     - glog
-  - react-native-meet-hour-sdk (3.0.13):
-    - MeetHourSDK (= 4.1.3)
+  - react-native-meet-hour-sdk (3.0.16):
+    - MeetHourSDK (= 4.2.1)
     - React-Core
   - React-perflogger (0.66.4)
   - React-RCTActionSheet (0.66.4):
@@ -501,7 +501,7 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  MeetHourSDK: 7905a0ddaccd310320e730d9b79764a0b70e7704
+  MeetHourSDK: b638d5ab36c86d82ed351adb903cea2e04f9c427
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
   RCT-Folly: a21c126816d8025b547704b777a2ba552f3d9fa9
   RCTRequired: 4bf86c70714490bca4bf2696148638284622644b
@@ -515,7 +515,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 94ce921e1d8ce7023366873ec371f3441383b396
   React-jsinspector: d0374f7509d407d2264168b6d0fad0b54e300b85
   React-logger: 933f80c97c633ee8965d609876848148e3fef438
-  react-native-meet-hour-sdk: b3504dee3e5ff1f66d0a5b82c80f9ccc5a3a3c00
+  react-native-meet-hour-sdk: beda72434232d35e809bb121393e02e67b54a2c2
   React-perflogger: 93075d8931c32cd1fce8a98c15d2d5ccc4d891bd
   React-RCTActionSheet: 7d3041e6761b4f3044a37079ddcb156575fb6d89
   React-RCTAnimation: 743e88b55ac62511ae5c2e22803d4f503f2a3a13

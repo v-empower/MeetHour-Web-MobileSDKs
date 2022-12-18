@@ -62,6 +62,7 @@ To be used with custom domains as-it-is in React projects:
 <MeetHourMeeting
     domain = { YOUR_DOMAIN }
     roomName = { YOUR_ROOM_NAME }
+    pcode = {''} // Dynamically pass Encrypted Meeting Password as pcode. Get Pcode from API. 
     jwt = {''} // Mandatory for Moderator ( Generate from here ) - https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
     
 />

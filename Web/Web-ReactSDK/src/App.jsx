@@ -207,6 +207,7 @@ const App = () => {
                 spinner = { renderSpinner }
                 // eslint-disable-next-line max-len
                 jwt = {''} // You need to generate JWT from here - https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
+                pcode= {'5b40602cfea7708895781a8cad71be5b'}
                 configOverwrite = {{
                     subject: 'TestRoom',
                     hideConferenceSubject: false

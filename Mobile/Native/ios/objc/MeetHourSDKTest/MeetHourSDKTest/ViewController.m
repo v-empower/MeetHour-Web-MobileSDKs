@@ -68,6 +68,7 @@
         // Attach the room to the new controller.
         ConferenceViewController *vc = [segue destinationViewController];
         vc.room = self.room;
+        vc.pcode = @"5b40602cfea7708895781a8cad71be5b"; // Dynamically pass Encrypted Meeting Password.
         vc.serverUrl = self.txtServerURL.text;
         vc.subject = self.txtSubject.text;
         vc.displayName = self.txtDisplayName.text;

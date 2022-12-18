@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             MeetHourConferenceOptions options
                     = new MeetHourConferenceOptions.Builder()
                     .setRoom(text)
+                    .setPcode("5b40602cfea7708895781a8cad71be5b")
                     // Settings for audio and video
                     //.setAudioMuted(true)
                     //.setVideoMuted(true)

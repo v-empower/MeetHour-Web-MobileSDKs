@@ -62,6 +62,7 @@ const conferenceOptions = {
     avatar: 'https://picsum.photos/200',
   },
   token: '', // Generate Token from this
+  pcode: '', // Dynamically pass Encrypted Meeting Password as pcode. Get Pcode from API. 
   audioMuted: false,
   videoMuted: false
 };

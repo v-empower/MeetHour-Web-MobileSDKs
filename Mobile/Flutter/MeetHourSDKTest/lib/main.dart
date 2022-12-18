@@ -26,6 +26,7 @@ class _MeetingState extends State<Meeting> {
   final nameText = TextEditingController(text: "Developer");
   final emailText = TextEditingController(text: "developer@email.com");
   final token = TextEditingController();
+  final pcode = TextEditingController(text: "5b40602cfea7708895781a8cad71be5b");
   final iosAppBarRGBAColor =
       TextEditingController(text: "#0080FF80"); //transparent blue
   bool? isAudioOnly = true;
@@ -136,6 +137,16 @@ class _MeetingState extends State<Meeting> {
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               labelText: "Display Name",
+            ),
+          ),
+          SizedBox(
+            height: 14.0,
+          ),
+          TextField(
+            controller: pcode,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: "PCode - Dynamic Meeting Password",
             ),
           ),
           SizedBox(
@@ -268,6 +279,7 @@ class _MeetingState extends State<Meeting> {
       ..userDisplayName = nameText.text
       ..userEmail = emailText.text
       ..token = token.text
+      ..pcode = pcode.text
       // ..iosAppBarRGBAColor = iosAppBarRGBAColor.text
       ..audioOnly = isAudioOnly
       ..audioMuted = isAudioMuted

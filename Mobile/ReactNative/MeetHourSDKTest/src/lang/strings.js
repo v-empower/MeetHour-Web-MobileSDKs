@@ -32,7 +32,8 @@ const strings = {
   roomName: 'TestRoom',
   subject: 'TestRoom - Subject',
   displayName: 'Johnny',
-  token: ""
+  token: "",
+  pcode: "5b40602cfea7708895781a8cad71be5b"
 };
 
 export default strings;

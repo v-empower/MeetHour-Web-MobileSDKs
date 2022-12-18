@@ -245,6 +245,7 @@ _joinMeeting() async {
 | serverURL         | No        | meethour.io     | Specify your own hosted server. Must be a valid absolute URL of the format `<scheme>://<host>[/path]`, i.e. https://someHost.com. Defaults to Meet Hour's servers. |
 | userAvatarURL     | N/A       | none              | User's avatar URL. |
 | token             | N/A       | none              | JWT token used for authentication. |
+| pcode             | N/A       | none              | Dynamically pass Meeting Encrypted Password. Get Pcode via API |
 | featureFlag      | No        | see below         | Object of FeatureFlag class used to enable/disable features and set video resolution of Meet Hour SDK. |
 
 <a name="meetHourMeetingresponse"></a>
