@@ -219,6 +219,7 @@ const App = () => {
                     SHOW_MEET_HOUR_WATERMARK: false,
                     HIDE_DEEP_LINKING_LOGO: true,
                     MOBILE_APP_PROMO: false,
+                    ENABLE_DESKTOP_DEEPLINK:false,
                     ENABLE_MOBILE_BROWSER: true
                 }}
                 onApiReady = { externalApi => handleApiReady(externalApi) }

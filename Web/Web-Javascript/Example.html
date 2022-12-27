@@ -65,7 +65,7 @@
 
   <div id="loader" class="center"></div>
     <div id="conference" style="height: 100%;"></div>
-    <script src="https://api.meethour.io/libs/v2.4.1/external_api.min.js?APIKey="></script>
+    <script src="https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=f6282h82729080282928298"></script>
     <script>
         document.onreadystatechange = function () {
             if (document.readyState !== "complete") {
@@ -87,12 +87,13 @@
             parentNode: document.querySelector("#conference"),
             pcode: "",
             jwt: "",
-            apiKey: "",
+            apiKey: "", //Mandatory
             interfaceConfigOverwrite: {
                 applyMeetingSettings: true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings (You need to have either PRO or Developer Plan)
                 disablePrejoinHeader: true,
                 disablePrejoinFooter: true,                
                 SHOW_MEET_HOUR_WATERMARK: false,
+                ENABLE_DESKTOP_DEEPLINK: false,
                 HIDE_DEEP_LINKING_LOGO: true,
                 MOBILE_APP_PROMO: false,
                 ENABLE_MOBILE_BROWSER: true

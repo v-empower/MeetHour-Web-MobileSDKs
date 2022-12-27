@@ -25,7 +25,7 @@ You can also try Embed Meeting via below code. Change the Meeting URL in below <
         <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
     </head>
 <body>
-    <iframe allow="camera; microphone; display-capture; autoplay; clipboard-write" src="https://meethour.io/TestRoom#interfaceConfig.applyMeetingSettings=true&interfaceConfig.disablePrejoinHeader=true&interfaceConfig.disablePrejoinFooter=true&interfaceConfig.SHOW_MEET_HOUR_WATERMARK=false&interfaceConfig.HIDE_DEEP_LINKING_LOGO=true&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.ENABLE_MOBILE_BROWSER=true&appData.localStorageContent=null" name="mhConferenceFrame0" id="mhConferenceFrame0" allowfullscreen="true" style="height: 100%; width: 600px; border: 0px;"></iframe>
+    <iframe allow="camera; microphone; display-capture; autoplay; clipboard-write" src="https://meethour.io/TestRoom#interfaceConfig.applyMeetingSettings=true&interfaceConfig.disablePrejoinHeader=true&interfaceConfig.ENABLE_DESKTOP_DEEPLINK=false&interfaceConfig.disablePrejoinFooter=true&interfaceConfig.SHOW_MEET_HOUR_WATERMARK=false&interfaceConfig.HIDE_DEEP_LINKING_LOGO=true&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.ENABLE_MOBILE_BROWSER=true&appData.localStorageContent=null" name="mhConferenceFrame0" id="mhConferenceFrame0" allowfullscreen="true" style="height: 100%; width: 600px; border: 0px;"></iframe>
 </body>
 </html>
 ```
@@ -40,7 +40,11 @@ To add Meet Hour programmatically, please use our Javascript API library:
 
 ## API Documentation - https://docs.v-empower.com/docs/MeetHour-API/ 
 
-## Web SDK
+## Web Javascript SDK
+
+```
+        <script src="https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=f6282h82729080282928298"></script>
+```
 
 ### `api = new MeetHourExternalAPI(domain, options)`
 
@@ -67,7 +71,7 @@ Its constructor gets a number of options:
 
 
 ```Javascript Standard Example
-<script src='https://api.meethour.io/libs/v2.4.1/external_api.min.js'></script>
+<script src='https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=f6282h82729080282928298'></script>
 <div id="conference" style="height: 100%;"></div>
  <script>
         var domain = "meethour.io";
@@ -82,6 +86,7 @@ Its constructor gets a number of options:
                 disablePrejoinHeader: true,
                 disablePrejoinFooter: true,                
                 SHOW_MEET_HOUR_WATERMARK: false,
+                ENABLE_DESKTOP_DEEPLINK: false,
                 HIDE_DEEP_LINKING_LOGO: true,
                 MOBILE_APP_PROMO: false,
                 ENABLE_MOBILE_BROWSER: true
