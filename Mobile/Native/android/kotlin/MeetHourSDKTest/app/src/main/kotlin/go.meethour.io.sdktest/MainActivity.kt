@@ -44,8 +44,8 @@ class MainActivity : AppCompatActivity() {
         }
         val defaultOptions = MeetHourConferenceOptions.Builder()
                 .setServerURL(serverURL)
-                // When using JaaS, set the obtained JWT here
                 //.setToken("MyJWT")
+                //.setPcode("") // Dynamically pass Encrypted meeting password.
                 // Different features flags can be set
                 //.setFeatureFlag("toolbox.enabled", false)
                 //.setFeatureFlag("filmstrip.enabled", false)
