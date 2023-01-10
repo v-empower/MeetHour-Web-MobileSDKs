@@ -73,7 +73,7 @@ PODS:
   - fmt (6.2.1)
   - glog (0.3.5)
   - libevent (2.1.12)
-  - MeetHourSDK (4.2.1)
+  - MeetHourSDK (4.2.2)
   - OpenSSL-Universal (1.1.180)
   - RCT-Folly (2021.06.28.00-v2):
     - boost
@@ -274,7 +274,7 @@ PODS:
   - React-logger (0.66.4):
     - glog
   - react-native-meet-hour-sdk (3.0.16):
-    - MeetHourSDK (= 4.2.1)
+    - MeetHourSDK (= 4.2.2)
     - React-Core
   - React-perflogger (0.66.4)
   - React-RCTActionSheet (0.66.4):

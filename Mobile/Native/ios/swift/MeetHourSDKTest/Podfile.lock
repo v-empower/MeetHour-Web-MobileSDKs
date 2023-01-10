@@ -1,8 +1,8 @@
 PODS:
-  - MeetHourSDK (4.2.1)
+  - MeetHourSDK (4.2.2)
 
 DEPENDENCIES:
-  - MeetHourSDK (~> 4.2.1)
+  - MeetHourSDK (~> 4.2.2)
 
 SPEC REPOS:
   trunk:
