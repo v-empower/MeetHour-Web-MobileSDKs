@@ -5,7 +5,7 @@ Meet Hour Plugin for React Native. Supports Android & iOS platforms.
 
 Example Project is here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/reactnative/MeetHourSDKTest
 
-## Install (Latest version 3.0.14)
+## Install (Latest version 3.0.17)
 
 ```
   `npm install react-native-meet-hour-sdk --save` 
