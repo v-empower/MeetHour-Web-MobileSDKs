@@ -35,12 +35,12 @@ export default function Navbar() {
                   <div className="flex flex-shrink-0 items-center">
                     <img
                       className="block h-8 w-auto lg:hidden"
-                      src="https://scontent.fbbi1-1.fna.fbcdn.net/v/t39.30808-6/292596064_459441686187040_6708794882603708812_n.png?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=eSwo2VtWIMEAX8qzGXT&_nc_ht=scontent.fbbi1-1.fna&oh=00_AfA9Gg-r2NWBAri0vaksJqkJZS4wSWYy_sFJKej-P2OCdQ&oe=63D01FFB"
+                      src="https://meethour.io/images/logo.SVG"
                       alt="Your Company"
                     />
                     <img
                       className="hidden h-8 w-auto lg:block"
-                      src="https://scontent.fbbi1-1.fna.fbcdn.net/v/t39.30808-6/292596064_459441686187040_6708794882603708812_n.png?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=eSwo2VtWIMEAX8qzGXT&_nc_ht=scontent.fbbi1-1.fna&oh=00_AfA9Gg-r2NWBAri0vaksJqkJZS4wSWYy_sFJKej-P2OCdQ&oe=63D01FFB"
+                      src="https://meethour.io/images/logo.SVG"
                       alt="Your Company"
                     />
                   </div>
