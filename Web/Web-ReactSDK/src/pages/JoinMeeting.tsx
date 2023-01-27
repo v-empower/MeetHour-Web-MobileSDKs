@@ -19,7 +19,7 @@ function JoinMeeting() {
   const appContext = React.useContext(AppContext);
   const apiRef = React.useRef();
   const [meetingJwtToken, setMeetingJwtToken] = React.useState<string>();
-  const meetingIdString = localStorage.getItem("meetingIdString") || ""; // In String you can pass 'TestRoom' also.
+  const meetingId = localStorage.getItem("meetingId") || ""; // In String you can pass 'TestRoom' also.
   const renderSpinner = () => (
     <div
       style={{
@@ -107,7 +107,7 @@ function JoinMeeting() {
   const generateJwtToken = async (id: number) => {
     try {
       const body = {
-        meeting_id: meetingIdString,
+        meeting_id: meetingId,
         contact_id: id,
       };
       const response = await ApiServices.generateJwt(
@@ -122,15 +122,14 @@ function JoinMeeting() {
     }
   };
   const viewMeeting = async () => {
-    if (!localStorage.getItem("meetingIdString")) {
-      alert("Please schedule a meeting first");
-      window.location.pathname = "/schedule-meeting";
-    }
+    if (!localStorage.getItem("meetingId")) return;
     try {
       setIsLoading(true);
+      const accessToken = localStorage.getItem("accessToken") || "";
+      const id = localStorage.getItem("meetingId") || ""
       const response = await ApiServices.viewMeeting(
-        localStorage.getItem("accessToken") || "",
-        { meeting_id: meetingIdString }
+        accessToken,
+        { meeting_id: id }
       );
       const meetingBody = {
         organizer: response.organizer,
@@ -140,6 +139,10 @@ function JoinMeeting() {
       setMeetingAttendees(meetingBody);
     } catch (error) {
       appContext?.setIsError(true);
+      setTimeout(() => {
+        appContext?.setIsError(false);
+      }, 3000);
+      localStorage.removeItem("meetingId")
       console.log(error);
     } finally {
       setIsLoading(false);
@@ -151,7 +154,7 @@ function JoinMeeting() {
 
   return (
     <div>
-      {localStorage.getItem("meetingIdString") ? (
+      {localStorage.getItem("meetingId") ? (
         <div>
           {isLoading ? (
             <LottieComponent />
@@ -167,6 +170,7 @@ function JoinMeeting() {
                   </h1>
                   <div
                     onClick={() => {
+                      console.log(meetingAttendees.organizer);
                       generateJwtToken(meetingAttendees.organizer);
                     }}
                     key={meetingAttendees.organizer.id}
@@ -209,15 +213,26 @@ function JoinMeeting() {
                   ) : (
                     <></>
                   )}
+                  <button
+                    onClick={() => {
+                      window.localStorage.removeItem("meetingId");
+                      window.localStorage.removeItem("pCode");
+                      window.location.pathname = "/join-meeting";
+                    }}
+                    className="w-40 h-9 bg-slate-600 text-white rounded-md"
+                  >
+                    Reset
+                  </button>{" "}
+                  {/* Reset button will remove your current meeting id from local storage. */}
                 </div>
               ) : (
                 <div className="w-full">
                   <MeetHourMeeting
-                    roomName={meetingIdString}
+                    roomName={meetingId}
                     apiKey={API_KEY}
                     apiBaseURL={API_BASE_URL}
                     jwt={meetingJwtToken} // Mandatory for Moderator ( Generate from here ) - https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
-                    pcode={""} // Dynamically pass Encrypted Meeting Password as pcode. Get Pcode from API.
+                    pcode={localStorage.getItem("pCode") || ""} // Dynamically pass Encrypted Meeting Password as pcode. Get Pcode from API.
                     onReadyToClose={handleReadyToClose}
                     onApiReady={(externalApi) => handleApiReady(externalApi)}
                     getIFrameRef={handleMeetHourIFrameRef1}
@@ -239,7 +254,32 @@ function JoinMeeting() {
           )}
         </div>
       ) : (
-        <></>
+        <div className="w-full h-screen relative top-16">
+          <div className="grid gap-3 p-5">
+            <h1 className="text-slate-600 text-2xl">
+              Join a Meeting
+            </h1>
+            <input placeholder="Enter Meeting Id or link here."
+              className="w-64 h-10 border border-slate-400 focus:outline-none rounded-md pl-3"
+              type="text"
+              onChange={(event: any) => {
+                if(event.target.value.includes("https://")){
+                  const id = event.target.value.slice(20, 34)
+                  localStorage.setItem("meetingId", id);
+                  return
+                }
+                localStorage.setItem("meetingId", event.target.value);
+              }}
+            />
+            <button className="w-28 h-8 text-white font-semibold text-sm bg-green-600 rounded-md"
+              onClick={() => {
+                viewMeeting();
+              }}
+            >
+              Join Meeting
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );

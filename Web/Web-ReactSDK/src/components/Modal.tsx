@@ -1,19 +1,19 @@
 import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import ApiServices from "meet-hour-react-web-sdk";
 import { Link } from "react-router-dom";
 
 export default function Modal(props: any) {
-  const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
 
   return (
-    <Transition.Root show={open} as={Fragment}>
+    <Transition.Root show={props.open} as={Fragment}>
       <Dialog
         as="div"
         className="relative z-10"
         initialFocus={cancelButtonRef}
-        onClose={setOpen}
+        onClose={() => {
+          props.setOpen(false)
+        }}
       >
         <Transition.Child
           as={Fragment}

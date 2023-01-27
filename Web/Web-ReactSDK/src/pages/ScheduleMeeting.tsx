@@ -21,6 +21,7 @@ function timeConvert(time: any[]) {
 }
 
 function ScheduleMeeting() {
+  const [open, setOpen] = useState<boolean>(false)
   const [requestBody, setRequestBody] = useState<ScheduleMeetingType>({
     meeting_name: "",
     passcode: "",
@@ -36,7 +37,6 @@ function ScheduleMeeting() {
   });
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [popupFields, setPopupFields] = useState<any>({});
-  const [isScheduled, setIsScheduled] = useState<boolean>();
   const appContext = React.useContext(AppContext);
   const inputChangeHandler = (event: any) => {
     const { name, value } = event?.target;
@@ -74,15 +74,15 @@ function ScheduleMeeting() {
         requestBody
       );
       if (response.success) {
-        setIsScheduled(true);
+        setOpen(true);
       }
       setPopupFields({
         meeting_id: response.data.meeting_id,
         passcode: response.data.passcode,
         joinURL: response.data.joinURL,
       });
-      localStorage.setItem("meetingIdNumber", response.data.id);
-      localStorage.setItem("meetingIdString", response.data.meeting_id);
+      localStorage.setItem("meetingId", response.data.meeting_id);
+      localStorage.setItem("pCode", response.data.pcode)
     } catch (error) {
       console.log(error);
       appContext?.setIsError(true);
@@ -156,12 +156,11 @@ function ScheduleMeeting() {
         onSubmitHandler={onSubmitHandler}
         setRequestBody={setRequestBody}
         inputChangeHandler={inputChangeHandler}
-        isScheduled={isScheduled}
-        setIsScheduled={setIsScheduled}
+        setOpen={setOpen}
         setPopupFields={setPopupFields}
         requestBody={requestBody}
       />
-      {isScheduled ? <Modal popupFields={popupFields} /> : ""}
+      <Modal open={open} setOpen={setOpen} popupFields={popupFields} />
     </div>
   );
 }

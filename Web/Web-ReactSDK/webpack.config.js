@@ -5,11 +5,15 @@ const isProduction = process.env.NODE_ENV === 'production';
 const stylesHandler = 'style-loader';
 
 const config  = {
-  entry: './src/index.tsx',
+  entry: './src/apiServices.ts',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'main.js',
+    filename: 'meethour-apis.min.js',
     clean: true,
+    libraryTarget: 'umd',
+    library: 'ApiServices',
+    umdNamedDefine: true,
+    libraryExport: 'default'
   },
   resolve: {
     modules: ['node_modules'],
@@ -43,7 +47,7 @@ const config  = {
   },
   devServer: {
     historyApiFallback: true,
-},
+}
 };
 
 module.exports = () => {

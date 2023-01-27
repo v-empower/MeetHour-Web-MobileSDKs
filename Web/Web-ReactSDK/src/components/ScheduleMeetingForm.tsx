@@ -13,8 +13,7 @@ interface PropsType {
   isLoading: boolean;
   onSubmitHandler: () => void;
   inputChangeHandler: (value: any) => void;
-  isScheduled?: boolean;
-  setIsScheduled: (value: boolean) => void;
+  setOpen: (value: boolean) => void;
   popupFields: any;
   setPopupFields: (value: any) => void;
   requestBody: ScheduleMeetingType;
@@ -31,7 +30,7 @@ async function getUser(): Promise<Array<string>> {
   return [response.data.name, response.data.email];
 }
 const instantMeeting = async (
-  setIsScheduled: (value: boolean) => void,
+  setOpen: (value: boolean) => void,
   setPopupFields: (value: any) => void,
   setIsLoading: (value: boolean) => void,
   setIsInstant: (value: boolean) => void,
@@ -64,14 +63,14 @@ const instantMeeting = async (
       body
     );
     if (response.success) {
-      setIsScheduled!(true);
+      setOpen(true);
       setPopupFields({
         meeting_id: response.data.meeting_id,
         passcode: response.data.passcode,
         joinURL: response.data.joinURL,
       });
-      localStorage.setItem("meetingIdNumber", response.data.id);
-      localStorage.setItem("meetingIdString", response.data.meeting_id);
+      localStorage.setItem("meetingId", response.data.meeting_id);
+      localStorage.setItem("pCode", response.data.pcode)
     }
   } catch (error) {
     appContext.setIsError(true);
@@ -202,7 +201,7 @@ function ScheduleMeetingForm(props: PropsType) {
                 placeholder="Meeting Name"
               />
             </div>
-            <Timezone inputChangeHandler={props.inputChangeHandler} />
+            <Timezone requestBody={props.requestBody} setRequestBody={props.setRequestBody} inputChangeHandler={props.inputChangeHandler} />
             <Dropdown
               isModeratorType={false}
               contacts={contacts}
@@ -317,7 +316,7 @@ function ScheduleMeetingForm(props: PropsType) {
             <button
               onClick={() => {
                 instantMeeting(
-                  props.setIsScheduled,
+                  props.setOpen,
                   props.setPopupFields,
                   props.setIsLoading,
                   setIsInstant,
