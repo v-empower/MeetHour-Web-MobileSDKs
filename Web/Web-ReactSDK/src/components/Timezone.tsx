@@ -13,7 +13,7 @@ function Timezone({inputChangeHandler, requestBody, setRequestBody} : {inputChan
     useEffect(() => {
         getTimezone();
     }, [])
-    
+
   return (
     <div className='w-full h-10 rounded-md'>
       <select value={MomentTimezone.tz.guess()} className='w-full h-full rounded-md focus:outline-none bg-slate-50 border border-slate-300' name="timezone" onChange={(inputChangeHandler)}>
