@@ -1,4 +1,4 @@
-// Developer Credentials
+// Developer Credentials - Signup for Meet Hour Developer Plan (https://meethour.io)
 export const CLIENT_ID = '';
 export const CLIENT_SECRET = '';
 export const API_KEY = '';
