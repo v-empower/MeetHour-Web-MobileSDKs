@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 import ApiServices from 'meet-hour-react-web-sdk';
 import MomentTimezone from 'moment-timezone';

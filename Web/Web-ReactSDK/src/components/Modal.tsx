@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable max-len */
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useRef } from 'react';

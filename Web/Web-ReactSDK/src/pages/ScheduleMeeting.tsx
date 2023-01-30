@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable camelcase */
 import ApiServices, { ScheduleMeetingType, UserObjectType } from 'meet-hour-react-web-sdk';
 import React, { useState } from 'react';
@@ -12,15 +13,17 @@ import ScheduleMeetingForm from '../components/ScheduleMeetingForm';
  @returns {any[]}
  */
 function timeConvert(time: any[]) {
-    time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+    time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [ time ];
     if (time.length > 1) {
         time = time.slice(1);
         time[5] = Number(time[0]) < 12 ? ' AM' : ' PM';
         time[0] = Number(time[0]) % 12 || 12;
-        if(time[0]<10)
-        time[0] = '0' + Number(time[0]) % 12 || 12;
+        if (time[0] < 10) {
+            time[0] = `0${Number(time[0]) % 12}` || 12;
+        }
     }
-    console.log(time)
+    console.log(time);
+
     return time.join('');
 }
 
