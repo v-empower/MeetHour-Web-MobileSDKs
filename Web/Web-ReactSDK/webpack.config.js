@@ -5,48 +5,48 @@ const isProduction = process.env.NODE_ENV === "production";
 const stylesHandler = "style-loader";
 
 const config = {
-  entry: "./src/index.tsx",
-  output: {
-    path: path.resolve(__dirname, "./dist"),
-    filename: "main.js",
-    clean: true,
-    libraryTarget: "umd",
-    library: "ApiServices",
-    umdNamedDefine: true,
-    libraryExport: "default",
+  entry : "./src/index.tsx",
+  output : {
+    path : path.resolve(__dirname, "./dist"),
+    filename : "main.js",
+    clean : true,
+    libraryTarget : "umd",
+    library : "ApiServices",
+    umdNamedDefine : true,
+    libraryExport : "default",
   },
-  resolve: {
-    modules: ["node_modules"],
-    extensions: [".js", ".jsx", ".ts", ".tsx"],
+  resolve : {
+    modules : [ "node_modules" ],
+    extensions : [ ".js", ".jsx", ".ts", ".tsx" ],
   },
-  plugins: [
+  plugins : [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template : "index.html",
     }),
   ],
-  module: {
-    rules: [
+  module : {
+    rules : [
       {
-        test: /\.(js|jsx)$/i,
-        loader: "babel-loader",
+        test : /\.(js|jsx)$/i,
+        loader : "babel-loader",
       },
       {
-        test: /\.tsx?$/,
-        use: "ts-loader",
-        exclude: /node_modules/,
+        test : /\.tsx?$/,
+        use : "ts-loader",
+        exclude : /node_modules/,
       },
       {
-        test: /\.css$/i,
-        use: [stylesHandler, "css-loader", "postcss-loader"],
+        test : /\.css$/i,
+        use : [ stylesHandler, "css-loader", "postcss-loader" ],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: "asset",
+        test : /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type : "asset",
       },
     ],
   },
-  devServer: {
-    historyApiFallback: true,
+  devServer : {
+    historyApiFallback : true,
   },
 };
 
