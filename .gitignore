@@ -38,3 +38,4 @@ local.properties
 *.apk
 release
 *.hprof
+dist
