@@ -225,8 +225,10 @@ function ScheduleMeetingForm(props: PropsType) {
     }, []);
 
     return (
+
         <div className="flex min-h-full items-center justify-center lg:w-[40%] pb-6 px-4 sm:px-3 lg:px-4 ml-3">
             <div className="w-full max-w-sm space-y-8">
+            <form id="scheduleform">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
             Schedule a meeting
@@ -416,7 +418,7 @@ function ScheduleMeetingForm(props: PropsType) {
 
                     <div>
                         <button
-                            onClick={() => {
+                            onSubmit={() => {
                                 setIsInstant(false);
                                 props.onSubmitHandler();
                             }}
@@ -450,9 +452,9 @@ function ScheduleMeetingForm(props: PropsType) {
                         </button>
                     </div>
                 </div>
+                </form>
             </div>
-        </div>
-    );
+        </div>    );
 }
 
 

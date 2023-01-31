@@ -70,7 +70,7 @@ addModerator!(contact.id);
                         'block px-4 py-2 text-sm'
                                         )}
                                     >
-                                        {contact.first_name}
+                                        {contact.first_name} ({contact.email})
                                     </div>
                                 )}
                             </Menu.Item>
