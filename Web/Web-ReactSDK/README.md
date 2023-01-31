@@ -22,7 +22,6 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
     2. Android - https://bit.ly/2U239ll
     3. iOS - https://apple.co/3k8Rpbn
 
-
 ### NPM package (Latest version - 2.0.1)
 
 ```
