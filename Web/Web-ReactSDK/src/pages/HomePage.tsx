@@ -42,7 +42,7 @@ const HomePage = () => {
     return (
         <div className="relative top-16">
             <div className="text-3xl flex justify-center font-bold mt-5 text-sky-500">
-                <h1>Welcome to Meet Hour</h1>
+                <h1>Welcome to Meet Hour React Web SDK - Example</h1>
             </div>
             <Description isHomepage={isHomepage} />
             <div className="flex justify-center gap-1 mt-3">

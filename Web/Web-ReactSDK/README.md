@@ -1,4 +1,4 @@
-# meet-hour-react-web-sdk
+# Meet Hour React Web SDK - Example
 
 React SDK for Meet Hour - (Typescript | Javascript Support)
 
@@ -22,17 +22,10 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
     2. Android - https://bit.ly/2U239ll
     3. iOS - https://apple.co/3k8Rpbn
 
-# MeetHour SDK Implementation - Steps
-
-1. SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs
-2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
-
-## Install (Latest version - 2.0.1)
+### NPM package  (Latest version - 2.0.1)
 
 ```
-npm install meet-hour-react-web-sdk
-
-import ApiServices from "meet-hour-react-web-sdk";
+https://www.npmjs.com/package/meet-hour-react-web-sdk
 
 ```
 
@@ -44,14 +37,20 @@ import ApiServices from "meet-hour-react-web-sdk";
 4. On Home page Click on Get Access Token
 5. Then Try Schedule a Meeting & Join Meeting.
 
+## Run Program
+
+```
+cd Web/Web-ReactSDK
+
+npm install
+
+npm start
+
+```
+
 ![](screenshot.png)
 
 ### API End Points Supported
-
-Important points:
-=> Instead of '{version}', you to pass our latest version whenever you call the given functions. Currently we are using v1.1 Same version applies to the below calls.
-=> In the token section, you need to pass the received access token which is received when login api is hit, for making further api calls.
-=> You can make API calls by passing required properties only. But, to meet special requirements you can pass the rest properties, according to your need. For more details go to https://docs.v-empower.com/docs/MeetHour-API then click on APIS section to get all the information related to each api call.
 
 1. To Get Access Token Endpoint : => https://docs.v-empower.com/docs/MeetHour-API/a44a7d7669f91-user-login-get-access-token
 
@@ -441,6 +440,12 @@ Optional. Custom loading view while the IFrame is loading.
 ## Example
 
 Install and run the project from the sample SDK from here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/Web/Web-ReactSDK
+
+
+# MeetHour SDKs Examples & APIs
+
+1. SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs
+2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
 
 # Library & SDK
 

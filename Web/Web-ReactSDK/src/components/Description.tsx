@@ -83,7 +83,7 @@ export default function Description({ isHomepage }: { isHomepage?: boolean; }) {
                         <dt className='text-sm font-medium text-gray-500'>Step Three</dt>
                         <dd className='mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0'>
                             {isHomepage
-                                ? 'Copy your Client ID, Client Secret and Api Key. After copying, paste each copied text to the respective constant in the source code src/constants/index.tsx'
+                                ? 'Copy your Client ID, Client Secret, Api Key, Email/Username and Password (Meet Hour account). After copying, paste each copied text to the respective constant in the source code src/constants/index.tsx'
                                 : 'You can choose general options according to your requirements.'}
                         </dd>
                     </div>
