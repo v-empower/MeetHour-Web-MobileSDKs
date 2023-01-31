@@ -29,6 +29,14 @@ https://www.npmjs.com/package/meet-hour-react-web-sdk
 
 ```
 
+### Steps to Use Meet Hour React Web SDK Example
+
+1. Go to meethour.io and signup for Developer or Higher plan. Currently we offer 28 days free trial.
+2. Go to the dashboard and then click on developers menu.
+3. Copy your Client ID, Client Secret and Api Key. After copying, paste each copied text to the respective constant in the source code src/constants/index.tsx
+4. On Home page Click on Get Access Token
+5. Then Try Schedule a Meeting & Join Meeting.
+
 ## Run Program
 
 ```
@@ -39,14 +47,6 @@ npm install
 npm start
 
 ```
-
-### Steps to Use Meet Hour React Web SDK Example
-
-1. Go to meethour.io and signup for Developer or Higher plan. Currently we offer 28 days free trial.
-2. Go to the dashboard and then click on developers menu.
-3. Copy your Client ID, Client Secret and Api Key. After copying, paste each copied text to the respective constant in the source code src/constants/index.tsx
-4. On Home page Click on Get Access Token
-5. Then Try Schedule a Meeting & Join Meeting.
 
 ![](screenshot.png)
 
