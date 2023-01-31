@@ -22,7 +22,8 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
     2. Android - https://bit.ly/2U239ll
     3. iOS - https://apple.co/3k8Rpbn
 
-### NPM package  (Latest version - 2.0.1)
+
+### NPM package (Latest version - 2.0.1)
 
 ```
 https://www.npmjs.com/package/meet-hour-react-web-sdk
@@ -440,7 +441,6 @@ Optional. Custom loading view while the IFrame is loading.
 ## Example
 
 Install and run the project from the sample SDK from here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/Web/Web-ReactSDK
-
 
 # MeetHour SDKs Examples & APIs
 
