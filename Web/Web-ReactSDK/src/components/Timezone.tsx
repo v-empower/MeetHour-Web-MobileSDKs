@@ -13,7 +13,6 @@ function Timezone({ inputChangeHandler, requestBody, setRequestBody }: { inputCh
     const [ timezoneList, setTimezoneList ] = useState<[]>();
     const getTimezone = async () => {
         const response = await ApiServices.timezone(localStorage.getItem('accessToken') || '');
-
         setTimezoneList(response.timezones);
         setRequestBody({ ...requestBody,
             timezone: MomentTimezone.tz.guess() });
@@ -26,7 +25,7 @@ function Timezone({ inputChangeHandler, requestBody, setRequestBody }: { inputCh
 
     return (
         <div className='w-full h-10 rounded-md'>
-            <select value={MomentTimezone.tz.guess()} className='w-full h-full rounded-md focus:outline-none bg-slate-50 border border-slate-300' name="timezone" onChange={(inputChangeHandler)}>
+            <select value={requestBody.timezone} className='w-full h-full rounded-md focus:outline-none bg-slate-50 border border-slate-300' name="timezone" onChange={(inputChangeHandler)}>
                 {timezoneList?.map((timezone: any) =>
                     <option key={timezone.value} className='w-96' value={timezone.value}>{timezone.name}</option>
                 )}

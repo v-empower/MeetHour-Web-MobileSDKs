@@ -106,7 +106,7 @@ addParticipant: (value: UserObjectType) => void;
     });
 
     return (
-        <form className="grid gap-2 mt-2">
+        <div className="grid gap-2 mt-2">
             <div>
                 <label className="sr-only">First Name</label>
                 <input
@@ -120,7 +120,6 @@ addParticipant: (value: UserObjectType) => void;
                         setUserContact(body);
                     }}
                     type="text"
-                    required
                     className="appearance-none rounded-none relative block
                 w-full px-3 py-2 border border-gray-300
                 placeholder-gray-500 text-gray-900 rounded-b-md
@@ -142,7 +141,6 @@ addParticipant: (value: UserObjectType) => void;
                         setUserContact(body);
                     }}
                     type="text"
-                    required
                     className="appearance-none rounded-none relative block
                 w-full px-3 py-2 border border-gray-300
                 placeholder-gray-500 text-gray-900 rounded-b-md
@@ -164,7 +162,6 @@ addParticipant: (value: UserObjectType) => void;
                         setUserContact(body);
                     }}
                     type="email"
-                    required
                     className="appearance-none rounded-none relative block
                 w-full px-3 py-2 border border-gray-300
                 placeholder-gray-500 text-gray-900 rounded-b-md
@@ -182,7 +179,7 @@ addParticipant: (value: UserObjectType) => void;
             >
       Add
             </button>
-        </form>
+        </div>
     );
 };
 
@@ -228,7 +225,11 @@ function ScheduleMeetingForm(props: PropsType) {
 
         <div className="flex min-h-full items-center justify-center lg:w-[40%] pb-6 px-4 sm:px-3 lg:px-4 ml-3">
             <div className="w-full max-w-sm space-y-8">
-            <form id="scheduleform">
+            <form onSubmit={(event) => {
+                            event.preventDefault()
+                            setIsInstant(false);
+                                props.onSubmitHandler();
+                        }} id="scheduleform">
                 <div>
                     <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
             Schedule a meeting
@@ -418,10 +419,7 @@ function ScheduleMeetingForm(props: PropsType) {
 
                     <div>
                         <button
-                            onSubmit={() => {
-                                setIsInstant(false);
-                                props.onSubmitHandler();
-                            }}
+                        type='submit'
                             className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         >
                             <span className="absolute inset-y-0 left-0 flex items-center pl-3"></span>
@@ -430,7 +428,10 @@ function ScheduleMeetingForm(props: PropsType) {
                                 : 'Schedule a meeting'
                             }
                         </button>
-                        <div className="flex justify-center">
+                    </div>
+                </div>
+                </form>
+                <div className="flex justify-center">
                             <h1 className="my-3">Or</h1>
                         </div>
                         <button
@@ -450,9 +451,6 @@ function ScheduleMeetingForm(props: PropsType) {
                                 : 'Start Instant Meeting'
                             }
                         </button>
-                    </div>
-                </div>
-                </form>
             </div>
         </div>    );
 }

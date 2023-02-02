@@ -1,17 +1,93 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8" />
-    <title>Meet Hour React Web SDK - Example Demo</title>
+    <title>Meet Hour Javascript Example (HomePage)</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
     <link href="https://portal.meethour.io/dist/images/favicon.png" rel="shortcut icon" />
+    <link href="css/style.css" rel="stylesheet">
     <script src="https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=f6282h82729080282928298"></script>
-    <script defer="defer" src="meethour-apis.min.js"></script>
+    <script src="js/meethour-apis.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 </head>
 
 <body>
-    <div id="root"></div>
+    <div>
+        <div id="navbar-home">
+        </div>
+        <div class="relative top-16">
+            <div class="text-3xl flex justify-center font-bold mt-5 text-sky-500">
+                <h1>Welcome to Meet Hour</h1>
+            </div>
+            <div class="md:mx-40 mx-5 overflow-hidden bg-white shadow sm:rounded-lg">
+                <div class="px-4 py-5 sm:px-6">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Steps to Authorize Meet Hour Developer
+                        account and get access token.</h3>
+                    <p class="mt-1 text-sm text-gray-500">Steps given below - </p>
+                </div>
+                <div class="border-t border-gray-200">
+                    <dl id="steps">
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Step One</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Go to <a target="_blank"
+                                    class="text-blue-500" href="https://meethour.io">meethour.io</a> and signup for
+                                Developer or Higher plan. Currently we offer 28 days free trial.</dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Step Two</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Go to the <a target="_blank"
+                                    class="text-blue-500" href="https://portal.meethour.io">dashboard</a> and then click
+                                on <a class="text-blue-500" target="_blank"
+                                    href="https://portal.meethour.io/customer/developers">developers</a> menu.</dd>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Step Three</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Copy your Client ID, Client
+                                Secret and Api Key. After copying, paste each copied text to the respective constant in
+                                the source code src/constants/index.tsx</dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Step Four</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">After completing all the steps
+                                given above, now click on Get Access Token given below.</dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">Step Five</dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">As you click, your access token
+                                will be received and stored it in brower's localstorage. The received access token is
+                                then used for making Meet Hour rest api calls.</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            <div class="flex justify-center gap-1 mt-3">
+                <button id="getaccesstoken"
+                    class="bg-sky-600 flex justify-center items-center text-white rounded-md h-9 w-40">Get Access
+                    Token</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $("#navbar-home").append(navbar)
+        })
+        $(document).ready(function () {
+            $("#getaccesstoken").click(async function () {
+                await getaccessToken();
+                window.location.pathname = "/"
+            });
+            if (localStorage.getItem("accessToken")) {
+                $("#steps").append(`<div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"><dt class="text-sm font-medium text-gray-500">Step Six</dt><dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Token successfully got generated. Now you can schedule a meeting. <a class="text-blue-500 underline" href='schedule-meeting.html'>Schedule a Meeting</a></dd></div>`);
+            }
+
+        });
+    </script>
 
 </body>
 
