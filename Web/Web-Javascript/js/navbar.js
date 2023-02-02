@@ -34,5 +34,5 @@ const navbar = () => {
             </div>
         </div>
     </div>
-</nav>`
-}
+</nav>`;
+};
