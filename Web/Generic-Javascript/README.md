@@ -1,4 +1,4 @@
-# MeetHour SDK Implementation - Steps
+# [MeetHour - Generic Javascript SDK]
 
 1. SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs
 2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
