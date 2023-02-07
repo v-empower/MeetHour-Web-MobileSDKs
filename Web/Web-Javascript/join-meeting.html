@@ -11,73 +11,58 @@
         <link href="css/style.css" rel="stylesheet">
         <script src="https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=f6282h82729080282928298"></script>
         <script src="js/navbar.js"></script>
+        <link href="css/loader.css" rel="stylesheet">
         <script src="js/meethour-apis.min.js"></script>
         <script src="js/joinMeeting.js"></script>
+        <script type="text/javascript" src="js/constants.js"></script>
+        <script src=`https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=${API_KEY}`></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     </head>
 </head>
 
 <body>
     <div id="navbar"></div>
-    <div>
+    <div id="moderator-selection-parent">
         <div class=" relative top-16 h-screen w-screen flex justify-center">
-            <div id="moderator-selection" class=" rounded-md opacity-100 h-auto p-5 w-96 bg-white">
+            <div id="error"></div>
+            <div id="moderator-selection" class="rounded-md opacity-100 h-auto p-5 w-96 bg-white">
                 <div class="flex justify-center w-full">
-                    <div class="w-11 h-11">
-                        <div><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                viewBox="0 0 500 500" width="500" height="500" preserveAspectRatio="xMidYMid meet"
-                                style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;">
-                                <defs>
-                                    <clipPath id="__lottie_element_18">
-                                        <rect width="500" height="500" x="0" y="0"></rect>
-                                    </clipPath>
-                                </defs>
-                                <g clip-path="url(#__lottie_element_18)">
-                                    <g transform="matrix(0.5,0,0,0.5,250,250)" opacity="0.3" style="display: block;">
-                                        <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                                            <path stroke-linecap="butt" stroke-linejoin="miter" fill-opacity="0"
-                                                stroke-miterlimit="4" stroke="rgb(66,63,184)" stroke-opacity="1"
-                                                stroke-width="50"
-                                                d=" M0,-150 C82.78500366210938,-150 150,-82.78500366210938 150,0 C150,82.78500366210938 82.78500366210938,150 0,150 C-82.78500366210938,150 -150,82.78500366210938 -150,0 C-150,-82.78500366210938 -82.78500366210938,-150 0,-150z">
-                                            </path>
-                                        </g>
-                                    </g>
-                                    <g transform="matrix(0.0011079340474680066,-0.4999987781047821,0.4999987781047821,0.0011079340474680066,250,250)"
-                                        opacity="1" style="display: block;">
-                                        <g opacity="1" transform="matrix(1,0,0,1,0,0)">
-                                            <path stroke-linecap="round" stroke-linejoin="miter" fill-opacity="0"
-                                                stroke-miterlimit="4" stroke="rgb(66,63,184)" stroke-opacity="1"
-                                                stroke-width="50"
-                                                d=" M-146.85000610351562,-30.698999404907227 C-133.9980010986328,-92.38800048828125 -83.2020034790039,-140.2310028076172 -20.017000198364258,-148.67300415039062">
-                                            </path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg></div>
-                    </div>
                 </div>
                 <h1 class="text-xl font-semibold ">Whom would you like to join as?</h1>
-                <div
-                    class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
-                    <h1>Zeeshan Ali</h1>(Organizer / Account Owner)
-                </div>
-                <button class="w-40 h-9 bg-slate-600 text-white rounded-md">Reset</button>
+                <div id="loader" class="flex justify-center"></div>
             </div>
         </div>
     </div>
-    <div class="grid gap-3 p-5">
-        <h1 class="text-slate-600 text-2xl">Join a Meeting</h1><input placeholder="Enter Meeting Id or link here."
-            class="w-64 h-10 border border-slate-400 focus:outline-none rounded-md pl-3" type="text"><button
-            class="w-28 h-8 text-white font-semibold text-sm bg-green-600 rounded-md">Join Meeting</button>
+    <div id="meeting-id-input" class="grid gap-3 p-5 relative top-16">
+        <h1 class="text-slate-600 text-2xl">Join a Meeting</h1><input id="meeting-id-input-field" placeholder="Enter Meeting Id or link here."
+            class="w-64 h-10 border border-slate-400 focus:outline-none rounded-md pl-3" type="text"><a id="meeting-id-input-button-anchor"><button id="meeting-id-input-button"
+            class="w-28 h-8 text-white font-semibold text-sm bg-green-600 rounded-md">Join Meeting</button></a>
     </div>
-    <div class="relative top-16 w-screen h-screen"><iframe
-            allow="camera; microphone; display-capture; autoplay; clipboard-write"
-            src="https://meethour.io/TestRoom#interfaceConfig.applyMeetingSettings=true&interfaceConfig.disablePrejoinHeader=true&interfaceConfig.ENABLE_DESKTOP_DEEPLINK=false&interfaceConfig.disablePrejoinFooter=true&interfaceConfig.SHOW_MEET_HOUR_WATERMARK=false&interfaceConfig.HIDE_DEEP_LINKING_LOGO=true&interfaceConfig.MOBILE_APP_PROMO=false&interfaceConfig.ENABLE_MOBILE_BROWSER=true&appData.localStorageContent=null"
-            name="mhConferenceFrame0" id="mhConferenceFrame0" allowfullscreen="true"
-            style="height: 100%; width: 100%; border: 0px;"></iframe></div>
+    <div class="relative top-16 h-screen" id="conference-parent"></div>
     <script type="text/javascript" language="javascript">
+        if(!localStorage.getItem("accessToken")){
+            alert("First generate the access token and then try to join a meeting.")
+            window.location.href = "index.html"
+        }
+        if(window.location.search?.split("&")[0]?.split("?")[1]?.split("=")[1]){
+            document.querySelector("#meeting-id-input").remove()
+        }
         $(document).ready(function () {
             $("#navbar").append(navbar)
+        })
+        $(document).ready(function () {
+            viewMeeting()
+        })
+        $(document).ready(function() {
+            $("#meeting-id-input-field").change((event) => {
+            const meetingIdInputButton = document.querySelector("#meeting-id-input-button-anchor");
+            if (event.target.value.includes(`https:/`)) {
+                const id = event.target.value.slice(20, 34);
+                meetingIdInputButton.setAttribute("href", `join-meeting.html?meeting_id=${id}`)
+                return;
+            }
+            meetingIdInputButton.setAttribute("href", `join-meeting.html?meeting_id=${event.target.value}`)
+        })
         })
     </script>
 </body>

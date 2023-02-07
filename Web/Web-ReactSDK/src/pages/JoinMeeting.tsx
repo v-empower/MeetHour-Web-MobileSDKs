@@ -111,6 +111,10 @@ function JoinMeeting() {
     };
 
     React.useEffect(() => {
+        if(!localStorage.getItem("accessToken")){
+            alert("First generate the access token, then try to join a meeting")
+            window.location.pathname = "/"
+        }
         viewMeeting();
     }, []);
 
