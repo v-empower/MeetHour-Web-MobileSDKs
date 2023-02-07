@@ -43,8 +43,9 @@ Note: Pcode is Encrypted Meeting password. Get it from APIs.
 # Library & SDK
 1. Android Maven - https://repo.meethour.io/maven/releases/
 2. iOS Cocoapods - https://cocoapods.org/pods/MeetHourSDK
-3. React Native NPM - https://www.npmjs.com/package/react-native-meet-hour-sdk
-4. Flutter Pub Dev - https://pub.dev/packages/meet_hour
+3. React Web NPM - https://www.npmjs.com/package/meet-hour-react-web-sdk
+4. React Native NPM - https://www.npmjs.com/package/react-native-meet-hour-sdk
+5. Flutter Pub Dev - https://pub.dev/packages/meet_hour
 
 For any issues or queries raise a issue in Github or send us an email to hello@meethour.io or have Live Chat with our technical team at - https://bit.ly/35fVHZO
 
