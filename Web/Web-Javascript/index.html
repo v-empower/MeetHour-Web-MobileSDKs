@@ -98,12 +98,13 @@
                 };
                 try {
                     const response = await ApiServices.login(loginBody);
-                    localStorage.setItem("accessToken", response?.access_token);
                     if(response === undefined){
                         throw response.data.message
                     }
-                    else
+                    else{
+                        localStorage.setItem("accessToken", response?.access_token);
                     window.location.reload()
+                    }
                 } catch (error) {
                     const displayError = document.createElement("div")
                     displayError.setAttribute("class", "flex fixed top-20 justify-center items-center text-lg font-medium w-96 rounded-md h-16 border border-red-600 bg-red-50 text-red-600")
@@ -120,7 +121,7 @@
                     document.querySelector(".loader").remove()
                 }
             });
-            if (localStorage.getItem("accessToken") !== "undefined") {
+            if (localStorage.getItem("accessToken")) {
                 $("#steps").append(`<div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"><dt class="text-sm font-medium text-gray-500">Step Six</dt><dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Token successfully got generated. Now you can schedule a meeting. <a class="text-blue-500 underline" href='schedule-meeting.html'>Schedule a Meeting</a></dd></div>`);
             }
 
