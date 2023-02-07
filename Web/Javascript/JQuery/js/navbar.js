@@ -11,7 +11,7 @@ const navbar = () => {
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
                     </svg></button></div>
-            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"><a href="/">
+            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"><a href="index.html">
                     <div class="flex flex-shrink-0 items-center"><img class="block h-8 w-auto lg:hidden"
                             src="https://meethour.io/images/logo.SVG" alt="Your Company"><img
                             class="hidden h-8 w-auto lg:block" src="https://meethour.io/images/logo.SVG"

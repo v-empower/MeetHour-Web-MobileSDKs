@@ -8,7 +8,7 @@ const generateJwtToken = async (id) => {
       localStorage.getItem("accessToken") || "",
       body
     );
-    if(response){
+    if(response === null){
       throw "error"
   }
     const moderatorSelection = document.querySelector("#moderator-selection-parent");
@@ -76,7 +76,7 @@ const viewMeeting = async () => {
     const response = await ApiServices.viewMeeting(accessToken, {
       meeting_id: id,
     });
-    if(response){
+    if(response === null){
       throw "error"
   }
     localStorage.setItem("pCode", response.meeting.pcode)

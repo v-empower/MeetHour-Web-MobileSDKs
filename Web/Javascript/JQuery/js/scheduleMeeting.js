@@ -14,11 +14,13 @@ async function getUser() {
         localStorage.getItem("accessToken") || "",
         body
       );
-  console.log(response, "response")
-      if (response.success) {
-        return
-      }
+      console.log(response)
+      if (response === null) {
         throw "error"
+      }
+      else{
+        return response
+      }
     } catch (error) {
       const displayError = document.createElement("div")
                     displayError.setAttribute("class", "flex fixed top-20 justify-center items-center text-lg font-medium w-96 rounded-md h-16 border border-red-600 bg-red-50 text-red-600")
@@ -200,7 +202,7 @@ async function getUser() {
   }
   const loader = document.createElement("div")
                 loader.setAttribute("class", "loader")
-                document.querySelector("#instant-meeting-loader").appendChild(loader)
+                document.querySelector("#manual-meeting-loader").appendChild(loader)
     try {
       const response = await ApiServices.scheduleMeeting(
         localStorage.getItem("accessToken") || "",
