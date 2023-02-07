@@ -65,7 +65,7 @@
 
   <div id="loader" class="center"></div>
     <div id="conference" style="height: 100%;"></div>
-    <script src="https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=f6282h82729080282928298"></script>
+    <script src="https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey="></script>
     <script>
         document.onreadystatechange = function () {
             if (document.readyState !== "complete") {
@@ -85,7 +85,7 @@
             // width: 700,
             // height: 600,
             parentNode: document.querySelector("#conference"),
-            pcode: "",
+            pcode: "5b40602cfea7708895781a8cad71be5b",
             jwt: "",
             apiKey: "", //Mandatory
             interfaceConfigOverwrite: {
@@ -103,29 +103,11 @@
         // Initialization of MeetHour External API
         var api = new MeetHourExternalAPI(domain, options);
 
-        // Passing room password dynamically.
-        var pass = '12345';
-
-        setTimeout(() => {
-            api.addEventListener('passwordRequired', () => {
-                api.executeCommand('password', pass);
-            });
-
-        }, 200);
-
         // To close the window once hangup is done
         api.addEventListener("readyToClose", () => {
             this.window.close();
         });
 
-                // To close the window once hangup is done
-        api.addEventListener("beforeunload", () => {
-            if (confirm("Conference in Progress. Want to exit?")) {
-                this.window.close();
-            } else {
-                // Do Nothing
-            }
-        });
     </script>
 </body>
 

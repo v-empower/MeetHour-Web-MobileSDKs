@@ -1,4 +1,4 @@
-# [Meet Hour - 100% free video conference solution](https://meethour.io)
+# [Meet Hour - Examples]
 Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc.
 
 Note: Pcode is Encrypted Meeting password. Get it from APIs.
@@ -23,14 +23,15 @@ Note: Pcode is Encrypted Meeting password. Get it from APIs.
 
     Code consist of Meet Hour Web & Mobile SDKs with an example to join the conference from smart phone via
 
-    1. Web (Javascript)
-    2. Web (React SDK)
-    3. Mobile - Native Android (Java)
-    4. Mobile - Native Android (Kotlin)
-    5. Mobile - Native iOS (Objc)
-    6. Mobile - Native iOS (Swift)
-    7. Mobile - React Native
-    8. Mobile - Flutter
+    1. Web (Generic Javascript)
+    2. Web (Jquery Example)
+    3. Web (React Example)
+    4. Mobile - Native Android (Java Example)
+    5. Mobile - Native Android (Kotlin Example)
+    6. Mobile - Native iOS (Objc Example)
+    7. Mobile - Native iOS (Swift Example)
+    8. Mobile - React Native Example
+    9. Mobile - Flutter Example
 
 
 # MeetHour SDK Implementation - Steps
@@ -42,8 +43,9 @@ Note: Pcode is Encrypted Meeting password. Get it from APIs.
 # Library & SDK
 1. Android Maven - https://repo.meethour.io/maven/releases/
 2. iOS Cocoapods - https://cocoapods.org/pods/MeetHourSDK
-3. React Native NPM - https://www.npmjs.com/package/react-native-meet-hour-sdk
-4. Flutter Pub Dev - https://pub.dev/packages/meet_hour
+3. React Web NPM - https://www.npmjs.com/package/meet-hour-react-web-sdk
+4. React Native NPM - https://www.npmjs.com/package/react-native-meet-hour-sdk
+5. Flutter Pub Dev - https://pub.dev/packages/meet_hour
 
 For any issues or queries raise a issue in Github or send us an email to hello@meethour.io or have Live Chat with our technical team at - https://bit.ly/35fVHZO
 

@@ -1,4 +1,4 @@
-# MeetHour SDK Implementation - Steps
+# [MeetHour - Generic Javascript SDK]
 
 1. SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs
 2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
@@ -71,7 +71,7 @@ Its constructor gets a number of options:
 
 
 ```Javascript Standard Example
-<script src='https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=f6282h82729080282928298'></script>
+<script src='https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=<APIKEY>'></script>
 <div id="conference" style="height: 100%;"></div>
  <script>
         var domain = "meethour.io";
@@ -80,7 +80,7 @@ Its constructor gets a number of options:
             parentNode: document.querySelector("#conference"),
             jwt: "",
             apiKey: "",
-            pcode: "",
+            pcode: "5b40602cfea7708895781a8cad71be5b",
             interfaceConfigOverwrite: {
                 applyMeetingSettings: true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings
                 disablePrejoinHeader: true,
@@ -96,15 +96,6 @@ Its constructor gets a number of options:
         // Initialization of MeetHour External API
         var api = new MeetHourExternalAPI(domain, options);
 
-        // Passing room password dynamically.
-        var pass = '12345';
-
-        setTimeout(() => {
-            api.addEventListener('passwordRequired', () => {
-                api.executeCommand('password', pass);
-            });
-
-        }, 200);
  </script>
 ```
 

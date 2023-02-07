@@ -16,13 +16,12 @@ const loginBody = {
 
 const HomePage = () => {
     const appContext = React.useContext(AppContext);
-    const [ isHomepage, setIsHomepage ] = React.useState<boolean>(false);
+    const [ isHomepage, setIsHomepage ] = React.useState<boolean>(true);
     const [ isLoading, setIsLoading ] = React.useState<boolean>(false);
     const getAccessToken = async () => {
         setIsLoading(true);
         try {
             const response = await ApiServices.login(loginBody);
-
             localStorage.setItem('accessToken', response.access_token);
         } catch (error) {
             appContext?.setIsError(true);
@@ -34,10 +33,6 @@ const HomePage = () => {
             setIsLoading(false);
         }
     };
-
-    React.useEffect(() => {
-        setIsHomepage(true);
-    }, []);
 
     return (
         <div className="relative top-16">
