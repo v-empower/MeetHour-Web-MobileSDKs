@@ -23,14 +23,15 @@ Note: Pcode is Encrypted Meeting password. Get it from APIs.
 
     Code consist of Meet Hour Web & Mobile SDKs with an example to join the conference from smart phone via
 
-    1. Web (Javascript)
-    2. Web (React SDK)
-    3. Mobile - Native Android (Java)
-    4. Mobile - Native Android (Kotlin)
-    5. Mobile - Native iOS (Objc)
-    6. Mobile - Native iOS (Swift)
-    7. Mobile - React Native
-    8. Mobile - Flutter
+    1. Web (Generic Javascript)
+    2. Web (Jquery Example)
+    3. Web (React Example)
+    4. Mobile - Native Android (Java Example)
+    5. Mobile - Native Android (Kotlin Example)
+    6. Mobile - Native iOS (Objc Example)
+    7. Mobile - Native iOS (Swift Example)
+    8. Mobile - React Native Example
+    9. Mobile - Flutter Example
 
 
 # MeetHour SDK Implementation - Steps
