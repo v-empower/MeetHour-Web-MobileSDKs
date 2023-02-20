@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   meetHourViewContainer: {
-    flex: 1,
+    flex: 1
   },
 });
 

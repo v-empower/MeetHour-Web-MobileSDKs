@@ -10,6 +10,7 @@ import ScheduleMeeting from './pages/ScheduleMeeting';
 interface AppContextType {
   isError: boolean;
   setIsError: (value: boolean) => void;
+  setErrorMessage: (value: string) => void;
 }
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 
@@ -18,17 +19,19 @@ export const AppContext = createContext<AppContextType | undefined>(undefined);
  */
 function App() {
     const [ isError, setIsError ] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("")
 
     return (
         <AppContext.Provider
             value={{
                 isError,
-                setIsError
+                setIsError,
+                setErrorMessage
             }}
         >
             <div>
                 <Navbar />
-                {isError ? <ErrorComponent /> : <></>}
+                {isError ? <ErrorComponent errorMessage={errorMessage}/> : <></>}
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/schedule-meeting' element={<ScheduleMeeting />} />

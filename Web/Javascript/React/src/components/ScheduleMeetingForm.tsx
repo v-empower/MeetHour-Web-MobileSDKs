@@ -48,6 +48,7 @@ const instantMeeting = async (
         appContext: any
 // eslint-disable-next-line max-params
 ) => {
+    let response;
     try {
         setIsInstant(true);
         setIsLoading(true);
@@ -71,7 +72,7 @@ const instantMeeting = async (
             options: [ 'ALLOW_GUEST', 'JOIN_ANYTIME' ],
             hostusers: [ host ]
         };
-        const response = await ApiServices.scheduleMeeting(
+        response = await ApiServices.scheduleMeeting(
       localStorage.getItem('accessToken') || '',
       body
         );
@@ -88,6 +89,7 @@ const instantMeeting = async (
         }
     } catch (error) {
         appContext.setIsError(true);
+        appContext.setErrorMessage(response.message)
         console.log(error);
     } finally {
         setIsLoading(false);
@@ -200,17 +202,17 @@ function ScheduleMeetingForm(props: PropsType) {
             page: 0,
             exclude_hosts: 0
         };
-
+        let response;
         try {
-            const response = await ApiServices.contactsList(
+            response = await ApiServices.contactsList(
         localStorage.getItem('accessToken') || '',
         body
             );
-
             setContacts(response.contacts);
         } catch (error) {
             console.log(error);
             appContext?.setIsError(true);
+            appContext?.setErrorMessage(response.message)
             setTimeout(() => {
                 appContext?.setIsError(false);
             }, 3000);

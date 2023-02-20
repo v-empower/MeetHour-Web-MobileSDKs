@@ -16,7 +16,6 @@ function Timezone({ inputChangeHandler, requestBody, setRequestBody }: { inputCh
         setTimezoneList(response.timezones);
         setRequestBody({ ...requestBody,
             timezone: MomentTimezone.tz.guess() });
-
     };
 
     useEffect(() => {

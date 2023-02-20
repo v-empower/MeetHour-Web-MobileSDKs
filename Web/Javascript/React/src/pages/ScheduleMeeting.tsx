@@ -89,9 +89,10 @@ function ScheduleMeeting() {
             [name]: value });
     };
     const onSubmitHandler = async () => {
+        let response;
         try {
             setIsLoading(true);
-            const response = await ApiServices.scheduleMeeting(
+            response = await ApiServices.scheduleMeeting(
         localStorage.getItem('accessToken') || '',
         requestBody
             );
@@ -109,6 +110,7 @@ function ScheduleMeeting() {
         } catch (error) {
             console.log(error);
             appContext?.setIsError(true);
+            appContext?.setErrorMessage(response.message)
             setTimeout(() => {
                 appContext?.setIsError(false);
             }, 6000);
