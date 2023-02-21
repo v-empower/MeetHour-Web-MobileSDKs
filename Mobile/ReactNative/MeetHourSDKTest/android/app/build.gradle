@@ -219,7 +219,7 @@ dependencies {
                 // Un-comment any packages below that you have added to your project to prevent `duplicate_classes` errors
         //     exclude group: 'com.facebook.react',module:'react-native-locale-detector'
         //     exclude group: 'com.facebook.react',module:'react-native-vector-icons'
-        //     exclude group: 'com.facebook.react',module:'react-native-async-storage'
+        exclude group: 'com.facebook.react',module:'react-native-async-storage'
         //     exclude group: 'com.facebook.react',module:'react-native-community_netinfo'
         //     exclude group: 'com.facebook.react',module:'react-native-svg'
         //     exclude group: 'com.facebook.react', module:'react-native-gesture-handler'
