@@ -106,7 +106,6 @@ function ScheduleMeeting() {
                 joinURL: response.data.joinURL
             });
             localStorage.setItem('meetingId', response.data.meeting_id);
-            localStorage.setItem('pCode', response.data.pcode);
         } catch (error) {
             console.log(error);
             appContext?.setIsError(true);

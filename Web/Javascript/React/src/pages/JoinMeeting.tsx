@@ -99,7 +99,7 @@ function JoinMeeting() {
         hosts: response.meeting.hosts,
         attendees: response.meeting.meeting_attendees,
       };
-
+      localStorage.setItem("pCode", response?.meeting?.pcode);
       setMeetingAttendees(meetingBody);
     } catch (error) {
       appContext?.setIsError(true);
@@ -149,7 +149,7 @@ function JoinMeeting() {
                     <h1>{meetingAttendees.organizer.name}</h1>
                     (Organizer / Account Owner)
                   </div>
-                  {meetingAttendees.hosts.map((host: any) => (
+                  {meetingAttendees?.hosts?.map((host: any) => (
                     <div
                       onClick={() => {
                         generateJwtToken(host.id);
