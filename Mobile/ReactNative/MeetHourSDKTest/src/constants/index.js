@@ -10,6 +10,6 @@ export const PASSWORD = '';
 
 // API Constants
 
-export const CONFERENCE_URL = 'meethour.io';
 export const API_BASE_URL = 'api.meethour.io';
-export const API_RELEASE = 'v2.4.6';
+export const API_VERSION = 'v1.1';
+export const API_RELEASE = 'v2.4.5';

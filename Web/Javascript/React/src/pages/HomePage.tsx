@@ -20,8 +20,9 @@ const HomePage = () => {
     const [ isLoading, setIsLoading ] = React.useState<boolean>(false);
     const getAccessToken = async () => {
         setIsLoading(true);
+        let response;
         try {
-            const response = await ApiServices.login(loginBody);
+            response = await ApiServices.login(loginBody);
             localStorage.setItem('accessToken', response.access_token);
         } catch (error) {
             appContext?.setIsError(true);

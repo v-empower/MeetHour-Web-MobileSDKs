@@ -22,8 +22,8 @@ Go to Browser and open index.html
 ### Library Import
 
 ```
-   <script src="https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=${API_KEY}"><script>
-   <script src="https://api.meethour.io/libs/v2.4.5/meethour-apis.min.js?apiKey=${API_KEY}"></script>
+   <script src="https://api.meethour.io/libs/v2.4.6/external_api.min.js?apiKey=${API_KEY}"><script>
+   <script src="https://api.meethour.io/libs/v2.4.6/meethour-apis.min.js?apiKey=${API_KEY}"></script>
 ```
 
 ### API End Points Supported
