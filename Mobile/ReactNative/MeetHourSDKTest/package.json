@@ -14,18 +14,11 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-native-community/datetimepicker": "^6.7.4",
-    "@react-native/normalize-color": "^2.1.0",
     "react": "17.0.2",
     "react-native": "^0.66.4",
-    "react-native-animated-loader": "^1.0.0",
-    "react-native-device-info": "^10.3.0",
     "react-native-dropdown-select-list": "^2.0.4",
-    "react-native-elements": "^3.4.3",
     "react-native-localize": "^2.2.4",
-    "react-native-meet-hour-sdk": "github:v-empower/react-native-meet-hour-sdk#748b0f18ba1948cfeec3250649fb989f680eda88",
-    "react-native-router-flux": "^4.3.1",
-    "react-native-safe-area-context": "^4.5.0",
-    "react-native-screens": "^3.20.0"
+    "react-native-meet-hour-sdk": "3.0.18"
   },
   "devDependencies": {
     "@babel/core": "7.18.5",

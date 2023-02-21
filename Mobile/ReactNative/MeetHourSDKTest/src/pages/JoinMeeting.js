@@ -7,9 +7,10 @@ import {
   Pressable,
   Button,
   Dimensions,
+  Platform,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
-import MeetHour, {MeetHourView, ApiServices} from 'react-native-meet-hour-sdk';
+import React, { useEffect, useState } from 'react';
+import MeetHour, { MeetHourView, ApiServices } from 'react-native-meet-hour-sdk';
 import styles from '../styles/styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LoaderCompenent from '../components/LoaderComponent';
@@ -33,18 +34,18 @@ export default function JoinMeeting(props) {
   const [meetingId, setMeetingId] = useState('');
   const [isLoading, setIsLoading] = React.useState(false);
 
-    const startMeetHourAsNativeController = async () => {
-      /*
-            Mode 1 - Starts a new MeetHour Activity/UIViewController on top of RN Application (outside of JS).
-            It doesn't require rendering MeetHourView Component.
-          */
-      await MeetHour.launchMeetHourView(conferenceOptions);
+  const startMeetHourAsNativeController = async () => {
+    /*
+          Mode 1 - Starts a new MeetHour Activity/UIViewController on top of RN Application (outside of JS).
+          It doesn't require rendering MeetHourView Component.
+        */
+    await MeetHour.launchMeetHourView(conferenceOptions);
 
-      /*
-            Note:
-              MeetHour.launchMeetHourView will return a promise, which is resolved once the conference is terminated and the MeetHourView is dismissed.
-          */
-    };
+    /*
+          Note:
+            MeetHour.launchMeetHourView will return a promise, which is resolved once the conference is terminated and the MeetHourView is dismissed.
+        */
+  };
   const generateJwtToken = async (id) => {
     let response;
     try {
@@ -52,14 +53,14 @@ export default function JoinMeeting(props) {
       let body = {
         meeting_id: meetingId,
       };
-      if (id !== undefined) Object.assign(body, {contact_id: id});
+      if (id !== undefined) Object.assign(body, { contact_id: id });
       response = await ApiServices.generateJwt(
         await AsyncStorage.getItem('accessToken'),
         body,
-        );
-        const jwtToken = response.jwt;
-        const pCode = await AsyncStorage.getItem('pCode');
-        setConferenceOptions((previousDetails) => ({
+      );
+      const jwtToken = response.jwt;
+      const pCode = await AsyncStorage.getItem('pCode');
+      setConferenceOptions((previousDetails) => ({
         ...previousDetails,
         room: meetingId,
         pcode: pCode,
@@ -90,7 +91,7 @@ export default function JoinMeeting(props) {
         } else {
           const id = meetingId
           await AsyncStorage.setItem('meetingId', id);
-      }
+        }
       }
       if (!(await AsyncStorage.getItem('meetingId'))) {
         setIsContinued(false);
@@ -134,18 +135,22 @@ export default function JoinMeeting(props) {
   };
 
   useEffect(() => {
-    if(conferenceOptions.room !== ''){
-      startMeetHourAsNativeController();
-      // props.setShowMeetHourView((prev) => true);
+    if (conferenceOptions.room !== '') {
+      if (Platform.OS === 'android') {
+        startMeetHourAsNativeController(); // Recommeneded to use for Android if you require Screen Sharing functionality.
+      }
+      else {
+        props.setShowMeetHourView((prev) => true);
+      }
     }
- }, [conferenceOptions]);
+  }, [conferenceOptions]);
 
   React.useEffect(() => {
     viewMeeting();
   }, []);
 
   return isLoading ? (
-    <View style={{marginTop: 80}}>
+    <View style={{ marginTop: 80 }}>
       <LoaderCompenent />
     </View>
   ) : (
@@ -163,7 +168,7 @@ export default function JoinMeeting(props) {
           onConferenceWillJoin={(e) => console.log(e.nativeEvent)}
         />
       </View>
-    ) : <View style={{marginTop: 80}}>
+    ) : <View style={{ marginTop: 80 }}>
       <ImageBackground
         source={require('../images/MeetHour_logo.png')}
         style={styles.image}
@@ -172,48 +177,48 @@ export default function JoinMeeting(props) {
 
       {isContinued ? (
         <View>
-          <View style={{padding: 10}}>
-          <Text style={{fontSize: 25}}>Whom would you like to join as?</Text>
-          <Pressable style={{borderColor: "gray", marginBottom: 4, borderWidth: 2, paddingLeft: 4, paddingVertical: 10, borderRadius: 5}}
-            onPress={() => {
-              generateJwtToken(); // If organizer/account owner is trying to join, no need of passing contact id as arguments for getjwt api.
-            }}
-            key={meetingAttendees?.organizer?.id}>
-            <Text>
-              {meetingAttendees?.organizer?.name}(Organizer / Account Owner)
-            </Text>
-          </Pressable>
-          {meetingAttendees?.hosts?.map((host) => (
-            <Pressable style={{borderColor: "gray", marginBottom: 4, borderWidth: 2, paddingLeft: 4, paddingVertical: 10, borderRadius: 5}}
+          <View style={{ padding: 10 }}>
+            <Text style={{ fontSize: 25 }}>Whom would you like to join as?</Text>
+            <Pressable style={{ borderColor: "gray", marginBottom: 4, borderWidth: 2, paddingLeft: 4, paddingVertical: 10, borderRadius: 5 }}
               onPress={() => {
-                generateJwtToken(host.id);
+                generateJwtToken(); // If organizer/account owner is trying to join, no need of passing contact id as arguments for getjwt api.
               }}
-              key={host.id}>
-              <Text>{host.first_name} {host.last_name} (Moderator / Host)</Text>
+              key={meetingAttendees?.organizer?.id}>
+              <Text>
+                {meetingAttendees?.organizer?.name}(Organizer / Account Owner)
+              </Text>
             </Pressable>
-          ))}
-          {meetingAttendees.attendees ? (
-            meetingAttendees.attendees.map((attendee) => (
-              <Pressable style={{borderColor: "gray", borderWidth: 2, marginBottom: 4, paddingLeft: 4, paddingVertical: 10, borderRadius: 5}}
+            {meetingAttendees?.hosts?.map((host) => (
+              <Pressable style={{ borderColor: "gray", marginBottom: 4, borderWidth: 2, paddingLeft: 4, paddingVertical: 10, borderRadius: 5 }}
                 onPress={() => {
-                  generateJwtToken(attendee.id);
+                  generateJwtToken(host.id);
                 }}
-                key={attendee.id}>
-                <Text>{attendee.first_name}</Text>
-                <Text>{attendee.last_name} (Attendee)</Text>
+                key={host.id}>
+                <Text>{host.first_name} {host.last_name} (Moderator / Host)</Text>
               </Pressable>
-            ))
-          ) : (
-            <></>
-          )}
-          <Button
-            title="Reset Meeting ID"
-            onPress={() => {
-              resetMeetingDetails();
-            }}
-          />
+            ))}
+            {meetingAttendees.attendees ? (
+              meetingAttendees.attendees.map((attendee) => (
+                <Pressable style={{ borderColor: "gray", borderWidth: 2, marginBottom: 4, paddingLeft: 4, paddingVertical: 10, borderRadius: 5 }}
+                  onPress={() => {
+                    generateJwtToken(attendee.id);
+                  }}
+                  key={attendee.id}>
+                  <Text>{attendee.first_name}</Text>
+                  <Text>{attendee.last_name} (Attendee)</Text>
+                </Pressable>
+              ))
+            ) : (
+              <></>
+            )}
+            <Button
+              title="Reset Meeting ID"
+              onPress={() => {
+                resetMeetingDetails();
+              }}
+            />
           </View>
-          
+
         </View>
       ) : (
         <View style={styles.container}>
@@ -229,9 +234,9 @@ export default function JoinMeeting(props) {
             onPress={() => {
               viewMeeting(true);
             }}
-            style={({pressed}) => [
+            style={({ pressed }) => [
               styles.button,
-              {opacity: pressed ? 0.5 : 1},
+              { opacity: pressed ? 0.5 : 1 },
             ]}>
             <Text style={styles.buttonText}>Join</Text>
           </Pressable>

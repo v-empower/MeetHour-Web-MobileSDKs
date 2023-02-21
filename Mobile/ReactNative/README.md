@@ -1,79 +1,440 @@
-# React Native Meet Hour SDK.
-Meet Hour Plugin for React Native. Supports Android & iOS platforms.
+# React Native Meet Hour SDK - Example.
 
-"Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc." 
+Meet Hour Example project for React Native with APIs
 
-Example Project is here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/reactnative/MeetHourSDKTest
+[Meet Hour - 100% free video conference solution](https://meethour.io)
+Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc.
 
-## Install (Latest version 3.0.17)
-
-```
-  `npm install react-native-meet-hour-sdk --save` 
-```
-
-## MeetHour SDK Implementation - Steps
-
-1. SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs
-2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
-
-# Steps to Integrate:
-
-1. Signup for Meet Hour (https://meethour.io) and signup for Developer or Higher plan. Currently we offer 28 days free trial.
-2. Once you signup for developer plan, and go to our Dashboard - (https://portal.meethour.io) and tap on "Developers" menu.
-3. Now copy and Client ID & Client Secret and keep it handy with you.
-4. Go to our API documentation and hit Login API to get oAuth Access Token - (https://bit.ly/3E2hKU7)
-5. Once you get an access token, you can access any our API. Now you first thing you have to do is create a contact in our system as soon as user signup in your platform using this API (https://bit.ly/3LRehug). This will give you unique contact_id of that user. You require this id when you schedule a meeting below.
-6. Later go to Schedule Meeting API -> Pass all the parameters needed to generate a new meetings - (https://bit.ly/3riFLkx)
-7. Once the meeting is genereate, in order to join a meeting you require to Generate JWT Token using this API (https://bit.ly/3ur5pFR) and pass it to the conference URL via MT Parameter - https://meethour.io?mt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImFjY2Vzc190b2tlbiI6ImV5SjBlWEFpT2lKS1YxUWlMQ0poYkdjaU9pSlNVekkxTmlKOS5leUpoZFdRaU9pSTVNemxrWmpVeE5pMDJNekEzTFRRNVkyUXRPVGMxTXkwek1XRTNNemRrT1RGaE1HWWlMQ0pxZEdraU9pSmtNMlUyT
-
-
-## For iOS - Pod Update
-
-Always run below command if you want to get latest MeetHourSDK Pod file.
+### NPM package (Latest version - 3.0.18)
 
 ```
-pod update MeetHourSDK
-pod update MeetHourSDK or pod install --repo-update
-```
+https://www.npmjs.com/package/react-native-meet-hour-sdk
 
 ```
-For Apple M1 Silicon Chip
-arch -x86_64 pod update MeetHourSDK or arch -x86_64 pod install --repo-update
+
+Example Project is here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/react-native-api-example-setup/Mobile/ReactNative
+
+### Steps to Use Meet Hour React Native SDK Example
+
+1. Go to meethour.io and signup for Developer or Higher plan. Currently we offer 28 days free trial.
+2. Go to the dashboard and then click on developers menu.
+3. Copy your Client ID, Client Secret and Api Key. After copying, paste each copied text to the respective constant in the source code src/constants/index.js
+4. On Home page Click on Get Access Token
+5. Then Try Schedule a Meeting & Join Meeting.
+
+## Run Program
+
+```
+cd Mobile/ReactNative/MeetHourSDKTest
+
+npm install
+
+npm start
+
+npm run android
+
+npm run ios
+
 ```
 
+![](screenshot.png)
+
+
+### API End Points Supported
+
+1. To Get Access Token Endpoint : => https://docs.v-empower.com/docs/MeetHour-API/a44a7d7669f91-user-login-get-access-token
+
+   ```
+       ApiServices.login({
+               grant_type, client_id, client_secret, username, password
+           });
+   ```
+
+   => You have to pass respective values in the argument section. Hence, to get desired response.
+
+2. To schedule a meeting: => https://docs.v-empower.com/docs/MeetHour-API/2de4b757a6312-meeting-schedule-meeting
+
+   ```
+       ApiServices. scheduleMeeting(token: string, body: ScheduleMeetingType)
+
+           type ScheduleMeetingType {
+                   agenda?: string;
+                   attend?:
+                       | Array<number>
+                       | Array<UserObjectType>
+                       | Array<UserObjectType | number>;
+                   default_recording_storage?: string;
+                   duration_hr?: number;
+                   duration_min?: number;
+                   enable_pre_registration?: number;
+                   endBy?: string;
+                   end_date_time?: string;
+                   end_times?: number;
+                   groups?: Array<number | string>;
+                   hostusers?:
+                       | Array<number>
+                       | Array<UserObjectType>
+                       | Array<UserObjectType | number>;
+                   instructions?: string;
+                   is_recurring?: number;
+                   is_show_portal?: number;
+                   meeting_agenda?: string;
+                   meeting_date: string;
+                   meeting_meridiem: string;
+                   meeting_name: string;
+                   meeting_time: string;
+                   meeting_topic?: string;
+                   monthlyBy?: string;
+                   monthlyByDay?: string;
+                   monthlyByWeekday?: string;
+                   monthlyByWeekdayIndex?: string;
+                   options?: Array<string>;
+                   passcode: string;
+                   recurring_type?: string;
+                   repeat_interval?: number;
+                   send_calendar_invite?: number;
+                   timezone: string;
+                   weeklyWeekDays?: number;
+               };
+
+
+       type UserObjectType {
+               email?: string;
+               first_name?: string;
+               last_name?: string;
+           }
+   ```
+
+3. To Generate JWT Token Endpoint => https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
+
+   ```
+       ApiServices.generateJwt(token: string, body: GenerateJwtType)
+
+      type GenerateJwtType {
+               config?: {
+               disableDeepLinking?: string;
+               dropboxappKey?: string;
+               dropboxredirectURI?: string;
+               enableClosePage?: string;
+               enableWelcomePage?: string;
+               fileRecordingsEnabled?: boolean;
+               liveStreamingEnabled?: boolean;
+               p2penabled?: boolean;
+               requireDisplayName?: string;
+               resolution?: number;
+               startAudioMuted?: number;
+               videoheightideal?: number;
+               videoheightmax?: number;
+               videoheightmin?: number;
+               videowidthideal?: number;
+               videowidthmax?: number;
+               videowidthmin?: number;
+               };
+               contact_id?: number;
+               meeting_id: string;
+               ui_config?: {
+               ANDROID_APP_PACKAGE?: string;
+               APP_NAME?: string;
+               APP_SCHEME?: string;
+               BRAND_WATERMARK_BACKGROUND?: string;
+               DEFAULT_LOGO_URL?: string;
+               ENABLE_MOBILE_BROWSER?: string;
+               HIDE_DEEP_LINKING_LOGO?: string;
+               MEET_HOUR_WATERMARK_LINK?: string;
+               MOBILE_APP_PROMO?: string;
+               MOBILE_DOWNLOAD_LINK_ANDROID?: string;
+               MOBILE_DOWNLOAD_LINK_IOS?: string;
+               NATIVE_APP_NAME?: string;
+               PROVIDER_NAME?: string;
+               SHOW_MEET_HOUR_WATERMARK?: string;
+               disablePrejoinFooter?: string;
+               disablePrejoinHeader?: string;
+               toolbar_buttons?: Array<string>;
+               };
+           };
+   ```
+
+4. To fetch User Details: => https://docs.v-empower.com/docs/MeetHour-API/ff9d0e37d9191-user-details
+
+   ```
+       ApiServices.userDetails(token: string)
+   ```
+
+5. To fetch access Token using Refresh Token: => https://docs.v-empower.com/docs/MeetHour-API/d851be1af9804-get-access-token-using-refresh-token
+
+   ```
+       ApiServices.getRefreshToken(token: string, body: RefreshTokenType)
+
+       type RefreshTokenType {
+               client_id: string;
+               client_secret: string;
+               grant_type: string;
+               refresh_token: string;
+       }
+   ```
+
+6. To add a contact in Meet Hour database: => https://docs.v-empower.com/docs/MeetHour-API/bd1e416413e8c-add-contact
+
+   ```
+       ApiServices.addContact(token: string, body: AddContactType)
+
+       type AddContactType {
+               country_code?: string;
+               email: string;
+               firstname: string;
+               image?: string;
+               is_show_portal?: boolean;
+               lastname?: string;
+               phone?: string;
+           }
+   ```
+
+7. To get Timezones of various countries: => https://docs.v-empower.com/docs/MeetHour-API/c688c29bce9b9-timezone-list
+
+   ```
+       ApiServices.timezone(token: string)
+
+   ```
+
+8. To get list of all the contacts in your Meet Hour account: => https://api.meethour.io/api/{version}/customer/contacts
+
+   ```
+       ApiServices.contactsList(token: string, body: ContactsType)
+
+       type ContactsType {
+               exclude_hosts: number;
+               limit: number;
+               page: number;
+           }
+
+   ```
+
+9. To make changes in the existing contact details: => https://docs.v-empower.com/docs/MeetHour-API/28cae9187d215-edit-contact
+
+   ````
+    ApiServices.editContact(token: string, body: EditContactType)
+
+    type EditContactType {
+            contact_id: number;
+            country_code: string;
+            email: string;
+            firstname: string;
+            image: string;
+            is_show_portal: boolean;
+            lastname: string;
+            phone: string;
+        }
+
+    ```
+
+   ````
+
+10. To get Upcoming Meetings: => https://docs.v-empower.com/docs/MeetHour-API/31df88388416d-upcoming-meetings
+
+    ```
+        ApiServices.upcomingMeetings(token: string, body: {
+            limit: number;
+            page: number;
+        })
+    ```
+
+11. To archive a meeting: => https://docs.v-empower.com/docs/MeetHour-API/1dd64523cc6bf-archive-meeting
+
+    ```
+        ApiServices.archiveMeeting(
+                token: string,
+                body: {
+                    id?: number;
+            })
+    ```
+
+12. To get the details of a missed meeting: => https://docs.v-empower.com/docs/MeetHour-API/92998e2dda102-missed-meetings
+
+    ```
+        ApiServices.missedMeetings(
+            token: string,
+            body: {
+                limit: number;
+                page: number;
+            })
+    ```
+
+13. To get completed meetings: => https://docs.v-empower.com/docs/MeetHour-API/aa9ef6a678250-completed-meetings
+
+    ```
+        ApiServices.completedMeetings(
+            token: string,
+            body: {
+            limit: number;
+            page: number;
+            })
+    ```
+
+14. To edit an existing meeting: => https://docs.v-empower.com/docs/MeetHour-API/5dedde36380b4-meeting-edit-meeting
+
+    ```
+        ApiServices.editMeeting(token: string, body: EditMeetingType)
+
+        type EditMeeting {
+            agenda?: string;
+            attend?:
+                | Array<number>
+                | Array<UserObjectType>
+                | Array<number & UserObjectType>;
+            duration_hr?: number;
+            duration_min?: number;
+            enable_pre_registration?: number;
+            endBy?: string;
+            end_date_time?: string;
+            groups?: Array<number>;
+            hostusers?:
+                | Array<number>
+                | Array<UserObjectType>
+                | Array<number & UserObjectType>;
+            instructions?: string;
+            is_recurring?: number;
+            is_show_portal?: number;
+            meeting_agenda?: string;
+            meeting_date?: string;
+            meeting_id: string;
+            meeting_meridiem?: string;
+            meeting_name?: string;
+            meeting_time?: string;
+            meeting_topic?: string;
+            old_attend?:
+                | Array<number>
+                | Array<UserObjectType>
+                | Array<number & UserObjectType>;
+            options?: Array<string>;
+            passcode?: string;
+            recurring_type?: string;
+            repeat_interval?: number;
+            timezone?: string;
+        }
+
+        type UserObjectType {
+            email?: string;
+            first_name?: string;
+            last_name?: string;
+        }
+    ```
+
+15. To view a meeting: => https://docs.v-empower.com/docs/MeetHour-API/7e9a0a1e0da7f-meeting-view-meeting
+
+    ```
+        ApiServices.viewMeeting(
+            token: string,
+            body: { meeting_id: string }
+            )
+    ```
+
+16. To get all the recordings list: => https://docs.v-empower.com/docs/MeetHour-API/ce7c4fd8cae7e-recording-list
+
+    ```
+        ApiServices.recordingsList(token: string, body: RecordingsList)
+
+        type RecordingsList {
+            filter_by: string;
+            limit: number;
+            page: number;
+        }
+    ```
 
 ## Usage
 
-The package can be invoked in two modes
-
-1. As a new Activity/UIViewController on top of RN Application
-2. As a RN View
+In this SDK, you can make APIs calls and allow join the conference in Native View or React Native View.
 
 ```jsx
-import MeetHour, { MeetHourView } from 'react-native-meet-hour-sdk';
-import React, { useState } from 'react';
-import { StyleSheet, View, Pressable, Text } from 'react-native';
+import MeetHour, {MeetHourView, ApiServices} from 'react-native-meet-hour-sdk';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  View,
+  Pressable,
+  Text,
+  Platform,
+  Alert
+} from 'react-native';
+
+const loginBody = {
+  client_id: '',
+  client_secret:
+    '',
+  username: '',
+  password: '',
+};
+
+const ScheduleBody = {
+  meeting_name: 'Quick Meeting',
+  agenda: '',
+  passcode: '123456',
+  meeting_date: '23-02-2025', // Make sure you give a future date for this parameter
+  meeting_time: '11:30',
+  meeting_meridiem: 'AM',
+  timezone: 'Asia/Kolkata',
+  instructions: 'Team call',
+  is_show_portal: 0,
+  options: ['ALLOW_GUEST', 'JOIN_ANYTIME'],
+  // attend: [] // Pass the values as per documentation.
+  // hostusers: []
+};
+
+let getJWTBody = {
+  meeting_id: '',
+};
 
 const conferenceOptions = {
-  room: 'TestRoom',
-  userInfo: {
-    displayName: 'John',
-    email: 'example@test.com',
-    avatar: 'https://picsum.photos/200',
-  },
-  token: '', // Generate Token from this
-  pcode: '', // Dynamically pass Encrypted Meeting Password as pcode. Get Pcode from API. 
+  room: '',
+  token: '', // JWT Token
+  pcode: '', //Dynamic Password of Conference. Will get from Schedule API & ViewMeeting APIs
   audioMuted: false,
-  videoMuted: false
+  videoMuted: false,
 };
 
 function App() {
   const [showMeetHourView, setShowMeetHourView] = useState(false);
 
+  useEffect(() => {
+    if (conferenceOptions.room !== '') {
+      if (Platform.OS === 'android') {
+        startMeetHourAsNativeController(); // Recommeneded to use for Android if you require Screen Sharing functionality.
+      } else {
+        setShowMeetHourView(true);
+      }
+    }
+  }, [conferenceOptions.token]);
+
+  const Apicalls = async () => {
+    try {
+      let loginResponse = await ApiServices.login(loginBody);
+      let scheduleResponse = await ApiServices.scheduleMeeting(
+        loginResponse.access_token,
+        ScheduleBody,
+      );
+
+      conferenceOptions.room = scheduleResponse.data?.meeting_id;
+
+      getJWTBody.meeting_id = scheduleResponse.data?.meeting_id;
+
+      conferenceOptions.pcode = scheduleResponse.data?.pcode;
+
+      let generateJWTResponse = await ApiServices.generateJwt(
+        loginResponse.access_token,
+        getJWTBody,
+      );
+
+      conferenceOptions.token = generateJWTResponse.jwt;
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Credentials Error", "API calls failing. Please add Client ID and Client Secret"+error);
+    }
+  };
+
+  Apicalls();
+
   const startMeetHourAsNativeController = async () => {
     /* 
-      Mode 1 - Starts a new MeetHour Activity/UIViewController on top of RN Application (outside of JS).
-      It doesn't require rendering MeetHourView Component.
+      Mode 1 - Use this mode for Android when you require screen sharing functionality.
     */
 
     await MeetHour.launchMeetHourView(conferenceOptions);
@@ -92,7 +453,7 @@ function App() {
   };
 
   if (showMeetHourView) {
-    /* Mode 2 - Starts MeetHour as a RN View */
+    /* Mode 2 - Starts MeetHour as a React Native View */
 
     return (
       <MeetHourView
@@ -109,23 +470,15 @@ function App() {
     <View style={styles.container}>
       <Pressable
         onPress={startMeetHourAsNativeController}
-        style={({ pressed }) => [
-          styles.pressable,
-          { opacity: pressed ? 0.5 : 1 },
-        ]}
-      >
+        style={({pressed}) => [styles.pressable, {opacity: pressed ? 0.5 : 1}]}>
         <Text style={styles.pressableText}>
           Start MeetHour on top of RN Application
         </Text>
       </Pressable>
       <Pressable
         onPress={() => setShowMeetHourView(true)}
-        style={({ pressed }) => [
-          styles.pressable,
-          { opacity: pressed ? 0.5 : 1 },
-        ]}
-      >
-        <Text style={styles.pressableText}>Start MeetHour as a RN View</Text>
+        style={({pressed}) => [styles.pressable, {opacity: pressed ? 0.5 : 1}]}>
+        <Text style={styles.pressableText}>Start MeetHour as a React Native View</Text>
       </Pressable>
     </View>
   );
@@ -144,7 +497,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'blue',
+    backgroundColor: '#4f6790',
   },
   pressableText: {
     fontSize: 17,
@@ -204,10 +557,6 @@ This will create a navigation controller to be able to navigate between the Meet
 ```
 
 4.) Modify your platform version in Podfile and Xcode to have platform version `12.0` or above.
-
-![](https://firebasestorage.googleapis.com/v0/b/react-native-meet-hour-sdk.appspot.com/o/Captura%20de%20Tela%202021-12-16%20a%CC%80s%2016.44.57.png?alt=media&token=c653bdbb-f08b-4e6a-a571-0f0894a12997)
-
-![](https://firebasestorage.googleapis.com/v0/b/react-native-meet-hour-sdk.appspot.com/o/Captura%20de%20Tela%202021-12-16%20a%CC%80s%2016.45.25.png?alt=media&token=d97bfa72-d583-4046-88fd-a3d1c290834d)
 
 5.) In Xcode, under `Build settings` set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`.
 
@@ -281,10 +630,10 @@ allprojects {
 ```groovy
 buildscript {
     ext {
-        buildToolsVersion = "29.0.3"
+        buildToolsVersion = "30.0.3"
         minSdkVersion = 24 // <-- this line
-        compileSdkVersion = 29
-        targetSdkVersion = 29
+        compileSdkVersion = 32
+        targetSdkVersion = 32
         ndkVersion = "20.1.5948944"
     }
     ...
@@ -327,61 +676,14 @@ buildscript {
 | ------------ | --------- | ------------------- | --------------------------------------------------------------------------------------------------------------- |
 | room         | string    | required            | Room name for Meet Hour                                                                                        |
 | serverUrl    | string    | https://meethour.io | Valid server URL                                                                                                |
-| token        | string    | ""                  | JWT token                                                                                                       |
+| token        | string    | ""                  | JWT token  
+| pcode        | string    | ""                  | Password of meeting to be passed dynamically                                                                    |
 | subject      | string    | ""                  | Conference subject (will change the global subject for all participants)                                        |
 | audioOnly    | boolean   | false               | Controls whether the participant will join the conference in audio-only mode (no video is sent or recieved)     |
 | audioMuted   | boolean   | false               | Controls whether the participant will join the conference with the microphone muted                             |
 | videoMuted   | boolean   | false               | Controls whether the participant will join the conference with the camera muted                                 |
 | userInfo     | object    | {}                  | Object that contains information about the participant starting the meeting. See [UserInfo](#userinfo)          |
 | featureFlags | object    | {}                  | Object that contains information about which feature flags should be set. See below for more info.              |
-
-### Feature Flags
-
-For examples on how to set feature flags, see the [usage example](#usage) above.
-
-## UserInfo
-
-| key         | Data type | Default | Description              |
-| ----------- | --------- | ------- | ------------------------ |
-| displayName | string    | ""      | Participant's name       |
-| email       | string    | ""      | Participant's e-mail     |
-| avatar      | string    | ""      | Participant's avatar URL |
-
-## Screen Sharing
-
-It is already enabled by default on Android.
-
-On iOS it requires a few extra steps. Set the flag `screenSharingEnabled` to true and follow this tutorial [Screen Sharing iOS] to get it working.
-
-## Instructions to run the example app
-
-1.) Clone this project
-
-```bash
-git clone https://github.com/v-empower/react-native-meet-hour-sdk.git
-```
-
-2.) Navigate to the project folder
-
-```bash
-cd react-native-meet-hour-sdk
-```
-
-3.) Install dependencies
-
-```bash
-yarn
-```
-
-4.) Run app
-
-```bash
-yarn example ios
-
-or
-
-yarn example android
-```
 
 ## Troubleshooting
 
@@ -399,18 +701,11 @@ implementation(project(':react-native-meet-hour-sdk')) {
 //     exclude group: 'com.facebook.react',module:'react-native-async-storage'
 //     exclude group: 'com.facebook.react',module:'react-native-community_netinfo'
 //     exclude group: 'com.facebook.react',module:'react-native-svg'
-//     exclude group: 'com.facebook.react',module:'react-native-svg'
 //     exclude group: 'com.facebook.react', module:'react-native-gesture-handler'
 //     exclude group: 'com.facebook.react',module:'react-native-fetch-blob'
 //     exclude group: 'com.facebook.react',module:'react-native-webview'
 //     exclude group: 'com.facebook.react',module:'react-native-linear-gradient'
 //     exclude group: 'com.facebook.react',module:'react-native-sound'
+//     exclude group: 'com.facebook.react',module:'react-native-add-calendar-event'
 }
-```
-
-// required to avoid crash on Android 12 API 31
-```
-  
-  implementation 'androidx.work:work-runtime-ktx:2.7.0'
-
 ```

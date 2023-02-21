@@ -210,6 +210,25 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation(project(':react-native-meet-hour-sdk')) {
+
+        // Un-comment below if using hermes
+        //    exclude group: 'com.facebook',module:'hermes'
+
+                // Un-comment any packages below that you have added to your project to prevent `duplicate_classes` errors
+        //     exclude group: 'com.facebook.react',module:'react-native-locale-detector'
+        //     exclude group: 'com.facebook.react',module:'react-native-vector-icons'
+        //     exclude group: 'com.facebook.react',module:'react-native-async-storage'
+        //     exclude group: 'com.facebook.react',module:'react-native-community_netinfo'
+        //     exclude group: 'com.facebook.react',module:'react-native-svg'
+        //     exclude group: 'com.facebook.react', module:'react-native-gesture-handler'
+        //     exclude group: 'com.facebook.react',module:'react-native-fetch-blob'
+        //     exclude group: 'com.facebook.react',module:'react-native-webview'
+        //     exclude group: 'com.facebook.react',module:'react-native-linear-gradient'
+        //     exclude group: 'com.facebook.react',module:'react-native-sound'
+        //     exclude group: 'com.facebook.react',module:'react-native-add-calendar-event'
+    }
 }
 
 // Run this once to be able to run the application with BUCK
