@@ -81,6 +81,10 @@ Its constructor gets a number of options:
             jwt: "",
             apiKey: "",
             pcode: "5b40602cfea7708895781a8cad71be5b",
+            configOverwrite: {
+            prejoinPageEnabled: true, // make this false to skip the prejoin page 
+            disableInviteFunctions: true,
+            }
             interfaceConfigOverwrite: {
                 applyMeetingSettings: true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings
                 disablePrejoinHeader: true,
