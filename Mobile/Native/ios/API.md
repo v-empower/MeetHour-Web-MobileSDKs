@@ -40,6 +40,8 @@ To get started:
     self.MHView = MHView
     let options = MeetHourConferenceOptions.fromBuilder { (builder) in
       builder.welcomePageEnabled = false
+      builder.prejoinPageEnabled = true //  Set it to false to Disable prejoin dynamically.
+      builder.disableInviteFunctions   = true //  To disable Invite options in SDK. 
       builder.serverURL = URL(string: "https://meethour.io")
       builder.room = “MeetHourSDKiOS”
       builder.setFeatureFlag("ios.recording.enabled", withBoolean: true)
@@ -92,6 +94,8 @@ Joins the conference specified by the given options.
       builder.audioMuted = NO;
       builder.videoMuted = NO;
       builder.welcomePageEnabled = NO;
+      builder.prejoinPageEnabled = true; //  Set it to false to Disable prejoin dynamically.
+      builder.disableInviteFunctions = false //  To disable Invite options in SDK. 
   }];
 
   [MH join:options];

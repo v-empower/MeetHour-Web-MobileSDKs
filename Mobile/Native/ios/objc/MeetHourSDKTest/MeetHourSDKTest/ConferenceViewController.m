@@ -37,6 +37,8 @@
             builder.userInfo = info;
             builder.room = self.room;
             builder.pcode = self.pcode;
+            builder.prejoinPageEnabled = true; // Set to false if you want to skip prejoin
+            builder.disableInviteFunctions = true;
             
             // Settings for audio and video
             builder.audioMuted = self.isAudioMuted;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ScrollView, Dimensions} from 'react-native';
+import { View, ScrollView, Dimensions, SafeAreaView } from 'react-native';
 import HomePage from './pages/Homepage';
 import Header from './components/Header';
 import ScheduleMeetingPage from './pages/ScheduleMeetingPage';
@@ -9,12 +9,14 @@ function App() {
   const [selectedScreen, setSelectedScreen] = React.useState("HomePage")
   const [showMeetHourView, setShowMeetHourView] = React.useState(false);
   return (
-      <View>
+    <View>
+      <SafeAreaView>
         <ScrollView>
-          {showMeetHourView ? <></> : <Header setSelectedScreen={setSelectedScreen}/>}
-          {selectedScreen === "HomePage" ? <HomePage/> : (selectedScreen === "ScheduleMeeting" ? <ScheduleMeetingPage setSelectedScreen={setSelectedScreen}/> : <JoinMeeting showMeetHourView={showMeetHourView} setShowMeetHourView={setShowMeetHourView} setSelectedScreen={setSelectedScreen}/>)}
+          {showMeetHourView ? <></> : <Header setSelectedScreen={setSelectedScreen} />}
+          {selectedScreen === "HomePage" ? <HomePage /> : (selectedScreen === "ScheduleMeeting" ? <ScheduleMeetingPage setSelectedScreen={setSelectedScreen} /> : <JoinMeeting showMeetHourView={showMeetHourView} setShowMeetHourView={setShowMeetHourView} setSelectedScreen={setSelectedScreen} />)}
         </ScrollView>
-      </View>
+      </SafeAreaView>
+    </View>
   );
 }
 export default App;
