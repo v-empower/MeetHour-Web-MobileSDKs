@@ -51,6 +51,8 @@ class MainActivity : AppCompatActivity() {
                 //.setFeatureFlag("filmstrip.enabled", false)
                 .setFeatureFlag("recording.enabled", true)
                 .setWelcomePageEnabled(false)
+//                .setPrejoinPageEnabled(true) // set it to false to disable prejoin page.
+//                .setDisableInviteFunctions(true) // To disable invite functions in sdk.
                 .build()
         MeetHour.setDefaultConferenceOptions(defaultOptions)
 
@@ -72,6 +74,8 @@ class MainActivity : AppCompatActivity() {
             val options = MeetHourConferenceOptions.Builder()
                     .setRoom(text)
                     .setPcode("5b40602cfea7708895781a8cad71be5b")
+                    .setPrejoinPageEnabled(false) // set it to false to disable prejoin page.
+                    .setDisableInviteFunctions(true) // To disable invite functions in sdk.
                     // Settings for audio and video
                     //.setAudioMuted(true)
                     //.setVideoMuted(true)

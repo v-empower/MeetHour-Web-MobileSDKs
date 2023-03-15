@@ -105,6 +105,8 @@ class ViewController: UIViewController {
             self.MHView = MHView
             let options = MeetHourConferenceOptions.fromBuilder { (builder) in
                 builder.welcomePageEnabled = false
+                builder.prejoinPageEnabled = true
+                builder.disableInviteFunctions = true
                 builder.subject = self.txtSubject.text
                 builder.audioMuted = self.isAudioMute
                 builder.videoMuted = self.isVideoOn
@@ -112,7 +114,7 @@ class ViewController: UIViewController {
                 builder.userInfo = info
                 builder.room = self.txtRoomName.text
                 builder.pcode = "@5b40602cfea7708895781a8cad71be5b"
-                builder.setFeatureFlag("ios.recording.enabled", withBoolean: true)
+                builder.setFeatureFlag("ios.recording.enabled", withBoolean: true)  
             }
             MHView.join(options)
 

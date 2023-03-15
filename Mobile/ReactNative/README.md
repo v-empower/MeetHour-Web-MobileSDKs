@@ -5,7 +5,7 @@ Meet Hour Example project for React Native with APIs
 [Meet Hour - 100% free video conference solution](https://meethour.io)
 Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc.
 
-### NPM package (Latest version - 3.0.19)
+### NPM package (Latest version - 3.0.20)
 
 ```
 https://www.npmjs.com/package/react-native-meet-hour-sdk
@@ -358,8 +358,7 @@ import {
 
 const loginBody = {
   client_id: '',
-  client_secret:
-    '',
+  client_secret: '',
   username: '',
   password: '',
 };
@@ -389,6 +388,8 @@ const conferenceOptions = {
   pcode: '', //Dynamic Password of Conference. Will get from Schedule API & ViewMeeting APIs
   audioMuted: false,
   videoMuted: false,
+  prejoinPageEnabled: true, // Make it false to Skip PrejoinPage
+  disableInviteFunctions: true, // To disable invite functions in Mobile SDK.
 };
 
 function App() {
@@ -630,10 +631,10 @@ allprojects {
 ```groovy
 buildscript {
     ext {
-        buildToolsVersion = "30.0.3"
+        buildToolsVersion = "33.0.1"
         minSdkVersion = 24 // <-- this line
-        compileSdkVersion = 32
-        targetSdkVersion = 32
+        compileSdkVersion = 33
+        targetSdkVersion = 33
         ndkVersion = "20.1.5948944"
     }
     ...
@@ -672,7 +673,7 @@ buildscript {
 
 ## Options
 
-| key          | Data type | Default             | Description                                                                                                     |
+| key           | Data type | Default             | Description                                                                                                     |
 | ------------ | --------- | ------------------- | --------------------------------------------------------------------------------------------------------------- |
 | room         | string    | required            | Room name for Meet Hour                                                                                        |
 | serverUrl    | string    | https://meethour.io | Valid server URL                                                                                                |
@@ -682,6 +683,8 @@ buildscript {
 | audioOnly    | boolean   | false               | Controls whether the participant will join the conference in audio-only mode (no video is sent or recieved)     |
 | audioMuted   | boolean   | false               | Controls whether the participant will join the conference with the microphone muted                             |
 | videoMuted   | boolean   | false               | Controls whether the participant will join the conference with the camera muted                                 |
+| prejoinPageEnabled   | boolean   | true        |  Make it true to Skip PrejoinPage  
+| disableInviteFunctions | boolean   | true      |  To disable invite functions in Mobile SDK 
 | userInfo     | object    | {}                  | Object that contains information about the participant starting the meeting. See [UserInfo](#userinfo)          |
 | featureFlags | object    | {}                  | Object that contains information about which feature flags should be set. See below for more info.              |
 

@@ -29,7 +29,9 @@ export default function JoinMeeting(props) {
     room: '',
     token: '',
     pcode: '',
-    serverUrl: 'https://meethour.io'
+    serverUrl: 'https://meethour.io',
+    prejoinPageEnabled: false, // Make it true to Skip PrejoinPage
+    disableInviteFunctions: true // To disable invite functions in Mobile SDK.
   });
   const [meetingId, setMeetingId] = useState('');
   const [isLoading, setIsLoading] = React.useState(false);

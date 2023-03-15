@@ -75,7 +75,7 @@ public class MainActivity extends FragmentActivity implements MeetHourActivityIn
 
         view = new MeetHourView(this);
         MeetHourConferenceOptions options = new MeetHourConferenceOptions.Builder()
-            .setRoom("https://meethour.io/sdktest123")
+            .setRoom("https://meethour.io/TestRoom")
             .build();
         view.join(options);
 
@@ -175,6 +175,8 @@ MeetHourConferenceOptions options = new MeetHourConferenceOptions.Builder()
     .setVideoMuted(false)
     .setAudioOnly(false)
     .setWelcomePageEnabled(false)
+    .setPrejoinPageEnabled(false) // To skip the prejoin page dynamically.
+    .setDisableInviteFunctions(true) //  To disable Invite options in SDK. 
     .build();
 ```
 

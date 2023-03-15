@@ -1,16 +1,20 @@
-# Meet Hour Flutter SDK
+# Meet Hour Flutter SDK Example (https://meethour.io)
 
 Meet Hour Plugin for Flutter. Supports Android and iOS platforms.
 
 "Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc." 
 
-Example Project is here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/flutter/MeetHourSDKTest
+```
+
+Example Project is here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/Flutter/MeetHourSDKTest
+
+```
 
 
 Pub dev - https://pub.dev/packages/meet_hour
 
 ```
-  meet_hour: '>=5.0.14'
+  meet_hour: '>=5.0.17'
 ```
 
 # MeetHour SDK Implementation - Steps
@@ -18,32 +22,17 @@ Pub dev - https://pub.dev/packages/meet_hour
 1. SDK Examples Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs
 2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
 
-# Steps to Integrate:
+### Steps to Use Meet Hour React Flutter SDK Example
 
-1. Signup for Meet Hour (https://meethour.io) and signup for Developer or Higher plan. Currently we offer 28 days free trial.
-2. Once you signup for developer plan, and go to our Dashboard - (https://portal.meethour.io) and tap on "Developers" menu.
-3. Now copy and Client ID & Client Secret and keep it handy with you.
-4. Go to our API documentation and hit Login API to get oAuth Access Token - (https://bit.ly/3E2hKU7)
-5. Once you get an access token, you can access any our API. Now you first thing you have to do is create a contact in our system as soon as user signup in your platform using this API (https://bit.ly/3LRehug). This will give you unique contact_id of that user. You require this id when you schedule a meeting below.
-6. Later go to Schedule Meeting API -> Pass all the parameters needed to generate a new meetings - (https://bit.ly/3riFLkx)
-7. Once the meeting is genereate, in order to join a meeting you require to Generate JWT Token using this API (https://bit.ly/3ur5pFR) and pass it to the conference URL via MT Parameter - https://meethour.io?mt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImFjY2Vzc190b2tlbiI6ImV5SjBlWEFpT2lKS1YxUWlMQ0poYkdjaU9pSlNVekkxTmlKOS5leUpoZFdRaU9pSTVNemxrWmpVeE5pMDJNekEzTFRRNVkyUXRPVGMxTXkwek1XRTNNemRrT1RGaE1HWWlMQ0pxZEdraU9pSmtNMlUyT
+1. Go to meethour.io and signup for Developer or Higher plan. Currently we offer 28 days free trial.
+2. Go to the dashboard and then click on developers menu.
+3. Copy your Client ID, Client Secret and Api Key. After copying, paste each copied text to the respective constant in the source code lib/constants/index.dart
+4. On Home page Click on Get Access Token
+5. Then Try Schedule a Meeting & Join Meeting.
 
-
-## For iOS - Pod Update
-
-Always run below command if you want to get latest MeetHourSDK Pod file.
-
-```
-pod update MeetHourSDK
-pod update MeetHourSDK or pod install --repo-update
-```
-
-```
-For Apple M1 Silicon Chip
-arch -x86_64 pod update MeetHourSDK or arch -x86_64 pod install --repo-update
-```
 
 ## Table of Contents
+  - [API End Points Supported](#api)
   - [Configuration](#configuration)
     - [IOS](#ios)
       - [Podfile](#podfile)
@@ -61,6 +50,255 @@ arch -x86_64 pod update MeetHourSDK or arch -x86_64 pod install --repo-update
     - [Per Meeting Events](#per-meeting-events)
     - [Global Meeting Events](#global-meeting-events)
   - [Closing a Meeting Programmatically](#closing-a-meeting-programmatically)
+
+
+<a name="api"></a>
+
+### API End Points Supported
+
+1. To Get Access Token Endpoint : => https://docs.v-empower.com/docs/MeetHour-API/a44a7d7669f91-user-login-get-access-token
+
+   ```
+      LoginType LoginObject = LoginType(
+        client_id: '',
+        client_secret: '',
+        grant_type: 'password',
+        password: '',
+        username: ''
+        );
+
+       Map<String, dynamic> response - await ApiServices.login(LoginObject);
+   ```
+
+   => You have to pass respective values in the argument section. Hence, to get desired response.
+
+2. To schedule a meeting: => https://docs.v-empower.com/docs/MeetHour-API/2de4b757a6312-meeting-schedule-meeting
+
+   ```
+    ScheduleMeetingType ScheduleObject = ScheduleMeetingType(
+      meetingName : 'Test',
+      agenda: '',
+      passcode: '',
+      meetingDate: '',
+      meetingTime: '',
+      meetingMeridiem: '',
+      durationhr: '',
+      durationmin: '',
+      timezone: '',
+      isrecurring: '',
+      recurringtype: '',
+      repeat_interval: '',
+      endBy: '',
+      enddatetime: '',
+      instructions: '',
+      is_show_portal: '',
+      enablepreregistration: '',
+      meetingtopic: '',
+      meetingagenda: '',
+      options: '',
+      attend: '',
+      groups: '',
+      hostusers: ''
+    );
+
+    Map<String, dynamic> response = await ApiServices.scheduleMeeting(token, ScheduleObject);
+
+   ```
+
+3. To Generate JWT Token Endpoint => https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
+
+   ```
+      GenerateJwtType JWTObject = GenerateJwtType(
+        config: '',
+        contactid,
+        meetingid,
+        uiconfig
+
+      Map<String, dynamic> response =  await ApiServices.generateJwt(token, JWTObject);
+
+      );
+   ```
+
+4. To fetch User Details: => https://docs.v-empower.com/docs/MeetHour-API/ff9d0e37d9191-user-details
+
+   ```
+       Map<String, dynamic> response =  await ApiServices.userDetails(token);
+   ```
+
+5. To fetch access Token using Refresh Token: => https://docs.v-empower.com/docs/MeetHour-API/d851be1af9804-get-access-token-using-refresh-token
+
+   ```
+      RefreshTokenType RefreshTokenObject = RefreshTokenType(
+               client_id: '';
+               client_secret: '';
+               grant_type: '';
+               refresh_token: '';
+      )
+      Map<String, dynamic> response =  await ApiServices.getRefreshToken(token, RefreshTokenObject);
+   ```
+
+6. To add a contact in Meet Hour database: => https://docs.v-empower.com/docs/MeetHour-API/bd1e416413e8c-add-contact
+
+   ```
+       AddContactType AddContactObject = AddContactType(
+            countrycode: '',
+            email: '',
+            firstname: '',
+            image: '',
+            is_show_portal: '',
+            lastname: '',
+            phone: ''
+       );
+      Map<String, dynamic> response =  await ApiServices.addContact(token AddContactObject);
+   ```
+
+7. To get Timezones of various countries: => https://docs.v-empower.com/docs/MeetHour-API/c688c29bce9b9-timezone-list
+
+   ```
+       Map<String, dynamic> response =  await ApiServices.timezone(token)
+
+   ```
+
+8. To get list of all the contacts in your Meet Hour account: => https://api.meethour.io/api/{version}/customer/contacts
+
+   ```
+
+      ContactsType AddContactObject = ContactsType(
+        exclude_hosts: 1100,
+        limit: 10,
+        page: 1
+      );
+      
+      Map<String, dynamic> response =  await ApiServices.contactsList(token, AddContactObject);
+
+   ```
+
+9. To make changes in the existing contact details: => https://docs.v-empower.com/docs/MeetHour-API/28cae9187d215-edit-contact
+
+   ````
+
+    EditContactType EditContactObject =  EditContactType(
+      contactid: 1150;
+      countrycode: '',
+      email: '',
+      firstname: '',
+      image: '',
+      is_show_portal: '',
+      lastname: '',
+      phone: ''
+    );
+
+  Map<String, dynamic> response = ApiServices.editContact(token, EditContactObject);
+
+   ````
+
+10. To get Upcoming Meetings: => https://docs.v-empower.com/docs/MeetHour-API/31df88388416d-upcoming-meetings
+
+    ```
+    UpcomingMeetingType UpcomingMeetingObject =  UpcomingMeetingType(
+      page: 10,
+      limit: 10,
+      show_all: 1
+    );
+    
+     Map<String, dynamic> response = ApiServices.upcomingMeetings(token, UpcomingMeetingObject
+    ```
+
+11. To archive a meeting: => https://docs.v-empower.com/docs/MeetHour-API/1dd64523cc6bf-archive-meeting
+
+    ```
+
+    ArchiveMeetingType ArchiveMeetingObject =  ArchiveMeetingType(
+      id: 10
+    );
+    
+     Map<String, dynamic> response = ApiServices.archiveMeeting(token, ArchiveMeetingObject);
+    ```
+
+12. To get the details of a missed meeting: => https://docs.v-empower.com/docs/MeetHour-API/92998e2dda102-missed-meetings
+
+    ```
+    MissedMeetingType MissedMeetingObject =  MissedMeetingType(
+      limit: 10,
+      page: number,
+      show_all: 1
+    );
+    
+     Map<String, dynamic> response = ApiServices.missedMeetings(token, MissedMeetingObject);
+    ```
+
+13. To get completed meetings: => https://docs.v-empower.com/docs/MeetHour-API/aa9ef6a678250-completed-meetings
+
+    ```
+    CompletedMeetingType CompletedMeetingObject =  CompletedMeetingType(
+      limit: 10,
+      page: number,
+      show_all: 1
+    );
+    
+     Map<String, dynamic> response = ApiServices.completedMeetings(token, CompletedMeetingObject);
+    ```
+
+14. To edit an existing meeting: => https://docs.v-empower.com/docs/MeetHour-API/5dedde36380b4-meeting-edit-meeting
+
+    ```
+
+    EditMeetingType EdiMeetingObject = EditMeetingType(
+      meeting_id: ''
+      meetingName : 'Test',
+      agenda: '',
+      passcode: '',
+      meetingDate: '',
+      meetingTime: '',
+      meetingMeridiem: '',
+      durationhr: '',
+      durationmin: '',
+      timezone: '',
+      isrecurring: '',
+      recurringtype: '',
+      repeat_interval: '',
+      endBy: '',
+      enddatetime: '',
+      instructions: '',
+      is_show_portal: '',
+      enablepreregistration: '',
+      meetingtopic: '',
+      meetingagenda: '',
+      old_attend: []
+      options: '',
+      attend: '',
+      groups: '',
+      hostusers: ''
+    );
+    Map<String, dynamic> response = await ApiServices.editMeeting(token, EdiMeetingObject);
+
+
+    ```
+
+15. To view a meeting: => https://docs.v-empower.com/docs/MeetHour-API/7e9a0a1e0da7f-meeting-view-meeting
+
+    ```
+
+    ViewMeetingType ViewMeetingObject =  ViewMeetingType(
+      meeting_id: ''
+    );
+    
+     Map<String, dynamic> response = ApiServices.viewMeeting(token, ViewMeetingObject);
+    ```
+
+16. To get all the recordings list: => https://docs.v-empower.com/docs/MeetHour-API/ce7c4fd8cae7e-recording-list
+
+    ```
+    RecordingsListType RecordingMeetingObject =  RecordingsListType(
+      filter_by: '';
+      limit: '';
+      page: '';
+    );
+    
+     Map<String, dynamic> response = ApiServices.recordingsList(token, RecordingMeetingObject);
+   
+   ````
+
 
 <a name="configuration"></a>
 ## Configuration
@@ -105,7 +343,7 @@ Info.plist.
 Set dependencies of build tools gradle to minimum 3.6.3:
 ```gradle
 dependencies {
-    classpath 'com.android.tools.build:gradle:3.6.3' <!-- Upgrade this -->
+    classpath 'com.android.tools.build:gradle:7.1.0' <!-- Upgrade this -->
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 }
 ```
@@ -116,7 +354,7 @@ distributionBase=GRADLE_USER_HOME
 distributionPath=wrapper/dists
 zipStoreBase=GRADLE_USER_HOME
 zipStorePath=wrapper/dists
-distributionUrl=https\://services.gradle.org/distributions/gradle-5.6.4-all.zip <!-- Upgrade this -->
+distributionUrl=https\://services.gradle.org/distributions/gradle-7.2-bin.zip <!-- Upgrade this -->
 ```
 
 #### AndroidManifest.xml
@@ -146,7 +384,7 @@ Update your minimum sdk version to 23 in android/app/build.gradle
 defaultConfig {
     applicationId "go.meethour.io.flutter.sdk_example"
     minSdkVersion 23 //Required for MeetHour
-    targetSdkVersion 28
+    targetSdkVersion 33
     versionCode flutterVersionCode.toInteger()
     versionName flutterVersionName
 }
@@ -166,7 +404,7 @@ buildTypes {
         signingConfig signingConfigs.debug
         
         // Add below 3 lines for proguard
-        minifyEnabled true
+        minifyEnabled false
         useProguard true
         proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
@@ -181,23 +419,6 @@ If you do not create the proguard-rules.pro file, then your app will
 crash when you try to join a meeting or the meeting screen tries to open
 but closes immediately. You will see one of the below errors in logcat.
 
-```
-## App crashes ##
-java.lang.RuntimeException: Parcel android.os.Parcel@8530c57: Unmarshalling unknown type code 7536745 at offset 104
-    at android.os.Parcel.readValue(Parcel.java:2747)
-    at android.os.Parcel.readSparseArrayInternal(Parcel.java:3118)
-    at android.os.Parcel.readSparseArray(Parcel.java:2351)
-    .....
-```
-
-```
-## Meeting won't open and you go to previous screen ##
-W/unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.BV.LinearGradient.LinearGradientManager
-W/unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.uimanager.g
-W/unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.art.ARTGroupViewManager
-W/unknown:ViewManagerPropertyUpdater: Could not find generated setter for class com.facebook.react.views.art.a
-.....
-```
 
 <a name="join-a-meeting"></a>
 
@@ -215,11 +436,15 @@ _joinMeeting() async {
         ..serverURL = "https://meethour.io"
         ..subject = "Meeting with John"
         ..userDisplayName = "John Delise"
+        ..token = "" // JWT Token for User authentication as Moderator.
+        ..pcode = "" // To Pass meeting password dynamically.
         ..userEmail = "john@gmail.com"
         ..userAvatarURL = "https://someimageurl.com/image.jpg" // or .png
         ..audioOnly = true
         ..audioMuted = true
         ..videoMuted = true
+        ..prejoinPageEnabled = true // Make it false to Skip PrejoinPage
+        ..disableInviteFunctions = true // To disable invite functions in Mobile SDK.
         ..featureFlag = featureFlag;
 
       await MeetHour.joinMeeting(options);
@@ -245,7 +470,9 @@ _joinMeeting() async {
 | serverURL         | No        | meethour.io     | Specify your own hosted server. Must be a valid absolute URL of the format `<scheme>://<host>[/path]`, i.e. https://someHost.com. Defaults to Meet Hour's servers. |
 | userAvatarURL     | N/A       | none              | User's avatar URL. |
 | token             | N/A       | none              | JWT token used for authentication. |
-| pcode             | N/A       | none              | Dynamically pass Meeting Encrypted Password. Get Pcode via API |
+| pcode             | N/A       | none              | pcode used for passing meeting password dynamically. |
+| prejoinPageEnabled             | N/A       | false              | Make it false to Skip PrejoinPage. |
+| disableInviteFunctions             | N/A       | false              | To disable invite functions in Mobile SDK. |
 | featureFlag      | No        | see below         | Object of FeatureFlag class used to enable/disable features and set video resolution of Meet Hour SDK. |
 
 <a name="meetHourMeetingresponse"></a>

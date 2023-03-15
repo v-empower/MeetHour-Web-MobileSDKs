@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 .setServerURL(serverURL)
                 //.setToken("MyJWT")
                 //.setPcode("") // Dynamically pass Encrypted meeting password.
+                //.setPrejoinPageEnabled(false) // To skip the prejoin page dynamically.
+                // .setDisableInviteFunctions(true) // To disable invite functions in sdk.
                 // Different features flags can be set
                 // .setFeatureFlag("toolbox.enabled", false)
                 // .setFeatureFlag("filmstrip.enabled", false)
@@ -78,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
                     = new MeetHourConferenceOptions.Builder()
                     .setRoom(text)
                     .setPcode("5b40602cfea7708895781a8cad71be5b")
+                    .setPrejoinPageEnabled(true) // set it to false to disable prejoin page.
+                    .setDisableInviteFunctions(true) // To disable invite functions in sdk.
                     // Settings for audio and video
                     //.setAudioMuted(true)
                     //.setVideoMuted(true)
