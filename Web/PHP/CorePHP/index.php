@@ -33,7 +33,7 @@ use MeetHourApp\Types\ViewMeeting;
 //     'options' => array('ALLOW_GUEST', 'JOIN_ANYTIME'),
 //     'hostusers' => array('first_name' => "Zeeshan", 'last_name' => "Ali", 'email' => "xeeshanali786@gmail.com")
 // );
-//     $login = new Login("890py815uk6xpy2qz2ozup60y9xw15q530tx", "a7b7ca34db7d7c54d76cb1dbe94f41a353e425d7a660865e7cf86a5d824ae033", "password", "zeeshan.ali@v-empower.com", "u98Iu9wA");
+//     $login = new Login("", "", "password", "", "");
 //     $loginResponse = $meetHourApiService->login($login);
 //     $scheduleBody = new ScheduleMeeting("Quick Meeting", "123456", date('h:i'), 'PM', date('d-m-Y'), 'Asia/Kolkata', );
 //     $response = $meetHourApiService->scheduleMeeting($loginResponse->access_token, $scheduleBody);
