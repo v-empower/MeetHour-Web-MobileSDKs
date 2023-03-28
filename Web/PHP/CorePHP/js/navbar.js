@@ -20,14 +20,14 @@ const navbar = () => {
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
                         <div class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                            aria-current="page"><a href="index.html">Home</a></div>
+                            aria-current="page"><a href="index.php">Homeesdf</a></div>
                         <div
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                            <a href="schedule-meeting.html">Schedule a Meeting</a>
+                            <a href="schedule-meeting.php">Schedule a Meeting</a>
                         </div>
                         <div
                             class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                            <a href="join-meeting.html">Join Meeting</a>
+                            <a href="join-meeting.php">Join Meeting</a>
                         </div>
                     </div>
                 </div>

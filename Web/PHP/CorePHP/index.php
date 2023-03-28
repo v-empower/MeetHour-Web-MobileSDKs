@@ -24,26 +24,22 @@ catch (\Exception ) {
 if(!$conn) {
    $error = true;
    $message = 'Could not connect to database. Check db_connect.php file';
-    
 }
 if($conn) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    $getaccesstoken = $_POST["getaccesstoken"];
- 
+
    if (isset($getaccesstoken) && $getaccesstoken === 'true'){
      $meetHourApiService = new MHApiService();
  
      if(isset($CLIENT_ID) && !empty($CLIENT_ID) && isset($CLIENT_SECRET) && !empty($CLIENT_SECRET) && isset($USERNAME) && !empty($USERNAME) && isset($PASSWORD) && !empty($PASSWORD)){
        $login = new Login($CLIENT_ID, $CLIENT_SECRET, $GRANT_TYPE, $USERNAME, $PASSWORD);
        $loginResponse = $meetHourApiService->login($login);
-
        if(isset($loginResponse->access_token) && !empty($loginResponse->access_token)) {
-         
          $sql = "UPDATE `credentials` SET `access_token`='".$loginResponse->access_token."' WHERE 1";
          $sql2 = "SELECT `access_token` FROM `credentials` WHERE 1";
-
          $data = $conn->query($sql);
          if ($data === TRUE) {
             $result = $conn->query($sql2);
@@ -80,10 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  }
 }  
 
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -112,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <div id="error"><div class="flex fixed top-20 justify-center items-center text-lg font-medium w-96 rounded-md h-16 border border-red-600 bg-red-50 text-red-600"><p><?php echo $message?></p></div></div>
       <?php } ?>
          <div class="text-3xl flex justify-center font-bold mt-5 text-sky-500">
-            <h1>Welcome to Meet Hour JQuery Web - Example</h1>
+            <h1>Welcome to Meet Hour PHP - Example</h1>
          </div>
          <div class="md:mx-40 mx-5 overflow-hidden bg-white shadow sm:rounded-lg">
             <div class="px-4 py-5 sm:px-6">
@@ -151,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </div>
                   <?php 
                   if($success === true && $accessToken !== null) { ?>
-                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"><dt class="text-sm font-medium text-gray-500">Step Six</dt><dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Token successfully got generated. Now you can schedule a meeting. <a class="text-blue-500 underline" href='schedule-meeting.html'>Schedule a Meeting</a></dd></div>
+                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"><dt class="text-sm font-medium text-gray-500">Step Six</dt><dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Token successfully got generated. Now you can schedule a meeting. <a class="text-blue-500 underline" href='schedule-meeting.php'>Schedule a Meeting</a></dd></div>
                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-12 sm:gap-4 sm:px-12"><textarea class="" disabled><?php echo $accessToken;?></textarea></div>
                   <?php 
                   }
