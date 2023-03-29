@@ -28,13 +28,10 @@ if(!$conn) {
 if($conn) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
    $getaccesstoken = $_POST["getaccesstoken"];
-
    if (isset($getaccesstoken) && $getaccesstoken === 'true'){
-     $meetHourApiService = new MHApiService();
- 
-     if(isset($CLIENT_ID) && !empty($CLIENT_ID) && isset($CLIENT_SECRET) && !empty($CLIENT_SECRET) && isset($USERNAME) && !empty($USERNAME) && isset($PASSWORD) && !empty($PASSWORD)){
+      $meetHourApiService = new MHApiService();
+      if(isset($CLIENT_ID) && !empty($CLIENT_ID) && isset($CLIENT_SECRET) && !empty($CLIENT_SECRET) && isset($USERNAME) && !empty($USERNAME) && isset($PASSWORD) && !empty($PASSWORD)){
        $login = new Login($CLIENT_ID, $CLIENT_SECRET, $GRANT_TYPE, $USERNAME, $PASSWORD);
        $loginResponse = $meetHourApiService->login($login);
        if(isset($loginResponse->access_token) && !empty($loginResponse->access_token)) {

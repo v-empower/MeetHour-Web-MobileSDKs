@@ -3,7 +3,6 @@
 require('./vendor/autoload.php');
 require('./vendor/meethour/php-sdk/src/autoload.php');
 require('constants.php');
-require('schedule-form.php');
 include 'db_connect.php';
 
 
@@ -38,9 +37,8 @@ if (!$conn) {
 }
 
 if ($conn) {
-
     $meetHourApiService = new MHApiService();
-
+    
     $sql = "SELECT `access_token` FROM `credentials` WHERE 1";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -49,9 +47,9 @@ if ($conn) {
             $success = true;
 
             $timezoneResponse = $meetHourApiService->timezone($accessToken);
-
+            
             $timezonesList = $timezoneResponse->timezones;
-
+            
             $contactsListBody = new ContactsList();
             $contactsResponse = $meetHourApiService->contactsList($accessToken, $contactsListBody);
             $contacts = $contactsResponse->contacts;
@@ -63,20 +61,34 @@ if ($conn) {
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+  
 
         $instantMeeting = $_POST["instantmeeting"];
         $ScheduleMeeting = $_POST["schedulemeeting"];
 
-
         if (isset($instantMeeting) && $instantMeeting === 'true') {
-
             $timezone  = date_default_timezone_get();
 
             $scheduleBody = new ScheduleMeeting("Instant Meeting", "123456", date('h:i'), 'PM', date('d-m-Y'), $timezone);  // You can give 
 
             $MeetingResponse = $meetHourApiService->scheduleMeeting($accessToken, $scheduleBody);
         } else if (isset($ScheduleMeeting) && $ScheduleMeeting === 'true') {
+            $meetingName = $_POST["meeting_name"];
+            $passcode = $_POST["passcode"];
+            $meetingDate = $_POST["meeting_date"];
+            $time12 = date("g:i a", strtotime($_POST["meeting_time"]));
+            $timeArray = explode(" ", $time12);
+            $timeString = $timeArray[0]; // "04:56"
+            $timeStamp = strtotime($timeString);
+            $meetingTime = date("H:i", $timeStamp);
+            $meetingMeridiem = $timeArray[1];
+            $timezone = $_POST["timezone"];
+            $hostUsersArray = $_POST["hostusersArray"];
+            $hostUsersString = json_decode($hostUsersArray);
+            $hostUsers = array_map('intval', $hostUsersString);
+            $attendeesArray = $_POST["attendArray"];
+            $attendeesString = json_decode($attendeesArray);
+            $attendees = array_map('intval', $attendeesString);
             if (isset($CLIENT_ID) && !empty($CLIENT_ID) && isset($CLIENT_SECRET) && !empty($CLIENT_SECRET) && isset($USERNAME) && !empty($USERNAME) && isset($PASSWORD) && !empty($PASSWORD)) {
                 $login = new Login($CLIENT_ID, $CLIENT_SECRET, $GRANT_TYPE, $USERNAME, $PASSWORD);
                 $loginResponse = $meetHourApiService->login($login);
@@ -91,6 +103,11 @@ if ($conn) {
                                 $accessToken = $row["access_token"];
                                 $success = true;
                             }
+                            $scheduleBody = new ScheduleMeeting($meetingName, $passcode, $meetingTime, $meetingMeridiem, $meetingDate, $timezone);
+                            $scheduleBody->attend = $attendees; 
+                            $scheduleBody->hostusers = $hostUsers; 
+                            $scheduleBody->options = ["ALLOW_GUEST"]; 
+            $MeetingResponse = $meetHourApiService->scheduleMeeting($accessToken, $scheduleBody);
                         } else {
                             $success = false;
                             $error = true;
@@ -202,7 +219,7 @@ if ($conn) {
                         </h2>
                     </div>
                     <div class="mt-8 space-y-6"><input type="hidden" name="remember" value="true">
-                        <form action="schedule-form.php" id="form" method="POST">
+                        <form action="schedule-meeting.php" id="form" method="POST">
                             <div class="-space-y-px rounded-md shadow-sm grid gap-5">
                                 <div><label for="meeting_name" class="sr-only">Meeting Name</label><input id="meeting_name" name="meeting_name" type="text" class="appearance-none rounded-none relative block
                       w-full px-3 py-2 border border-gray-300
@@ -225,20 +242,16 @@ if ($conn) {
                       focus:outline-none focus:ring-indigo-500
                       focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Meeting Time"></div>
                                 <div class='w-full h-10 rounded-md'>
-                                    <select class='w-full h-full rounded-md focus:outline-none bg-slate-50 border border-slate-300' name="timezone">
+                                    <select class='w-full h-full rounded-md focus:outline-none bg-slate-50 border border-slate-300' name="timezone" id="timezone">
                                         <?php foreach ($timezonesList as $item) { ?>
-                                            <option key=<?php $item->value; ?> class='w-96' value=<?php $item->value; ?>><?php echo $item->name; ?></option>
+                                            <option key=<?php $item->value; ?> class='w-96' value=<?php echo $item->value; ?>><?php echo $item->name; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
                                 <div class="relative inline-block text-left" data-headlessui-state="" style="margin-bottom: 35px;">
                                     <div>
                                         <h2 style="margin-top: 15px;">Choose Participants</h2>
-                                        <select id="mySelectParticipants" onchange="addParticipant(this)" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transform opacity-100 scale-100 inline-flex w-full justify-between rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" style="width: 100%;">
-                                            <?php
-                                            foreach ($contacts as $contact) { ?>
-                                                <option value=<?php echo $contact->id ?>>Id - <?php echo $contact->id ?>, Email - <?php echo $contact->email ?></option>
-                                            <?php } ?>
+                                        <select name="mySelectParticipants" id="mySelectParticipants" onchange="addParticipant(this)" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transform opacity-100 scale-100 inline-flex w-full justify-between rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" style="width: 100%;">
                                         </select>
                                     </div>
                                 </div>
@@ -248,14 +261,13 @@ if ($conn) {
                                 <div class="relative inline-block text-left" data-headlessui-state="" style="margin-bottom: 35px;">
                                     <div>
                                         <h2 style="margin-top: 15px;">Choose Moderators</h2>
-                                        <select id="mySelectModerators" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transform opacity-100 scale-100 inline-flex w-full justify-between rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" style="width: 100%;">
-                                            <?php
-                                            foreach ($contacts as $contact) { ?>
-                                                <option value=<?php echo $contact->id ?>>Id - <?php echo $contact->id ?>, Email - <?php echo $contact->email ?></option>
-                                            <?php } ?>
+                                        <select name="mySelectModerators" id="mySelectModerators" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transform opacity-100 scale-100 inline-flex w-full justify-between rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" style="width: 100%;">
+                                            
                                         </select>
                                     </div>
                                 </div>
+                                <input type="hidden" id="attendArray" name="attendArray" value="[]">
+                                <input type="hidden"  id="hostusersArray" name="hostusersArray" value="[]">
                                 <div id="moderators-display" class="grid gap-2">
 
                                 </div>
@@ -278,15 +290,15 @@ if ($conn) {
                             </div>
                         </form>
                         <div id="instant-meeting-loader" class="flex justify-center"></div>
-                        <form action="schedule-meeting.php" class="flex justify-center gap-1 mt-3" method="post">
+                        <form action="schedule-meeting.php" class="flex justify-center gap-1 mt-3" method="POST">
                             <input type="hidden" name="instantmeeting" value="true" />
-                            <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-violet-600 py-2 px-4 text-sm font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2">Instant Meeting</button>
+                            <button type="submit"  class="group relative flex w-full justify-center rounded-md border border-transparent bg-violet-600 py-2 px-4 text-sm font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2">Instant Meeting</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
+       
         <?php
         if ($success === true && $MeetingResponse !== null) { ?>
             <div id="modal">
@@ -302,13 +314,13 @@ if ($conn) {
                                     <div class="p-8 grid gap-2">
                                         <div class="h-14 flex justify-center items-center w-full rounded-lg bg-green-100 text-green-600">
                                             Your meeting has been created successfully!</div>
-                                        <div class="font-semibold text-gray-600">Meeting id: <span class="font-normal text-gray-700"><?php echo $MeetingResponse->data->meeting_id ?>}</span>
+                                        <div class="font-semibold text-gray-600">Meeting id: <span class="font-normal text-gray-700"><?php echo $MeetingResponse->data->meeting_id ?></span>
                                         </div>
                                         <div class="font-semibold text-gray-600">Meeting passcode: <span class="font-normal text-gray-700"><?php echo $MeetingResponse->data->passcode ?></span>
                                         </div>
                                         <div class="font-semibold text-gray-600">Meeting URL: <span class="font-normal text-gray-700"><?php echo $MeetingResponse->data->joinURL ?></span>
                                         </div>
-                                        <div class="flex justify-center"><a href="join-meeting.html?meeting_id=<?php echo $MeetingResponse->data->meeting_id ?>&pcode=<?php echo $MeetingResponse->data->pcode ?>" tabindex="0"><button class="bg-emerald-600 font-semibold px-4 py-2 mt-1 text-white rounded-md">Start
+                                        <div class="flex justify-center"><a href="join-meeting.php?meeting_id=<?php echo $MeetingResponse->data->meeting_id ?>&pcode=<?php echo $MeetingResponse->data->pcode ?>" tabindex="0"><button class="bg-emerald-600 font-semibold px-4 py-2 mt-1 text-white rounded-md">Start
                                                     Meeting</button></a></div>
                                     </div>
                                 </div>
@@ -323,7 +335,6 @@ if ($conn) {
         // Schedule a meeting manually
         $(document).ready(function() {
             setTimeout(() => {
-
                 getContactsList(<?php echo json_encode($contactsResponse) ?>)
             }, 500)
             $("#mySelectParticipants").change((event) => {
@@ -333,7 +344,10 @@ if ($conn) {
                 addModerator(event)
             })
         })
-
+        $(document).ready(function () {
+            localStorage.setItem("attendees", JSON.stringify([]))
+            localStorage.setItem("hostusers", JSON.stringify([]))
+        })
         $(document).ready(function() {
             $("#close-modal").click(() => {
                 document.querySelector("#modal").removeChild('div')

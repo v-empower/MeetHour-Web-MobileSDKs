@@ -13,10 +13,7 @@
     return time.join('').split(" ");
   }
 
- 
   async function getContactsList(contacts) {
-
-  
     try {
         const response = contacts;
         localStorage.setItem("contacts", JSON.stringify(response.contacts))
@@ -47,7 +44,7 @@
   
   const addParticipant = (event) => {
     const user = JSON.parse(localStorage.getItem("contacts")).filter((contact) => {
-      return contact.id === parseInt(event.target.value);
+      return contact.id === parseInt(event?.target?.value);
     })
     const attendParticipants = JSON.parse(localStorage.getItem("attendees")) || [];
     if (attendParticipants.includes(event.target.value) === false) {
@@ -70,6 +67,9 @@
         newTag.setAttribute('class', 'w-96 flex justify-between')
         const newTagParent = document.querySelector('#participants-display'); 
         newTagParent.appendChild(newTag);
+        console.log(attendParticipants)
+        document.getElementById('attendArray').value = JSON.stringify(attendParticipants);
+      
     }
   };
 
@@ -80,8 +80,9 @@
     existing.indexOf(event.target.id) + 1
     );
     const element = document.querySelector(`#participant-${event.target.id}`);
-    element.remove()
-    localStorage.setItem("attendees", JSON.stringify(existing))
+    element.remove();
+    localStorage.setItem("attendees", JSON.stringify(existing));
+    document.getElementById('attendArray').value = JSON.stringify(localStorage.getItem("attendees"));
   };
 
   const addModerator = (event) => {
@@ -91,7 +92,6 @@
     const attendModerators = JSON.parse(localStorage.getItem("hostusers")) || [];
     if (attendModerators.includes(event.target.value) === false) {
         attendModerators.push(event.target.value);
-        
         localStorage.setItem("hostusers", JSON.stringify(attendModerators))
         const newTag = document.createElement('div');
         const pTag = document.createElement('p');
@@ -110,6 +110,7 @@
         newTag.setAttribute('class', 'w-96 flex justify-between')
         const newTagParent = document.querySelector('#moderators-display'); 
         newTagParent.appendChild(newTag);
+        document.getElementById('hostusersArray').value = JSON.stringify(attendModerators);
     }
   };
 
@@ -121,5 +122,6 @@
     );
     const element = document.querySelector(`#moderator-${event.target.id}`);
     element.remove()
-    localStorage.setItem("hostusers", JSON.stringify(existing))
+    localStorage.setItem("hostusers", JSON.stringify(existing));
+    document.getElementById('hostusersArray').value = JSON.stringify(localStorage.getItem("hostusers"));
   };

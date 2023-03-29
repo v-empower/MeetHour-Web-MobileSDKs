@@ -1,9 +1,10 @@
 <?php
-const CLIENT_ID = "";
-const CLIENT_SECRET = "";
-const USERNAME = "";
-const PASSWORD = "";
-const API_KEY = "";
-const CONFERENCE_URL = "meethour.io";
-const API_RELEASE = "v2.4.6";
+$CLIENT_ID = "";
+$CLIENT_SECRET = "";
+$USERNAME = "";
+$PASSWORD = "";
+$GRANT_TYPE = "password";
+$API_KEY = "";
+$CONFERENCE_URL = "meethour.io";
+$API_RELEASE = "v2.4.6";
 ?>
