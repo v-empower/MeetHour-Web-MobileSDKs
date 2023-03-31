@@ -14,64 +14,59 @@ $accessToken = null;
 
 try {
    $conn = OpenCon();
-}
-catch (\Exception ) {
+} catch (\Exception) {
    $error = true;
    $message = 'Could not connect to database. Check db_connect.php file';
 }
 
 
-if(!$conn) {
+if (!$conn) {
    $error = true;
    $message = 'Could not connect to database. Check db_connect.php file';
 }
-if($conn) {
+if ($conn) {
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-   $getaccesstoken = $_POST["getaccesstoken"];
-   if (isset($getaccesstoken) && $getaccesstoken === 'true'){
-      $meetHourApiService = new MHApiService();
-      if(isset($CLIENT_ID) && !empty($CLIENT_ID) && isset($CLIENT_SECRET) && !empty($CLIENT_SECRET) && isset($USERNAME) && !empty($USERNAME) && isset($PASSWORD) && !empty($PASSWORD)){
-       $login = new Login($CLIENT_ID, $CLIENT_SECRET, $GRANT_TYPE, $USERNAME, $PASSWORD);
-       $loginResponse = $meetHourApiService->login($login);
-       if(isset($loginResponse->access_token) && !empty($loginResponse->access_token)) {
-         $sql = "UPDATE `credentials` SET `access_token`='".$loginResponse->access_token."' WHERE 1";
-         $sql2 = "SELECT `access_token` FROM `credentials` WHERE 1";
-         $data = $conn->query($sql);
-         if ($data === TRUE) {
-            $result = $conn->query($sql2);
-            if ($result->num_rows > 0) {
-               while($row = $result->fetch_assoc()) {
-                  $accessToken = $row["access_token"];
-                  $success = true;
+   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      $getaccesstoken = $_POST["getaccesstoken"];
+      if (isset($getaccesstoken) && $getaccesstoken === 'true') {
+         $meetHourApiService = new MHApiService();
+         if (isset($CLIENT_ID) && !empty($CLIENT_ID) && isset($CLIENT_SECRET) && !empty($CLIENT_SECRET) && isset($USERNAME) && !empty($USERNAME) && isset($PASSWORD) && !empty($PASSWORD)) {
+            $login = new Login($CLIENT_ID, $CLIENT_SECRET, $GRANT_TYPE, $USERNAME, $PASSWORD);
+            $loginResponse = $meetHourApiService->login($login);
+            if (isset($loginResponse->access_token) && !empty($loginResponse->access_token)) {
+               $sql = "UPDATE `credentials` SET `access_token`='" . $loginResponse->access_token . "' WHERE 1";
+               $sql2 = "SELECT `access_token` FROM `credentials` WHERE 1";
+               $data = $conn->query($sql);
+               if ($data === TRUE) {
+                  $result = $conn->query($sql2);
+                  if ($result->num_rows > 0) {
+                     while ($row = $result->fetch_assoc()) {
+                        $accessToken = $row["access_token"];
+                        $success = true;
+                     }
+                  } else {
+                     $success = false;
+                     $error = true;
+                     $message = 'Some issue in querying access token from database';
+                  }
+               } else {
+                  $success = false;
+                  $error = true;
+                  $message = 'Some issue in inserting token in database';
                }
-            } else {
-               $success = false;
-               $error = true;
-               $message = 'Some issue in querying access token from database';
+
+               CloseCon($conn);
             }
-
-          } else {
-            $success = false;
+         } else {
             $error = true;
-            $message = 'Some issue in inserting token in database';
-          }
-
-          CloseCon($conn);
-       }
-     }
-     else {
-       $error = true;
-       $message = 'Something went wrong. Make sure you set the credentials.';
-     }
+            $message = 'Something went wrong. Make sure you set the credentials.';
+         }
+      } else {
+         $error = true;
+         $message = 'Something went wrong. Make sure you post true value in getaccesstoken';
+      }
    }
-   else {
-    $error = true;
-    $message = 'Something went wrong. Make sure you post true value in getaccesstoken';
-   }
-
- }
-}  
+}
 
 ?>
 
@@ -97,9 +92,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
          <?php echo require('./header.php') ?>
       </div>
       <div class="relative top-16">
-      <?php if(isset($error) && $error === true) { ?> 
-      <div id="error"><div class="flex fixed top-20 justify-center items-center text-lg font-medium w-96 rounded-md h-16 border border-red-600 bg-red-50 text-red-600"><p><?php echo $message?></p></div></div>
-      <?php } ?>
+         <?php if (isset($error) && $error === true) { ?>
+            <div id="error">
+               <div class="flex fixed top-20 justify-center items-center text-lg font-medium w-96 rounded-md h-16 border border-red-600 bg-red-50 text-red-600">
+                  <p><?php echo $message ?></p>
+               </div>
+            </div>
+         <?php } ?>
          <div class="text-3xl flex justify-center font-bold mt-5 text-sky-500">
             <h1>Welcome to Meet Hour PHP - Example</h1>
          </div>
@@ -138,11 +137,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         will be received and stored it in brower's localstorage. The received access token is
                         then used for making Meet Hour rest api calls.</dd>
                   </div>
-                  <?php 
-                  if($success === true && $accessToken !== null) { ?>
-                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"><dt class="text-sm font-medium text-gray-500">Step Six</dt><dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Token successfully got generated. Now you can schedule a meeting. <a class="text-blue-500 underline" href='schedule-meeting.php'>Schedule a Meeting</a></dd></div>
-                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-12 sm:gap-4 sm:px-12"><textarea class="" disabled><?php echo $accessToken;?></textarea></div>
-                  <?php 
+                  <?php
+                  if ($success === true && $accessToken !== null) { ?>
+                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500">Step Six</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Token successfully got generated. Now you can schedule a meeting. <a class="text-blue-500 underline" href='schedule-meeting.php'>Schedule a Meeting</a></dd>
+                     </div>
+                     <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-12 sm:gap-4 sm:px-12"><textarea class="" disabled><?php echo $accessToken; ?></textarea></div>
+                  <?php
                   }
                   ?>
                </dl>
@@ -153,7 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             </div>
             <form action="index.php" class="flex justify-center gap-1 mt-3" method="post">
-               <input type="hidden" name="getaccesstoken" value="true"/>
+               <input type="hidden" name="getaccesstoken" value="true" />
                <button type="submit" id="getaccesstoken" class="bg-sky-600 flex justify-center items-center text-white rounded-md h-9 w-40">Get Access
                   Token</button>
             </form>

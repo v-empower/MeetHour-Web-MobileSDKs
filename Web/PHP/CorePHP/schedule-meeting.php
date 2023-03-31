@@ -38,18 +38,15 @@ if (!$conn) {
 
 if ($conn) {
     $meetHourApiService = new MHApiService();
-    
+
     $sql = "SELECT `access_token` FROM `credentials` WHERE 1";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $accessToken = $row["access_token"];
             $success = true;
-
             $timezoneResponse = $meetHourApiService->timezone($accessToken);
-            
             $timezonesList = $timezoneResponse->timezones;
-            
             $contactsListBody = new ContactsList();
             $contactsResponse = $meetHourApiService->contactsList($accessToken, $contactsListBody);
             $contacts = $contactsResponse->contacts;
@@ -61,8 +58,6 @@ if ($conn) {
     }
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  
-
         $instantMeeting = $_POST["instantmeeting"];
         $ScheduleMeeting = $_POST["schedulemeeting"];
 
@@ -71,7 +66,16 @@ if ($conn) {
 
             $scheduleBody = new ScheduleMeeting("Instant Meeting", "123456", date('h:i'), 'PM', date('d-m-Y'), $timezone);  // You can give 
 
-            $MeetingResponse = $meetHourApiService->scheduleMeeting($accessToken, $scheduleBody);
+            $apiresponse = $meetHourApiService->scheduleMeeting($accessToken, $scheduleBody);
+
+            if ($apiresponse->success === true) {
+                $MeetingResponse = $apiresponse;
+                $success = true;
+            } else {
+                $success = false;
+                $error = true;
+                $message = 'Instant Meeting has been failed \n ' . json_encode($apiresponse);
+            }
         } else if (isset($ScheduleMeeting) && $ScheduleMeeting === 'true') {
             $meetingName = $_POST["meeting_name"];
             $passcode = $_POST["passcode"];
@@ -101,13 +105,21 @@ if ($conn) {
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 $accessToken = $row["access_token"];
-                                $success = true;
                             }
                             $scheduleBody = new ScheduleMeeting($meetingName, $passcode, $meetingTime, $meetingMeridiem, $meetingDate, $timezone);
-                            $scheduleBody->attend = $attendees; 
-                            $scheduleBody->hostusers = $hostUsers; 
-                            $scheduleBody->options = ["ALLOW_GUEST"]; 
-            $MeetingResponse = $meetHourApiService->scheduleMeeting($accessToken, $scheduleBody);
+                            $scheduleBody->attend = $attendees;
+                            $scheduleBody->hostusers = $hostUsers;
+                            $scheduleBody->options = ["ALLOW_GUEST"];
+                            $apiresponse = $meetHourApiService->scheduleMeeting($accessToken, $scheduleBody);
+
+                            if ($apiresponse->success === true) {
+                                $MeetingResponse = $apiresponse;
+                                $success = true;
+                            } else {
+                                $success = false;
+                                $error = true;
+                                $message = 'Scheduling Meeting has been failed \n ' . json_encode($apiresponse);
+                            }
                         } else {
                             $success = false;
                             $error = true;
@@ -221,22 +233,22 @@ if ($conn) {
                     <div class="mt-8 space-y-6"><input type="hidden" name="remember" value="true">
                         <form action="schedule-meeting.php" id="form" method="POST">
                             <div class="-space-y-px rounded-md shadow-sm grid gap-5">
-                                <div><label for="meeting_name" class="sr-only">Meeting Name</label><input id="meeting_name" name="meeting_name" type="text" class="appearance-none rounded-none relative block
+                                <div><label for="meeting_name" class="sr-only">Meeting Name</label><input required id="meeting_name" name="meeting_name" type="text" class="appearance-none rounded-none relative block
                       w-full px-3 py-2 border border-gray-300
                       placeholder-gray-500 text-gray-900 rounded-b-md
                       focus:outline-none focus:ring-indigo-500
                       focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Meeting Name"></div>
-                                <div><label for="passcode" class="sr-only">Passcode</label><input id="passcode" name="passcode" type="text" class="appearance-none rounded-none relative block
+                                <div><label for="passcode" class="sr-only">Passcode</label><input required id="passcode" name="passcode" type="text" minlength="6" class="appearance-none rounded-none relative block
                       w-full px-3 py-2 border border-gray-300
                       placeholder-gray-500 text-gray-900 rounded-b-md
                       focus:outline-none focus:ring-indigo-500
                       focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Passcode"></div>
-                                <div><label for="meeting_date" class="sr-only">Meeting Date</label><input id="meeting_date" name="meeting_date" type="date" class="appearance-none rounded-none relative block
+                                <div><label for="meeting_date" class="sr-only">Meeting Date</label><input required id="meeting_date" name="meeting_date" type="date" class="appearance-none rounded-none relative block
                       w-full px-3 py-2 border border-gray-300
                       placeholder-gray-500 text-gray-900 rounded-b-md
                       focus:outline-none focus:ring-indigo-500
                       focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Passcode"></div>
-                                <div><label for="meeting_time" class="sr-only">Meeting Time</label><input id="meeting_time" name="meeting_time" type="time" class="appearance-none rounded-none relative block
+                                <div><label for="meeting_time" class="sr-only">Meeting Time</label><input required id="meeting_time" name="meeting_time" type="time" class="appearance-none rounded-none relative block
                       w-full px-3 py-2 border border-gray-300
                       placeholder-gray-500 text-gray-900 rounded-b-md
                       focus:outline-none focus:ring-indigo-500
@@ -262,12 +274,12 @@ if ($conn) {
                                     <div>
                                         <h2 style="margin-top: 15px;">Choose Moderators</h2>
                                         <select name="mySelectModerators" id="mySelectModerators" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none transform opacity-100 scale-100 inline-flex w-full justify-between rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100" style="width: 100%;">
-                                            
+
                                         </select>
                                     </div>
                                 </div>
                                 <input type="hidden" id="attendArray" name="attendArray" value="[]">
-                                <input type="hidden"  id="hostusersArray" name="hostusersArray" value="[]">
+                                <input type="hidden" id="hostusersArray" name="hostusersArray" value="[]">
                                 <div id="moderators-display" class="grid gap-2">
 
                                 </div>
@@ -292,13 +304,13 @@ if ($conn) {
                         <div id="instant-meeting-loader" class="flex justify-center"></div>
                         <form action="schedule-meeting.php" class="flex justify-center gap-1 mt-3" method="POST">
                             <input type="hidden" name="instantmeeting" value="true" />
-                            <button type="submit"  class="group relative flex w-full justify-center rounded-md border border-transparent bg-violet-600 py-2 px-4 text-sm font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2">Instant Meeting</button>
+                            <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-violet-600 py-2 px-4 text-sm font-medium text-white hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2">Instant Meeting</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-       
+
         <?php
         if ($success === true && $MeetingResponse !== null) { ?>
             <div id="modal">
@@ -344,7 +356,7 @@ if ($conn) {
                 addModerator(event)
             })
         })
-        $(document).ready(function () {
+        $(document).ready(function() {
             localStorage.setItem("attendees", JSON.stringify([]))
             localStorage.setItem("hostusers", JSON.stringify([]))
         })
