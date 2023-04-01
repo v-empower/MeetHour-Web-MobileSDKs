@@ -77,7 +77,7 @@ async function getUser() {
     };
   
     try {
-        const response = 
+        const response = await ApiServices.contactsList(localStorage.getItem('accessToken') || '', body);
         localStorage.setItem("contacts", JSON.stringify(response.contacts))
         response?.contacts?.forEach((contact) => {
           const option = document.createElement('option');
