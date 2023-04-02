@@ -22,34 +22,34 @@ Note: Pcode is Encrypted Meeting password. Get it from APIs.
 # Meet Hour Mobile SDKs - Examples
 Code consist of Meet Hour Web & Mobile SDKs with an example to join the conference from both Web & Mobile Technologies.
 
-Web
-	Javascript -> SDK
-		Jquery
-		React JS
-		Angular (Coming soon)
-		NodeJS (Coming soon)
-		SailJS (Coming soon)
-	PHP
-		Core PHP -> SDK
-		Laravel (Coming soon)
-		WordPress (Coming soon)
-		CodeIgnitor (Coming soon)
-	Python
-		Core Python - SDK (Coming soon)
-		django (Coming soon)
-	C#
-		Core C# -> SDK (Coming soon)
-        ASP.NET -> (Coming soon)
-Mobile
-	Flutter
-	Native
-		Android
-			Java
-			Kotlin
-		iOS
-			Swift
-			Objective-C
-	React Native
+1. Web
+	1.1 Javascript -> SDK
+		1.1.1 Jquery
+		1.1.2 React JS
+		1.1.3 Angular (Coming soon)
+		1.1.4 NodeJS (Coming soon)
+		1.1.5 SailJS (Coming soon)
+	1.2 PHP
+		1.2.1 Core PHP -> SDK
+		1.2.2 Laravel (Coming soon)
+		1.2.3 WordPress (Coming soon)
+		1.2.4 CodeIgnitor (Coming soon)
+	1.3 Python
+		1.3.1 Core Python - SDK (Coming soon)
+		1.3.2 django (Coming soon)
+	1.4 C#
+		1.4.1 Core C# -> SDK (Coming soon)
+        	1.4.2 ASP.NET -> (Coming soon)
+2. Mobile
+	2.1 Flutter
+	2.2 Native
+		2.2.1 Android
+			2.2.1.1 Java
+			2.2.1.2 Kotlin
+		2.2.2 iOS
+			2.2.2.1 Swift
+			2.2.2.2 Objective-C
+	2.3 React Native
 
 
 # MeetHour SDK Implementation - Steps
