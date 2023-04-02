@@ -19,19 +19,37 @@ Note: Pcode is Encrypted Meeting password. Get it from APIs.
 6. Later go to Schedule Meeting API -> Pass all the parameters needed to generate a new meetings - (https://bit.ly/3h0qpis)
 7. Once the meeting is generated, in order to join a meeting you're required to Generate a JWT Token using this API (https://bit.ly/3sJaojD) and pass it to the conference URL via MT Parameter - https://meethour.io?mt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImFjY2Vzc190b2tlbiI6ImV5SjBlWEFpT2lKS1YxUWlMQ0poYkdjaU9pSlNVekkxTmlKOS5leUpoZFdRaU9pSTVNemxrWmpVeE5pMDJNekEzTFRRNVkyUXRPVGMxTXkwek1XRTNNemRrT1RGaE1HWWlMQ0pxZEdraU9pSmtNMlUyT
 
-# MeetHour Mobile SDKs - Examples
+# Meet Hour Mobile SDKs - Examples
+Code consist of Meet Hour Web & Mobile SDKs with an example to join the conference from both Web & Mobile Technologies.
 
-    Code consist of Meet Hour Web & Mobile SDKs with an example to join the conference from smart phone via
-
-    1. Web (Generic Javascript)
-    2. Web (Jquery Example)
-    3. Web (React Example)
-    4. Mobile - Native Android (Java Example)
-    5. Mobile - Native Android (Kotlin Example)
-    6. Mobile - Native iOS (Objc Example)
-    7. Mobile - Native iOS (Swift Example)
-    8. Mobile - React Native Example
-    9. Mobile - Flutter Example
+Web
+	Javascript -> SDK
+		Jquery
+		React JS
+		Angular (Coming soon)
+		NodeJS (Coming soon)
+		SailJS (Coming soon)
+	PHP
+		Core PHP -> SDK
+		Laravel (Coming soon)
+		WordPress (Coming soon)
+		CodeIgnitor (Coming soon)
+	Python
+		Core Python - SDK (Coming soon)
+		django (Coming soon)
+	C#
+		Core C# -> SDK (Coming soon)
+        ASP.NET -> (Coming soon)
+Mobile
+	Flutter
+	Native
+		Android
+			Java
+			Kotlin
+		iOS
+			Swift
+			Objective-C
+	React Native
 
 
 # MeetHour SDK Implementation - Steps
