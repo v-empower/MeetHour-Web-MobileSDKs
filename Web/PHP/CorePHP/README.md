@@ -49,13 +49,6 @@ require('./vendor/meethour/php-sdk/src/autoload.php');
 
 ```
 
-### SDK Zip Location
-
-```
-    https://api.github.com/repos/doctrine/inflector/zipball/bf265da9f831e46e646c7a01b59ee8a33f8c0365
-
-```
-
 
 ### Steps to run the Example
 1. First create a database in mysql -> meethour-php-example.sql
