@@ -11,12 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "meethour/php-sdk": "dev-zeeshan-php-sdk"
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "C:/xampp/htdocs/php-sdk/MeetHour-PHP-SDK"
-        }
-    ]
+        "meethour/php-sdk": "1.0.0"
+    }
 }

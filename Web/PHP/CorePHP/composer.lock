@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eb287621306c79d8d51f9383352b62bb",
+    "content-hash": "1c2af90b3e1673dc8fab37b86bfb5a19",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -704,11 +704,17 @@
         },
         {
             "name": "meethour/php-sdk",
-            "version": "dev-zeeshan-php-sdk",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/v-empower/MeetHour-PHP-SDK.git",
+                "reference": "18b0f595ec118b140104dd8e350753538343a4b0"
+            },
             "dist": {
-                "type": "path",
-                "url": "C:/xampp/htdocs/php-sdk/MeetHour-PHP-SDK",
-                "reference": "5460dd257dec6cd7953241d7aa5f6b3ef8c07dbf"
+                "type": "zip",
+                "url": "https://api.github.com/repos/v-empower/MeetHour-PHP-SDK/zipball/18b0f595ec118b140104dd8e350753538343a4b0",
+                "reference": "18b0f595ec118b140104dd8e350753538343a4b0",
+                "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.5",
@@ -727,15 +733,16 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Meethour\\PhpSdk\\": "src/"
-                },
                 "files": [
                     "src/autoload.php"
-                ]
+                ],
+                "psr-4": {
+                    "Meethour\\PhpSdk\\": "src/"
+                }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "Meet Hour"
+                "Apache-2.0"
             ],
             "authors": [
                 {
@@ -744,9 +751,11 @@
                 }
             ],
             "description": "PHP SDK of Meet Hour application - https://meethour.io",
-            "transport-options": {
-                "relative": false
-            }
+            "support": {
+                "issues": "https://github.com/v-empower/MeetHour-PHP-SDK/issues",
+                "source": "https://github.com/v-empower/MeetHour-PHP-SDK/tree/1.0.0"
+            },
+            "time": "2023-04-02T09:44:36+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1406,12 +1415,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "2f72311868ea6dd0ab40431e517a452864c6e49b"
+                "reference": "ae58728630949fa443d94c394198bbf3d7bc7716"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/2f72311868ea6dd0ab40431e517a452864c6e49b",
-                "reference": "2f72311868ea6dd0ab40431e517a452864c6e49b",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/ae58728630949fa443d94c394198bbf3d7bc7716",
+                "reference": "ae58728630949fa443d94c394198bbf3d7bc7716",
                 "shasum": ""
             },
             "require": {
@@ -1498,7 +1507,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-07T08:45:43+00:00"
+            "time": "2023-03-31T09:18:46+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -1660,9 +1669,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "meethour/php-sdk": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

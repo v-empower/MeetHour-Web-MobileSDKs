@@ -20,6 +20,13 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
     2. Android - https://bit.ly/2U239ll
     3. iOS - https://apple.co/3k8Rpbn
 
+### Composer package (Packagist) (Latest version - 1.0.0)
+
+```
+ttps://packagist.org/packages/meethour/php-sdk
+
+```
+
 # MeetHour SDK Implementation - Steps
 
 1. SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/PHP/CorePHP
@@ -28,13 +35,27 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 ## Install
 
 ```
-composer install meethour/php-sdk
+composer require meethour/php-sdk 
+
+                OR
+
+"require": {
+        "meethour/php-sdk": "1.0.0"  // Composer Require
+    }
 
 require('./vendor/autoload.php');
 
 require('./vendor/meethour/php-sdk/src/autoload.php');
 
 ```
+
+### SDK Zip Location
+
+```
+    https://api.github.com/repos/doctrine/inflector/zipball/bf265da9f831e46e646c7a01b59ee8a33f8c0365
+
+```
+
 
 ### Steps to run the Example
 1. First create a database in mysql -> meethour-php-example
