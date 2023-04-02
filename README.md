@@ -40,7 +40,7 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 		1.3.2 django (Coming soon)
 	1.4 C# -> SDK (Coming soon)
 		1.4.1 Core C# (Coming soon)
-        1.4.2 ASP.NET (Coming soon)
+        	1.4.2 ASP.NET (Coming soon)
 	1.5 Java JVM -> SDK (Coming soon)
 		1.5.1 CoreJava (Coming soon)
         1.5.2 Spring Boot (Coming soon)
