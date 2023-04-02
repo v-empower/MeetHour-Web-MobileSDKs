@@ -447,11 +447,12 @@ Install and run the project from the sample SDK from here - https://github.com/v
 2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
 
 # Library & SDK
-
 1. Android Maven - https://repo.meethour.io/maven/releases/
 2. iOS Cocoapods - https://cocoapods.org/pods/MeetHourSDK
-3. React Native NPM - https://www.npmjs.com/package/react-native-meet-hour-sdk
-4. Flutter Pub Dev - https://pub.dev/packages/meet_hour
+3. React Web NPM - https://www.npmjs.com/package/meet-hour-react-web-sdk
+4. React Native NPM - https://www.npmjs.com/package/react-native-meet-hour-sdk
+5. PHP SDK - https://packagist.org/packages/meethour/php-sdk
+5. Flutter Pub Dev - https://pub.dev/packages/meet_hour
 
 # Known Errors
 
