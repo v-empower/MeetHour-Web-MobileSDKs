@@ -30,17 +30,20 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 		1.1.3 Angular (Coming soon)
 		1.1.4 NodeJS (Coming soon)
 		1.1.5 SailJS (Coming soon)
-	1.2 PHP
-		1.2.1 Core PHP -> SDK
+	1.2 PHP -> SDK
+		1.2.1 Core PHP
 		1.2.2 Laravel (Coming soon)
 		1.2.3 WordPress (Coming soon)
 		1.2.4 CodeIgnitor (Coming soon)
-	1.3 Python
-		1.3.1 Core Python - SDK (Coming soon)
+	1.3 Python -> SDK (Coming Soon)
+		1.3.1 Core Python (Coming soon)
 		1.3.2 django (Coming soon)
 	1.4 C#
 		1.4.1 Core C# -> SDK (Coming soon)
-        	1.4.2 ASP.NET -> (Coming soon)
+        	1.4.2 ASP.NET (Coming soon)
+	1.5 Java JVM -> SDK (Coming soon)
+		1.5.1 CoreJava (Coming soon)
+        1.5.2 Spring Boot (Coming soon)
 2. Mobile
 	2.1 Flutter
 	2.2 Native
