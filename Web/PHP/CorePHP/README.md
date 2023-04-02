@@ -23,7 +23,7 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 ### Composer package (Packagist) (Latest version - 1.0.0)
 
 ```
-ttps://packagist.org/packages/meethour/php-sdk
+https://packagist.org/packages/meethour/php-sdk
 
 ```
 
