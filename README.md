@@ -1,4 +1,4 @@
-# [Meet Hour - Examples]
+# [Meet Hour - SDKs & Examples]
 Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc.
 
 Note: Pcode is Encrypted Meeting password. Get it from APIs.
