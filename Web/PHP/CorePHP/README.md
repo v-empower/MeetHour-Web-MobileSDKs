@@ -58,7 +58,7 @@ require('./vendor/meethour/php-sdk/src/autoload.php');
 
 
 ### Steps to run the Example
-1. First create a database in mysql -> meethour-php-example
+1. First create a database in mysql -> meethour-php-example.sql
 2. Go to meethour.io and signup for Developer or Higher plan. Currently we offer 28 days free trial.
 3. Go to the dashboard and then click on developers menu.
 4. Later go to constants.php and enter all the credentials of database and Meet Hour credentials as well.
