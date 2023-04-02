@@ -43,7 +43,7 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
         	1.4.2 ASP.NET (Coming soon)
 	1.5 Java JVM -> SDK (Coming soon)
 		1.5.1 CoreJava (Coming soon)
-        1.5.2 Spring Boot (Coming soon)
+        	1.5.2 Spring Boot (Coming soon)
 2. Mobile
 	2.1 Flutter
 	2.2 Native
