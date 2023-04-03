@@ -32,7 +32,7 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 		1.1.5 SailJS (Coming soon)
 	1.2 PHP -> SDK
 		1.2.1 Core PHP
-		1.2.2 Laravel (Coming soon)
+		1.2.2 Laravel
 		1.2.3 WordPress (Coming soon)
 		1.2.4 CodeIgnitor (Coming soon)
 	1.3 Python -> SDK (Coming Soon)
