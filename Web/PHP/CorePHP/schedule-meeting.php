@@ -159,7 +159,6 @@ if ($conn) {
     <link href="css/loader.css" rel="stylesheet">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
-    <script src="js/navbar.js"></script>
     <script src="js/scheduleMeeting.js"></script>
 </head>
 

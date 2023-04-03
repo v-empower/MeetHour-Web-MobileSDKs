@@ -99,8 +99,6 @@ if ($conn) {
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script type="text/JavaScript" src=" https://MomentJS.com/downloads/moment.js"></script>
         <script type="text/javascript" src="https://api.meethour.io/libs/<?php echo $API_RELEASE ?>/external_api.min.js?apiKey=<?php echo $API_KEY ?>"></script>
-        <script type="text/javascript" src="https://api.meethour.io/libs/<?php echo $API_RELEASE ?>/meethour-apis.min.js?apiKey=<?php echo $API_KEY ?>"></script>
-        <script src="js/navbar.js"></script>
         <script src="js/joinMeeting.js"></script>
     </head>
 </head>
