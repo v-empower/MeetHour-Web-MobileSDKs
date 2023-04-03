@@ -11,6 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "meethour/php-sdk": "1.0.0"
+        "meethour/php-sdk": "1.0.1"
     }
 }

@@ -79,10 +79,8 @@ if ($conn) {
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
    <link href="https://portal.meethour.io/dist/images/favicon.png" rel="shortcut icon" />
-   <script src="js/constants.js"></script>
    <link href="css/style.css" rel="stylesheet">
    <link href="css/loader.css" rel="stylesheet">
-   <script src="js/navbar.js"></script>
    <title>Meet Hour - PHP Example</title>
 </head>
 
