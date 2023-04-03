@@ -11,7 +11,6 @@ use MeetHourApp\Types\Login;
 use MeetHourApp\Types\ContactsList;
 use MeetHourApp\Types\ScheduleMeeting;
 
-
 $success = false;
 $error = false;
 $message = null;
@@ -64,7 +63,7 @@ if ($conn) {
         if (isset($instantMeeting) && $instantMeeting === 'true') {
             $timezone  = date_default_timezone_get();
 
-            $scheduleBody = new ScheduleMeeting("Instant Meeting", "123456", date('h:i'), 'PM', date('d-m-Y'), $timezone);  // You can give 
+            $scheduleBody = new ScheduleMeeting("Instant Meeting", "123456", date('h:i'), 'PM', date('d-m-Y'), $timezone);  // You can give
 
             $apiresponse = $meetHourApiService->scheduleMeeting($accessToken, $scheduleBody);
 
@@ -76,7 +75,7 @@ if ($conn) {
                 $error = true;
                 $message = 'Instant Meeting has been failed \n ' . json_encode($apiresponse);
             }
-        } else if (isset($ScheduleMeeting) && $ScheduleMeeting === 'true') {
+        } elseif (isset($ScheduleMeeting) && $ScheduleMeeting === 'true') {
             $meetingName = $_POST["meeting_name"];
             $passcode = $_POST["passcode"];
             $meetingDate = $_POST["meeting_date"];
@@ -100,7 +99,7 @@ if ($conn) {
                     $sql = "UPDATE `credentials` SET `access_token`='" . $loginResponse->access_token . "' WHERE 1";
                     $sql2 = "SELECT `access_token` FROM `credentials` WHERE 1";
                     $data = $conn->query($sql);
-                    if ($data === TRUE) {
+                    if ($data === true) {
                         $result = $conn->query($sql2);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
