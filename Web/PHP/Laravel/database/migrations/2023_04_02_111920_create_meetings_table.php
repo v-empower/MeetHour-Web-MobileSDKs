@@ -15,7 +15,7 @@ class CreateMeetingsTable extends Migration
     {
         Schema::create('meetings', function (Blueprint $table) {
             $table->id();
-            $table->string('access_token', 5000);
+            $table->string('access_token', 6000);
             $table->timestamps();
         });
     }
