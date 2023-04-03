@@ -27,6 +27,9 @@ https://packagist.org/packages/meethour/php-sdk
 
 ```
 
+
+![](screenshot.png)
+
 # MeetHour SDK Implementation - Steps
 
 1. SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/PHP/CorePHP
