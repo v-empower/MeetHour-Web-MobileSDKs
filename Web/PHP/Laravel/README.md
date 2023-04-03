@@ -3,7 +3,7 @@
 [Meet Hour - 100% free video conference solution](https://meethour.io)
 Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc.
 
-# Features: 
+# Features:
 
     ✅  Free Unlimited Time Group Video Conference
     ✅  Upto 100 Participants Group Meeting
@@ -27,7 +27,6 @@ https://packagist.org/packages/meethour/php-sdk
 
 ```
 
-
 ![](screenshot.png)
 
 # MeetHour SDK Implementation - Steps
@@ -48,20 +47,19 @@ composer require meethour/php-sdk  or composer install
 
 ```
 
-
 ### Steps to run the Example
-1. First create a database based on .env file. 
+
+1. First create a database based on .env file.
 2. Go to meethour.io and signup for Developer or Higher plan. Currently we offer 28 days free trial.
 3. Go to the dashboard and then click on developers menu.
 4. Later go to .env and enter all the credentials of database and Meet Hour credentials as well.
-5. Now run two commands ``` php artisan migrate ``` && ``` php artisan serve ```
-5. On Home page Click on Get Access Token
-6. Then Try Schedule a Meeting & Join Meeting.
-
-
+5. Now run two commands `php artisan migrate` && `php artisan serve`
+6. On Home page Click on Get Access Token
+7. Then Try Schedule a Meeting & Join Meeting.
 
 ### Usage
-     Provide your credentials in the constructor of Login object and hit the login api to get your access token. Which will further be used for making rest of the api calls. 
+
+     Provide your credentials in the constructor of Login object and hit the login api to get your access token. Which will further be used for making rest of the api calls.
 
      <?php
 
@@ -69,10 +67,10 @@ composer require meethour/php-sdk  or composer install
      use MeetHourApp\Types\Login;
      use MeetHourApp\Types\ScheduleMeeting;
 
-     $meetHourApiService = new MHApiService();   
+     $meetHourApiService = new MHApiService();
      $login = new Login($client_id, $client_secret, $grant_type, $username, $password);
      $loginResponse = $meetHourApiService->login($login);
-     $scheduleBody = new ScheduleMeeting("Quick Meeting", "123456", date('h:i'), 'PM', date('d-m-Y'), 'Asia/Kolkata');  // You can give 
+     $scheduleBody = new ScheduleMeeting("Quick Meeting", "123456", date('h:i'), 'PM', date('d-m-Y'), 'Asia/Kolkata');  // You can give
      $response = $meetHourApiService->scheduleMeeting($loginResponse->access_token, $scheduleBody);
      var_dump($response);
      $test = new ViewMeeting($meeting_id);
@@ -80,7 +78,6 @@ composer require meethour/php-sdk  or composer install
      var_dump($response);
 
      ?>
-
 
 #### Meet Hour - Join Meeting
 
@@ -106,7 +103,8 @@ Important points:
         $body = new Login($client_id, $client_secret, $grant_type, $username, $password);
         MHApiServices.login($body);
     ```
-   => You have to pass respective values in the argument section. Hence, to get desired response.
+
+    => You have to pass respective values in the argument section. Hence, to get desired response.
 
 2. To schedule a meeting: => https://docs.v-empower.com/docs/MeetHour-API/2de4b757a6312-meeting-schedule-meeting
 
@@ -147,11 +145,11 @@ Important points:
 
         $body = new ScheduleMeeting($meeting_name, $passcode, $meeting_time, $meeting_meridiem, $meeting_date, $timezone);
         MHApiServices.scheduleMeeting($token, $body);
-            
+
     ```
 
 3. To Generate JWT Token Endpoint => https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
-    
+
     ```
         class GenerateJwt {
             public string $meeting_id;
@@ -163,7 +161,6 @@ Important points:
         $body = new GenerateJwt($meeting_id);
         MHApiServices.generateJwt($token, $body);
     ```
-
 
 4. To fetch User Details: => https://docs.v-empower.com/docs/MeetHour-API/ff9d0e37d9191-user-details
 
@@ -224,21 +221,23 @@ Important points:
 
 9. To make changes in the existing contact details: => https://docs.v-empower.com/docs/MeetHour-API/28cae9187d215-edit-contact
 
-       ```
-        class EditContact {
-            public string $email;
-            public string $firstname;
-            public ?string $country_code;
-            public ?string $image;
-            public ?bool $is_show_portal;
-            public ?string $lastname;
-            public ?string $phone;
-        }
+    ````
+     class EditContact {
+         public string $email;
+         public string $firstname;
+         public ?string $country_code;
+         public ?string $image;
+         public ?bool $is_show_portal;
+         public ?string $lastname;
+         public ?string $phone;
+     }
 
-        $body = new EditContact($contact_id, $firstname, $email);
-        MHApiServices.editContact($token, $body);
+     $body = new EditContact($contact_id, $firstname, $email);
+     MHApiServices.editContact($token, $body);
 
-        ``` 
+     ```
+
+    ````
 
 10. To get Upcoming Meetings: => https://docs.v-empower.com/docs/MeetHour-API/31df88388416d-upcoming-meetings
 
@@ -345,7 +344,6 @@ Important points:
 
 16. To get all the recordings list: => https://docs.v-empower.com/docs/MeetHour-API/ce7c4fd8cae7e-recording-list
 
-
     ```
         class RecordingsList {
             public ?string $filter_by;
@@ -356,4 +354,3 @@ Important points:
         $body = new RecordingsList();
         MHApiServices.recordingsList($token, $body);
     ```
-

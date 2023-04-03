@@ -2,7 +2,10 @@
     "name": "meethour/laravel-example",
     "type": "project",
     "description": "Meet Hour Laravel Example.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",

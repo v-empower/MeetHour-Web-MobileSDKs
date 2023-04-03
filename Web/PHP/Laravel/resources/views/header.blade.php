@@ -14,4 +14,3 @@
    <script src="{{ asset('js/joinMeeting.js') }}"></script>
    <script src="{{ asset('js/scheduleMeeting.js') }}"></script>
 </head>
-

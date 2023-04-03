@@ -65,8 +65,9 @@ if ($conn) {
                     if (!empty($viewMeetingResponse->meeting->meeting_attendees)) {
                         $attendees = json_decode($viewMeetingResponse->meeting->meeting_attendees);
                     }
-                    if ($attendees === null)
+                    if ($attendees === null) {
                         $attendees = [];
+                    }
                     $meetingAttendees = array(
                         'organizer' => $viewMeetingResponse->organizer,
                         'hosts' => $viewMeetingResponse->meeting->hosts,
@@ -155,7 +156,7 @@ if ($conn) {
                                 </button>
                             </form>
                     <?php }
-                    } ?>
+                        } ?>
                 </div>
             </div>
         </div>
@@ -165,7 +166,7 @@ if ($conn) {
     </div>
     <div class="relative top-16 h-screen" id="conference-parent"></div>
     <script type="text/javascript">
-        var access_token = "<?php echo (isset($accessToken) ? $accessToken : ""); ?>";
+        var access_token = "<?php echo(isset($accessToken) ? $accessToken : ""); ?>";
         if (access_token === null || access_token === "") {
             alert("First generate the access token and then try to join a meeting.")
             window.location.href = "index.php"
@@ -185,11 +186,11 @@ if ($conn) {
             })
         })
         $(document).ready(function() {
-            var token = "<?php echo (isset($jwtToken) ? $jwtToken : ""); ?>"
-            var meetId = "<?php echo (isset($meetingId) ? $meetingId : ""); ?>"
-            var pcode = "<?php echo (isset($pCode) ? $pCode : ""); ?>"
-            var conferenceURL = "<?php echo (isset($CONFERENCE_URL) ? $CONFERENCE_URL : ""); ?>"
-            var apikey = "<?php echo (isset($API_KEY) ? $API_KEY : ""); ?>"
+            var token = "<?php echo(isset($jwtToken) ? $jwtToken : ""); ?>"
+            var meetId = "<?php echo(isset($meetingId) ? $meetingId : ""); ?>"
+            var pcode = "<?php echo(isset($pCode) ? $pCode : ""); ?>"
+            var conferenceURL = "<?php echo(isset($CONFERENCE_URL) ? $CONFERENCE_URL : ""); ?>"
+            var apikey = "<?php echo(isset($API_KEY) ? $API_KEY : ""); ?>"
             if (token) {
                 generateJwtToken(token, meetId, pcode, conferenceURL, apikey)
             }

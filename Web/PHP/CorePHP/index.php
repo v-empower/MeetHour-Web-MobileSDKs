@@ -13,59 +13,58 @@ $message = null;
 $accessToken = null;
 
 try {
-   $conn = OpenCon();
+    $conn = OpenCon();
 } catch (\Exception) {
-   $error = true;
-   $message = 'Could not connect to database. Check db_connect.php file';
+    $error = true;
+    $message = 'Could not connect to database. Check db_connect.php file';
 }
 
 
 if (!$conn) {
-   $error = true;
-   $message = 'Could not connect to database. Check db_connect.php file';
+    $error = true;
+    $message = 'Could not connect to database. Check db_connect.php file';
 }
 if ($conn) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $getaccesstoken = $_POST["getaccesstoken"];
+        if (isset($getaccesstoken) && $getaccesstoken === 'true') {
+            $meetHourApiService = new MHApiService();
+            if (isset($CLIENT_ID) && !empty($CLIENT_ID) && isset($CLIENT_SECRET) && !empty($CLIENT_SECRET) && isset($USERNAME) && !empty($USERNAME) && isset($PASSWORD) && !empty($PASSWORD)) {
+                $login = new Login($CLIENT_ID, $CLIENT_SECRET, $GRANT_TYPE, $USERNAME, $PASSWORD);
+                $loginResponse = $meetHourApiService->login($login);
+                if (isset($loginResponse->access_token) && !empty($loginResponse->access_token)) {
+                    $sql = "UPDATE `credentials` SET `access_token`='" . $loginResponse->access_token . "' WHERE 1";
+                    $sql2 = "SELECT `access_token` FROM `credentials` WHERE 1";
+                    $data = $conn->query($sql);
+                    if ($data === true) {
+                        $result = $conn->query($sql2);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $accessToken = $row["access_token"];
+                                $success = true;
+                            }
+                        } else {
+                            $success = false;
+                            $error = true;
+                            $message = 'Some issue in querying access token from database';
+                        }
+                    } else {
+                        $success = false;
+                        $error = true;
+                        $message = 'Some issue in inserting token in database';
+                    }
 
-   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      $getaccesstoken = $_POST["getaccesstoken"];
-      if (isset($getaccesstoken) && $getaccesstoken === 'true') {
-         $meetHourApiService = new MHApiService();
-         if (isset($CLIENT_ID) && !empty($CLIENT_ID) && isset($CLIENT_SECRET) && !empty($CLIENT_SECRET) && isset($USERNAME) && !empty($USERNAME) && isset($PASSWORD) && !empty($PASSWORD)) {
-            $login = new Login($CLIENT_ID, $CLIENT_SECRET, $GRANT_TYPE, $USERNAME, $PASSWORD);
-            $loginResponse = $meetHourApiService->login($login);
-            if (isset($loginResponse->access_token) && !empty($loginResponse->access_token)) {
-               $sql = "UPDATE `credentials` SET `access_token`='" . $loginResponse->access_token . "' WHERE 1";
-               $sql2 = "SELECT `access_token` FROM `credentials` WHERE 1";
-               $data = $conn->query($sql);
-               if ($data === TRUE) {
-                  $result = $conn->query($sql2);
-                  if ($result->num_rows > 0) {
-                     while ($row = $result->fetch_assoc()) {
-                        $accessToken = $row["access_token"];
-                        $success = true;
-                     }
-                  } else {
-                     $success = false;
-                     $error = true;
-                     $message = 'Some issue in querying access token from database';
-                  }
-               } else {
-                  $success = false;
-                  $error = true;
-                  $message = 'Some issue in inserting token in database';
-               }
-
-               CloseCon($conn);
+                    CloseCon($conn);
+                }
+            } else {
+                $error = true;
+                $message = 'Something went wrong. Make sure you set the credentials.';
             }
-         } else {
+        } else {
             $error = true;
-            $message = 'Something went wrong. Make sure you set the credentials.';
-         }
-      } else {
-         $error = true;
-         $message = 'Something went wrong. Make sure you post true value in getaccesstoken';
-      }
-   }
+            $message = 'Something went wrong. Make sure you post true value in getaccesstoken';
+        }
+    }
 }
 
 ?>
@@ -144,7 +143,7 @@ if ($conn) {
                      <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-12 sm:gap-4 sm:px-12"><textarea class="" disabled><?php echo $accessToken; ?></textarea></div>
                   <?php
                   }
-                  ?>
+?>
                </dl>
             </div>
          </div>

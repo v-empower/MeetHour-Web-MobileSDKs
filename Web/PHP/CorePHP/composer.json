@@ -1,16 +1,16 @@
 {
-    "name": "meethour/core-php-example",
-    "description": "Core PHP example of Meet Hour SDK",
-    "type": "project",
-    "license": "Meet Hour",
-    "authors": [
-        {
-            "name": "Meet Hour",
-            "email": "hello@meethour.io"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "meethour/php-sdk": "1.0.1"
+  "name": "meethour/core-php-example",
+  "description": "Core PHP example of Meet Hour SDK",
+  "type": "project",
+  "license": "Meet Hour",
+  "authors": [
+    {
+      "name": "Meet Hour",
+      "email": "hello@meethour.io"
     }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "meethour/php-sdk": "1.0.1"
+  }
 }

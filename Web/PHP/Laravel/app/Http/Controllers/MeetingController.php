@@ -259,8 +259,9 @@ class MeetingController extends Controller
                     if (!empty($viewMeetingResponse->meeting->meeting_attendees)) {
                         $attendees = json_decode($viewMeetingResponse->meeting->meeting_attendees);
                     }
-                    if ($attendees === null)
+                    if ($attendees === null) {
                         $attendees = [];
+                    }
                     $meetingAttendees = array(
                         'organizer' => $viewMeetingResponse->organizer,
                         'hosts' => $viewMeetingResponse->meeting->hosts,
@@ -275,7 +276,7 @@ class MeetingController extends Controller
             return redirect()->back()->with('error', $error)->with('message', $message)->withInput();
         }
         DB::commit();
-        return view('joinmeeting', compact('accessToken', 'meetingId', 'success', 'jwtToken', 'id', 'pCode', 'meetingAttendees','API_KEY','CONFERENCE_URL', 'API_RELEASE'));
+        return view('joinmeeting', compact('accessToken', 'meetingId', 'success', 'jwtToken', 'id', 'pCode', 'meetingAttendees', 'API_KEY', 'CONFERENCE_URL', 'API_RELEASE'));
     }
 
     /**
