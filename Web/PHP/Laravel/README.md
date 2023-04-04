@@ -44,14 +44,14 @@ composer require meethour/php-sdk  or composer install
                 OR
 
 "require": {
-        "meethour/php-sdk": "1.0.0"  // Composer Require
+        "meethour/php-sdk": "1.0.1"  // Composer Require
     }
 
 ```
 
 
 ### Steps to run the Example
-1. First create a database based on .env file. 
+1. First create a database using phpmyadmin based on .env file. 
 2. Go to meethour.io and signup for Developer or Higher plan. Currently we offer 28 days free trial.
 3. Go to the dashboard and then click on developers menu.
 4. Later go to .env and enter all the credentials of database and Meet Hour credentials as well.

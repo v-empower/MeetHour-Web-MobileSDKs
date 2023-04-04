@@ -43,7 +43,7 @@ composer require meethour/php-sdk
                 OR
 
 "require": {
-        "meethour/php-sdk": "1.0.0"  // Composer Require
+        "meethour/php-sdk": "1.0.1"  // Composer Require
     }
 
 require('./vendor/autoload.php');
