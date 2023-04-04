@@ -35,5 +35,6 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `credentials`
 --
+
 CREATE TABLE IF NOT EXISTS `credentials` (
     `access_token` varchar(5000) NOT NULL) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
