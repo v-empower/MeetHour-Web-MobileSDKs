@@ -169,7 +169,7 @@
                                         </div>
                                         <div class="font-semibold text-gray-600">Meeting URL: <span class="font-normal text-gray-700"><?php echo Session::get('MeetingResponse')->data->joinURL ?></span>
                                         </div>
-                                        <div class="flex justify-center"><a href="join-meeting.php?meeting_id=<?php echo Session::get('MeetingResponse')->data->meeting_id ?>&pCode=<?php echo Session::get('MeetingResponse')->data->pCode ?>" tabindex="0"><button class="bg-emerald-600 font-semibold px-4 py-2 mt-1 text-white rounded-md">Start
+                                        <div class="flex justify-center"><a href="join-meeting?meeting_id=<?php echo Session::get('MeetingResponse')->data->meeting_id ?>&pCode=<?php echo Session::get('MeetingResponse')->data->pcode ?>" tabindex="0"><button class="bg-emerald-600 font-semibold px-4 py-2 mt-1 text-white rounded-md">Start
                                                     Meeting</button></a></div>
                                     </div>
                                 </div>
