@@ -712,3 +712,19 @@ implementation(project(':react-native-meet-hour-sdk')) {
 //     exclude group: 'com.facebook.react',module:'react-native-add-calendar-event'
 }
 ```
+
+
+If you are having problems -> Suggestion: add 'tools:replace="android:exported"' to <provider> element at AndroidManifest.xml to override.
+
+Please add the below code in manifest.xml
+
+```
+    <provider
+        android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+        android:authorities="${applicationId}.fileprovider"
+        android:enabled="false"
+        android:exported="true"
+        tools:replace="android:authorities,android:exported">
+    </provider>
+```
+
