@@ -14,7 +14,7 @@ Example Project is here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/t
 Pub dev - https://pub.dev/packages/meet_hour
 
 ```
-  meet_hour: '>=5.0.17'
+  meet_hour: '>=5.0.18'
 ```
 
 # MeetHour SDK Implementation - Steps

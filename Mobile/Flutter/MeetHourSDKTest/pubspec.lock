@@ -157,10 +157,10 @@ packages:
     dependency: "direct main"
     description:
       name: meet_hour
-      sha256: "4f167bb7db123a3784e66a78568da22e21d9dc42791d629a2f3b00a7e02a6618"
+      sha256: c3e5f10d174ff26a48214c05fff0fab2bf7d3c03e0f1984bb7a7c594034940a2
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.17"
+    version: "5.0.18"
   meta:
     dependency: transitive
     description:

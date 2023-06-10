@@ -297,7 +297,7 @@ class _MeetingState extends State<Meeting> {
                     ),
                     Container(
                         width: width * 0.60,
-                        child: Padding(
+                  child= Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Card(
                               color: Colors.white54,
