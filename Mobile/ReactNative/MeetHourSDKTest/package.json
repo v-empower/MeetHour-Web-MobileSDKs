@@ -12,10 +12,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.17.11",
+    "@react-native-async-storage/async-storage": "^1.19.2",
     "@react-native-community/datetimepicker": "^6.7.4",
-    "react": "17.0.2",
-    "react-native": "^0.66.4",
+    "react": "18.2.0",
+    "react-native": "^0.72.4",
     "react-native-dropdown-select-list": "^2.0.4",
     "react-native-localize": "^2.2.4",
     "react-native-meet-hour-sdk": "3.0.22"
@@ -28,7 +28,7 @@
     "eslint": "6.8.0",
     "jest": "25.5.4",
     "metro-react-native-babel-preset": "0.59.0",
-    "react-test-renderer": "17.0.2"
+    "react-test-renderer": "18.2.0"
   },
   "jest": {
     "preset": "react-native"
