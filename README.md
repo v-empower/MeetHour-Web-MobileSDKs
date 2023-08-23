@@ -22,7 +22,6 @@ Note: Pcode is Encrypted Meeting password. Get it from APIs.
 # Meet Hour Mobile SDKs - Examples
 Code consist of Meet Hour Web & Mobile SDKs with an example to join the conference from both Web & Mobile Technologies.
 
-```bash
 1. Web
 	1.1 Javascript -> SDK
 		1.1.1 Jquery - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Javascript/JQuery
@@ -54,7 +53,6 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 			2.2.2.1 Swift - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/Native/ios/swift/MeetHourSDKTest
 			2.2.2.2 Objective-C - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/Native/ios/objc/MeetHourSDKTest
 	2.3 React Native - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/ReactNative
-```
 
 
 # MeetHour SDK Implementation - Steps
