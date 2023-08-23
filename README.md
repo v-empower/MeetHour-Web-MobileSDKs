@@ -25,18 +25,18 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 ```bash
 1. Web
 	1.1 Javascript -> SDK
-		1.1.1 Jquery
-		1.1.2 React JS
+		1.1.1 Jquery - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Javascript/JQuery
+		1.1.2 React JS - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Javascript/React
 		1.1.3 Angular (Coming soon)
 		1.1.4 NodeJS (Coming soon)
 		1.1.5 SailJS (Coming soon)
 	1.2 PHP -> SDK
-		1.2.1 Core PHP
-		1.2.2 Laravel
+		1.2.1 Core PHP - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/PHP/CorePHP
+		1.2.2 Laravel - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/PHP/Laravel
 		1.2.3 WordPress (Coming soon)
 		1.2.4 CodeIgnitor (Coming soon)
-	1.3 Python -> SDK (Coming Soon)
-		1.3.1 Core Python (Coming soon)
+	1.3 Python -> SDK
+		1.3.1 Core Python - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Python/CorePython
 		1.3.2 django (Coming soon)
 	1.4 C# -> SDK (Coming soon)
 		1.4.1 Core C# (Coming soon)
@@ -45,15 +45,15 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 		1.5.1 CoreJava (Coming soon)
         	1.5.2 Spring Boot (Coming soon)
 2. Mobile
-	2.1 Flutter
+	2.1 Flutter - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/Flutter
 	2.2 Native
 		2.2.1 Android
-			2.2.1.1 Java
-			2.2.1.2 Kotlin
+			2.2.1.1 Java - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/Native/android/java/MeetHourSDKTest
+			2.2.1.2 Kotlin - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/Native/android/kotlin/MeetHourSDKTest
 		2.2.2 iOS
-			2.2.2.1 Swift
-			2.2.2.2 Objective-C
-	2.3 React Native
+			2.2.2.1 Swift - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/Native/ios/swift/MeetHourSDKTest
+			2.2.2.2 Objective-C - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/Native/ios/objc/MeetHourSDKTest
+	2.3 React Native - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/ReactNative
 ```
 
 
@@ -70,6 +70,7 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 4. React Native NPM - https://www.npmjs.com/package/react-native-meet-hour-sdk
 5. PHP SDK - https://packagist.org/packages/meethour/php-sdk
 5. Flutter Pub Dev - https://pub.dev/packages/meet_hour
+6. Python SDK - https://pypi.org/project/pymeethour/
 
 For any issues or queries raise a issue in Github or send us an email to hello@meethour.io or have Live Chat with our technical team at - https://bit.ly/35fVHZO
 
