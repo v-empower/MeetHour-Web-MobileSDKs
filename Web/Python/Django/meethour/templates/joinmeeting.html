@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Meet Hour Python Django Example (Join Meeting)</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+        <link href="https://portal.meethour.io/dist/images/favicon.png" rel="shortcut icon" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/loader.css' %}">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/JavaScript" src="https://MomentJS.com/downloads/moment.js"></script>
+        <script type="text/javascript" src="https://api.meethour.io/libs/{{API_RELEASE}}/external_api.min.js?apiKey={{API_KEY}}"></script>
+        </head>
+</head>
+
+<body>
+    <div>
+        {% include 'header.html' %}
+     </div>
+     <div class="relative top-16">
+        {% if error == True %} 
+           <div id="error">
+              <div class="flex fixed top-20 justify-center items-center text-lg font-medium w-96 rounded-md h-16 border border-red-600 bg-red-50 text-red-600">
+                 <p>{{message}}</p>
+              </div>
+           </div> 
+           {% endif %}
+           
+           {% if meeting_id is not None and jwt_token is None %}
+        <div id="moderator-selection-parent">
+            <div class=" relative top-16 h-screen w-screen flex justify-center">
+                <div id="moderator-selection" class="rounded-md opacity-100 h-auto p-5 w-96 bg-white">
+                    <div class="flex justify-center w-full">
+                    </div>
+                    <h1 class="text-xl font-semibold ">Whom would you like to join as?</h1>
+                    <div id="loader" class="flex justify-center"></div>
+                    <form method="POST" name="POST" action="/joinmeeting/?meeting_id={{meeting_id}}&pcode={{pCode}}">
+                        {% csrf_token %}
+                      <input hidden name="id" type="hidden" value="organizer" />
+                      <button type="submit" class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
+                        <h1>{{ meetingAttendees.organizer.name }}</h1>
+                        (Organizer / Account Owner)
+                    </button>  
+                </form>
+                {% endif %}
+    {% if meetingAttendees.hosts %}
+         {% for hosts in meetingAttendees.hosts %}
+            <form method="POST" action="/joinmeeting/?meeting_id={{meeting_id}}&pcode={{pCode}}">
+                {% csrf_token %}
+                <input name="id" type="hidden" value = "{{ host.id }}"/>
+                <button type="sumbit" class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
+                  <h1>{{ host.first_name }}</h1>
+                  <h1>{{ host.last_name }}</h1>
+                    (Moderator / Host)
+                </button>
+            </form>
+            {% endfor %}
+            {% endif %}
+    {% if meetingAttendees.attendee %}
+        {% for attendee in meetingAttendees.attendee %}
+            <form method="POST" action="/joinmeeting/?meeting_id={{meeting_id}}&pcode={{pCode}}">
+                {% csrf_token %}
+                <input name="id" type="hidden" value="{{ attendee.meeting_attendee_id }}">
+                <button type="submit" class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
+                    <h1>{{ attendee.first_name }}</h1>
+                    <h1>{{ attendee.last_name }}</h1>
+                    (Attendee)
+                </button>
+            </form>
+            {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+    <div id="meeting-id-input" class="grid gap-3 p-5 relative top-16">
+      <h1 class="text-slate-600 text-2xl">Join a Meeting</h1><input id="meeting-id-input-field" placeholder="Enter Meeting Id or link here." class="w-64 h-10 border border-slate-400 focus:outline-none rounded-md pl-3" type="text">
+      <a id="meeting-id-input-button-anchor">
+        <button id="meeting-id-input-button" class="w-28 h-8 text-white font-semibold text-sm bg-green-600 rounded-md">Join Meeting</button></a>
+  </div>
+  <div class="relative top-16 h-screen" id="conference-parent"></div>
+  <script type="text/javascript">
+      var access_token = "{{access_token}}";
+      if (access_token === null || access_token === "") { 
+          alert("First generate the access token and then try to join a meeting.")
+          window.location.href = "/"
+      }
+      if (window.location.search?.split("&")[0]?.split("?")[1]?.split("=")[1]) {
+          document.querySelector("#meeting-id-input").remove()
+      }
+      $(document).ready(function() {
+          $("#meeting-id-input-field").change((event) => {
+              const meetingIdInputButton = document.querySelector("#meeting-id-input-button-anchor");
+              if (event.target.value.includes(`https:/`)) {
+                  const id = event.target.value.slice(20, 34);
+                  meetingIdInputButton.setAttribute("href", `/joinmeeting/?meeting_id=${id}`)
+                  return;
+              }
+              meetingIdInputButton.setAttribute("href", `/joinmeeting/?meeting_id=${event.target.value}`)
+          })
+      })
+    </script>
+    <div class="relative" id="conference-parent"></div>
+    <script type="text/javascript">
+    try {
+
+        const conferencePanel = document.createElement("div");
+         conferencePanel.setAttribute("id", "conference");
+         conferencePanel.setAttribute("style", "height: 100%;");
+         const meetingPanel = document.querySelector("#conference-parent");
+         meetingPanel.appendChild(conferencePanel);
+     
+         var domain = "{{CONFERENCE_URL}}";
+         var options = {
+           roomName: "{{meeting_id}}", 
+           parentNode: document.querySelector("#conference"),
+           jwt: "{{jwt_token}}",
+           apiKey: "{{API_KEY}}",
+           pcode: "{{pCode}}",
+           interfaceConfigOverwrite: {
+             applyMeetingSettings: true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings
+             disablePrejoinHeader: true,
+             disablePrejoinFooter: true,
+             SHOW_MEET_HOUR_WATERMARK: false,
+             ENABLE_DESKTOP_DEEPLINK: false,
+             HIDE_DEEP_LINKING_LOGO: true,
+             MOBILE_APP_PROMO: false,
+             ENABLE_MOBILE_BROWSER: true,
+           },
+         };
+         
+    if(options.jwt!="" && options.jwt!="None" )
+        {
+         // Initialization of MeetHour External API
+         var api = new MeetHourExternalAPI(domain, options);
+         // api variable can be used to run other event listeners mentioned in the documentation.
+          }
+     
+       } catch (error) {
+     
+         console.log(error);
+       }
+    </script>
+</body>
+
+</html>
