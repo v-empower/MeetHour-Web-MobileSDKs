@@ -9,6 +9,9 @@ Note: Pcode is Encrypted Meeting password. Get it from APIs.
     2. Android - https://bit.ly/2U239ll
     3. iOS - https://apple.co/3k8Rpbn
 
+![image](https://github.com/v-empower/MeetHour-Web-MobileSDKs/assets/28260541/390e553e-70b2-4835-8938-c46071f4aba7)
+
+
 # Generic Steps to Integrate Meet Hour without using SDK:
 
 1. Signup for Meet Hour (https://meethour.io) and signup for Developer or Higher plan. Currently we offer 28 days free trial.
