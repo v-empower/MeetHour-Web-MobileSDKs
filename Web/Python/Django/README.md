@@ -1,6 +1,6 @@
-# MeetHour-Python-Example
+### MeetHour-Python-Django-Example
 
-![MeetHour Logo](https://raw.githubusercontent.com/v-empower/MeetHour-Python-SDK/master/logo.png)
+![Alt text](logo.png)
 
 [Meet Hour - 100% free video conference solution](https://meethour.io)
 Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc.
@@ -22,15 +22,9 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
     2. Android - https://bit.ly/2U239ll
     3. iOS - https://apple.co/3k8Rpbn
 
-![ScreenShot](https://raw.githubusercontent.com/v-empower/MeetHour-Python-SDK/master/screenshot.png)
+![Alt text](screenshot.png)
 
-
-# MeetHour API Documentation
-
-API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
-
-
-## Installation
+### Pypi package or Poetry Package (Latest version - 1.0.1)
 
 Using pip:
 
@@ -40,72 +34,135 @@ Using [poetry](https://python-poetry.org/):
 
 `poetry add pymeethour`
 
+# MeetHour API Documentation
+
+API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
+
+### Commands to Dependencies & Environment Setup
+
+Installation of dependencies
+
+`pip install -r requirements.txt`
+
 ### Steps to run the Example
 
 1. Go to meethour.io and signup for Developer or Higher plan. Currently we offer 28 days free trial. 
 2. Go to the dashboard and then click on developers menu. 
-3. Later go to constants.py and enter all the credentials of database and Meet Hour credentials as well. 
+3. Later go to meethour/core/constants.py and enter all the credentials of database and Meet Hour credentials as well.
 4. On Home page Click on Get Access Token 
 5. Then Try Schedule a Meeting & Join Meeting. 
 
-```
-    python3 index.py # if you have used pip to install
+Running the project
 
-    or 
-
-    poetry run python3 index.py
-```
-
+`python3 manage.py runserver`
 
 ### Usage
 
 Provide your credentials in the constructor of Login object and hit the login api to get your access token. Which will further be used for making rest of the api calls.
 
 ```
-from flask import Flask, render_template_string
-from pymeethour.type import LoginType, ScheduleMeetingType, ViewMeetings, GenerateJwtType
-from pymeethour.services import apiServices as apiServices
+### In Views.py 
 
-app = Flask(__name__)
-app.secret_key = "qwerty"
+    from django.shortcuts import render
+    from pymeethour.type import LoginType, ScheduleMeetingType, ViewMeetings, GenerateJwtType
+    from pymeethour.services import apiServices as apiServices
 
-CLIENT_ID=''
-CLIENT_SECRET=''
-GRANT_TYPE=''
-EMAIL=''
-PASSWORD=''
-API_KEY=''
-API_RELEASE='v2.4.6'
-CONFERENCE_URL='meethour.io'
+    CLIENT_ID = ''
+    CLIENT_SECRET = ''
+    EMAIL = ''
+    PASSWORD = ''
+    GRANT_TYPE = ''
+    API_KEY = ''
+    API_RELEASE = 'v2.4.6'
+    CONFERENCE_URL = 'meethour.io'
 
-apiservice = apiServices.MHApiService()
+    apiservice = apiServices.MHApiService()
 
-@app.route('/', methods=['GET'])
-def usage():
-    loginBody = LoginType.LoginType(CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, EMAIL, PASSWORD)
-    login_response = apiservice.login(loginBody)
+    def usage(request):
+        loginBody = LoginType.LoginType(CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, EMAIL, PASSWORD)
+        login_response = apiservice.login(loginBody)
 
-    scheduleMeetingBody= ScheduleMeetingType.ScheduleMeeting("Meeting Test", "123456", "10:00", "PM", "23-06-2030", "Asia/Kolkata")
-    schedule_meeting_response = apiservice.schedule_meeting(login_response.get('access_token'), scheduleMeetingBody)
+        scheduleMeetingBody = ScheduleMeetingType.ScheduleMeeting("Meeting Test", "123456", "10:00", "PM", "23-06-2030", "Asia/ Kolkata")
+        schedule_meeting_response = apiservice.schedule_meeting(login_response.get('access_token'), scheduleMeetingBody)
 
-    viewMeetingBody = ViewMeetings.ViewMeeting(schedule_meeting_response.get('data').get('meeting_id'))
-    view_meetings_response = apiservice.view_meetings(login_response.get('access_token'), viewMeetingBody)
+        viewMeetingBody = ViewMeetings.ViewMeeting(schedule_meeting_response.get('data').get('meeting_id'))
+        view_meetings_response = apiservice.view_meetings(login_response.get('access_token'), viewMeetingBody)
 
-    GenerateJWTBody = GenerateJwtType.GenerateJwt(view_meetings_response.get('meeting').get('meeting_id'))
-    generate_response = apiservice.generate_jwt(login_response.get('access_token'), GenerateJWTBody)
+        GenerateJWTBody = GenerateJwtType.GenerateJwt(view_meetings_response.get('meeting').get('meeting_id'))
+        generate_response = apiservice.generate_jwt(login_response.get('access_token'), GenerateJWTBody)
+        context = {
+            'meeting_id': view_meetings_response.get('meeting').get('meeting_id'),
+            'jwt_token': generate_response.get('jwt'),
+            'pCode': view_meetings_response.get('meeting').get('pcode'),
+            'API_KEY': API_KEY,
+            'API_RELEASE': API_RELEASE,
+            'CONFERENCE_URL': CONFERENCE_URL,
+        }
 
-    return render_template_string('<script type="text/javascript" src="https://api.meethour.io/libs/{{API_RELEASE}}/external_api.min.js?apiKey={{API_KEY}}"></script><div class="relative" id="conference-parent"></div><script type="text/javascript">try { const conferencePanel = document.createElement("div"); conferencePanel.setAttribute("id", "conference");conferencePanel.setAttribute("style", "height: 100%;");const meetingPanel = document.querySelector("#conference-parent");meetingPanel.appendChild(conferencePanel);var domain = "{{CONFERENCE_URL}}";var options = {roomName: "{{meeting_id}}", parentNode: document.querySelector("#conference"),jwt: "{{jwt_token}}",apiKey: "{{API_KEY}}",pcode: "{{pCode}}",interfaceConfigOverwrite: {applyMeetingSettings: true, disablePrejoinHeader: true,disablePrejoinFooter: true,SHOW_MEET_HOUR_WATERMARK: false,ENABLE_DESKTOP_DEEPLINK: false,HIDE_DEEP_LINKING_LOGO: true,MOBILE_APP_PROMO: false,ENABLE_MOBILE_BROWSER: true,},}; var api = new MeetHourExternalAPI(domain, options); } catch (error) { console.log(error); }</script>',
-        meeting_id = view_meetings_response.get('meeting').get('meeting_id'),
-        jwt_token=generate_response.get('jwt'),
-        pCode=view_meetings_response.get('meeting').get('pcode'), 
-        API_KEY=API_KEY,
-        API_RELEASE=API_RELEASE,
-        CONFERENCE_URL=CONFERENCE_URL,
-    )
-if __name__ == '__main__':
-        app.run()
+        return render(request, 'usage.html', context)
 
-    
+### In usage.html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                overflow: hidden; 
+            }
+            #conference-parent {
+                height: 100%;
+            }
+        </style>
+    </head>
+<body>
+    <script type="text/javascript" src="https://api.meethour.io/libs/{{ API_RELEASE }}/external_api.min.js?apiKey={{ API_KEY }}"></script>
+    <div class="relative" id="conference-parent"></div>
+    <script type="text/javascript">
+        try {
+            const conferencePanel = document.createElement("div");
+            conferencePanel.setAttribute("id", "conference");
+            conferencePanel.setAttribute("style", "height: 100%;");
+            const meetingPanel = document.querySelector("#conference-parent");
+            meetingPanel.appendChild(conferencePanel);
+            var domain = "{{ CONFERENCE_URL }}";
+            var options = {
+                roomName: "{{ meeting_id }}",
+                parentNode: document.querySelector("#conference"),
+                jwt: "{{ jwt_token }}",
+                apiKey: "{{ API_KEY }}",
+                pcode: "{{ pCode }}",
+                interfaceConfigOverwrite: {
+                    applyMeetingSettings: true,
+                    disablePrejoinHeader: true,
+                    disablePrejoinFooter: true,
+                    SHOW_MEET_HOUR_WATERMARK: false,
+                    ENABLE_DESKTOP_DEEPLINK: false,
+                    HIDE_DEEP_LINKING_LOGO: true,
+                    MOBILE_APP_PROMO: false,
+                    ENABLE_MOBILE_BROWSER: true,
+                },
+            };
+            var api = new MeetHourExternalAPI(domain, options);
+        } catch (error) {
+            console.log(error);
+        }
+    </script>
+</body>
+</html>
+
+### In urls.py
+
+    from django.urls import path
+    from meethour.core import views
+
+    urlpatterns = [
+        path('', views.usage, name='usage'),
+    ]
+
 ```
 
 ### API End Points Supported
@@ -118,7 +175,7 @@ Important points:
 1. To Get Access Token Endpoint : => https://docs.v-empower.com/docs/MeetHour-API/a44a7d7669f91-user-login-get-access-token
 
    ```
-        from meethour.type import LoginType
+        from pymeethour.type import LoginType
         apiservice = apiServices.MHApiService()
 
         loginBody = LoginType.LoginType('CLIENT_ID', 'CLIENT_SECRET', 'GRANT_TYPE', 'EMAIL', 'PASSWORD') # pass values
@@ -132,10 +189,10 @@ Important points:
 2. To schedule a meeting: => https://docs.v-empower.com/docs/MeetHour-API/2de4b757a6312-meeting-schedule-meeting
 
    ```
-        from meethour.type import ScheduleMeetingType
+        from pymeethour.type import ScheduleMeetingType
         apiservice = apiServices.MHApiService()
 
-        scheduleMeetingBody= ScheduleMeetingType.("Meeting Test", "123456", "10:00", "PM", "23-06-2030", "Asia/Kolkata")
+        scheduleMeetingBody= ScheduleMeetingType.ScheduleMeeting( )
         schedule_meeting_response = apiservice.schedule_meeting(token, scheduleMeetingBody)
         print(schedule_meeting_response)
 
@@ -144,7 +201,7 @@ Important points:
 3. To Generate JWT Token Endpoint => https://docs.v-empower.com/docs/MeetHour-API/b7e3d0ab3906f-generate-jwt
 
    ```
-        from meethour.type import GenerateJwtType
+        from pymeethour.type import GenerateJwtType
         apiservice = apiServices.MHApiService()
 
         generateJwtBody= GenerateJwtType.GenerateJwt("meeting_id","contact_id") # pass values
@@ -156,7 +213,7 @@ Important points:
 4. To fetch User Details: => https://docs.v-empower.com/docs/MeetHour-API/ff9d0e37d9191-user-details
 
    ```
-        from meethour.type import user_details
+        from pymeethour.type import user_details
         apiservice = apiServices.MHApiService()
 
         userDetailsBody= user_details.user_details(0,0,0,0)  
@@ -168,7 +225,7 @@ Important points:
 5. To fetch access Token using Refresh Token: => https://docs.v-empower.com/docs/MeetHour-API/d851be1af9804-get-access-token-using-refresh-token
 
 ```
-    from meethour.type import RefreshToken
+    from pymeethour.type import RefreshToken
     apiservice = apiServices.MHApiService()
 
     refreshTokenBody= RefreshToken.RefreshToken('refresh_token','CLIENT_ID','CLIENT_SECRET','access_token') #pass values
@@ -180,7 +237,7 @@ Important points:
 6. To add a contact in Meet Hour database: => https://docs.v-empower.com/docs/MeetHour-API/bd1e416413e8c-add-contact
 
 ```
-        from meethour.type import AddContactType
+        from pymeethour.type import AddContactType
         apiservice = apiServices.MHApiService()
 
         addContactBody = AddContactType.AddContactType("EMAIL","Fristname","lastname","phone","country_code ","Image","1")     #pass values
@@ -191,7 +248,7 @@ Important points:
 7. To get Timezones of various countries: => https://docs.v-empower.com/docs/MeetHour-API/c688c29bce9b9-timezone-list
 
    ```
-        from meethour.type import time_zone
+        from pymeethour.type import time_zone
         apiservice = apiServices.MHApiService()
 
         timeZoneBody= time_zone.time_zone(0,0,0)
@@ -203,7 +260,7 @@ Important points:
 8. To get list of all the contacts in your Meet Hour account: => https://api.meethour.io/api/{version}/customer/contacts
 
    ```
-        from meethour.type import ContactsType
+        from pymeethour.type import ContactsType
         apiservice = apiServices.MHApiService()
 
         contactsBody = ContactsType.ContactsType(0,0,0)
@@ -215,7 +272,7 @@ Important points:
 9. To make changes in the existing contact details: => https://docs.v-empower.com/docs/MeetHour-API/28cae9187d215-edit-contact
 
    ````
-        from meethour.type import EditContactType
+        from pymeethour.type import EditContactType
         apiservice = apiServices.MHApiService()
 
         editContactsBody= EditContactType.EditContactType("id","countrycode","EMAIL", "Firstname","lastname","Image","1","phone") # pass values
@@ -228,7 +285,7 @@ Important points:
 10. To get Upcoming Meetings: => https://docs.v-empower.com/docs/MeetHour-API/31df88388416d-upcoming-meetings
 
     ```
-        from meethour.type import UpcomingMeetings
+        from pymeethour.type import UpcomingMeetings
         apiservice = apiServices.MHApiService()
 
         upcomingMeetingsBody= UpcomingMeetings.UpcomingMeetings()
@@ -240,7 +297,7 @@ Important points:
 11. To archive a meeting: => https://docs.v-empower.com/docs/MeetHour-API/1dd64523cc6bf-archive-meeting
 
     ```
-        from meethour.type import ArchiveMeeting
+        from pymeethour.type import ArchiveMeeting
         apiservice = apiServices.MHApiService()
 
         archiveMeetingBody = ArchiveMeeting.ArchiveMeetings("id")   # pass value
@@ -252,7 +309,7 @@ Important points:
 12. To get the details of a missed meeting: => https://docs.v-empower.com/docs/MeetHour-API/92998e2dda102-missed-meetings
 
     ```
-        from meethour.type import MissedMeeting
+        from pymeethour.type import MissedMeeting
         apiservice = apiServices.MHApiService()
 
         missedMeetingsBody = MissedMeeting.MissedMeetings()
@@ -264,7 +321,7 @@ Important points:
 13. To get completed meetings: => https://docs.v-empower.com/docs/MeetHour-API/aa9ef6a678250-completed-meetings
 
     ```
-        from meethour.type import CompletedMeetingsType
+        from pymeethour.type import CompletedMeetingsType
         apiservice = apiServices.MHApiService() 
 
         completedMeetingsBody = CompletedMeetingsType.CompletedMeetings()
@@ -275,7 +332,7 @@ Important points:
 14. To edit an existing meeting: => https://docs.v-empower.com/docs/MeetHour-API/5dedde36380b4-meeting-edit-meeting
 
     ```
-        from meethour.type import EditMeetingType
+        from pymeethour.type import EditMeetingType
         apiservice = apiServices.MHApiService() 
 
         editMeetingBody = EditMeetingType.EditMeeting('meeting_id') #pass value
@@ -286,10 +343,10 @@ Important points:
 15. To view a meeting: => https://docs.v-empower.com/docs/MeetHour-API/7e9a0a1e0da7f-meeting-view-meeting
 
     ```
-        from meethour.type import ViewMeetings
+        from pymeethour.type import ViewMeetings
         apiservice = apiServices.MHApiService() 
 
-        viewMeetingBody = ViewMeetings.ViewMeeting('meeting_id') #pass value
+        viewMeetingBody = ViewMeetings.ViewMeeting('meeting_id') #pass value   
         view_meetings_response = apiservice.view_meetings(token, viewMeetingBody)
         print(view_meetings_response)
 
@@ -298,7 +355,7 @@ Important points:
 16. To get all the recordings list: => https://docs.v-empower.com/docs/MeetHour-API/ce7c4fd8cae7e-recording-list
 
     ```
-        from meethour.type import RecordingsList
+        from pymeethour.type import RecordingsList
         apiservice = apiServices.MHApiService() 
 
         recordingsListBody = RecordingsList.RecordingsList('Local') # storage location
@@ -306,7 +363,6 @@ Important points:
         print(recordings_list_response)
 
     ```
-
 
 ### Join Meeting via Javascript SDK
 
@@ -959,5 +1015,3 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
     // failure
 });
 ```
-
-

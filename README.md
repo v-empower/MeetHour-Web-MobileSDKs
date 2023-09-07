@@ -37,7 +37,7 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 		1.2.4 CodeIgnitor (Coming soon)
 	1.3 Python -> SDK
 		1.3.1 Core Python - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Python/CorePython
-		1.3.2 django (Coming soon)
+		1.3.2 django - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Python/Django
 	1.4 C# -> SDK (Coming soon)
 		1.4.1 Core C# (Coming soon)
         	1.4.2 ASP.NET (Coming soon)
