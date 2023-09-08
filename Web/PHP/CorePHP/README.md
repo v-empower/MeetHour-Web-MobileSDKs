@@ -191,14 +191,14 @@ Important points:
 6. To add a contact in Meet Hour database: => https://docs.v-empower.com/docs/MeetHour-API/bd1e416413e8c-add-contact
 
    ```
-       class ContactsList {
+       class AddContact {
            public ?int $limit;
            public ?int $page;
            public ?int $exclude_hosts;
        }
 
-       $body = new ContactsList();
-       MHApiServices.contactList($token, $body);
+       $body = new AddContact();
+       MHApiServices.addcontact($token, $body);
    ```
 
 7. To get Timezones of various countries: => https://docs.v-empower.com/docs/MeetHour-API/c688c29bce9b9-timezone-list
