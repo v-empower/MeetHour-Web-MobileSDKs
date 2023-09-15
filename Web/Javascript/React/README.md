@@ -349,6 +349,7 @@ npm start
             page: number;
         }
     ```
+
 ### Join Meeting via Javascript SDK
 
 ```
@@ -362,22 +363,21 @@ Config & User Interface Settings Parameters - Parameters - https://docs.v-empowe
 The next step for embedding Meet Hour is to create the Meet Hour API object.
 Its constructor gets a number of options:
 
-* **domain**: domain used to build the conference URL, 'meethour.io' for
+- **domain**: domain used to build the conference URL, 'meethour.io' for
   example.
-* **options**: object with properties - the optional arguments:
-    * **roomName**: (required) name of the room to join.
-    * **apiKey**: (required). You will get API key from your Developer Page - https://portal.meethour.io/customer/developers. Make sure you are on our Developer or higher plan. - https://meethour.io/#pricing
-    * **jwt**: (required - If you to start meeting or join or moderator) - https://docs.v-empower.com/docs/MeetHour-API/b3A6MzcwODk5MTQ-generate-jwt
-    * **pcode**: (optional) Pass encrypted Meeting Password dynamically. Get this from API.
-    * **width**: (optional) width for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
-    * **height**: (optional) height for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
-    * **parentNode**: (optional) HTML DOM Element where the iframe will be added as a child.
-    * **noSSL**: (optional, defaults to true) Boolean indicating if the server should be contacted using HTTP or HTTPS.
-    * **onload**: (optional) handler for the iframe onload event.
-    * **invitees**: (optional) Array of objects containing information about new participants that will be invited in the call.
-    * **devices**: (optional) A map containing information about the initial devices that will be used in the call.
-    * **userInfo**: (optional) JS object containing information about the participant opening the meeting, such as `email`.
-
+- **options**: object with properties - the optional arguments:
+  - **roomName**: (required) name of the room to join.
+  - **apiKey**: (required). You will get API key from your Developer Page - https://portal.meethour.io/customer/developers. Make sure you are on our Developer or higher plan. - https://meethour.io/#pricing
+  - **jwt**: (required - If you to start meeting or join or moderator) - https://docs.v-empower.com/docs/MeetHour-API/b3A6MzcwODk5MTQ-generate-jwt
+  - **pcode**: (optional) Pass encrypted Meeting Password dynamically. Get this from API.
+  - **width**: (optional) width for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
+  - **height**: (optional) height for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
+  - **parentNode**: (optional) HTML DOM Element where the iframe will be added as a child.
+  - **noSSL**: (optional, defaults to true) Boolean indicating if the server should be contacted using HTTP or HTTPS.
+  - **onload**: (optional) handler for the iframe onload event.
+  - **invitees**: (optional) Array of objects containing information about new participants that will be invited in the call.
+  - **devices**: (optional) A map containing information about the initial devices that will be used in the call.
+  - **userInfo**: (optional) JS object containing information about the participant opening the meeting, such as `email`.
 
 ```Javascript Standard Example
 <script src='https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=<APIKEY>'></script>
@@ -391,13 +391,13 @@ Its constructor gets a number of options:
             apiKey: "",
             pcode: "5b40602cfea7708895781a8cad71be5b",
             configOverwrite: {
-                prejoinPageEnabled: true, // make this false to skip the prejoin page 
+                prejoinPageEnabled: true, // make this false to skip the prejoin page
                 disableInviteFunctions: true,
             },
             interfaceConfigOverwrite: {
                 applyMeetingSettings: true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings
                 disablePrejoinHeader: true,
-                disablePrejoinFooter: true,                
+                disablePrejoinFooter: true,
                 SHOW_MEET_HOUR_WATERMARK: false,
                 ENABLE_DESKTOP_DEEPLINK: false,
                 HIDE_DEEP_LINKING_LOGO: true,
@@ -412,16 +412,15 @@ Its constructor gets a number of options:
  </script>
 ```
 
-
 Example:
 
 ```javascript
-const domain = 'meethour.io';
+const domain = "meethour.io";
 const options = {
-    roomName: 'MeetHourExternalAPI',
-    width: 700,
-    height: 700,
-    parentNode: document.querySelector('#meet')
+  roomName: "MeetHourExternalAPI",
+  width: 700,
+  height: 700,
+  parentNode: document.querySelector("#meet"),
 };
 const api = new MeetHourExternalAPI(domain, options);
 ```
@@ -456,15 +455,15 @@ const api = new MeetHourExternalAPI(domain, options);
 
 You can also pass a jwt token to Meet Hour:
 
- ```javascript
+```javascript
 const options = {
-    ...
-    jwt: '<jwt_token>',
-    noSsl: false,
-    ...
+   ...
+   jwt: '<jwt_token>',
+   noSsl: false,
+   ...
 };
 const api = new MeetHourExternalAPI(domain, options);
- ```
+```
 
 You can set the userInfo(email, display name) for the call:
 
@@ -483,7 +482,8 @@ var api = new MeetHourExternalAPI(domain, options);
 ### Controlling the embedded Meet Hour Conference
 
 Device management `MeetHourExternalAPI` methods:
-* **getAvailableDevices** - Retrieve a list of available devices.
+
+- **getAvailableDevices** - Retrieve a list of available devices.
 
 ```javascript
 api.getAvailableDevices().then(devices => {
@@ -510,7 +510,8 @@ api.getAvailableDevices().then(devices => {
     ...
 });
 ```
-* **getCurrentDevices** - Retrieve a list with the devices that are currently selected.
+
+- **getCurrentDevices** - Retrieve a list with the devices that are currently selected.
 
 ```javascript
 api.getCurrentDevices().then(devices => {
@@ -537,7 +538,8 @@ api.getCurrentDevices().then(devices => {
     ...
 });
 ```
-* **isDeviceChangeAvailable** - Resolves with true if the device change is available and with false if not.
+
+- **isDeviceChangeAvailable** - Resolves with true if the device change is available and with false if not.
 
 ```javascript
 // The accepted deviceType values are - 'output', 'input' or undefined.
@@ -545,31 +547,36 @@ api.isDeviceChangeAvailable(deviceType).then(isDeviceChangeAvailable => {
     ...
 });
 ```
-* **isDeviceListAvailable** - Resolves with true if the device list is available and with false if not.
+
+- **isDeviceListAvailable** - Resolves with true if the device list is available and with false if not.
 
 ```javascript
 api.isDeviceListAvailable().then(isDeviceListAvailable => {
     ...
 });
 ```
-* **isMultipleAudioInputSupported** - Resolves with true if multiple audio input is supported and with false if not.
+
+- **isMultipleAudioInputSupported** - Resolves with true if multiple audio input is supported and with false if not.
 
 ```javascript
 api.isMultipleAudioInputSupported().then(isMultipleAudioInputSupported => {
     ...
 });
 ```
-* **setAudioInputDevice** - Sets the audio input device to the one with the label or id that is passed.
+
+- **setAudioInputDevice** - Sets the audio input device to the one with the label or id that is passed.
 
 ```javascript
 api.setAudioInputDevice(deviceLabel, deviceId);
 ```
-* **setAudioOutputDevice** - Sets the audio output device to the one with the label or id that is passed.
+
+- **setAudioOutputDevice** - Sets the audio output device to the one with the label or id that is passed.
 
 ```javascript
 api.setAudioOutputDevice(deviceLabel, deviceId);
 ```
-* **setVideoInputDevice** - Sets the video input device to the one with the label or id that is passed.
+
+- **setVideoInputDevice** - Sets the video input device to the one with the label or id that is passed.
 
 ```javascript
 api.setVideoInputDevice(deviceLabel, deviceId);
@@ -583,98 +590,121 @@ api.executeCommand(command, ...arguments);
 
 The `command` parameter is String object with the name of the command. The following commands are currently supported:
 
-* **displayName** - Sets the display name of the local participant. This command requires one argument - the new display name to be set.
+- **displayName** - Sets the display name of the local participant. This command requires one argument - the new display name to be set.
+
 ```javascript
-api.executeCommand('displayName', 'New Nickname');
+api.executeCommand("displayName", "New Nickname");
 ```
 
-* **password** - Sets the password for the room. This command requires one argument - the password name to be set.
+- **password** - Sets the password for the room. This command requires one argument - the password name to be set.
+
 ```javascript
-api.executeCommand('password', 'The Password');
+api.executeCommand("password", "The Password");
 ```
 
-* **sendTones** - Play touch tones.
+- **sendTones** - Play touch tones.
+
 ```javascript
-api.executeCommand('sendTones', {
-    tones: string, // The dial pad touch tones to play. For example, '12345#'.
-    duration: number, // Optional. The number of milliseconds each tone should play. The default is 200.
-    pause: number // Optional. The number of milliseconds between each tone. The default is 200.
+api.executeCommand("sendTones", {
+  tones: string, // The dial pad touch tones to play. For example, '12345#'.
+  duration: number, // Optional. The number of milliseconds each tone should play. The default is 200.
+  pause: number, // Optional. The number of milliseconds between each tone. The default is 200.
 });
 ```
 
-* **subject** - Sets the subject of the conference. This command requires one argument - the new subject to be set.
+- **subject** - Sets the subject of the conference. This command requires one argument - the new subject to be set.
+
 ```javascript
-api.executeCommand('subject', 'New Conference Subject');
+api.executeCommand("subject", "New Conference Subject");
 ```
 
-* **toggleAudio** - Mutes / unmutes the audio for the local participant. No arguments are required.
+- **toggleAudio** - Mutes / unmutes the audio for the local participant. No arguments are required.
+
 ```javascript
-api.executeCommand('toggleAudio');
+api.executeCommand("toggleAudio");
 ```
 
-* **toggleVideo** - Mutes / unmutes the video for the local participant. No arguments are required.
+- **toggleVideo** - Mutes / unmutes the video for the local participant. No arguments are required.
+
 ```javascript
-api.executeCommand('toggleVideo');
+api.executeCommand("toggleVideo");
 ```
 
-* **toggleFilmStrip** - Hides / shows the filmstrip. No arguments are required.
+- **toggleFilmStrip** - Hides / shows the filmstrip. No arguments are required.
+
 ```javascript
-api.executeCommand('toggleFilmStrip');
+api.executeCommand("toggleFilmStrip");
 ```
 
-* **toggleChat** - Hides / shows the chat. No arguments are required.
+- **toggleChat** - Hides / shows the chat. No arguments are required.
+
 ```javascript
-api.executeCommand('toggleChat');
+api.executeCommand("toggleChat");
 ```
 
-* **toggleShareScreen** - Starts / stops screen sharing. No arguments are required.
+- **toggleShareScreen** - Starts / stops screen sharing. No arguments are required.
+
 ```javascript
-api.executeCommand('toggleShareScreen');
+api.executeCommand("toggleShareScreen");
 ```
 
-* **toggleTileView** - Enter / exit tile view layout mode. No arguments are required.
+- **toggleTileView** - Enter / exit tile view layout mode. No arguments are required.
+
 ```javascript
-api.executeCommand('toggleTileView');
+api.executeCommand("toggleTileView");
 ```
 
-* **hangup** - Hangups the call. No arguments are required.
+- **hangup** - Hangups the call. No arguments are required.
+
 ```javascript
-api.executeCommand('hangup');
+api.executeCommand("hangup");
 ```
 
-* **email** - Changes the local email address. This command requires one argument - the new email address to be set.
+- **email** - Changes the local email address. This command requires one argument - the new email address to be set.
+
 ```javascript
-api.executeCommand('email', 'example@example.com');
+api.executeCommand("email", "example@example.com");
 ```
 
-* **avatarUrl** - Changes the local avatar URL. This command requires one argument - the new avatar URL to be set.
+- **avatarUrl** - Changes the local avatar URL. This command requires one argument - the new avatar URL to be set.
+
 ```javascript
-api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/3671647');
+api.executeCommand(
+  "avatarUrl",
+  "https://avatars0.githubusercontent.com/u/3671647",
+);
 ```
 
-* **sendEndpointTextMessage** - Sends a text message to another participant through the datachannels.
+- **sendEndpointTextMessage** - Sends a text message to another participant through the datachannels.
+
 ```javascript
-api.executeCommand('receiverParticipantId', 'text');
+api.executeCommand("receiverParticipantId", "text");
 ```
-* **setVideoQuality** - Sets the send and receive video resolution. This command requires one argument - the resolution height to be set.
+
+- **setVideoQuality** - Sets the send and receive video resolution. This command requires one argument - the resolution height to be set.
+
 ```javascript
-api.executeCommand('setVideoQuality', 720);
+api.executeCommand("setVideoQuality", 720);
 ```
 
 You can also execute multiple commands using the `executeCommands` method:
+
 ```javascript
 api.executeCommands(commands);
 ```
+
 The `commands` parameter is an object with the names of the commands as keys and the arguments for the commands as values:
+
 ```javascript
 api.executeCommands({
-    displayName: [ 'nickname' ],
-    toggleAudio: []
+  displayName: ["nickname"],
+  toggleAudio: [],
 });
 ```
 
 You can add event listeners to the embedded Meet Hour using the `addEventListener` method.
 **NOTE: This method still exists but it is deprecated. MeetHourExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods (`addListener` or `on`).**
+
 ```javascript
 api.addEventListener(event, listener);
 ```
@@ -683,7 +713,9 @@ The `event` parameter is a String object with the name of the event.
 The `listener` parameter is a Function object with one argument that will be notified when the event occurs with data related to the event.
 
 The following events are currently supported:
-* **cameraError** - event notifications about meethour-Meet having failed to access the camera. The listener will receive an object with the following structure:
+
+- **cameraError** - event notifications about meethour-Meet having failed to access the camera. The listener will receive an object with the following structure:
+
 ```javascript
 {
     type: string, // A constant representing the overall type of the error.
@@ -691,8 +723,9 @@ The following events are currently supported:
 }
 ```
 
-* **avatarChanged** - event notifications about avatar
-changes. The listener will receive an object with the following structure:
+- **avatarChanged** - event notifications about avatar
+  changes. The listener will receive an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant that changed his avatar.
@@ -700,22 +733,25 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **audioAvailabilityChanged** - event notifications about audio availability status changes. The listener will receive an object with the following structure:
+- **audioAvailabilityChanged** - event notifications about audio availability status changes. The listener will receive an object with the following structure:
+
 ```javascript
 {
-    available: boolean // new available status - boolean
+  available: boolean; // new available status - boolean
 }
 ```
 
-* **audioMuteStatusChanged** - event notifications about audio mute status changes. The listener will receive an object with the following structure:
+- **audioMuteStatusChanged** - event notifications about audio mute status changes. The listener will receive an object with the following structure:
+
 ```javascript
 {
-    muted: boolean // new muted status - boolean
+  muted: boolean; // new muted status - boolean
 }
 ```
 
-* **endpointTextMessageReceived** - event notifications about a text message received through datachannels.
-The listener will receive an object with the following structure:
+- **endpointTextMessageReceived** - event notifications about a text message received through datachannels.
+  The listener will receive an object with the following structure:
+
 ```javascript
 {
     senderInfo: {
@@ -729,7 +765,8 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **micError** - event notifications about meethour-Meet having failed to access the mic. The listener will receive an object with the following structure:
+- **micError** - event notifications about meethour-Meet having failed to access the mic. The listener will receive an object with the following structure:
+
 ```javascript
 {
     type: string, // A constant representing the overall type of the error.
@@ -737,7 +774,8 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **screenSharingStatusChanged** - receives event notifications about turning on/off the local user screen sharing. The listener will receive object with the following structure:
+- **screenSharingStatusChanged** - receives event notifications about turning on/off the local user screen sharing. The listener will receive object with the following structure:
+
 ```javascript
 {
     on: boolean, //whether screen sharing is on
@@ -751,22 +789,25 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **dominantSpeakerChanged** - receives event notifications about change in the dominant speaker. The listener will receive object with the following structure:
+- **dominantSpeakerChanged** - receives event notifications about change in the dominant speaker. The listener will receive object with the following structure:
+
 ```javascript
 {
-    id: string //participantId of the new dominant speaker
+  id: string; //participantId of the new dominant speaker
 }
 ```
 
-* **tileViewChanged** - event notifications about tile view layout mode being entered or exited. The listener will receive object with the following structure:
+- **tileViewChanged** - event notifications about tile view layout mode being entered or exited. The listener will receive object with the following structure:
+
 ```javascript
 {
     enabled: boolean, // whether tile view is not displayed or not
 }
 ```
 
-* **incomingMessage** - Event notifications about incoming
-messages. The listener will receive an object with the following structure:
+- **incomingMessage** - Event notifications about incoming
+  messages. The listener will receive an object with the following structure:
+
 ```javascript
 {
     from: string, // The id of the user that sent the message
@@ -775,16 +816,18 @@ messages. The listener will receive an object with the following structure:
 }
 ```
 
-* **outgoingMessage** - Event notifications about outgoing
-messages. The listener will receive an object with the following structure:
+- **outgoingMessage** - Event notifications about outgoing
+  messages. The listener will receive an object with the following structure:
+
 ```javascript
 {
-    message: string // the text of the message
+  message: string; // the text of the message
 }
 ```
 
-* **displayNameChange** - event notifications about display name
-changes. The listener will receive an object with the following structure:
+- **displayNameChange** - event notifications about display name
+  changes. The listener will receive an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant that changed his display name
@@ -792,37 +835,44 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **deviceListChanged** - event notifications about device list changes. The listener will receive an object with the following structure:
+- **deviceListChanged** - event notifications about device list changes. The listener will receive an object with the following structure:
+
 ```javascript
 {
-    devices: Object // the new list of available devices.
+  devices: Object; // the new list of available devices.
 }
 ```
+
 NOTE: The devices object has the same format as the getAvailableDevices result format.
 
-* **emailChange** - event notifications about email
-changes. The listener will receive an object with the following structure:
+- **emailChange** - event notifications about email
+  changes. The listener will receive an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant that changed his email
     email: string // the new email
 }
 ```
-* **feedbackSubmitted** - event notifications about conference feedback submission
+
+- **feedbackSubmitted** - event notifications about conference feedback submission
+
 ```javascript
 {
-    error: string // The error which occurred during submission, if any.
+  error: string; // The error which occurred during submission, if any.
 }
 ```
 
-* **filmstripDisplayChanged** - event notifications about the visibility of the filmstrip being updated.
+- **filmstripDisplayChanged** - event notifications about the visibility of the filmstrip being updated.
+
 ```javascript
 {
-    visible: boolean // Whether or not the filmstrip is displayed or hidden.
+  visible: boolean; // Whether or not the filmstrip is displayed or hidden.
 }
 ```
 
-* **participantJoined** - event notifications about new participants who join the room. The listener will receive an object with the following structure:
+- **participantJoined** - event notifications about new participants who join the room. The listener will receive an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant
@@ -830,7 +880,8 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **participantKickedOut** - event notifications about a participants being removed from the room. The listener will receive an object with the following structure:
+- **participantKickedOut** - event notifications about a participants being removed from the room. The listener will receive an object with the following structure:
+
 ```javascript
 {
     kicked: {
@@ -843,26 +894,27 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **participantLeft** - event notifications about participants that leave the room. The listener will receive an object with the following structure:
+- **participantLeft** - event notifications about participants that leave the room. The listener will receive an object with the following structure:
+
 ```javascript
 {
-    id: string // the id of the participant
+  id: string; // the id of the participant
 }
 ```
 
-* **participantRoleChanged** - event notification fired when the role of the local user has changed (none, moderator, participant). The listener will receive an object with the following structure:
+- **participantRoleChanged** - event notification fired when the role of the local user has changed (none, moderator, participant). The listener will receive an object with the following structure:
+
 ```javascript
 {
-    id: string // the id of the participant
-    role: string // the new role of the participant
+  id: string; // the id of the participant
+  role: string; // the new role of the participant
 }
 ```
 
-* **passwordRequired** - event notifications fired when failing to join a room because it has a password.
+- **passwordRequired** - event notifications fired when failing to join a room because it has a password.
 
+- **videoConferenceJoined** - event notifications fired when the local user has joined the video conference. The listener will receive an object with the following structure:
 
-
-* **videoConferenceJoined** - event notifications fired when the local user has joined the video conference. The listener will receive an object with the following structure:
 ```javascript
 {
     roomName: string, // the room name of the conference
@@ -872,38 +924,42 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **videoConferenceLeft** - event notifications fired when the local user has left the video conference. The listener will receive an object with the following structure:
+- **videoConferenceLeft** - event notifications fired when the local user has left the video conference. The listener will receive an object with the following structure:
+
 ```javascript
 {
-    roomName: string // the room name of the conference
+  roomName: string; // the room name of the conference
 }
 ```
 
-* **videoAvailabilityChanged** - event notifications about video availability status changes. The listener will receive an object with the following structure:
+- **videoAvailabilityChanged** - event notifications about video availability status changes. The listener will receive an object with the following structure:
+
 ```javascript
 {
-    available: boolean // new available status - boolean
+  available: boolean; // new available status - boolean
 }
 ```
 
-* **videoMuteStatusChanged** - event notifications about video mute status changes. The listener will receive an object with the following structure:
+- **videoMuteStatusChanged** - event notifications about video mute status changes. The listener will receive an object with the following structure:
+
 ```javascript
 {
-    muted: boolean // new muted status - boolean
+  muted: boolean; // new muted status - boolean
 }
 ```
 
-* **readyToClose** - event notification fired when Meet Hour is ready to be closed (hangup operations are completed).
+- **readyToClose** - event notification fired when Meet Hour is ready to be closed (hangup operations are completed).
 
-* **subjectChange** - event notifications about subject of conference changes.
-The listener will receive an object with the following structure:
+- **subjectChange** - event notifications about subject of conference changes.
+  The listener will receive an object with the following structure:
+
 ```javascript
 {
-    subject: string // the new subject
+  subject: string; // the new subject
 }
 ```
 
-* **suspendDetected** - event notifications about detecting suspend event in host computer.
+- **suspendDetected** - event notifications about detecting suspend event in host computer.
 
 You can also add multiple event listeners by using `addEventListeners`.
 This method requires one argument of type Object. The object argument must
@@ -911,60 +967,66 @@ have the names of the events as keys and the listeners of the events as values.
 **NOTE: This method still exists but it is deprecated. MeetHourExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods.**
 
 ```javascript
-function incomingMessageListener(object)
-{
-// ...
+function incomingMessageListener(object) {
+  // ...
 }
 
-function outgoingMessageListener(object)
-{
-// ...
+function outgoingMessageListener(object) {
+  // ...
 }
 
 api.addEventListeners({
-    incomingMessage: incomingMessageListener,
-    outgoingMessage: outgoingMessageListener
+  incomingMessage: incomingMessageListener,
+  outgoingMessage: outgoingMessageListener,
 });
 ```
 
 If you want to remove a listener you can use `removeEventListener` method with argument the name of the event.
 **NOTE: This method still exists but it is deprecated. MeetHourExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods( `removeListener`).**
+
 ```javascript
-api.removeEventListener('incomingMessage');
+api.removeEventListener("incomingMessage");
 ```
 
 If you want to remove more than one event you can use `removeEventListeners` method with an Array with the names of the events as an argument.
 **NOTE: This method still exists but it is deprecated. MeetHourExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods.**
+
 ```javascript
-api.removeEventListeners([ 'incomingMessage', 'outgoingMessageListener' ]);
+api.removeEventListeners(["incomingMessage", "outgoingMessageListener"]);
 ```
 
 You can get the number of participants in the conference with the following API function:
+
 ```javascript
 const numberOfParticipants = api.getNumberOfParticipants();
 ```
 
 You can get the avatar URL of a participant in the conference with the following API function:
+
 ```javascript
 const avatarURL = api.getAvatarURL(participantId);
 ```
 
 You can get the display name of a participant in the conference with the following API function:
+
 ```javascript
 const displayName = api.getDisplayName(participantId);
 ```
 
 You can get the email of a participant in the conference with the following API function:
+
 ```javascript
 const email = api.getEmail(participantId);
 ```
 
 You can get the iframe HTML element where Meet Hour is loaded with the following API function:
+
 ```javascript
 const iframe = api.getIFrame();
 ```
 
 You can check whether the audio is muted with the following API function:
+
 ```javascript
 api.isAudioMuted().then(muted => {
     ...
@@ -972,6 +1034,7 @@ api.isAudioMuted().then(muted => {
 ```
 
 You can check whether the video is muted with the following API function:
+
 ```javascript
 api.isVideoMuted().then(muted => {
     ...
@@ -979,6 +1042,7 @@ api.isVideoMuted().then(muted => {
 ```
 
 You can check whether the audio is available with the following API function:
+
 ```javascript
 api.isAudioAvailable().then(available => {
     ...
@@ -986,6 +1050,7 @@ api.isAudioAvailable().then(available => {
 ```
 
 You can check whether the video is available with the following API function:
+
 ```javascript
 api.isVideoAvailable().then(available => {
     ...
@@ -993,6 +1058,7 @@ api.isVideoAvailable().then(available => {
 ```
 
 You can invite new participants to the call with the following API function:
+
 ```javascript
 api.invite([ {...}, {...}, {...} ]).then(() => {
     // success
@@ -1098,12 +1164,13 @@ Install and run the project from the sample SDK from here - https://github.com/v
 2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
 
 # Library & SDK
+
 1. Android Maven - https://repo.meethour.io/maven/releases/
 2. iOS Cocoapods - https://cocoapods.org/pods/MeetHourSDK
 3. React Web NPM - https://www.npmjs.com/package/meet-hour-react-web-sdk
 4. React Native NPM - https://www.npmjs.com/package/react-native-meet-hour-sdk
 5. PHP SDK - https://packagist.org/packages/meethour/php-sdk
-5. Flutter Pub Dev - https://pub.dev/packages/meet_hour
+6. Flutter Pub Dev - https://pub.dev/packages/meet_hour
 
 # Known Errors
 
