@@ -84,6 +84,7 @@ Its constructor gets a number of options:
             configOverwrite: {
                 prejoinPageEnabled: true, // make this false to skip the prejoin page 
                 disableInviteFunctions: true,
+                disableProfile: true,
             },
             interfaceConfigOverwrite: {
                 applyMeetingSettings: true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings
