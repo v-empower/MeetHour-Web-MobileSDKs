@@ -85,6 +85,7 @@ Its constructor gets a number of options:
                 prejoinPageEnabled: true, // make this false to skip the prejoin page 
                 disableInviteFunctions: true,
                 disableProfile: true,
+                disableEmail: false // make this `true` to disable Email on Prejoin page.
             },
             interfaceConfigOverwrite: {
                 applyMeetingSettings: true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings
@@ -94,7 +95,9 @@ Its constructor gets a number of options:
                 ENABLE_DESKTOP_DEEPLINK: false,
                 HIDE_DEEP_LINKING_LOGO: true,
                 MOBILE_APP_PROMO: false,
-                ENABLE_MOBILE_BROWSER: true
+                ENABLE_MOBILE_BROWSER: true,
+                DISABLE_VOICE_COMMAND: true,
+                CHANGE_MODERATOR_NAME: 'Moderator'
             },
 
         };
