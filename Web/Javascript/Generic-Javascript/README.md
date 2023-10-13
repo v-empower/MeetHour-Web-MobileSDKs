@@ -43,7 +43,7 @@ To add Meet Hour programmatically, please use our Javascript API library:
 ## Web Javascript SDK
 
 ```
-        <script src="https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=f6282h82729080282928298"></script>
+        <script src="https://api.meethour.io/libs/v2.4.6/external_api.min.js?apiKey=f6282h82729080282928298"></script>
 ```
 
 ### `api = new MeetHourExternalAPI(domain, options)`
