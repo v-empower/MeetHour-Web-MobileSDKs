@@ -71,7 +71,7 @@ Its constructor gets a number of options:
 
 
 ```Javascript Standard Example
-<script src='https://api.meethour.io/libs/v2.4.5/external_api.min.js?apiKey=<APIKEY>'></script>
+<script src='https://api.meethour.io/libs/v2.4.6/external_api.min.js?apiKey=<APIKEY>'></script>
 <div id="conference" style="height: 100%;"></div>
  <script>
         var domain = "meethour.io";
