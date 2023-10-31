@@ -139,6 +139,7 @@ export default function JoinMeeting(props) {
   useEffect(() => {
     if (conferenceOptions.room !== '') {
       if (Platform.OS === 'android') {
+        console.log('Testing', conferenceOptions);
         startMeetHourAsNativeController(); // Recommeneded to use for Android if you require Screen Sharing functionality.
       }
       else {

@@ -1,36 +1,41 @@
 {
   "name": "MeetHourSDKTest",
-  "description": "Example app for Meet Hour React native SDK",
-  "version": "2.0.1",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
+    "lint": "eslint .",
     "start": "react-native start",
-    "start:rc": "react-native start --reset-cache",
-    "test": "jest",
-    "lint": "eslint ."
+    "test": "jest"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.19.2",
-    "@react-native-community/datetimepicker": "^6.7.4",
+    "@react-native-async-storage/async-storage": "^1.19.3",
+    "@react-native-community/datetimepicker": "^7.6.0",
     "react": "18.2.0",
     "react-native": "^0.72.4",
-    "react-native-dropdown-select-list": "^2.0.4",
-    "react-native-localize": "^2.2.4",
+    "react-native-dropdown-select-list": "^2.0.5",
+    "react-native-localize": "^3.0.2",
     "react-native-meet-hour-sdk": "3.0.22"
   },
   "devDependencies": {
-    "@babel/core": "7.18.5",
-    "@babel/runtime": "7.18.3",
-    "@react-native-community/eslint-config": "1.1.0",
-    "babel-jest": "25.5.1",
-    "eslint": "6.8.0",
-    "jest": "25.5.4",
-    "metro-react-native-babel-preset": "0.59.0",
-    "react-test-renderer": "18.2.0"
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native/eslint-config": "^0.72.2",
+    "@react-native/metro-config": "^0.72.11",
+    "@tsconfig/react-native": "^3.0.0",
+    "@types/react": "^18.0.24",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^29.2.1",
+    "eslint": "^8.19.0",
+    "jest": "^29.2.1",
+    "metro-react-native-babel-preset": "0.76.8",
+    "prettier": "^2.4.1",
+    "react-test-renderer": "18.2.0",
+    "typescript": "4.8.4"
   },
-  "jest": {
-    "preset": "react-native"
+  "engines": {
+    "node": ">=16"
   }
 }
