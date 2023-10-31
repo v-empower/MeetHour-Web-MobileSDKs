@@ -11,6 +11,7 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 https://www.npmjs.com/package/react-native-meet-hour-sdk
 
 ```
+### Support for 0.72.4 version as well.
 
 Example Project is here - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/ReactNative
 
