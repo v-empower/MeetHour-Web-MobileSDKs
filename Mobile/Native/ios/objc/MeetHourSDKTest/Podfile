@@ -6,7 +6,7 @@ target 'MeetHourSDKTest' do
   use_frameworks!
 
   # Pods for MeetHourSDKTest
-      pod 'MeetHourSDK', '~> 4.2.4'
+      pod 'MeetHourSDK', '~> 4.2.6'
 
     post_install do |installer|
         installer.pods_project.targets.each do |target|

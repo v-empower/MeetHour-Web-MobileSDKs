@@ -30,7 +30,7 @@ export default function JoinMeeting(props) {
     token: '',
     pcode: '',
     serverUrl: 'https://meethour.io',
-    prejoinPageEnabled: false, // Make it true to Skip PrejoinPage
+    prejoinPageEnabled: false, // Make it false to Skip PrejoinPage
     disableInviteFunctions: true // To disable invite functions in Mobile SDK.
   });
   const [meetingId, setMeetingId] = useState('');
@@ -69,7 +69,7 @@ export default function JoinMeeting(props) {
         token: jwtToken
       }));
     } catch (error) {
-      console.log(error);
+      console.log('GenerateJWTToken', error);
       Alert.alert(
         'Error',
         response.message,
@@ -111,12 +111,12 @@ export default function JoinMeeting(props) {
       const meetingBody = {
         organizer: response?.organizer,
         hosts: response?.meeting?.hosts,
-        attendees: response?.meeting?.meeting_attendees,
+        attendees: response?.meeting_attendees,
       };
       setIsContinued(true);
       setMeetingAttendees(meetingBody);
     } catch (error) {
-      console.log(error);
+      console.log('ViewMeeting Error', error);
       Alert.alert("Error", response.message)
       resetMeetingDetails()
     } finally {
@@ -130,7 +130,7 @@ export default function JoinMeeting(props) {
       await AsyncStorage.removeItem('pCode');
       props.setSelectedScreen('ScheduleMeeting');
     } catch (error) {
-      console.log(error);
+      console.log('Reset Meeting Details', error);
     } finally {
       setIsLoading(false);
     }
@@ -168,7 +168,9 @@ export default function JoinMeeting(props) {
           options={conferenceOptions}
           onConferenceTerminated={(_) => props.setShowMeetHourView(false)}
           onConferenceJoined={(e) => console.log(e.nativeEvent)}
-          onConferenceWillJoin={(e) => console.log(e.nativeEvent)}
+          onConferenceWillJoin={e => {
+              console.log('onConferenceWillJoin', conferenceOptions, e.nativeEvent)
+            }}
         />
       </View>
     ) : <View style={{ marginTop: 80 }}>
@@ -204,7 +206,7 @@ export default function JoinMeeting(props) {
               meetingAttendees.attendees.map((attendee) => (
                 <Pressable style={{ borderColor: "gray", borderWidth: 2, marginBottom: 4, paddingLeft: 4, paddingVertical: 10, borderRadius: 5 }}
                   onPress={() => {
-                    generateJwtToken(attendee.id);
+                    generateJwtToken(attendee.contact_id);
                   }}
                   key={attendee.id}>
                   <Text>{attendee.first_name}</Text>

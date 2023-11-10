@@ -7,6 +7,7 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
+    "start-rc": "react-native start --reset-cache",
     "test": "jest"
   },
   "dependencies": {
@@ -16,7 +17,7 @@
     "react-native": "^0.72.4",
     "react-native-dropdown-select-list": "^2.0.5",
     "react-native-localize": "^3.0.2",
-    "react-native-meet-hour-sdk": "3.0.22"
+    "react-native-meet-hour-sdk": "3.0.23"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
