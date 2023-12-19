@@ -5838,14 +5838,14 @@ react-native-localize@^3.0.2:
   resolved "https://registry.npmjs.org/react-native-localize/-/react-native-localize-3.0.2.tgz"
   integrity sha512-/l/oE1LVNgIRRhLbhmfFMHiWV0xhUn0A0iz1ytLVRYywL7FTp8Rx2vkJS/q/RpExDvV7yLw2493XZBYIM1dnLQ==
 
-react-native-meet-hour-sdk@3.0.22:
-  version "3.0.22"
-  resolved "https://registry.npmjs.org/react-native-meet-hour-sdk/-/react-native-meet-hour-sdk-3.0.22.tgz"
-  integrity sha512-B6cxGOLCRmPlWcYYduvHC615pPgxMMQjLmWv38Uf3i8XmONieHhEs0rSo94Lm4uJZce7UxchJk72eFEQgBMUhQ==
+react-native-meet-hour-sdk@3.0.24:
+  version "3.0.24"
+  resolved "https://registry.npmjs.org/react-native-meet-hour-sdk/-/react-native-meet-hour-sdk-3.0.24.tgz"
+  integrity sha512-GaI7EhJxRzZ9+fyVNp/RjBu6N32YapKp/TdKx+s8MjonLqH3MeYuW7F2VJFstP37/zWmShjxzXHYPA+PPAD1YA==
   dependencies:
     axios "^1.2.2"
 
-react-native@*, "react-native@^0.0.0-0 || 0.60 - 0.72 || 1000.0.0", react-native@>=0.70.0, react-native@0.72.4:
+react-native@*, "react-native@^0.0.0-0 || 0.60 - 0.72 || 1000.0.0", react-native@^0.72.4, react-native@>=0.70.0:
   version "0.72.4"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.72.4.tgz"
   integrity sha512-+vrObi0wZR+NeqL09KihAAdVlQ9IdplwznJWtYrjnQ4UbCW6rkzZJebRsugwUneSOKNFaHFEo1uKU89HsgtYBg==

@@ -245,6 +245,7 @@ class _MeetingState extends State<Meeting> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    Padding child;
     return MaterialApp(
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -297,7 +298,7 @@ class _MeetingState extends State<Meeting> {
                     ),
                     Container(
                         width: width * 0.60,
-                  child= Padding(
+                  child: child= Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Card(
                               color: Colors.white54,

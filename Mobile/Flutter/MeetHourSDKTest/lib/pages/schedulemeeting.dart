@@ -1,6 +1,6 @@
 import 'package:MeetHourSDKTest/pages/homepage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart' as picker;
 import 'package:meet_hour/meet_hour.dart';
 import 'package:meet_hour/types/contacts_type.dart';
 import 'package:meet_hour/types/schedule_meeting_type.dart';
@@ -371,7 +371,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                       // ),
                       TextButton(
                           onPressed: () {
-                            DatePicker.showDatePicker(context,
+                            picker.DatePicker.showDatePicker(context,
                                 showTitleActions: true,
                                 minTime: DateTime(DateTime.now().year,
                                     DateTime.now().month, DateTime.now().day),
@@ -384,7 +384,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                               print(meetingDate);
                             },
                                 currentTime: DateTime.now(),
-                                locale: LocaleType.en);
+                                locale: picker.LocaleType.en);
                           },
                           child: Text(
                             'Select Meeting Date',
@@ -392,7 +392,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                           )),
                       TextButton(
                           onPressed: () {
-                            DatePicker.showTimePicker(context,
+                            picker.DatePicker.showTimePicker(context,
                                 showTitleActions: true, onChanged: (time) {
                               print('change $time');
                             }, onConfirm: (time) {
@@ -404,7 +404,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                               });
                             },
                                 currentTime: DateTime.now(),
-                                locale: LocaleType.en);
+                                locale: picker.LocaleType.en);
                           },
                           child: Text(
                             'Select Meeting Time',
