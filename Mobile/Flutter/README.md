@@ -1,10 +1,10 @@
-# Meet Hour Flutter SDK (https://meethour.io)
+# Meet Hour Android & iOS Example SDK (https://meethour.io)
 
 Meet Hour SDK for Flutter. Supports Web, Android and iOS platforms.
 
 "Meet Hour is HD quality video conference solution with End to End Encrypted and many other features such as lobby mode, Live streaming Connect for fundraising, Video call recording, Youtube Live Stream etc." Please signup for Developer or above plan to use this SDK. Visit https://meethour.io for more details.
 
-### Supports Web, Android & IOS
+### SDK Supports Web, Android & IOS
 
 ```
 
