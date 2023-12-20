@@ -34,6 +34,10 @@ Pub dev - https://pub.dev/packages/meet_hour
 4. On Home page Click on Get Access Token
 5. Then Try Schedule a Meeting & Join Meeting.
 
+
+## Screenshot
+![](screenshot.png)
+
 ## Table of Contents
   - [API End Points Supported](#api)
   - [Configuration](#configuration)
