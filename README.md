@@ -63,7 +63,7 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 	2.3 React Native - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Mobile/ReactNative
 ```
 
-# MeetHour SDK Implementation - Steps
+# MeetHour API, SDK & Examples
 
 1. SDK Example Link - https://github.com/v-empower/MeetHour-Web-MobileSDKs
 2. API Documentation Link - https://docs.v-empower.com/docs/MeetHour-API/
