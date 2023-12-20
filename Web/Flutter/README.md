@@ -1,4 +1,4 @@
-# Meet Hour Flutter SDK (https://meethour.io)
+# Meet Hour Flutter Web Example (https://meethour.io)
 
 Meet Hour SDK for Flutter. Supports Web, Android and iOS platforms.
 
