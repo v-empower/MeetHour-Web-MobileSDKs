@@ -1,0 +1,149 @@
+﻿@model MeethourExample_Asp.Models.CombinedViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=0">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link href="https://portal.meethour.io/dist/images/favicon.png" rel="shortcut icon" />
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/loader.css" rel="stylesheet">
+    <link href="@Url.Content("~/Cs/Index.cs")" rel="Index">
+    <link href="@Url.Content("~/Cs/JoinMeeting.cs")" rel="JoinMeeting">
+    <link href="@Url.Content("~/Cs/ScheduleMeeting.cs")" rel="ScheduleMeeting">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/JavaScript" src="https://MomentJS.com/downloads/moment.js"></script>
+    <script type="text/javascript" src="https://api.meethour.io/libs/@ViewBag.API_RELEASE/external_api.min.js?apiKey=@ViewBag.API_KEY"></script>
+    <title>Meet Hour ASP.Net - Example</title>
+</head>
+<body>
+
+    <div>
+
+        @Html.Partial("~/Views/Home/Header.cshtml", Model.headerModel)
+
+    </div>
+    @if (Model.JoinMeetingModel.meeting_id != null && Model.JoinMeetingModel.jwt_token == null)
+    {
+        <div id="moderator-selection-parent">
+            <div class="relative top-16 h-screen w-screen flex justify-center">
+                <div id="moderator-selection" class="rounded-md opacity-100 h-auto p-5 w-96 bg-white">
+                    <div class="flex justify-center w-full">
+                    </div>
+                    <h1 class="text-xl font-semibold ">Whom would you like to join as?</h1>
+                    <div id="loader" class="flex justify-center"></div>
+                    <form method="POST" name="POST" action="JoinMeeting/?meeting_id=@Model.JoinMeetingModel.meeting_id&pcode=@Model.JoinMeetingModel.pcode">
+                        @Html.AntiForgeryToken()
+                        <input hidden name="id" type="hidden" value="organizer" />
+                        <button type="submit" class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
+                            <h1>@Model.JoinMeetingModel.organizer</h1>
+                            (Organizer / Account Owner)
+                        </button>
+                    </form>
+                    @if (Model.JoinMeetingModel.meeting_attendees.hosts != null)
+                    {
+                        var host = Model.JoinMeetingModel.meeting_attendees.hosts;
+                        <form method="POST" action="JoinMeeting/?meeting_id=@Model.JoinMeetingModel.meeting_id&pcode=@Model.JoinMeetingModel.pcode">
+                            @Html.AntiForgeryToken()
+                            <input name="id" type="hidden" value="@host.id" />
+                            <h1>@host.name : @host.email</h1>
+                            <button type="submit" class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
+                                (Moderator / Host)
+                            </button>
+                        </form>
+                        
+                    }
+                    @if (Model.JoinMeetingModel.meeting_attendees.attendee != null)
+                    {
+                        var attendee = Model.JoinMeetingModel.meeting_attendees.attendee;  
+                        <form method="POST" action="JoinMeeting/?meeting_id=@Model.JoinMeetingModel.meeting_id&pcode=@Model.JoinMeetingModel.pcode">
+                            @Html.AntiForgeryToken()
+                            <input name="id" type="hidden" value="@attendee.id">
+                            <h1>@attendee.name : @attendee.email</h1>
+                            <button type="submit" class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
+                                (Attendee)
+                            </button>
+                        </form>
+                      
+                    } 
+                </div>
+            </div>
+        </div>
+    }
+    else if (Model.JoinMeetingModel.meeting_id == null)
+    {
+
+    <div id="meeting-id-input" class="grid gap-3 p-5 relative top-16">
+        <h1 class="text-slate-600 text-2xl">Join a Meeting</h1><input id="meeting-id-input-field" placeholder="Enter Meeting Id." class="w-64 h-10 border border-slate-400 focus:outline-none rounded-md pl-3" type="text">
+        <a id="meeting-id-input-button-anchor">
+            <button id="meeting-id-input-button" class="w-28 h-8 text-white font-semibold text-sm bg-green-600 rounded-md">Join Meeting</button>
+        </a>
+    </div>
+    }
+
+    <div class="relative top-16 h-screen" id="conference-parent"></div>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+        var accessToken = "@ViewBag.AccessToken";
+        if (!accessToken) {
+            alert("First generate the access token and then try to join a meeting.");
+            //window.location.href = "/";
+        }
+        else if (window.location.search?.split("&")[0]?.split("?")[1]?.split("=")[1]) {
+                if (document.querySelector("#meeting-id-input"))
+            document.querySelector("#meeting-id-input").remove();
+        }
+            if (document.getElementById("meeting-id-input-field")) {
+                document.getElementById("meeting-id-input-field").addEventListener("input", function (event) {
+                    const meetingIdInputButton = document.querySelector("#meeting-id-input-button-anchor");
+                    let inputValue = event.target.value.trim();
+                    if (inputValue.includes("https://")) {
+                        const id = inputValue.slice(20, 34);
+                        meetingIdInputButton.setAttribute("href", `JoinMeeting/?meeting_id=${meeting_id}`);
+                    } else {
+                        meetingIdInputButton.setAttribute("href", `JoinMeeting/?meeting_id=${inputValue}`);
+                    }
+                });
+            }
+        });
+    </script>
+    <div class="relative" id="conference-parent"></div>
+    <script type="text/javascript">
+        try {
+            const conferencePanel = document.createElement("div");
+            conferencePanel.setAttribute("id", "conference");
+            conferencePanel.setAttribute("style", "height: 100%;");
+            const meetingPanel = document.querySelector("#conference-parent");
+            meetingPanel.appendChild(conferencePanel);
+
+            var domain = "@ViewBag.CONFERENCE_URL";
+            var options = {
+                roomName: "@Model.JoinMeetingModel.meeting_id",
+                parentNode: document.querySelector("#conference"),
+                jwt: "@Model.JoinMeetingModel.jwt_token",
+                apiKey: "@ViewBag.API_KEY",
+                pcode: "@Model.JoinMeetingModel.pcode",
+                interfaceConfigOverwrite: {
+                    applyMeetingSettings: true,
+                    disablePrejoinHeader: true,
+                    disablePrejoinFooter: true,
+                    SHOW_MEET_HOUR_WATERMARK: false,
+                    ENABLE_DESKTOP_DEEPLINK: false,
+                    HIDE_DEEP_LINKING_LOGO: true,
+                    MOBILE_APP_PROMO: false,
+                    ENABLE_MOBILE_BROWSER: true,
+                },
+            };
+
+            if (options.jwt != "" && options.jwt != "None") {
+                var api = new MeetHourExternalAPI(domain, options);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    </script>
+
+</body>
+</html>
