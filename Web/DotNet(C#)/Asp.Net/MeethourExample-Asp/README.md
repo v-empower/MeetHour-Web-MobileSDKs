@@ -622,13 +622,13 @@ userInfo: (optional) JS object containing information about the participant open
             apiKey: "",
             pcode: "5b40602cfea7708895781a8cad71be5b",
             configOverwrite: {
-                prejoinPageEnabled: true, // make this false to skip the prejoin page 
+                prejoinPageEnabled: true, // make this false to skip the prejoin page
                 disableInviteFunctions: true,
             },
             interfaceConfigOverwrite: {
                 applyMeetingSettings: true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings
                 disablePrejoinHeader: true,
-                disablePrejoinFooter: true,                
+                disablePrejoinFooter: true,
                 SHOW_MEET_HOUR_WATERMARK: false,
                 ENABLE_DESKTOP_DEEPLINK: false,
                 HIDE_DEEP_LINKING_LOGO: true,
