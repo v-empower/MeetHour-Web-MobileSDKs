@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -491,6 +491,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3B6E3F2D85E5BF49ED6110A6 /* Pods-MeetHourSDKTest.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MeetHourSDKTest.entitlements;
@@ -515,6 +516,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5254C9DCEC1B9E129F9F4EB5 /* Pods-MeetHourSDKTest.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MeetHourSDKTest.entitlements;

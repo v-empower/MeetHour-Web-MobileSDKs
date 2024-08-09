@@ -1,5 +1,9 @@
+//  ConferenceViewController.m
+//  Created by MeetHour, LLC.
+//  Copyright © Meet Hour, LLC. All rights reserved.
 
 #import "ConferenceViewController.h"
+#import "MeetHourSDK/MeetHourSDK-Swift.h"
 
 @interface ConferenceViewController ()
 
@@ -11,23 +15,25 @@
     [super viewDidLoad];
     
     if (self.room == nil) {
-        NSLog(@"Room is nul!");
-
+        NSLog(@"Room is nil!");
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self dismissViewControllerAnimated:YES completion:nil];
         });
-
+        
         return;
     }
 
-    // Attach this controller as the delegate.
-    MeetHourView *MHView = (MeetHourView*)self.view;
-    MHView.delegate = self;
-    
-    MeetHourUserInfo *info = [[MeetHourUserInfo alloc]init];
+    // Initialize MeetHourView and attach this controller as the delegate.
+    self.MHView = [[MeetHourView alloc] initWithFrame:self.view.bounds];
+    self.MHView.delegate = self;
+    self.MHView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:self.MHView];
+
+    MeetHourUserInfo *info = [[MeetHourUserInfo alloc] init];
     info.displayName = self.displayName;
     info.email = self.email;
-    
+
     // Join the room.
     MeetHourConferenceOptions *options
         = [MeetHourConferenceOptions fromBuilder:^(MeetHourConferenceOptionsBuilder *builder) {
@@ -37,22 +43,44 @@
             builder.userInfo = info;
             builder.room = self.room;
             builder.pcode = self.pcode;
-            builder.prejoinPageEnabled = true; // Set to false if you want to skip prejoin
-            builder.disableInviteFunctions = true;
+            builder.prejoinPageEnabled = YES; // Set to NO if you want to skip prejoin
+            builder.disableInviteFunctions = YES;
             
             // Settings for audio and video
             builder.audioMuted = self.isAudioMuted;
             builder.videoMuted = self.isVideoOn;
             [builder setFeatureFlag:@"ios.recording.enabled" withBoolean:YES];
-            // Set different feature flags
-            // [builder setFeatureFlag:@"toolbox.enabled" withBoolean:NO];
-            // [builder setFeatureFlag:@"filmstrip.enabled" withBoolean:NO];
-        }];
-    [MHView join:options];
+            [builder setFeatureFlag:@"pip.enabled" withBoolean:YES];
+    }];
+    
+    [self.MHView join:options];
+
+    // Initialize PiPViewCoordinator
+    self.pipViewCoordinator = [[PiPViewCoordinator alloc] initWithView:self.MHView];
+    [self.pipViewCoordinator configureAsStickyViewWithParentView:self.view];
+
+    // Animate in
+    self.MHView.alpha = 0;
+    [UIView animateWithDuration:0.3 animations:^{
+        self.MHView.alpha = 1.0;
+    }];
+}
+
+- (void)cleanUp {
+    [self.MHView removeFromSuperview];
+    self.MHView = nil;
+    self.pipViewCoordinator = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)conferenceWillJoin:(NSDictionary *)data {
     NSLog(@"About to join conference %@", self.room);
+}
+
+- (void)enterPictureInPicture:(NSDictionary *)data {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.pipViewCoordinator enterPictureInPicture];
+    });
 }
 
 - (void)conferenceJoined:(NSDictionary *)data {
@@ -63,5 +91,5 @@
     NSLog(@"Conference %@ terminated", self.room);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-@end
 
+@end

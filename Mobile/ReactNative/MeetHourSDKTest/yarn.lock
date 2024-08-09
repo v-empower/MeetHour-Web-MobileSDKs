@@ -5838,10 +5838,10 @@ react-native-localize@^3.0.2:
   resolved "https://registry.npmjs.org/react-native-localize/-/react-native-localize-3.0.2.tgz"
   integrity sha512-/l/oE1LVNgIRRhLbhmfFMHiWV0xhUn0A0iz1ytLVRYywL7FTp8Rx2vkJS/q/RpExDvV7yLw2493XZBYIM1dnLQ==
 
-react-native-meet-hour-sdk@3.0.27:
-  version "3.0.27"
-  resolved "https://registry.npmjs.org/react-native-meet-hour-sdk/-/react-native-meet-hour-sdk-3.0.27.tgz"
-  integrity sha512-8HuZe13IjX1WEtv3yzLZjO2ZkXrkCQdvXq2VzEPaiV8979xf7zKeU7A4RE0RDkVjbIzWL35TkRMag6LIhEFidA==
+react-native-meet-hour-sdk@3.0.28:
+  version "3.0.28"
+  resolved "https://registry.npmjs.org/react-native-meet-hour-sdk/-/react-native-meet-hour-sdk-3.0.28.tgz"
+  integrity sha512-IfjND+rUqOFl146U3wWv53yVTqnlFqtDkyA6huN2rQfwnfAX/fDTaLEh4yTHa8QKoMfxUbnyZyOiyzMDCzB0pA==
   dependencies:
     axios "^1.2.2"
 
