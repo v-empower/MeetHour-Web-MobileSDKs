@@ -1,32 +1,17 @@
 import datetime
 import json
-from pymeethour.webhook import webhooks
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from flask import Flask, render_template, request, session
-from constants import (
-    CLIENT_ID,
-    CLIENT_SECRET,
-    GRANT_TYPE,
-    EMAIL,
-    PASSWORD,
-    API_RELEASE,
-    API_KEY,
-    CONFERENCE_URL,
-    SECRET_KEY,
-)
-from pymeethour.type import (
-    LoginType,
-    ScheduleMeetingType,
-    GenerateJwtType,
-    time_zone,
-    ContactsType,
-    ViewMeetings,
-)
 
 import pymeethour.services.apiServices as apiServices
-
-from cryptography.hazmat.primitives import hashes, hmac as CryptoHMAC
+from constants import (API_KEY, API_RELEASE, CLIENT_ID, CLIENT_SECRET,
+                       CONFERENCE_URL, EMAIL, GRANT_TYPE, PASSWORD, SECRET_KEY)
 from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives import hmac as CryptoHMAC
+from flask import Flask, render_template, request, session
+from pymeethour.type import (ContactsType, GenerateJwtType, LoginType,
+                             ScheduleMeetingType, ViewMeetings, time_zone)
+from pymeethour.webhook import webhooks
 
 webhook_handler = webhooks.WebhookHandler(SECRET_KEY)
 
