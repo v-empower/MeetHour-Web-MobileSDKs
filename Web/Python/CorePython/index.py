@@ -30,6 +30,7 @@ API_KEY = API_KEY
 
 
 def get_access_token():
+    """ """
     login_object = LoginType.LoginType(
         CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, EMAIL, PASSWORD
     )
@@ -44,6 +45,7 @@ def get_access_token():
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    """ """
     error = False
     message = None
     access_token = None
@@ -72,6 +74,7 @@ def index():
 
 @app.route("/schedulemeeting", methods=["GET", "POST"])
 def schedulemeeting():
+    """ """
     success = False
     error = False
     message = None
@@ -202,6 +205,7 @@ def schedulemeeting():
 # /Joinmeeting
 @app.route("/joinmeeting", methods=["GET", "POST"])
 def join_meeting():
+    """ """
     meeting_id = None
     jwt_token = None
     meetingAttendees = None
@@ -280,6 +284,12 @@ def join_meeting():
 
 
 def compute_signature(secret_key, payload):
+    """
+
+    :param secret_key: 
+    :param payload: 
+
+    """
     h = CryptoHMAC.HMAC(secret_key.encode(), hashes.SHA256(), backend=default_backend())
     h.update(payload)
     return h.finalize().hex()
@@ -290,6 +300,7 @@ def compute_signature(secret_key, payload):
 
 @app.route("/webhooks", methods=["GET", "POST"])
 def webhooks_start():
+    """ """
 
     data = request.get_data(as_text=True)
 
