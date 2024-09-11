@@ -25,6 +25,8 @@ API_RELEASE = API_RELEASE
 API_KEY = API_KEY
 
 # Get access token
+
+
 def get_access_token():
     login_object = LoginType.LoginType(
         CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, EMAIL, PASSWORD)
@@ -35,6 +37,7 @@ def get_access_token():
         return access_token
     else:
         raise Exception('Failed to retrieve access token')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -56,12 +59,14 @@ def index():
     except Exception as e:
         error = True
         message = str(e)
-    return render_template('index.html', 
-                           error=error, 
-                           message=message, 
+    return render_template('index.html',
+                           error=error,
+                           message=message,
                            access_token=access_token)
 
-# /instant meeting and /schedule meeting 
+# /instant meeting and /schedule meeting
+
+
 @app.route('/schedulemeeting', methods=['GET', 'POST'])
 def schedulemeeting():
     success = False
@@ -76,17 +81,18 @@ def schedulemeeting():
         pcode = request.args.get('pcode')
         # getting access token from sessions
         access_token = session.get('access_token')
-    
+
         time_zone_object = time_zone.time_zone(
             0, 0, 0)  # getting timezone from sdk
         apiservice = apiServices.MHApiService()
-        timezone_response = apiservice.time_zone(access_token, time_zone_object)
-    
+        timezone_response = apiservice.time_zone(
+            access_token, time_zone_object)
+
         contacts_object = ContactsType.ContactsType(
             0, 0, 0)  # getting contact details from sdk
         apiservice = apiServices.MHApiService()
         contacts_response = apiservice.contacts(access_token, contacts_object)
-    
+
     # /instant meeting
         if request.method == "POST":
             instant_meeting = request.form.get("instantmeeting")
@@ -131,7 +137,8 @@ def schedulemeeting():
 
                 mySelectModerators = []
                 if (request.form.get("mySelectModerators") != 0):
-                    mySelectModerators = [request.form.get("mySelectModerators")]
+                    mySelectModerators = [
+                        request.form.get("mySelectModerators")]
 
                 schedule_meeting_object = ScheduleMeetingType.ScheduleMeeting(meeting_name, pcode, meeting_time, meeting_ampm, meeting_date, timezone, is_show_portal=1, send_calendar_invite=1, options=[
                                                                               "ALLOW_GUEST"], attend=mySelectParticipants, hostusers=mySelectModerators)
@@ -153,10 +160,10 @@ def schedulemeeting():
     except Exception as e:
         error = True
         message = str(e)
-    if meeting_response != None: 
+    if meeting_response != None:
         meeting_response = meeting_response.get('data')
     return render_template('scheduleMeeting.html',
-                           success=success, 
+                           success=success,
                            error=error,
                            message=message,
                            access_token=access_token,
@@ -207,7 +214,8 @@ def join_meeting():
                 attendees = []
                 if view_meetings_object.meeting_id:
                     apiservice = apiServices.MHApiService()
-                    view_meeting_response = apiservice.view_meetings(access_token, view_meetings_object)
+                    view_meeting_response = apiservice.view_meetings(
+                        access_token, view_meetings_object)
                 if attendees is None:
                     attendees = []
                 meeting_details = view_meeting_response["meeting"]
@@ -242,36 +250,39 @@ def join_meeting():
         success=success,
         error=error,
         message=message,
-        access_token=access_token 
+        access_token=access_token
     )
 
 
 def compute_signature(secret_key, payload):
-    h = CryptoHMAC.HMAC(secret_key.encode(), hashes.SHA256(), backend=default_backend())
+    h = CryptoHMAC.HMAC(secret_key.encode(), hashes.SHA256(),
+                        backend=default_backend())
     h.update(payload)
     return h.finalize().hex()
 
-# /Webhooks 
+# /Webhooks
+
+
 @app.route('/webhooks', methods=['GET', 'POST'])
 def webhooks_start():
-              
-        data = request.get_data(as_text=True)
 
-        # For Meet Hour
-        response = webhook_handler.handle_request(data, request.headers)
-        
-        # Log the incoming data using WebhookHandler's log_data method
-        webhook_handler.log_data(request)
+    data = request.get_data(as_text=True)
 
-        session['meethour_webhook'] = response
-        
-        # Print server response (optional)
-        print(f"Server response: {response}")
-        return json.dumps(response), 200
-    
+    # For Meet Hour
+    response = webhook_handler.handle_request(data, request.headers)
+
+    # Log the incoming data using WebhookHandler's log_data method
+    webhook_handler.log_data(request)
+
+    session['meethour_webhook'] = response
+
+    # Print server response (optional)
+    print(f"Server response: {response}")
+    return json.dumps(response), 200
+
 
 if __name__ == '__main__':
     try:
-        app.run() # app.run(host='192.168.0.175')
+        app.run()  # app.run(host='192.168.0.175')
     except Exception as e:
         print("An error occurred: ", str(e))
