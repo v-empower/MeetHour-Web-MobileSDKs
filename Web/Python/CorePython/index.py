@@ -1,10 +1,17 @@
 import datetime
 import json
+from pymeethour.webhook import webhooks
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from flask import Flask, render_template, request, session
-from constants import CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, EMAIL, PASSWORD, API_RELEASE, API_KEY, CONFERENCE_URL
+from constants import CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, EMAIL, PASSWORD, API_RELEASE, API_KEY, CONFERENCE_URL, SECRET_KEY
 from pymeethour.type import LoginType, ScheduleMeetingType,  GenerateJwtType, time_zone, ContactsType, ViewMeetings
 
 import pymeethour.services.apiServices as apiServices
+
+from cryptography.hazmat.primitives import hashes, hmac as CryptoHMAC
+from cryptography.hazmat.backends import default_backend
+
+webhook_handler = webhooks.WebhookHandler(SECRET_KEY)
 
 app = Flask(__name__, template_folder='template', static_url_path='/static')
 app.secret_key = "password"  # need to change secert key to run session
@@ -54,7 +61,7 @@ def index():
                            message=message, 
                            access_token=access_token)
 
-# /instant meeting and /schedule meeting
+# /instant meeting and /schedule meeting 
 @app.route('/schedulemeeting', methods=['GET', 'POST'])
 def schedulemeeting():
     success = False
@@ -146,7 +153,7 @@ def schedulemeeting():
     except Exception as e:
         error = True
         message = str(e)
-    if meeting_response != None:
+    if meeting_response != None: 
         meeting_response = meeting_response.get('data')
     return render_template('scheduleMeeting.html',
                            success=success, 
@@ -160,6 +167,7 @@ def schedulemeeting():
                                len(timezone_response["timezones"])),
                            contacts_response0=contacts_response["contacts"],
                            contacts_response1=range(len(contacts_response["contacts"])))
+
 
 # /Joinmeeting
 @app.route('/joinmeeting', methods=['GET', 'POST'])
@@ -234,8 +242,34 @@ def join_meeting():
         success=success,
         error=error,
         message=message,
-        access_token=access_token
+        access_token=access_token 
     )
+
+
+def compute_signature(secret_key, payload):
+    h = CryptoHMAC.HMAC(secret_key.encode(), hashes.SHA256(), backend=default_backend())
+    h.update(payload)
+    return h.finalize().hex()
+
+# /Webhooks 
+@app.route('/webhooks', methods=['GET', 'POST'])
+def webhooks_start():
+              
+        data = request.get_data(as_text=True)
+
+        # For Meet Hour
+        response = webhook_handler.handle_request(data, request.headers)
+        
+        # Log the incoming data using WebhookHandler's log_data method
+        webhook_handler.log_data(request)
+
+        session['meethour_webhook'] = response
+        
+        # Print server response (optional)
+        print(f"Server response: {response}")
+        return json.dumps(response), 200
+    
+
 if __name__ == '__main__':
     try:
         app.run() # app.run(host='192.168.0.175')
