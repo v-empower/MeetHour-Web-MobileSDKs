@@ -7,6 +7,8 @@
     <RootNamespace>MeethourExample_Asp</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
     <Content Include="Cs\Index.cs" />
   </ItemGroup>
@@ -26,4 +28,7 @@
     <Folder Include="Views\Shared\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="meethour" Version="1.0.1" />
+  </ItemGroup>
 </Project>

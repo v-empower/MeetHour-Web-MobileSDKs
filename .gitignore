@@ -1,3 +1,7 @@
+.vs
+Web/Dotnet/Asp/MeethourExample-Asp/bin/
+Web/Dotnet/Asp/MeethourExample-Asp/obj/
+
 node_modules
 
 # CocoaPods
