@@ -11,18 +11,16 @@ internal class Constants {
 
   public static class DeveloperCredentials {
     public const string CLIENT_ID =
-        "om5q8q31m67us5wt752m7ouo4q05k360zq8m"; // Replace with your own Client
+        ""; // Replace with your own Client
     // ID
     public const string CLIENT_SECRET =
-        "91c02e497c93ec28f00e8d50a4f469b1275774d7f954cc7e9240" +
-        "ff8b5b328bcd"; // Replace with your own Client Secret
+        ""; // Replace with your own Client Secret
     public const string API_KEY =
-        "773a0ff77bcc4939497f26d1df13a842666194c8325a378bb6c8fae997" +
-        "f2d886"; // Replace with your own API Key
+        ""; // Replace with your own API Key
     public const string EMAIL =
-        "gayatri.paidi@v-empower.com"; // Replace with your own email
+        ""; // Replace with your own email
     public const string PASSWORD =
-        "bangtan120613"; // Replace with your own password
+        ""; // Replace with your own password
   }
 }
 }
