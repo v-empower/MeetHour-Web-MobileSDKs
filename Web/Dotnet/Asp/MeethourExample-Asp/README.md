@@ -38,11 +38,11 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 
 ### Steps to run the Example
 
-1. Go to meethour.io and signup for Developer or Higher plan. Currently we offer 28 days free trial. 
-2. Go to the dashboard and then click on developers menu. 
-3. Later go to constants.php and enter all the credentials of database and Meet Hour credentials as well. 
-4. On Home page Click on Get Access Token 
-5. Then Try Schedule a Meeting & Join Meeting. 
+1. Go to meethour.io and signup for Developer or Higher plan. Currently we offer 28 days free trial.
+2. Go to the dashboard and then click on developers menu.
+3. Later go to constants.php and enter all the credentials of database and Meet Hour credentials as well.
+4. On Home page Click on Get Access Token
+5. Then Try Schedule a Meeting & Join Meeting.
 
 ### Usage
 
@@ -64,7 +64,7 @@ Provide your credentials in the constructor of Login object and hit the login ap
         else
             Console.WriteLine($"Schedule Meeting Error Response Code:{scheduleMeetingResponse.code} and Message: {scheduleMeetingResponse.message}");
         Console.ReadKey();
-        
+
 
     var scheduleMeetingObject = new ScheduleMeeting("MeetingName", "Passcode", "Timezone", "MeetingDate", "MeetingTime","MeetingMeridiem",SendCalendarInvite,IsShowPortal, "Storage");
     var scheduleMeetingResponse = await apiService.ScheduleMeeting<ScheduleMeetingResponse>(token, scheduleMeetingObject);
@@ -73,7 +73,7 @@ Provide your credentials in the constructor of Login object and hit the login ap
     else
         Console.WriteLine($"Schedule Meeting Error Response Code:{scheduleMeetingResponse.code} and Message: {scheduleMeetingResponse.message}");
     Console.ReadKey();
-    
+
 
     var viewMeetingsObject = new ViewMeeting("meeting_id");
     var viewMeetingsResponse = await apiService.ViewMeeting<ViewMeetingResponse>(token, viewMeetingsObject);
@@ -115,7 +115,7 @@ Important points:
         using System;
         using System.Threading.Tasks;
         using static ScheduleMeeting;
-        
+
         //need to change the values
         var scheduleMeetingObject = new ScheduleMeeting("MeetingName", "Passcode", "Timezone", "MeetingDate", "MeetingTime","MeetingMeridiem",SendCalendarInvite,IsShowPortal, "Storage");
         var scheduleMeetingResponse = await apiService.ScheduleMeeting<ScheduleMeetingResponse>(token, scheduleMeetingObject);
@@ -169,14 +169,14 @@ Important points:
         using static RefreshToken;
 
         //change to your own developer credentials and accesstoken that generated while login
-        var RefreshTokenObject = new RefreshToken("CLIENT_ID","CLIENT_SECRET","access_token");  
+        var RefreshTokenObject = new RefreshToken("CLIENT_ID","CLIENT_SECRET","access_token");
         var refreshTokenResponse = await apiService.RefreshToken<refreshTokenResponse>(token, refreshTokenObject);
         if (refreshTokenResponse.success == true)
             Console.WriteLine($"Refresh Token Success Response value: data: {refreshTokenResponse.data}");
         else
             Console.WriteLine($"Refresh Token Error Response Code:{refreshTokenResponse.code} and Message: {refreshTokenResponse.message}");
         Console.ReadKey();
- 
+
 ```
 
 6. To add a contact in Meet Hour database: => https://docs.v-empower.com/docs/MeetHour-API/bd1e416413e8c-add-contact
@@ -233,7 +233,7 @@ Important points:
 
 9. To make changes in the edit contact details: => https://docs.v-empower.com/docs/MeetHour-API/28cae9187d215-edit-contact
 
-   ````
+   ```
         using System;
         using System.Threading.Tasks;
         using static EditContact;
@@ -247,7 +247,7 @@ Important points:
             Console.WriteLine($"Edit Contact Error Response Code:{editContactResponse.code} and Message: {editContactResponse.message}");
         Console.ReadKey();
 
-   ````
+   ```
 
 10. To get Upcoming Meetings: => https://docs.v-empower.com/docs/MeetHour-API/31df88388416d-upcoming-meetings
 
@@ -262,7 +262,7 @@ Important points:
             Console.WriteLine($"Upcoming Meetings Response Success Response value: total_pages: {upcomingMeetingsResponse.total_pages} and total_records: {upcomingMeetingsResponse.total_records} and Meetings: {upcomingMeetingsResponse.meetings}");
         else
             Console.WriteLine($"Upcoming Meetings Error Response Message: {upcomingMeetingsResponse.message}");
-        Console.ReadKey(); 
+        Console.ReadKey();
 
     ```
 
@@ -296,7 +296,7 @@ Important points:
             Console.WriteLine($"Complete Meetings List Success Response value: total_pages: {missedMeetingsResponse.total_pages} and total_records: {missedMeetingsResponse.total_records} and Meetings: {missedMeetingsResponse.meetings}");
         else
             Console.WriteLine($"Complete Meetings List Error Response Message: {missedMeetingsResponse.message}");
-        Console.ReadKey(); 
+        Console.ReadKey();
 
     ```
 
@@ -330,7 +330,7 @@ Important points:
         else
             Console.WriteLine($"Edit Meeting Error Response Message: {editMeetingResponse.message}");
         Console.ReadKey();
-         
+
     ```
 
 15. To view a meeting: => https://docs.v-empower.com/docs/MeetHour-API/7e9a0a1e0da7f-meeting-view-meeting
@@ -366,5 +366,3 @@ Important points:
         Console.ReadKey();
 
     ```
-
-
