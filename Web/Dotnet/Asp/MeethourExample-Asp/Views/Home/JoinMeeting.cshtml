@@ -53,11 +53,11 @@
                                 (Moderator / Host)
                             </button>
                         </form>
-                        
+
                     }
                     @if (Model.JoinMeetingModel.meeting_attendees.attendee != null)
                     {
-                        var attendee = Model.JoinMeetingModel.meeting_attendees.attendee;  
+                        var attendee = Model.JoinMeetingModel.meeting_attendees.attendee;
                         <form method="POST" action="JoinMeeting/?meeting_id=@Model.JoinMeetingModel.meeting_id&pcode=@Model.JoinMeetingModel.pcode">
                             @Html.AntiForgeryToken()
                             <input name="id" type="hidden" value="@attendee.id">
@@ -66,8 +66,8 @@
                                 (Attendee)
                             </button>
                         </form>
-                      
-                    } 
+
+                    }
                 </div>
             </div>
         </div>
