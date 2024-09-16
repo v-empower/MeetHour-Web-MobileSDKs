@@ -46,10 +46,10 @@ API_KEY = API_KEY
 
 def get_access_token():
     """ """
-    login_object = LoginType.LoginType(
-        CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, EMAIL, PASSWORD
-    )
-    apiservice = apiServices.MHApiService()  # importing the API serives from sdk
+    login_object = LoginType.LoginType(CLIENT_ID, CLIENT_SECRET, GRANT_TYPE,
+                                       EMAIL, PASSWORD)
+    apiservice = apiServices.MHApiService(
+    )  # importing the API serives from sdk
     response = apiservice.login(login_object)
     if response.get("access_token") != None:
         access_token = response.get("access_token")
@@ -76,9 +76,10 @@ def index():
     except Exception as e:
         error = True
         message = str(e)
-    return render_template(
-        "index.html", error=error, message=message, access_token=access_token
-    )
+    return render_template("index.html",
+                           error=error,
+                           message=message,
+                           access_token=access_token)
 
 
 # /instant meeting and /schedule meeting
@@ -100,13 +101,14 @@ def schedulemeeting():
         # getting access token from sessions
         access_token = session.get("access_token")
 
-        time_zone_object = time_zone.time_zone(0, 0, 0)  # getting timezone from sdk
+        time_zone_object = time_zone.time_zone(0, 0,
+                                               0)  # getting timezone from sdk
         apiservice = apiServices.MHApiService()
-        timezone_response = apiservice.time_zone(access_token, time_zone_object)
+        timezone_response = apiservice.time_zone(access_token,
+                                                 time_zone_object)
 
         contacts_object = ContactsType.ContactsType(
-            0, 0, 0
-        )  # getting contact details from sdk
+            0, 0, 0)  # getting contact details from sdk
         apiservice = apiServices.MHApiService()
         contacts_response = apiservice.contacts(access_token, contacts_object)
 
@@ -118,9 +120,8 @@ def schedulemeeting():
 
             if instant_meeting is not None and instant_meeting == "true":
 
-                timezone = (
-                    datetime.datetime.now(datetime.timezone.utc).astimezone().tzname()
-                )
+                timezone = (datetime.datetime.now(
+                    datetime.timezone.utc).astimezone().tzname())
                 schedule_meeting_object = ScheduleMeetingType.ScheduleMeeting(
                     "Instant  Meeting",
                     "password",
@@ -135,8 +136,7 @@ def schedulemeeting():
                 # Initialization of apiServices from SDK
                 apiservice = apiServices.MHApiService()
                 response = apiservice.schedule_meeting(
-                    access_token, schedule_meeting_object
-                )
+                    access_token, schedule_meeting_object)
 
                 if response.get("success"):
                     meeting_response = response
@@ -144,27 +144,31 @@ def schedulemeeting():
                 else:
                     success = False
                     error = True
-                    message = "Instant Meeting has failed. \n" + json.dumps(response)
+                    message = "Instant Meeting has failed. \n" + json.dumps(
+                        response)
             # /Schedule meeting
             elif schedule_meeting is not None and schedule_meeting == "true":
                 meeting_name = request.form.get("meeting_name")
                 pcode = request.form.get("passcode")
                 meeting_date = request.form.get("meeting_date")
                 meeting_time = datetime.datetime.strptime(
-                    request.form.get("meeting_time"), "%H:%M"
-                ).strftime("%I:%M")
+                    request.form.get("meeting_time"),
+                    "%H:%M").strftime("%I:%M")
                 meeting_ampm = datetime.datetime.strptime(
-                    request.form.get("meeting_time"), "%H:%M"
-                ).strftime("%p")
+                    request.form.get("meeting_time"), "%H:%M").strftime("%p")
                 timezone = request.form.get("timezone")
 
                 mySelectParticipants = []
                 if request.form.get("mySelectParticipants") != 0:
-                    mySelectParticipants = [request.form.get("mySelectParticipants")]
+                    mySelectParticipants = [
+                        request.form.get("mySelectParticipants")
+                    ]
 
                 mySelectModerators = []
                 if request.form.get("mySelectModerators") != 0:
-                    mySelectModerators = [request.form.get("mySelectModerators")]
+                    mySelectModerators = [
+                        request.form.get("mySelectModerators")
+                    ]
 
                 schedule_meeting_object = ScheduleMeetingType.ScheduleMeeting(
                     meeting_name,
@@ -181,8 +185,7 @@ def schedulemeeting():
                 )
                 schedule_meeting_object.apiservice = apiServices.MHApiService()
                 response = apiservice.schedule_meeting(
-                    access_token, schedule_meeting_object
-                )
+                    access_token, schedule_meeting_object)
                 if response.get("success"):
                     meeting_response = response
                     success = True
@@ -190,7 +193,8 @@ def schedulemeeting():
                 else:
                     success = False
                     error = True
-                    message = "Scheduling Meeting has failed. \n" + json.dumps(response)
+                    message = "Scheduling Meeting has failed. \n" + json.dumps(
+                        response)
             else:
                 error = True
                 message = "Something went wrong. Make sure you post the true value in getaccesstoken"
@@ -233,10 +237,10 @@ def join_meeting():
             meeting_id = request.args.get("meeting_id")
             pCode = request.args.get("pcode")
             generate_jwt_object = GenerateJwtType.GenerateJwt(
-                meeting_id
-            )  # Generate Jwt oken
+                meeting_id)  # Generate Jwt oken
             apiservice = apiServices.MHApiService()
-            jwt_response = apiservice.generate_jwt(access_token, generate_jwt_object)
+            jwt_response = apiservice.generate_jwt(access_token,
+                                                   generate_jwt_object)
 
             if jwt_response.get("success") is True and "jwt" in jwt_response:
                 jwt_token = jwt_response["jwt"]
@@ -244,8 +248,7 @@ def join_meeting():
             else:
                 error = True
                 message = "Error in Gene  rating JWT Token \n" + json.dumps(
-                    jwt_response
-                )
+                    jwt_response)
         else:
             meeting_id = request.args.get("meeting_id")
             pCode = request.args.get("pcode")
@@ -255,8 +258,7 @@ def join_meeting():
                 if view_meetings_object.meeting_id:
                     apiservice = apiServices.MHApiService()
                     view_meeting_response = apiservice.view_meetings(
-                        access_token, view_meetings_object
-                    )
+                        access_token, view_meetings_object)
                 if attendees is None:
                     attendees = []
                 meeting_details = view_meeting_response["meeting"]
@@ -302,7 +304,9 @@ def compute_signature(secret_key, payload):
     :param payload:
 
     """
-    h = CryptoHMAC.HMAC(secret_key.encode(), hashes.SHA256(), backend=default_backend())
+    h = CryptoHMAC.HMAC(secret_key.encode(),
+                        hashes.SHA256(),
+                        backend=default_backend())
     h.update(payload)
     return h.finalize().hex()
 
