@@ -71,11 +71,8 @@ def index():
             get_access_token_value = request.form.get("getaccesstoken")
 
             if get_access_token_value == "true":
-                # getting access token from sessions
-                access_token = session.get("access_token")
-                if access_token is None:
-                    access_token = get_access_token()
-                    session["access_token"] = access_token
+                access_token = get_access_token()
+                session["access_token"] = access_token
     except Exception as e:
         error = True
         message = str(e)
