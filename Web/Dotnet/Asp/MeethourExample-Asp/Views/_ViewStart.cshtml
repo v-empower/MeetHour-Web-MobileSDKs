@@ -1,0 +1,12 @@
+﻿@{
+    Layout = null;
+}
+@{
+    var headerModel = new HeaderViewModel
+            {
+                LogoImageUrl = "https://meethour.io/images/logo.SVG",
+                HomeUrl = Url.Action("Index", "Home"),
+                ScheduleMeetingUrl = Url.Action("Schedulemeeting", "Home"),
+                JoinMeetingUrl = Url.Action("Joinmeeting", "Home"),
+            };
+}
