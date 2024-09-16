@@ -6,23 +6,25 @@
 Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc.
 
 # Features:
-✅  Free Unlimited Time Group Video Conference
 
-✅  Upto 100 Participants Group Meeting
+✅ Free Unlimited Time Group Video Conference
 
-✅  Free Video Conference Recording
+✅ Upto 100 Participants Group Meeting
 
-✅  YouTube Live Stream
+✅ Free Video Conference Recording
 
-✅  Raise funds via Click&Pledge Connect & DonorBox
+✅ YouTube Live Stream
 
-✅  Virtual Background
+✅ Raise funds via Click&Pledge Connect & DonorBox
 
-✅  Live Pad
+✅ Virtual Background
 
-✅  Screensharing on Desktop & Mobile and many other features.
+✅ Live Pad
+
+✅ Screensharing on Desktop & Mobile and many other features.
 
 # Try out one free session -
+
     1. Website - https://meethour.io
     2. Android - https://bit.ly/2U239ll
     3. iOS - https://apple.co/3k8Rpbn
@@ -67,7 +69,9 @@ Meet Hour is 100% free video conference solution with End to End Encrypted and m
 ```
 
 ### API Usage
+
 Provide your credentials in the constructor of Login object and hit the login api to get your access token. Which will further be used for making rest of the api calls.
+
 ```
 <%@ page import="go.meethour.io.javasdk.services.ApiServices"%>
 <%@ page import="go.meethour.io.javasdk.types.LoginType"%>
@@ -187,7 +191,9 @@ String JwtToken = jwtresponses.getString("jwt");
 </html>
 
 ```
+
 ### API End Points Supported
+
 Important points:
 => Instead of '{version}', you to pass our latest version whenever you call the given functions. Currently we are using v1.2 Same version applies to the below calls.
 => In the token section, you need to pass the received access token which is received when login api is hit, for making further api calls.
@@ -228,6 +234,7 @@ Important points:
         System.out.println(user_details_response);
    ```
 5. To fetch access Token using Refresh Token: => https://docs.v-empower.com/docs/MeetHour-API/d851be1af9804-get-access-token-using-refresh-token
+
 ```
         import go.meethour.io.javasdk.types.RefreshToken;
         ApiServices apiServices = new ApiServices();
@@ -235,7 +242,9 @@ Important points:
         String refresh_token_response = apiServices.refreshtoken(refresh);
         System.out.println(refresh_token_response);
 ```
+
 6. To add a contact in Meet Hour database: => https://docs.v-empower.com/docs/MeetHour-API/bd1e416413e8c-add-contact
+
 ```
         import go.meethour.io.javasdk.types.AddContactType;
         AddContactType contactDetails = new AddContactType(EMAIL,Fristname,lastname,phone,country_code,Image,true); #pass values
@@ -243,6 +252,7 @@ Important points:
         String add_contact_response = apiServices.addcontact(contactDetails, access_token);
         System.out.println(add_contact_response)
 ```
+
 7. To get Timezones of various countries: => https://docs.v-empower.com/docs/MeetHour-API/c688c29bce9b9-timezone-list
    ```
         import go.meethour.io.javasdk.types.TimeZone;
@@ -260,13 +270,13 @@ Important points:
         System.out.println(contacts_response)
    ```
 9. To make changes in the existing contact details: => https://docs.v-empower.com/docs/MeetHour-API/28cae9187d215-edit-contact
-   ````
+   ```
         import go.meethour.io.javasdk.types.EditContactType;
         EditContactType contacts = new EditContactType(id,country_code,EMAIL, Firstname,lastname,Image,true,phone) # pass values
         ApiServices apiServices = new ApiServices();
         String edit_contacts_response = apiServices.editcontact(contacts, access_token);
         System.out.println(edit_contacts_response)
-   ````
+   ```
 10. To get Upcoming Meetings: => https://docs.v-empower.com/docs/MeetHour-API/31df88388416d-upcoming-meetings
     ```
         import go.meethour.io.javasdk.types.UpcomingMeetings;
@@ -1050,4 +1060,3 @@ Tests are run whenever there is a commit, see `.github/workflows/test.py` for de
 ### Code coverage
 
 Enable code coverage reporting to [Codecov](https://codecov.io/) by creating a secret with name `CODECOV_TOKEN` in your repository settings (Settings -> Secrets -> New sectret) and value set to the token created by Codecov.
-
