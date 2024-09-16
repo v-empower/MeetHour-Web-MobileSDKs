@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>go.meethour.io.java</groupId>
+  <artifactId>meethour_example</artifactId>
+  <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.2</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<name>MeetHour-Example</name>
+	<description> MeetHour Java Example</description>
+	<properties>
+		<java.version>21</java.version>
+	</properties>
+
+	<repositories>
+		<repository>
+		  <id>meethour-repo</id>
+		  <url>https://repo.meethour.io/maven/releases/</url>
+		</repository>
+	</repositories>
+
+  <dependencies>
+  <dependency>
+   		<groupId>org.json</groupId>
+    	<artifactId>json</artifactId>
+    	<version>20180130</version>
+		</dependency>
+		<dependency>
+			<groupId>go.meethour.io.javasdk</groupId>
+			<artifactId>meethour_sdk</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <release>21</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warSourceDirectory>webapp</warSourceDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

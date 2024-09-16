@@ -43,3 +43,11 @@ local.properties
 release
 *.hprof
 dist
+
+
+.metadata/
+*.ini
+*.log
+*.prefs
+
+Web/Java/Core-Java/target
