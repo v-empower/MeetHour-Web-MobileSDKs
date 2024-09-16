@@ -49,9 +49,9 @@ public class HomeController : Controller {
     } catch (Exception e) {
       // Log the exception
       _logger.LogError(e, "An error occurred while processing the request in " +
-                          "the Index method.");
+                              "the Index method.");
       return StatusCode(500, "An error occurred while processing your " +
-                             "request. Please try again later.");
+                                 "request. Please try again later.");
     }
 
     // Populate HeaderViewModel and ErrorViewModel with relevant data

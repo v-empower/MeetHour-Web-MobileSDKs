@@ -181,7 +181,7 @@ public class JoinMeetingController : Controller {
 
               } catch (Exception ex) {
                 _logger.LogError(ex, "Error deserializing meeting_attendees. " +
-                                     "JSON: {responseJson}");
+                                         "JSON: {responseJson}");
               }
             } else {
               _logger.LogError("meeting_attendees not found in " +
