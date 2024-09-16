@@ -10,17 +10,13 @@ internal class Constants {
   }
 
   public static class DeveloperCredentials {
-    public const string CLIENT_ID =
-        ""; // Replace with your own Client
+    public const string CLIENT_ID = ""; // Replace with your own Client
     // ID
     public const string CLIENT_SECRET =
-        ""; // Replace with your own Client Secret
-    public const string API_KEY =
-        ""; // Replace with your own API Key
-    public const string EMAIL =
-        ""; // Replace with your own email
-    public const string PASSWORD =
-        ""; // Replace with your own password
+        "";                            // Replace with your own Client Secret
+    public const string API_KEY = "";  // Replace with your own API Key
+    public const string EMAIL = "";    // Replace with your own email
+    public const string PASSWORD = ""; // Replace with your own password
   }
 }
 }
