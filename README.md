@@ -44,11 +44,10 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 	1.3 Python -> SDK
 		1.3.1 Core Python - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Python/CorePython
 		1.3.2 django - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Python/Django
-	1.4 C# -> SDK (Coming soon)
-		1.4.1 Core C# (Coming soon)
-        	1.4.2 ASP.NET (Coming soon)
-	1.5 Java JVM -> SDK (Coming soon)
-		1.5.1 CoreJava (Coming soon)
+	1.4 C# -> SDK
+		1.4.1 ASP.NET - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Dotnet/Asp/MeethourExample-Asp
+	1.5 Java JVM -> SDK
+		1.5.1 CoreJava - https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Java/Core-Java
         	1.5.2 Spring Boot (Coming soon)
 	1.6 Flutter Web -> https://github.com/v-empower/MeetHour-Web-MobileSDKs/tree/master/Web/Flutter/MeetHourSDKTest
 2. Mobile
@@ -77,6 +76,8 @@ Code consist of Meet Hour Web & Mobile SDKs with an example to join the conferen
 5. PHP SDK - https://packagist.org/packages/meethour/php-sdk
 5. Flutter Pub Dev - https://pub.dev/packages/meet_hour
 6. Python SDK - https://pypi.org/project/pymeethour/
+7. DOT NET SDK - https://www.nuget.org/packages/meethour
+8. Java SDK - https://repo.meethour.io/maven/releases/go/meethour/io/javasdk/meethour_sdk/
 
 For any issues or queries raise a issue in Github or send us an email to hello@meethour.io or have Live Chat with our technical team at - https://bit.ly/35fVHZO
 
