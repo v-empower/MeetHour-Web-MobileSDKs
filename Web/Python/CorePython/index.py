@@ -4,7 +4,7 @@ from pymeethour.webhook import webhooks
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from flask import Flask, render_template, request, session
 from constants import CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, EMAIL, PASSWORD, API_RELEASE, API_KEY, CONFERENCE_URL, SECRET_KEY
-from pymeethour.type import LoginType, ScheduleMeetingType,  GenerateJwtType, time_zone, ContactsType, ViewMeetings
+from pymeethour.type import LoginType, ScheduleMeetingType,  GenerateJwtType, time_zone, ContactsType, ViewMeetings, AddContactType
 
 import pymeethour.services.apiServices as apiServices
 
@@ -58,6 +58,25 @@ def index():
                            error=error, 
                            message=message, 
                            access_token=access_token)
+
+# /addcontact
+@app.route('/addcontact', methods=['GET', 'POST'])
+def addcontact():
+    try:
+        # getting access token from sessions
+        access_token = session.get('access_token')
+       # print (access_token)
+        firstname = request.form.get("firstname")
+        lastname = request.form.get("lastname")
+        email = request.form.get("email")
+        addcontacts = AddContactType.AddContactType(email,firstname,lastname)  
+        apiservice = apiServices.MHApiService()
+        response = apiservice.add_contact(access_token, addcontacts) 
+        #print(response)
+           
+    except Exception as e:
+        return "{'message':'"+e+"'}";               
+    return response
 
 # /instant meeting and /schedule meeting 
 @app.route('/schedulemeeting', methods=['GET', 'POST'])
