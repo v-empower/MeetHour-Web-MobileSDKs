@@ -20,13 +20,13 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import session
+from pymeethour.type import AddContactType
 from pymeethour.type import ContactsType
 from pymeethour.type import GenerateJwtType
 from pymeethour.type import LoginType
 from pymeethour.type import ScheduleMeetingType
 from pymeethour.type import time_zone
 from pymeethour.type import ViewMeetings
-from pymeethour.type import AddContactType
 from pymeethour.webhook import webhooks
 
 webhook_handler = webhooks.WebhookHandler(SECRET_KEY)
@@ -84,22 +84,23 @@ def index():
 
 
 # /addcontact
-@app.route('/addcontact', methods=['GET', 'POST'])
+@app.route("/addcontact", methods=["GET", "POST"])
 def addcontact():
+    """ """
     try:
         # getting access token from sessions
-        access_token = session.get('access_token')
-       # print (access_token)
+        access_token = session.get("access_token")
+        # print (access_token)
         firstname = request.form.get("firstname")
         lastname = request.form.get("lastname")
         email = request.form.get("email")
-        addcontacts = AddContactType.AddContactType(email,firstname,lastname)  
+        addcontacts = AddContactType.AddContactType(email, firstname, lastname)
         apiservice = apiServices.MHApiService()
-        response = apiservice.add_contact(access_token, addcontacts) 
-        #print(response)
-           
+        response = apiservice.add_contact(access_token, addcontacts)
+        # print(response)
+
     except Exception as e:
-        return "{'message':'"+e+"'}";               
+        return "{'message':'" + e + "'}"
     return response
 
 
