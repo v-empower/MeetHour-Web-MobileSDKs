@@ -4,8 +4,8 @@ version = "1.0.0"
 description = "Meet Hour is video conferencing solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc"
 authors = ["Meet Hour <hello@meethour.io>"]
 license = "MIT"
-readme='README.md'
-homepage='https://meethour.io'
+readme = 'README.md'
+homepage = 'https://meethour.io'
 
 [tool.poetry.dependencies]
 python = "^3.8"
