@@ -165,7 +165,7 @@
 		                %>
 		                    <form method="POST" action="join-meeting.jsp?meeting_id=<%= meeting_id %>&pcode=<%= pCode %>">
 		                        <input name="id" type="hidden" value="<%= host.get("email") %>" />
-		                          <h1><%= host.get("first_name") %> <%= host.get("last_name") %></h1>
+		                          <h1><%= host.get("first_name") %> - <%= host.get("email") %></h1>
 		                        <button type="submit" class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
 		                          
 		                            (Moderator / Host)
@@ -181,7 +181,7 @@
 		                %>
 		                    <form method="POST" action="join-meeting.jsp?meeting_id=<%= meeting_id %>&pcode=<%= pCode %>">
 		                        <input name="id" type="hidden" value="<%= attendee.get("email") %>" />
-		                         <h1><%= attendee.get("first_name") %> <%= attendee.get("last_name") %></h1>
+		                         <h1><%= attendee.get("first_name") %> - <%= attendee.get("email") %></h1>
 		                        <button type="submit" class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
 		                           
 		                            (Attendee)
