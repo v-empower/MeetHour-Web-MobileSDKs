@@ -93,13 +93,13 @@ def addcontact():
         firstname = request.form.get("firstname")
         lastname = request.form.get("lastname")
         email = request.form.get("email")
-        addcontacts = AddContactType.AddContactType(email,firstname,lastname)  
+        addcontacts = AddContactType.AddContactType(email, firstname, lastname)
         apiservice = apiServices.MHApiService()
-        response = apiservice.add_contact(access_token, addcontacts) 
-        #print(response)
-           
+        response = apiservice.add_contact(access_token, addcontacts)
+        # print(response)
+
     except Exception as e:
-        return "{'message':'"+e+"'}";               
+        return "{'message':'"+e+"'}"
     return response
 
 
