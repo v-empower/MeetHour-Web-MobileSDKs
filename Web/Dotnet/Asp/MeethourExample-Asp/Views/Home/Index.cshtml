@@ -19,8 +19,15 @@
 <body>
 
 	<div>
-		@Html.Partial("header", Model.headerModel)
+		@Html.Partial("Header.cshtml", Model.headerModel)
 	</div>
+
+    <div>
+        @if (Model.errorModel != null && Model.errorModel.Error == true)
+        {
+            @Html.Partial("Error.cshtml", Model.errorModel)
+        }
+    </div>
 
     <div class="relative top-16">
         <div class="text-3xl flex justify-center font-bold mt-5 text-sky-500">
@@ -60,7 +67,7 @@
                             <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Token successfully got generated. Now you can schedule a meeting. <a class="text-blue-500 underline" href="ScheduleMeeting">Schedule a Meeting</a></dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-12 sm:gap-4 sm:px-12"><textarea class="disabled">@Model.errorModel.AccessToken</textarea></div>
-                    }
+                    }     
                 </dl>
             </div>
 

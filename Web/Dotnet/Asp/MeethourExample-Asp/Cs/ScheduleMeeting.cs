@@ -32,12 +32,13 @@ public class ScheduleMeetingController : Controller {
     dynamic? timezone_array = null;
     dynamic? contact_array = null;
 
+    var accessToken = _memoryCache.Get<string>("access_token");
     try {
-      var accessToken = _memoryCache.Get<string>("access_token");
 
       var timeZoneObject = new TimeZone();
       var apiService = new MHApiService();
-      timezoneResponse = await apiService.TimeZone<TimeZoneResponse>(
+      if(accessToken != null) {
+        timezoneResponse = await apiService.TimeZone<TimeZoneResponse>(
           accessToken, timeZoneObject); // Await the TimeZone API call
 
       timezone_array = System.Text.Json.JsonSerializer.Deserialize<object>(
@@ -138,7 +139,13 @@ public class ScheduleMeetingController : Controller {
           message = "Something went wrong. Make sure you post the true value " +
                     "in getaccesstoken";
         }
-      }
+      } 
+      } else {
+          success = false;
+          error = true;
+          message = "Please generate the access token first and then try to join a meeting.";
+        }
+       
     } catch (Exception e) {
       error = true;
       message = e.Message;
@@ -161,8 +168,12 @@ public class ScheduleMeetingController : Controller {
       // Set other properties as needed
     };
 
-    var errorModel = new ErrorViewModel {
-      Error = true, // Set based on your error condition
+    var errorModel = new ErrorViewModel();
+    if(error == true){ // Set based on your error condition
+      errorModel.Error = true;
+      errorModel.Message = message; // Set the error message to display in the view
+    } else {
+      errorModel.Error = false;
     };
 
     var MeetingModel = new MeetingResponseViewModel();
@@ -176,10 +187,13 @@ public class ScheduleMeetingController : Controller {
     }
 
     var contactModel = new ContactResponseViewModel();
+    if(accessToken != null) {
     contactModel.contacts = contact_array;
-
+    }
     var timeZoneModel = new TimezoneResponseViewModel();
+    if(accessToken != null) {
     timeZoneModel.timeZones = timezone_array;
+    }
 
     var combinedViewModel = new CombinedViewModel {
       headerModel = headerModel, errorModel = errorModel,
@@ -188,10 +202,14 @@ public class ScheduleMeetingController : Controller {
 
     };
 
-    if (combinedViewModel != null) {
+    if (combinedViewModel != null && errorModel.Error == false) {
       return View("~/Views/Home/ScheduleMeeting.cshtml",
                   combinedViewModel); // Pass the model to the view
-    } else {
+    } else if (combinedViewModel != null && errorModel.Error == true){
+            return View("~/Views/Home/index.cshtml",
+                  combinedViewModel); // Pass the model to the view
+    }
+    else {
       return NotFound(); // Or return another appropriate response
     }
   }

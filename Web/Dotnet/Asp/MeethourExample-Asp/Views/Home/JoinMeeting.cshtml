@@ -84,12 +84,16 @@
     }
 
     <div class="relative top-16 h-screen" id="conference-parent"></div>
+    <div>
+        @if (@ViewBag.AccessToken == null)
+        {
+            @Html.Partial("Error.cshtml", Model.errorModel)
+        }
+    </div>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
         var accessToken = "@ViewBag.AccessToken";
         if (!accessToken) {
-            alert("First generate the access token and then try to join a meeting.");
-            //window.location.href = "/";
         }
         else if (window.location.search?.split("&")[0]?.split("?")[1]?.split("=")[1]) {
                 if (document.querySelector("#meeting-id-input"))
