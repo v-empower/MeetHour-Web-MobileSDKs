@@ -1,10 +1,10 @@
 import json
 import datetime
 from django.shortcuts import render
-from meethour.core.constants import CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, EMAIL, PASSWORD, API_RELEASE, API_KEY, CONFERENCE_URL
-from pymeethour.type import LoginType, ScheduleMeetingType, time_zone, ContactsType, GenerateJwtType, ViewMeetings
+from constants import CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, EMAIL, PASSWORD, API_RELEASE, API_KEY, CONFERENCE_URL
+from pymeethour.type import LoginType, ScheduleMeetingType, time_zone, ContactsType, GenerateJwtType, ViewMeetings,AddContactType
 import pymeethour.services.apiServices as apiServices
-
+from pymeethour.webhook import webhooks
 # Constants
 CLIENT_ID = CLIENT_ID
 CLIENT_SECRET = CLIENT_SECRET
@@ -22,7 +22,7 @@ def get_access_token():
     response = apiservice.login(login_object)
     if response.get('access_token') is not None:
         access_token = response.get('access_token')
-        return access_token
+        return access_token 
     else:
         raise Exception('Failed to retrieve access token')
 
@@ -48,8 +48,29 @@ def index(request):
     
     return render(request, 'index.html', {'error': error, 'message': message, 'access_token': access_token})
 
-#Schedule Meeting
+## /addcontact
+def addcontact(request):
+    
+    error = False
+    message = None
+    try:
+        # getting access token from sessions
+        access_token = request.session.get('access_token')
+       # print (access_token)
+        firstname = request.POST.get("firstname")
+        lastname = request.POST.get("lastname")
+        email = request.POST.get("email")
+        addcontacts = AddContactType.AddContactType(email,firstname,lastname)  
+        apiservice = apiServices.MHApiService()
+        response = apiservice.add_contact(access_token, addcontacts) 
+        #print(response)
+           
+    except Exception as e:
+        return "{'message':'"+e+"'}";               
+    
+    return render(request, 'scheduleMeeting.html', {'error': error, 'message': message, 'response': response})
 
+#Schedule Meeting
 def schedulemeeting(request):
     success = False
     error = False
@@ -61,14 +82,21 @@ def schedulemeeting(request):
 
     try:
         access_token = request.session.get('access_token')
-        
-        time_zone_object = time_zone.time_zone(0, 0, 0)
-        apiservice = apiServices.MHApiService()
-        timezone_response = apiservice.time_zone(access_token, time_zone_object)
-
-        contacts_object = ContactsType.ContactsType(0, 0, 0)
-        apiservice = apiServices.MHApiService()
-        contacts_response = apiservice.contacts(access_token, contacts_object)
+        if access_token != None :
+            time_zone_object = time_zone.time_zone(0, 0, 0)
+            apiservice = apiServices.MHApiService()
+            timezone_response = apiservice.time_zone(access_token, time_zone_object)
+        else:
+                error = True
+                message = 'Something went wrong.Generate accesstoken'
+                
+        if access_token != None :
+            contacts_object = ContactsType.ContactsType(0, 0, 0)
+            apiservice = apiServices.MHApiService()
+            contacts_response = apiservice.contacts(access_token, contacts_object)
+        else:
+                error = True
+                message = 'Something went wrong.Generate accesstoken'
 
         if request.method == "POST":
             instant_meeting = request.POST.get("instantmeeting")
@@ -223,3 +251,31 @@ def joinmeeting(request):
         'access_token': access_token
     })
 
+# /Webhooks 
+def webhooks_start(request):
+    success = False
+    error = False
+    message = None
+    try:          
+        data = request.get_data(as_text=True)
+
+        # For Meet Hour
+        response = webhooks.webhook_handler.handle_request(data, request.headers) 
+        
+        # Log the incoming data using WebhookHandler's log_data method
+        webhooks.webhook_handler.log_data(request)
+
+        request.session.get['meethour_webhook'] = response
+        
+        # Print server response (optional)
+        print(f"Server response: {response}")
+        return json.dumps(response), 200
+    except Exception as e:
+        error = True
+        message = str(e)
+    return render(request, 'index.html', {
+        
+        'success': success,
+        'error': error,
+        'message': message
+    })

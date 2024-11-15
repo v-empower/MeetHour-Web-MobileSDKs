@@ -135,9 +135,10 @@
                                         </select>
                                     </div> 
                                 </div>
-                                <div id="participants-display" class="grid gap-2">
-
-                                </div>
+                                <div id="participants-display" class="grid gap-2"></div>
+                                <h2 style="margin-top: 15px;">Add Participant Manually</h2>
+                                <div class="flex justify-right"><a  class="group relative flex w-full justify-center rounded-md border border-transparent bg-sky-600 py-2 px-4 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2" onclick="$('#modal2').show();" >Add New Contact</a></div>
+                            
                                 <div class="relative inline-block text-left" data-headlessui-state="" style="margin-bottom: 35px;">
                                     <div>
                                         <h2 style="margin-top: 15px;">Choose Moderators</h2>
@@ -181,6 +182,104 @@
                 </div>
             </div>
         </div>
+        <div id="modal2" style="display:none;">
+            <div>
+                <div class="relative z-10" id="headlessui-dialog-5" role="dialog" aria-modal="true" data-headlessui-state="open">
+                    <div class="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity opacity-100"></div>
+                    <div class="fixed inset-0 z-10 overflow-y-auto">
+                        
+                        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                            <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg opacity-100 translate-y-0 sm:scale-100" id="headlessui-dialog-panel-6" data-headlessui-state="open">
+                                <div style="position: absolute;right: 1rem;">
+                                    <button type="button" class="close-modal text-black-600 text-3xl" data-dismiss="alert" aria-label="Close" onclick="closeModal2()"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="p-8 grid gap-2">
+                                    <div class="h-14 flex justify-center items-center w-full rounded-lg bg-green-100 text-green-600">Add Participant Manually</div>
+                                        <div  class="font-semibold text-gray-600">First Name<input id="firstname" type="text" required=""
+                                            class="appearance-none rounded-none relative block
+                                                w-full px-3 py-2 border border-gray-300
+                                                placeholder-gray-500 text-gray-900 rounded-b-md
+                                                focus:outline-none focus:ring-indigo-500
+                                                focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="First Name"></div>
+                                    <div  class="font-semibold text-gray-600">Last Name <input id="lastname" type="text" required=""
+                                            class="appearance-none rounded-none relative block
+                                                w-full px-3 py-2 border border-gray-300
+                                                placeholder-gray-500 text-gray-900 rounded-b-md
+                                                focus:outline-none focus:ring-indigo-500
+                                                focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Last Name"></div>
+                                    <div  class="font-semibold text-gray-600">Email<input id="email" type="email" required="" class="appearance-none rounded-none relative block
+                                                w-full px-3 py-2 border border-gray-300
+                                                placeholder-gray-500 text-gray-900 rounded-b-md
+                                                focus:outline-none focus:ring-indigo-500
+                                                focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email"></div>
+                                    <div class="flex justify-center">
+                                        <button type="button" id="addcontactbtn" value="Submit" class="bg-emerald-600 font-semibold px-4 py-2 mt-1 text-white rounded-md">Add Contact</button></a></div>
+                                    </div>   
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#addcontactbtn').click( function(event) {
+                                                //event.preventDefault(); // Prevent the form from submitting the traditional way
+                                
+                                                var formData = {
+                                                    firstname: $('#firstname').val(),
+                                                    lastname: $('#lastname').val(),
+                                                    email: $('#email').val()
+                                                };
+                                                alert(JSON.stringify(formData));
+                                           
+                                
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '/addcontact', // Replace with your server endpoint
+                                                    data: formData,
+                                                    dataType: 'json',
+                                                    encode: true,
+                                                    success: function(response) {
+                                                        if(response.data)
+                                                    {
+                                                        console.log('Form submitted successfully:', response.data);
+                                
+                                                        // Assuming response is a JSON object with id, firstname, lastname, email
+                                                        var option = $('<option></option>');
+                                                        option.attr('key', response.data.id)
+                                                        option.addClass('w-96')
+                                                        option.attr('value', response.data.id)
+                                                        option.text(response.data.first_name + " " + response.data.last_name);
+                                
+                                                        $('#mySelectParticipants').append(option);
+                                                        $('#mySelectParticipants').val(response.data.id);
+                                                    }
+                                                    else {
+                                                            if(response.message)
+                                                            {
+                                                                alert(response.message);
+                                                            }
+                                                            else {
+                                                                alert("Unknown error");
+                                                            }
+                                                        }
+                                                        closeModal2();
+                                                    },
+                                                    error: function(error) {
+                                                        console.log('Error submitting form:', error);
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function closeModal2() {
+                var modal = document.getElementById("modal2");
+                modal.style.display = "none";
+            }
+        </script>
         {% if MeetingResponse is not None %}
             <div id="modal">
                 <div>
