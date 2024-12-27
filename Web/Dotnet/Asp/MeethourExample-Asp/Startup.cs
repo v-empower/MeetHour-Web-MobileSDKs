@@ -44,6 +44,7 @@ public class Startup {
     app.UseRouting();
     app.UseEndpoints(endpoints => {
       endpoints.MapRazorPages();
+      endpoints.MapControllerRoute( name: "webhook", pattern: "WebHooks", defaults: new { controller = "WebHook", action = "WebHooks" });
       endpoints.MapControllerRoute(
           name: "default",
           pattern: "{controller=Home}/{action=Index}/{id?}");

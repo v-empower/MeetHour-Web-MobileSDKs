@@ -2,12 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Index = MeethourExample_Asp.Cs.Index;
-using System.Text.Json;
-using MeethourExample_Asp.Cs;
-using Microsoft.AspNetCore.Mvc.Routing;
-using System.Globalization;
-using Microsoft.Extensions.Options;
-using System;
 
 namespace MeethourExample_Asp.Controllers {
 public class HomeController : Controller {
@@ -64,7 +58,7 @@ public class HomeController : Controller {
     };
 
     var errorModel = new ErrorViewModel {
-      Error = true,             // Set based on your error condition
+      Error = false,             // Set based on your error condition
       AccessToken = accessToken // Set based on your logic
     };
 
