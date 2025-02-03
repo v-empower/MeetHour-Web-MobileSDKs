@@ -89,6 +89,100 @@
             </form>
          </div>
       </div>
+      <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"></div>
+         <div class="text-3xl flex justify-center font-bold mt-5 text-sky-500">
+            <h1>Meet Hour Python - Webhook</h1>
+         </div>
+         <div class="md:mx-40 mx-5 overflow-hidden bg-white shadow sm:rounded-lg">
+            <div class="px-4 py-5 sm:px-6">
+               <h3 class="text-lg font-medium leading-6 text-gray-900">Steps to Authorize Meet Hour Developer
+                  account and get secrete key for Webhook.</h3>
+               <p class="mt-1 text-sm text-gray-500">Steps given below - </p>
+            </div>
+            <div class="border-t border-gray-200">
+               <dl id="steps">
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <dt class="text-sm font-medium text-gray-500">Step One</dt>
+                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Go to the <a class="text-blue-500" target="_blank" href="https://portal.meethour.io/customer/webhooksettings">Webhook</a> settings.</dd>
+                  </div>
+                  <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <dt class="text-sm font-medium text-gray-500">Step Two</dt>
+                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Click on the Webhook Setup and enable the Webhook Setup. Enable the required Event Triggers or all and save webhooks settings </dd>
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <dt class="text-sm font-medium text-gray-500">Step Three</dt>
+                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Now Copy your Signing secret key and paste copied text to the respective constant in
+                        the source code constants.py.</dd> 
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Step Four</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">After completing all the steps
+                       given above, now Get beeceptor-cli-win URL.</dd> 
+                 </div>   
+                 <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Step Five</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Go to <a target="_blank" class="text-blue-500" href="https://beeceptor.com/docs/local-tunneling-by-exposing-service-port/">Beeceptor</a> and Follow the instructions to install the beeceptor-cli-win in your machine.</dd>
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <dt class="text-sm font-medium text-gray-500">Step Six</dt>
+                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Open Command Prompt, Go to the beeceptor dnownloaded location, 
+                     run the command "beeceptor-cli-win -p 5000".</dd> 
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <dt class="text-sm font-medium text-gray-500">Step Seven</dt> 
+                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Copy the Forwarding link which look like, Example "https://qta3302e48b05615ff7991ca209a.free.beeceptor.com" and Add "/webhooks" after the end of url.</dd> 
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <dt class="text-sm font-medium text-gray-500">Step Eight</dt>
+                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">Now go to the meethour portal, Webhooks settings and paste the copied URL in the URL textbox and save the settings.</dd> 
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <dt class="text-sm font-medium text-gray-500">Step Nine</dt>
+                     <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">To check the response of the webhooks Go to the termial. Where, On Join Meeting, On Exit Meeting, On Recording Upload, A webhook is an HTTP request, triggered by an event in a source system and sent to a destination system, often with a payload of data </dd>
+                  </div>
+                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                     <h3 class="text-lg font-medium leading-6 text-gray-900">Example:</h3>
+                  </div>
+                     <pre class="text-white" style="background-color: #282c34; font-size:16px; position: relative; border-radius: 6px; display: block;"; >
+                        
+                        Server response: ('{"status": true, "code": 200, "message": "ok", "data":
+                           {
+                              "event_type": "join_meeting",
+                              "event_id": "evt_ec5e953db493521859aebb0d53a5a82f",
+                              "timestamp": "2024-09-05T13:23:38Z",
+                              "data": {
+                                  "meeting_id": "MHR240905133258",
+                                  "attendee": {
+                                      "name": "Person1",
+                                      "email": "Person1@meethour.com"
+                                  },
+                                  "login_datetime": "2024-09-05 13:23:35",
+                                  "user_agent": "chrome",
+                                  "access_type": "app",
+                                  "ip": "183.82.99.179",
+                                  "location": {
+                                      "country_name": "India",
+                                      "country_code": "IN",
+                                      "city": "Hyderabad",
+                                      "postal": "500029",
+                                      "latitude": "17.40650",
+                                      "longitude": "78.47724",
+                                      "state": "Telangana"
+                                  }
+                              }
+                           }
+                        }', 200)
+                     
+                     </pre>
+               
+                  </dl>
+               </div>
+            </div>
+         
+         </div>
+         
+      </div>
+
    </div>
 </body>
 </html>
