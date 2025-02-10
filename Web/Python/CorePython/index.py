@@ -20,6 +20,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import session
+from flask import redirect 
 from pymeethour.type import AddContactType
 from pymeethour.type import ContactsType
 from pymeethour.type import GenerateJwtType
@@ -122,18 +123,24 @@ def schedulemeeting():
         pcode = request.args.get("pcode")
         # getting access token from sessions
         access_token = session.get("access_token")
-
-        time_zone_object = time_zone.time_zone(0, 0,
-                                               0)  # getting timezone from sdk
-        apiservice = apiServices.MHApiService()
-        timezone_response = apiservice.time_zone(access_token,
-                                                 time_zone_object)
-
-        contacts_object = ContactsType.ContactsType(
-            0, 0, 0)  # getting contact details from sdk
-        apiservice = apiServices.MHApiService()
-        contacts_response = apiservice.contacts(access_token, contacts_object)
-
+        if not session.get('access_token'):
+            return redirect("/?error=notoken")
+        if access_token != None :
+            time_zone_object = time_zone.time_zone(
+                0, 0, 0)  # getting timezone from sdk
+            apiservice = apiServices.MHApiService()
+            timezone_response = apiservice.time_zone(access_token, time_zone_object)
+        else:
+                return "Something went wrong.Generate accesstoken"
+        
+        if access_token != None :
+            contacts_object = ContactsType.ContactsType(
+                0, 0, 0)  # getting contact details from sdk
+            apiservice = apiServices.MHApiService()
+            contacts_response = apiservice.contacts(access_token, contacts_object)
+        else:
+                return "Something went wrong.Generate accesstoken"
+        
         # /instant meeting
         if request.method == "POST":
             instant_meeting = request.form.get("instantmeeting")

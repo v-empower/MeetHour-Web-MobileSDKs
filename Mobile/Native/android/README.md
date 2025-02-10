@@ -18,7 +18,7 @@ id: dev-guide-android-sdk
 title: Meet Hour Android SDK
 ---
 
-## Latest Verion - 4.3.3
+## Latest Verion - 4.5.3
 
 The Meet Hour Android SDK provides the same user experience as the Meet Hour app,
 in a customizable way which you can embed in your apps.
