@@ -15,6 +15,7 @@ import go.meethour.io.MeetHourSDK.android.BroadcastIntentHelper
 import go.meethour.io.MeetHourSDK.android.MeetHour
 import go.meethour.io.MeetHourSDK.android.MeetHourActivity
 import go.meethour.io.MeetHourSDK.android.MeetHourConferenceOptions
+import go.meethour.io.android.sdktest.R
 
 import java.net.MalformedURLException
 import java.net.URL
@@ -111,6 +112,7 @@ class MainActivity : AppCompatActivity() {
             when (event.getType()) {
                 BroadcastEvent.Type.CONFERENCE_JOINED -> Timber.i("Conference Joined with url%s", event.getData().get("url"))
                 BroadcastEvent.Type.PARTICIPANT_JOINED -> Timber.i("Participant joined%s", event.getData().get("name"))
+                else -> {}
             }
         }
     }
