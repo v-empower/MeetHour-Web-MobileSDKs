@@ -41,14 +41,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.1"
-  dropdown_search:
-    dependency: "direct main"
-    description:
-      name: dropdown_search
-      sha256: c29b3e5147a82a06a4a08b3b574c51cb48cc17ad89893d53ee72a6f86643622e
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -90,8 +82,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: ba2e416155ef4443b0b51476d48c59901e5f1832
-      resolved-ref: ba2e416155ef4443b0b51476d48c59901e5f1832
+      ref: b641bacecbbdd0ca1a8bf840639ca263444a2a81
+      resolved-ref: b641bacecbbdd0ca1a8bf840639ca263444a2a81
       url: "https://github.com/v-empower/flutter_native_timezone.git"
     source: git
     version: "2.0.1"
@@ -181,10 +173,10 @@ packages:
     dependency: "direct main"
     description:
       name: meet_hour
-      sha256: "351e818465726cb0efab9c9c1bd809c53d06e6fa5fe3866700e7cd75301a4d6b"
+      sha256: e36c1cf1b2e0deb9c822653661a91e5273e355b76f6c6fa9289dd36f0bf86302
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.28"
+    version: "5.0.30"
   meta:
     dependency: transitive
     description:
