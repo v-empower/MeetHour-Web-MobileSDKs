@@ -20,6 +20,7 @@ import go.meethour.io.MeetHourSDK.android.MeetHourConferenceOptions;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import go.meethour.io.MeetHourSDK.android.MeetHourUserInfo;
 import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
             throw new RuntimeException("Invalid server URL!");
         }
+
+        Bundle bundle = new Bundle();
+        bundle.putString("displayName", "John Doe");
+        bundle.putString("email", "john.doe@example.com");
+
+        MeetHourUserInfo userInfo = new MeetHourUserInfo(bundle);
+
         MeetHourConferenceOptions defaultOptions
                 = new MeetHourConferenceOptions.Builder()
                 .setServerURL(serverURL)
@@ -54,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 // Different features flags can be set
                 // .setFeatureFlag("toolbox.enabled", false)
                 // .setFeatureFlag("filmstrip.enabled", false)
+                .setUserInfo(userInfo)
                 .setFeatureFlag("recording.enabled", true)
                 .setWelcomePageEnabled(false)
                 .build();

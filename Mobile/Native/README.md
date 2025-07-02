@@ -17,7 +17,7 @@ NOTE: You must be using Xcode >= 12.2 for the iOS examples to run.
 
 [Meet Hour]: https://meethour.io
 
-# Latest version - 4.3.3
+# Latest version - 4.6.1
 
 # MeetHour SDK Implementation - Steps
 

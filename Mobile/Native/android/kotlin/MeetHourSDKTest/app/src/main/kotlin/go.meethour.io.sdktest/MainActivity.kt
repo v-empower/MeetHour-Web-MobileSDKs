@@ -9,18 +9,16 @@ import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-
 import go.meethour.io.MeetHourSDK.android.BroadcastEvent
 import go.meethour.io.MeetHourSDK.android.BroadcastIntentHelper
 import go.meethour.io.MeetHourSDK.android.MeetHour
 import go.meethour.io.MeetHourSDK.android.MeetHourActivity
 import go.meethour.io.MeetHourSDK.android.MeetHourConferenceOptions
+import go.meethour.io.MeetHourSDK.android.MeetHourUserInfo
 import go.meethour.io.android.sdktest.R
-
+import timber.log.Timber
 import java.net.MalformedURLException
 import java.net.URL
-
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -69,6 +67,13 @@ class MainActivity : AppCompatActivity() {
     fun onButtonClick(v: View?) {
         val editText = findViewById<EditText>(R.id.conferenceName)
         val text = editText.text.toString()
+
+//        val bundle = Bundle()
+//        bundle.putString("displayName", "John Doe")
+//        bundle.putString("email", "hello2@meethour.io")
+//
+//        val userInfo = MeetHourUserInfo(bundle)
+
         if (text.length > 0) {
             // Build options object for joining the conference. The SDK will merge the default
             // one we set earlier and this one when joining.
@@ -77,6 +82,7 @@ class MainActivity : AppCompatActivity() {
                     .setPcode("5b40602cfea7708895781a8cad71be5b")
                     .setPrejoinPageEnabled(false) // set it to false to disable prejoin page.
                     .setDisableInviteFunctions(true) // To disable invite functions in sdk.
+//                  .setUserInfo(userInfo)
                     // Settings for audio and video
                     //.setAudioMuted(true)
                     //.setVideoMuted(true)
