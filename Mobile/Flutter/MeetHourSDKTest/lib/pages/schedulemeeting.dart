@@ -6,7 +6,6 @@ import 'package:meet_hour/types/contacts_type.dart';
 import 'package:meet_hour/types/schedule_meeting_type.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'joinmeeting.dart';
@@ -48,11 +47,13 @@ class MyCustomFormState extends State<MyCustomForm> {
   String meetingTime = "";
   String meetingMeridiem = "";
   String meetingTimezone = "";
+  List<String> selectedModerators = [];
+  List<String> selectedParticipants = [];
   var attend = [];
   var hostusers = [];
   List<String> timezones = [];
   List<String> contacts = [];
-  List<String> contactIds = [];
+  var contactIds = [];
   final _formKey = GlobalKey<FormState>();
   bool isLoader = false;
   bool isInstant = false;
@@ -69,6 +70,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   @override
   void initState() {
+    super.initState();
     this.getContacts();
     this.getTimezone();
   }
@@ -95,24 +97,38 @@ class MyCustomFormState extends State<MyCustomForm> {
     print(args.value);
   }
 
-  Future<dynamic> getTimezone() async {
+  Future<void> getTimezone() async {
+  try {
     final prefs = await SharedPreferences.getInstance();
     final String? access_token = prefs.getString('access_token');
-    Map<String, dynamic> response =
-        await ApiServices.timezone(access_token.toString());
+    if (access_token == null) {
+      print('Error: access_token is null');
+      return;
+    }
+
+    Map<String, dynamic> response = await ApiServices.timezone(access_token);
+
     setState(() {
-      for (var timezone in response['timezones']) {
-        timezones.add(timezone['value'].toString());
+      timezones.clear(); // Clear the list to avoid duplicates
+      if (response['timezones'] != null && response['timezones'] is List) {
+        for (var timezone in response['timezones']) {
+          timezones.add(timezone['value'].toString()); // Ensure value is converted to String
+        }
+        timezones.sort((a, b) => a.toLowerCase().compareTo(b.toLowerCase())); // Case-insensitive sort
+      } else {
+        print('Error: response["timezones"] is null or not a list');
       }
     });
+  } catch (e) {
+    print('Error in getTimezone: $e');
   }
+}
 
   void addParticipant(List participants) {
     var attendees = [];
     participants.forEach((element) {
       attendees.add(element.toString().split(',')[0].split('-')[1]);
     });
-    print(attendees);
     setState(() {
       attend = attendees;
     });
@@ -120,9 +136,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   void addModerator(List moderators) {
     var hosts = [];
-    moderators.forEach((element) =>
-        {hosts.add(element.toString().split(',')[0].split('-')[1])});
-    print(hosts);
+    moderators.forEach((element) {hosts.add(element.toString().split(',')[0].split('-')[1]);});
     setState(() {
       hostusers = hosts;
     });
@@ -142,7 +156,6 @@ class MyCustomFormState extends State<MyCustomForm> {
             contact['email'].toString());
         ;
       }
-      print(contactIds);
     });
   }
 
@@ -153,16 +166,26 @@ class MyCustomFormState extends State<MyCustomForm> {
     String timezoneResponse = '';
     try {
       timezoneResponse = await FlutterNativeTimezone.getLocalTimezone();
-      var now = new DateTime.now();
-      var formatter = new DateFormat('dd-MM-yyyy');
-      String formattedDate = formatter.format(now);
-      var time = DateFormat.jm().format(now).split(" ")[0];
-      var meridiem = DateFormat.jm().format(now).split(" ")[1];
-      if (time[1] == ':') {
-        time = '0' + time;
-      }
+      var now = DateTime.now();
+
+  String formattedDate = DateFormat('dd-MM-yyyy').format(now);
+
+  String timeString = DateFormat('hh:mm a').format(now);
+  List<String> parts = timeString.split(' ');
+
+  String time = '';
+  String meridiem = '';
+  if (parts.length >= 2) {
+    time = parts[0]; // '09:45'
+    meridiem = parts[1]; // 'AM'
+  } else {
+    // Fallback if format is unexpected
+    time = parts[0];
+    meridiem = 'AM'; // or handle error
+  }
       final prefs = await SharedPreferences.getInstance();
       final String? access_token = prefs.getString('access_token');
+
       Map<String, dynamic> response = await ApiServices.scheduleMeeting(
           access_token.toString(),
           ScheduleMeetingType(
@@ -185,6 +208,58 @@ class MyCustomFormState extends State<MyCustomForm> {
     }
   }
 
+  Future<void> _showMultiSelectDialog({
+  required BuildContext context,
+  required List<String> items,
+  required List<String> selectedItems,
+  required String title,
+  required void Function(List<String>) onConfirm,
+}) async {
+  final tempSelected = List<String>.from(selectedItems);
+
+  await showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text(title),
+        content: SingleChildScrollView(
+          child: Column(
+            children: items.map((item) {
+              final isSelected = tempSelected.contains(item);
+              return CheckboxListTile(
+                title: Text(item),
+                value: isSelected,
+                onChanged: (bool? value) {
+                  if (value == true) {
+                    tempSelected.add(item);
+                  } else {
+                    tempSelected.remove(item);
+                  }
+                  (context as Element).markNeedsBuild(); // Refresh dialog state
+                },
+              );
+            }).toList(),
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text("Cancel"),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              onConfirm(tempSelected);
+            },
+            child: const Text("Confirm"),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+
   Future<dynamic> scheduleMeeting() async {
     setState(() {
       isLoader = true;
@@ -202,17 +277,15 @@ class MyCustomFormState extends State<MyCustomForm> {
               meetingDate: meetingDate,
               meetingMeridiem: meetingMeridiem,
               meetingName: meetingName,
-              meetingTime: time,
+              meetingTime: meetingTime,
               passcode: passcode,
               timezone: meetingTimezone,
               attend: attend,
               hostusers: hostusers));
       if (response['success'] == true) {
-        print("Working");
         prefs.setString('meeting_id', response['data']['meeting_id']);
         return response;
       }
-      print(response);
     } catch (error) {
       print(error);
     } finally {
@@ -241,7 +314,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             BottomNavigationBarItem(
               icon: Icon(Icons.meeting_room_rounded),
               label: 'Join',
-              backgroundColor: Colors.purple,
+              backgroundColor: Color.fromARGB(255, 5, 5, 5),
             )
           ],
           currentIndex: _selectedIndex,
@@ -381,7 +454,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                                     .format(date)
                                     .toString();
                               });
-                              print(meetingDate);
                             },
                                 currentTime: DateTime.now(),
                                 locale: picker.LocaleType.en);
@@ -390,86 +462,152 @@ class MyCustomFormState extends State<MyCustomForm> {
                             'Select Meeting Date',
                             style: TextStyle(color: Colors.blue),
                           )),
-                      TextButton(
-                          onPressed: () {
-                            picker.DatePicker.showTimePicker(context,
-                                showTitleActions: true, onChanged: (time) {
-                              print('change $time');
-                            }, onConfirm: (time) {
-                              setState(() {
-                                meetingTime =
-                                    DateFormat.jm().format(time).split(' ')[0];
-                                meetingMeridiem =
-                                    DateFormat.jm().format(time).split(' ')[1];
-                              });
-                            },
-                                currentTime: DateTime.now(),
-                                locale: picker.LocaleType.en);
-                          },
-                          child: Text(
-                            'Select Meeting Time',
-                            style: TextStyle(color: Colors.blue),
-                          )),
+                     TextButton(
+      onPressed: () {
+        picker.DatePicker.showTimePicker(
+          context,
+          showTitleActions: true,
+          onChanged: (time) {
+            print('change $time'); // Debug: Log time changes
+          },
+          onConfirm: (time) {
+            try {
+              // Format time in 12-hour format with leading zero for hours
+              int hour = time.hour % 12;
+              if (hour == 0) hour = 12; // Handle midnight/noon
+              String formattedTime = '${hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')} ${time.hour >= 12 ? 'PM' : 'AM'}';
+
+              // Split the formatted time
+              List<String> timeParts = formattedTime.split(' ');
+              String meetingTimeTemp = '';
+              String meetingMeridiemTemp = '';
+
+              // Check if split produced at least two parts
+              if (timeParts.length >= 2) {
+                meetingTimeTemp = timeParts[0]; // e.g., "06:50"
+                meetingMeridiemTemp = timeParts[1]; // e.g., "PM"
+              } else {
+                meetingTimeTemp = DateFormat.Hm('en_US').format(time); // e.g., "18:50"
+                meetingMeridiemTemp = time.hour >= 12 ? 'PM' : 'AM';
+                // Convert to 12-hour format with leading zero
+                hour = time.hour % 12;
+                if (hour == 0) hour = 12;
+                meetingTimeTemp = '${hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
+              }
+
+              setState(() {
+                meetingTime = meetingTimeTemp;
+                meetingMeridiem = meetingMeridiemTemp;
+              });
+            } catch (e) {
+              print('Error formatting time: $e');
+              // Fallback values
+              setState(() {
+                int hour = time.hour % 12;
+                if (hour == 0) hour = 12;
+                meetingTime = '${hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}';
+                meetingMeridiem = time.hour >= 12 ? 'PM' : 'AM';
+              });
+            }
+          },
+          currentTime: DateTime.now(), // Default to 07:10 PM IST
+          locale: picker.LocaleType.en, // Ensure 12-hour format
+        );
+      },
+      child: Text(
+        'Select Meeting Time',
+        style: TextStyle(color: Colors.blue),
+      ),
+    ), Padding(
+  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8.0),
+  child: DropdownButtonFormField<String>(
+    decoration: const InputDecoration(
+      labelText: "Select Timezone",
+      hintText: "Select your timezone",
+      border: OutlineInputBorder(),
+    ),
+    value: meetingTimezone.isNotEmpty ? meetingTimezone : null,
+    items: timezones.map((String timezone) {
+      return DropdownMenuItem<String>(
+        value: timezone,
+        child: Text(timezone),
+      );
+    }).toList(),
+    onChanged: (String? newValue) {
+      if (newValue != null) {
+        setState(() {
+          meetingTimezone = newValue;
+        });
+      }
+    },
+  ),
+),
+
+
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 5.0, horizontal: 8.0),
-                        child: DropdownSearch<String>(
-                          popupProps: PopupProps.menu(
-                            showSelectedItems: true,
-                          ),
-                          items: timezones,
-                          dropdownDecoratorProps: DropDownDecoratorProps(
-                            dropdownSearchDecoration: InputDecoration(
-                              labelText: "Select Timezone",
-                              hintText: "Select your timezone",
-                            ),
-                          ),
-                          onChanged: (timezone) {
-                            setState(() {
-                              meetingTimezone = timezone.toString();
-                            });
-                          },
-                        ),
-                      ),
+  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8.0),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const Text("Select Participant/s"),
+      const SizedBox(height: 5),
+      ElevatedButton(
+        onPressed: () {
+          _showMultiSelectDialog(
+            context: context,
+            items: contacts,
+            selectedItems: selectedParticipants,
+            title: "Select Participant/s",
+            onConfirm: (selected) {
+              setState(() {
+                selectedParticipants = selected;
+              });
+              addParticipant(selected);
+            },
+          );
+        },
+        child: const Text("Choose Participants"),
+      ),
+      Wrap(
+        spacing: 6.0,
+        children: selectedParticipants.map((e) => Chip(label: Text(e))).toList(),
+      ),
+    ],
+  ),
+),
+
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 5.0, horizontal: 8.0),
-                        child: DropdownSearch<String>.multiSelection(
-                          items: contacts,
-                          dropdownDecoratorProps: DropDownDecoratorProps(
-                            dropdownSearchDecoration: InputDecoration(
-                              labelText: "Select Participant/s",
-                              hintText: "Select Participant/s",
-                            ),
-                          ),
-                          popupProps: PopupPropsMultiSelection.menu(
-                            showSelectedItems: true,
-                          ),
-                          onChanged: (participants) {
-                            addParticipant(participants);
-                            // addParticipant(participants);
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 5.0, horizontal: 8.0),
-                        child: DropdownSearch<String>.multiSelection(
-                          items: contacts,
-                          dropdownDecoratorProps: DropDownDecoratorProps(
-                            dropdownSearchDecoration: InputDecoration(
-                              labelText: "Select Moderator/s",
-                              hintText: "Select Moderator/s",
-                            ),
-                          ),
-                          popupProps: PopupPropsMultiSelection.menu(
-                            showSelectedItems: true,
-                          ),
-                          onChanged: (moderators) {
-                            addModerator(moderators);
-                          },
-                        ),
-                      ),
+  padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 8.0),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const Text("Select Moderator/s"),
+      const SizedBox(height: 5),
+      ElevatedButton(
+        onPressed: () {
+          _showMultiSelectDialog(
+            context: context,
+            items: contacts,
+            selectedItems: selectedModerators,
+            title: "Select Moderator/s",
+            onConfirm: (selected) {
+              setState(() {
+                selectedModerators = selected;
+              });
+              addModerator(selected);
+            },
+          );
+        },
+        child: const Text("Choose Moderators"),
+      ),
+      Wrap(
+        spacing: 6.0,
+        children: selectedModerators.map((e) => Chip(label: Text(e))).toList(),
+      ),
+    ],
+  ),
+),
+
                       Container(
                         child: isLoader ? loader() : emptyWidget(),
                       ),

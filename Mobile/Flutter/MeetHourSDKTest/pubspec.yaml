@@ -11,20 +11,19 @@ dependencies:
   flutter:
     sdk: flutter
 
-  meet_hour: '>=5.0.25'
+  meet_hour: '>=5.0.28'
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
 
-  syncfusion_flutter_datepicker: ^24.1.41
+  syncfusion_flutter_datepicker: ^30.1.37
 
   flutter_datetime_picker_plus: ^2.1.0
-  dropdown_search: ^5.0.6
-  shared_preferences: ^2.0.18
+  shared_preferences: ^2.5.3
   flutter_native_timezone:
     git:
-      url: https://github.com/iamzeeshanali/flutter_native_timezone.git
-      ref: 59e26fcee72a24f3770c0719f111950eb4f885f7 # commit hash
+      url: https://github.com/v-empower/flutter_native_timezone.git
+      ref: ba2e416155ef4443b0b51476d48c59901e5f1832 # commit hash
 dev_dependencies:
   flutter_test:
     sdk: flutter
