@@ -1,0 +1,61 @@
+PODS:
+  - Flutter (1.0.0)
+  - flutter_native_timezone (0.0.1):
+    - Flutter
+  - Giphy (2.2.12):
+    - libwebp
+  - libwebp (1.5.0):
+    - libwebp/demux (= 1.5.0)
+    - libwebp/mux (= 1.5.0)
+    - libwebp/sharpyuv (= 1.5.0)
+    - libwebp/webp (= 1.5.0)
+  - libwebp/demux (1.5.0):
+    - libwebp/webp
+  - libwebp/mux (1.5.0):
+    - libwebp/demux
+  - libwebp/sharpyuv (1.5.0)
+  - libwebp/webp (1.5.0):
+    - libwebp/sharpyuv
+  - meet_hour (0.0.1):
+    - Flutter
+    - MeetHourSDK (= 4.6.1)
+  - MeetHourSDK (4.6.1):
+    - Giphy (= 2.2.12)
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - flutter_native_timezone (from `.symlinks/plugins/flutter_native_timezone/ios`)
+  - meet_hour (from `.symlinks/plugins/meet_hour/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
+
+SPEC REPOS:
+  trunk:
+    - Giphy
+    - libwebp
+    - MeetHourSDK
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  flutter_native_timezone:
+    :path: ".symlinks/plugins/flutter_native_timezone/ios"
+  meet_hour:
+    :path: ".symlinks/plugins/meet_hour/ios"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
+
+SPEC CHECKSUMS:
+  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_native_timezone: 5f05b2de06c9776b4cc70e1839f03de178394d22
+  Giphy: 83628960ed04e1c3428ff1b4fb2b027f65e82f50
+  libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
+  meet_hour: 103bdb9bcd1f40d844cd9f1e9304fcd15e698ef3
+  MeetHourSDK: 0067d70647111238128611a1c11ef79a3d788b99
+  shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
+
+PODFILE CHECKSUM: c33abd8fc4aa606784d95f916f04450c9ecac5a5
+
+COCOAPODS: 1.16.2

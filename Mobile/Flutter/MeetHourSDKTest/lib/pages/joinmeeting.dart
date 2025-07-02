@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:MeetHourSDKTest/pages/homepage.dart';
 import 'package:MeetHourSDKTest/pages/schedulemeeting.dart';
-import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:meet_hour/meet_hour.dart';
@@ -110,16 +109,19 @@ class _MeetingState extends State<Meeting> {
               meeting_id:
                   meetingId != null ? meetingId.toString() : meeting_id));
       prefs.setString('pCode', response['meeting']['pcode']);
+      List<String> temporaryArray = [];
+temporaryArray.add(
+  response['organizer']['name'] + ' (Organizer / Account Owner)');
+for (var attendee in response['meeting_attendees']) {
+  temporaryArray.add('ID-' +
+      attendee['contact_id'].toString() +
+      ', Email-' +
+      attendee['email'].toString());
+}
+      
       setState(() {
         pCode = prefs.getString('pCode').toString();
-        meetingAttendees.add(
-            (response['organizer']['name'] + '( Organizer / Account Owner )'));
-        for (var attendee in response['meeting_attendees']) {
-          meetingAttendees.add('ID-' +
-              attendee['contact_id'].toString() +
-              ', Email-' +
-              attendee['email'].toString());
-        }
+        meetingAttendees = temporaryArray;
         isScheduled = true;
       });
     } catch (error) {
@@ -141,15 +143,19 @@ class _MeetingState extends State<Meeting> {
     final String? meetingId = prefs.getString('meeting_id');
     final String? access_token = prefs.getString('access_token');
     try {
+      // var response = await ApiServices.generateJwt(
+      //     access_token.toString(),
+      //     GenerateJwtType(
+      //         meetingid: meetingId != null ? meetingId.toString() : meeting_id,
+      //         contactid: contactId));
       var response = await ApiServices.generateJwt(
           access_token.toString(),
           GenerateJwtType(
-              meetingid: meetingId != null ? meetingId.toString() : meeting_id,
-              contactid: contactId));
+              meetingid: meetingId != null ? meetingId.toString() : meeting_id, contactid: contactId));
       setState(() {
         meetingToken = response['jwt'];
       });
-      await _joinMeeting();
+      await _joinMeeting(response['jwt']);
     } catch (error) {
       print(error);
     }
@@ -173,7 +179,7 @@ class _MeetingState extends State<Meeting> {
     });
   }
 
-  _joinMeeting() async {
+  _joinMeeting(String token) async {
     String? serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
     final prefs = await SharedPreferences.getInstance();
     final String? meetingId = prefs.getString('meeting_id');
@@ -198,11 +204,10 @@ class _MeetingState extends State<Meeting> {
 
     // Enabling Recording
     featureFlags[FeatureFlagEnum.IOS_RECORDING_ENABLED] = true;
-    // Define meetings options here
     var options = MeetHourMeetingOptions(
         room: meetingId == null ? meeting_id : meetingId.toString())
       ..serverURL = serverUrl
-      ..token = meetingToken
+      ..token = token
       ..pcode = pCode
       // ..iosAppBarRGBAColor = iosAppBarRGBAColor.text
       ..featureFlags.addAll(featureFlags)
@@ -331,74 +336,80 @@ class _MeetingState extends State<Meeting> {
   }
 
   Widget meetConfig() {
-    // Build a Form widget using the _formKey created above.
-    return Scaffold(
-      body: isLoading == true ? loader() : Form(
-        key: _formKey,
-        child: isScheduled == true
-            ? Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 5.0, horizontal: 8.0),
-                    child: DropdownSearch<String>(
-                      popupProps: PopupProps.menu(
-                        showSelectedItems: true,
-                      ),
-                      items: meetingAttendees,
-                      dropdownDecoratorProps: DropDownDecoratorProps(
-                        dropdownSearchDecoration: InputDecoration(
-                          labelText: "You would like to join as - ",
+  return Scaffold(
+    body: isLoading == true
+        ? loader()
+        : Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formKey,
+              child: isScheduled
+                  ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        DropdownButtonFormField<String>(
+                          decoration: const InputDecoration(
+                            labelText: "You would like to join as -",
+                            border: OutlineInputBorder(),
+                          ),
+                          value: meetingAttendees.isNotEmpty
+                              ? meetingAttendees[0]
+                              : null,
+                          items: meetingAttendees.map((String attendee) {
+                            return DropdownMenuItem<String>(
+                              value: attendee,
+                              child: Text(
+                                attendee,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            );
+                          }).toList(),
+                          onChanged: (String? selectedAttendee) {
+                            if (selectedAttendee != null) {
+                              getJwtToken(selectedAttendee);
+                            }
+                          },
                         ),
-                      ),
-                      onChanged: (attendee) {
-                        getJwtToken(attendee.toString());
-                        // setState(() {
-                        //   meetingTimezone = timezone.toString();
-                        // });
-                      },
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: resetMeetingDetails,
+                          child: const Text('Reset Meeting Details'),
+                        ),
+                      ],
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextFormField(
+                          onChanged: (text) {
+                            setState(() {
+                              meeting_id = text;
+                            });
+                          },
+                          decoration: const InputDecoration(
+                            hintText: "Please enter meeting ID",
+                            border: OutlineInputBorder(),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter meeting ID';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                          onPressed: viewMeeting,
+                          child: const Text('Join Meeting'),
+                        ),
+                      ],
                     ),
-                  ),
-                  ElevatedButton(
-                    child: const Text('Reset Meeting Details'),
-                    onPressed: () => resetMeetingDetails(),
-                  ),
-                ],
-              )
-            : Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextFormField(
-                    onChanged: (text) {
-                      setState(() {
-                        meeting_id = text;
-                      });
-                    },
-                    decoration: InputDecoration(
-                        hintText: "Please enter meeting id"),
-                    // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter meeting id';
-                      }
-                      return null;
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Validate returns true if the form is valid, or false otherwise.
-                        viewMeeting();
-                      },
-                      child: const Text('Join Meeting'),
-                    ),
-                  ),
-                ],
-              )
-      ),
-    );
-  }
+            ),
+          ),
+  );
+}
+
 }
 
 void _onConferenceWillJoin(message) {
