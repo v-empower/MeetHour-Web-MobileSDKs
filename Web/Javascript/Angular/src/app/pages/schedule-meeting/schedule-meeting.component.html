@@ -1,0 +1,15 @@
+<div class="lg:flex w-screen relative top-16 justify-between overflow-x-hidden">
+    <app-description></app-description>
+    <app-schedule-meeting-form
+      [popupFields]="popupFields"
+      (addModerator)="addModerator($event)"
+      (removeModerator)="removeModerator($event)"
+      (removeParticipant)="removeParticipant($event)"
+      (addParticipant)="addParticipant($event)"
+      (submit)="onSubmitHandler()"
+      (inputChange)="inputChangeHandler($event)"
+      [requestBody]="requestBody"
+    ></app-schedule-meeting-form>
+    <!-- <app-modal [open]="open" (close)="setOpen(false)" [popupFields]="popupFields"></app-modal> -->
+  </div>
+  

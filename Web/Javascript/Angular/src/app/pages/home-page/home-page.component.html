@@ -1,0 +1,95 @@
+<div [ngClass]="isHomepage ? 'container-homepage' : 'container-other'">
+  <div id="toast-container">
+    <div id="toast-success" class="toast">Token successfully generated</div>
+    <div id="toast-failure" class="toast">Failure! Something went wrong.</div>
+  </div>
+  <div class="text-3xl flex justify-center font-bold mt-5 text-sky-500">
+    <h1>Welcome to Meet Hour Angular Web SDK - Example</h1>
+  </div>
+    <div class="header">
+      <h3 class="title">
+        {{ isHomepage ? 'Steps to Authorize Meet Hour Developer account and get access token.' : 'How to Schedule a Meeting' }}
+      </h3>
+      <p class="subtitle">Steps given below - </p>
+    </div>
+    <div class="content">
+      <dl>
+        <div class="step">
+          <dt class="step-title">Step One</dt>
+          <dd class="step-description">
+            <ng-container *ngIf="isHomepage; else scheduleStepOne">
+              Go to
+              <a target="_blank" class="link" href="https://meethour.io">meethour.io</a>
+              and signup for Developer or Higher plan. Currently we offer 28 days free trial.
+            </ng-container>
+            <ng-template #scheduleStepOne>
+              Fill the required fields like meeting name, passcode, meeting date, meeting time, meeting meridiem and timezone in the Schedule a Meeting Form.
+              <br />
+              <span class="note">
+                Note: You have to set a moderator to start the meeting. If you do not set a moderator, meeting cannot start.
+              </span>
+            </ng-template>
+          </dd>
+        </div>
+        <div class="step">
+          <dt class="step-title">Step Two</dt>
+          <dd class="step-description">
+            <ng-container *ngIf="isHomepage; else scheduleStepTwo">
+              Go to the
+              <a target="_blank" class="link" href="https://portal.meethour.io">dashboard</a>
+              and then click on
+              <a target="_blank" class="link" href="https://portal.meethour.io/customer/developers">developers</a>
+              menu.
+            </ng-container>
+            <ng-template #scheduleStepTwo>
+              After adding all the necessary fields, now add participants and moderators. Note: To start a meeting, at least one moderator is required.
+            </ng-template>
+          </dd>
+        </div>
+        <div class="step">
+          <dt class="step-title">Step Three</dt>
+          <dd class="step-description">
+            <ng-container *ngIf="isHomepage; else scheduleStepThree">
+              Copy your Client ID, Client Secret, Api Key, Email/Username and Password (Meet Hour account). After copying, paste each copied text to the respective constant in the source code src/constants/index.tsx
+            </ng-container>
+            <ng-template #scheduleStepThree>
+              You can choose general options according to your requirements.
+            </ng-template>
+          </dd>
+        </div>
+        <div class="step">
+          <dt class="step-title">Step Four</dt>
+          <dd class="step-description">
+            {{ isHomepage ? 'After completing all the steps given above, now click on Get Access Token given below.' : 'After filling all the fields, now you can click on Schedule a Meeting button which will take you to the joining page.' }}
+          </dd>
+        </div>
+        <div class="step">
+          <dt class="step-title">Step Five</dt>
+          <dd class="step-description">
+            {{ isHomepage ? 'As you click, your access token will be received and stored it in browser\'s localstorage. The received access token is then used for making Meet Hour rest api calls.' : 'In joining page you will be asked, whom do you want to join as. Choose and go ahead to the meeting.' }}
+          </dd>
+        </div>
+        <div *ngIf="localStorage.getItem('accessToken')" class="step">
+          <dt class="step-title">Step Six</dt>
+          <dd class="step-description">
+            <ng-container *ngIf="isHomepage; else scheduleStepSix">
+              Token successfully got generated. Now you can schedule a meeting.
+              <a class="link" href="/#/schedule-meeting">Schedule a Meeting</a>
+            </ng-container>
+            <ng-template #scheduleStepSix>
+              When clicked on Instant Meeting, a quick meeting will be scheduled.
+            </ng-template>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+  <div class="button-container">
+    <button class="access-button" (click)="getAccessToken()">
+      <div *ngIf="isLoading">
+        <div class="loader"></div>
+      </div>
+      <p *ngIf="!isLoading">Get Access Token</p>
+    </button>
+  </div>
+  

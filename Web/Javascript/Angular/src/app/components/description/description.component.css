@@ -1,0 +1,112 @@
+.container-homepage {
+    margin-left: 40px;
+    margin-right: 40px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 50px;
+  }
+
+  .main-header {
+    display: flex;
+    justify-content: center;
+    font-size: 1rem; /* equivalent to text-3xl */
+    font-weight: bold;
+    margin-top: 1.25rem; /* equivalent to mt-5 */
+    color: #0ea5e9; /* equivalent to text-sky-500 */
+  }
+  
+  .container-other {
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height: 100%;
+  }
+  
+  .header {
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+  }
+  
+  .subtitle {
+    margin-top: 4px;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .content {
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .step {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 20px;
+  }
+  
+  .step:nth-child(odd) {
+    background-color: #f9fafb;
+  }
+  
+  .step-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+  }
+  
+  .step-description {
+    margin-top: 4px;
+    font-size: 0.875rem;
+    color: #111827;
+    grid-column: span 2;
+  }
+  
+  .link {
+    color: #3b82f6;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  .note {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 4px;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem; /* equivalent to gap-1 */
+    margin-top: 0.75rem; /* equivalent to mt-3 */
+  }
+  
+  .access-button {
+    background-color: #0284c7; /* equivalent to bg-sky-600 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 0.375rem; /* equivalent to rounded-md */
+    height: 2.25rem; /* equivalent to h-9 */
+    width: 10rem; /* equivalent to w-40 */
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  .access-button:hover {
+    background-color: #0369a1; /* Darken the button color on hover */
+  }
+  

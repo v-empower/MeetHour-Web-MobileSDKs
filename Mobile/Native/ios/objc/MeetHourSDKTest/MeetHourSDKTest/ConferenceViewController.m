@@ -56,7 +56,7 @@
     [self.MHView join:options];
 
     // Initialize PiPViewCoordinator
-    self.pipViewCoordinator = [[PiPViewCoordinator alloc] initWithView:self.MHView];
+    self.pipViewCoordinator = [[NSFileCoordinator alloc] init:self.MHView];
     [self.pipViewCoordinator configureAsStickyViewWithParentView:self.view];
 
     // Animate in

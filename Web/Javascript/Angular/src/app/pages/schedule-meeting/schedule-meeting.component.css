@@ -1,0 +1,18 @@
+.schedule-meeting-container {
+    display: flex;
+    width: 100%;
+    position: relative;
+    top: 3rem;
+    justify-content: space-between;
+    margin-left: 50;
+    margin-right: 50;
+  }
+  
+  @media (min-width: 1024px) {
+    .schedule-meeting-container {
+      display: flex;
+    }
+  }
+
+
+  

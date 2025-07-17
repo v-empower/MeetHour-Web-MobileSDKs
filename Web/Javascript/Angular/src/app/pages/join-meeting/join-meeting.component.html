@@ -1,0 +1,78 @@
+<div class="frame-container">
+    <div class="frame-container" *ngIf="roomName">
+      <div *ngIf="isLoading">
+        <div class="loader"></div>
+      </div>
+      <div class="relative top-16 h-screen w-screen flex justify-center">
+        <div *ngIf="!isStartMeeting" class="rounded-md opacity-100 h-auto p-5 w-96 bg-white">
+          <div class="flex justify-center w-full">
+            <div class="loader"></div>
+          </div>
+          <h1 class="text-xl font-semibold">Whom would you like to join as?</h1>
+          <div
+            (click)="generateJwtToken()"
+            class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
+            <h1>{{ meetingAttendees.organizer.name }}</h1>
+            (Organizer / Account Owner)
+          </div>
+          <div *ngFor="let host of meetingAttendees.hosts" (click)="generateJwtToken(host.id)" class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
+            <h1>{{ host.first_name }}</h1>
+            <h1>{{ host.last_name }}</h1>
+            (Moderator / Host)
+          </div>
+          <div *ngIf="meetingAttendees.attendees.length">
+            <div *ngFor="let attendee of meetingAttendees.attendees" (click)="generateJwtToken(attendee.id)" class="flex my-4 gap-2 px-4 py-2 border cursor-pointer text-black hover:text-white hover:bg-blue-600 border-blue-600 rounded-md">
+              <h1>{{ attendee.first_name }}</h1>
+              <h1>{{ attendee.last_name }}</h1>
+              (Attendee)
+            </div>
+          </div>
+          <button
+            (click)="resetMeeting()"
+            class="w-40 h-9 bg-slate-600 text-white rounded-md">
+            Reset
+          </button>
+        </div>
+        <div *ngIf="isStartMeeting" class="frame-container">
+          <meet-hour-meeting
+            style="display: flex; height: 100%; flex-direction: column;"
+            [domain]="CONFERENCE_URL"
+            [roomName]="roomName"
+            [apiKey]="API_KEY"
+            [apiBaseURL]="API_BASE_URL"
+            [release]="API_RELEASE"
+            [jwt]="meetingJwtToken"
+            [pcode]="pcode"
+            (readyToClose)="handleReadyToClose()"
+            (iframeRef)="handleMeetHourIFrameRef1($event)"
+            [interfaceConfigOverwrite]="{
+              applyMeetingSettings: true,
+              disablePrejoinHeader: true,
+              disablePrejoinFooter: true,
+              SHOW_MEET_HOUR_WATERMARK: false,
+              HIDE_DEEP_LINKING_LOGO: true,
+              MOBILE_APP_PROMO: false,
+              ENABLE_DESKTOP_DEEPLINK: false,
+              ENABLE_MOBILE_BROWSER: true
+            }">
+          </meet-hour-meeting>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!roomName" class="w-full h-screen relative top-16">
+      <div class="grid gap-3 p-5">
+        <h1 class="text-slate-600 text-2xl">Join a Meeting</h1>
+        <input
+          placeholder="Enter Meeting Id or link here."
+          class="w-64 h-10 border border-slate-400 focus:outline-none rounded-md pl-3"
+          type="text"
+          (change)="updateMeetingId($event)">
+        <button
+          class="w-28 h-8 text-white font-semibold text-sm bg-green-600 rounded-md"
+          (click)="viewMeeting()">
+          Join Meeting
+        </button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,34 @@
+<div>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-content">
+        <button class="menu-button" (click)="toggleMenu()">
+          <span class="sr-only">Open main menu</span>
+          <svg *ngIf="isMenuOpen" class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg *ngIf="!isMenuOpen" class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6h16M4 12h16m-7 6h7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="logo">
+          <a routerLink="/">
+            <img src="https://meethour.io/images/logo.SVG" alt="Your Company" class="logo-img">
+          </a>
+        </div>
+        <div class="nav-links">
+          <div *ngFor="let item of navigation" [ngClass]="classNames('nav-link', item.current ? 'current' : '')">
+            <a [routerLink]="item.href" style="color: aliceblue; text-decoration: none;">{{ item.name }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile-menu" *ngIf="isMenuOpen">
+      <div *ngFor="let item of navigation" [ngClass]="classNames('mobile-nav-link', item.current ? 'current' : '')">
+        <a [routerLink]="item.href" (click)="toggleMenu()">{{ item.name }}</a>
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- The routed views render in the <router-outlet> -->
+<router-outlet></router-outlet>

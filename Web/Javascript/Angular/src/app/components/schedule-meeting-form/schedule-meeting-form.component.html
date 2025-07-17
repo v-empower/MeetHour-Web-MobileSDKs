@@ -1,0 +1,157 @@
+<div class="container">
+  <div id="toast-container">
+    <div id="toast-success" class="toast">Success</div>
+    <div id="toast-failure" class="toast">Failure! Something went wrong.</div>
+  </div>
+  <!-- Modal -->
+  <div class="modal-backdrop" *ngIf="showModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title">Meeting Overview</h2>
+      </div>
+      <div class="modal-body">
+        <p>Meeting Id: {{roomName}}</p>
+      </div>
+      <div class="modal-body">
+        <p>Passcode: {{passcode}}</p>
+      </div>
+      <div class="modal-body">
+        <p>Join URL: {{joinURL}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" (click)="joinMeeting()">Join Meeting</button>
+        <button type="button" class="close" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+  <div class="flex min-h-full items-center justify-center lg:w-[60%] pb-6 px-4 sm:px-3 lg:px-4 ml-3">
+    <div>
+      <form (ngSubmit)="onSubmitHandler()">
+        <div>
+          <h2 class="mt-2 text-center text-3xl font-bold tracking-tight text-gray-900">Schedule a meeting</h2>
+        </div>
+        <div class="mt-5">
+          <input type="text" name="meeting_name" placeholder="Meeting Name" (input)="inputChangeHandler($event)" required>
+        </div>
+        <div>
+          <input type="text" name="passcode" placeholder="Passcode" (input)="inputChangeHandler($event)" required>
+        </div>
+        <div>
+          <input type="date" name="meeting_date" placeholder="Meeting Date" (input)="inputChangeHandler($event)" required>
+        </div>
+        <div>
+          <input type="time" name="meeting_time" placeholder="Meeting Time" (input)="inputChangeHandler($event)" required>
+        </div>
+        <app-timezone [requestBody]="requestBody" (inputChange)="handleTimezoneInput($event)"></app-timezone>
+        
+        <!--Add Participants Dropdown-->
+        <div>
+          <h1 style="margin-top: 15px; font-size: large; font-weight: 600;">Add Participants</h1>
+            <select [(ngModel)]="selectedParticipantContact" (ngModelChange)="addParticipant($event)" name="add-participants-contacts" style="width: 100%;" class="right-0 h-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none opacity-100 inline-flex w-full justify-between rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+              <option *ngFor="let contact of contacts" [ngValue]="contact">{{ contact.first_name }}</option>
+            </select>
+        </div>
+        <div *ngFor="let user of requestBody.attend">
+          <div *ngIf="isNotNumber(user)" class="flex justify-between">
+            <h3>{{ user.first_name }}</h3>
+            <button class="small-button"
+              (click)="removeParticipant(user)"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+        <div *ngFor="let user of contacts">
+          <div *ngIf="requestBody.attend.includes(user.id)" class="flex justify-between">
+            <h3>{{ user.first_name }}</h3>
+            <button
+            class="small-button"
+              (click)="removeParticipant(user.id)"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+  
+        <!-- Add Participants Manually -->
+  
+        <form style="margin-top: 10px;">
+          <h3>Add Participants Manually</h3>
+          <div>
+            <input type="text" name="first_name" placeholder="First Name" (input)="handleUserObject($event)" required>
+          </div>
+          <div>
+            <input type="text" name="last_name" placeholder="Last Name" (input)="handleUserObject($event)" required>
+          </div>
+          <div>
+            <input type="email" name="email" placeholder="Email" (input)="handleUserObject($event)" required>
+          </div>
+          <button (click)="addManualParticipant()" type="submit">Add</button>
+        </form>
+  
+      <!--Add Moderators Dropdown-->
+      <div>
+        <h1 style="margin-top: 15px; font-size: large; font-weight: 600;">Add Moderators</h1>
+        <select [(ngModel)]="selectedModeratorContact" (ngModelChange)="addModerator($event)" name="add-moderators-contacts" style="width: 100%;" class="right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none opacity-100 inline-flex w-full justify-between rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+          <option *ngFor="let contact of contacts" [ngValue]="contact">{{ contact.first_name }}</option>
+        </select>
+      </div>
+      
+      <div style="margin-top: 10px;" *ngFor="let user of contacts">
+        <div *ngIf="requestBody.hostusers.includes(user.id)" class="flex justify-between">
+          <h3>{{ user.first_name }}</h3>
+          <button
+            class="small-button"
+            (click)="removeModerator(user.id)"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+      <!-- Check Box -->
+      <div>
+        <p class="general-options-title">General Options</p>
+        <div class="options-container">
+          <div class="checkbox-container">
+            <input
+              (change)="inputChangeHandler($event)"
+              id="options"
+              name="options"
+              type="checkbox"
+              value="ALLOW_GUEST"
+              class="checkbox"
+            />
+          </div>
+          <div class="label-container">
+            <label
+              for="options"
+              class="options-label"
+            >
+              Guest user can join meeting
+            </label>
+          </div>
+        </div>
+      </div>
+        <div class="grid justify-content w-full">
+          <button style="background-color: #7B1FA2;
+        display: flex;
+        justify-content: center; width: 100%;" type="submit">
+          <div *ngIf="isScheduleLoading">
+            <div class="loader"></div>
+          </div>
+          <p *ngIf="!isScheduleLoading">Schedule a meeting</p>
+        </button>
+        <h3>Or</h3>
+        </div>
+      </form>
+      <button style="background-color: #1D4ED8;
+        display: flex;
+        justify-content: center;" (click)="instantMeeting()">
+          <div *ngIf="isInstantLoading">
+            <div class="loader"></div>
+          </div>
+          <p style="font-size: medium;" *ngIf="!isInstantLoading">Instant meeting</p>
+        </button>
+    </div>
+    <!-- <button (click)="instantMeeting()">Start Instant Meeting</button> -->
+  </div>

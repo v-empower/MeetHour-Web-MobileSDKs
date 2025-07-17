@@ -1,0 +1,6 @@
+<div class="w-96 h-10 rounded-md mt-3">
+    <select [value]="requestBody.timezone" (change)="onChange($event)" name="timezone" class="w-full h-full rounded-md focus:outline-none bg-slate-50 border border-slate-300">
+      <option *ngFor="let timezone of timezoneList" [value]="timezone.value">{{ timezone.name }}</option>
+    </select>
+  </div>
+  

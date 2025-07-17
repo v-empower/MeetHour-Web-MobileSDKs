@@ -13,7 +13,7 @@
 @property (nonatomic, copy) NSString *pcode;
 @property (nonatomic, assign) BOOL isAudioMuted;
 @property (nonatomic, assign) BOOL isVideoOn;
-@property (nonatomic, strong) PiPViewCoordinator *pipViewCoordinator;
+@property (nonatomic, strong) NSFileCoordinator *pipViewCoordinator;
 @property (nonatomic, strong) MeetHourView *MHView;
 
 @end
