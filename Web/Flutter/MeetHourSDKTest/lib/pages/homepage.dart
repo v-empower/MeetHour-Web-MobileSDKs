@@ -192,7 +192,7 @@ class _HomepageState extends State<_Homepage> {
       final String? access_token = prefs.getString('access_token');
       return access_token;
     } catch (error) {
-      print(error);
+      print("Error in generating accesstoken" + error.toString());
     } finally {
       setState(() {
         isLoader = false;

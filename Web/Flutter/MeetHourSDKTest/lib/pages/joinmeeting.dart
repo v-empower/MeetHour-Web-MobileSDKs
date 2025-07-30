@@ -176,7 +176,7 @@ class _MeetingState extends State<Meeting> {
   _joinMeeting() async {
     String? serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
     final prefs = await SharedPreferences.getInstance();
-    final String? meetingId = prefs.getString('meeting_id');
+    final String? meetingId = prefs.getString('meeting_id') ?? this.meeting_id;
 
     // Enable or disable any feature flag here
     // If feature flag are not provided, default values will be used
@@ -200,7 +200,7 @@ class _MeetingState extends State<Meeting> {
     featureFlags[FeatureFlagEnum.IOS_RECORDING_ENABLED] = true;
     // Define meetings options here
     var options = MeetHourMeetingOptions(
-        room: meetingId == null ? meeting_id : meetingId.toString())
+      room: meetingId == null ? meeting_id : meetingId.toString())
       ..serverURL = serverUrl
       ..token = meetingToken.toString()
       ..pcode = pCode
@@ -212,7 +212,7 @@ class _MeetingState extends State<Meeting> {
       ..prejoinPageEnabled = true // set this to false if you want to skip the prejoin page.
       ..disableInviteFunctions = true
       ..webOptions = {
-        "roomName": meeting_id,
+        "roomName": meetingId == null ? meeting_id : meetingId.toString(),
         "width": "100%",
         "height": "100%",
         "enableWelcomePage": false,

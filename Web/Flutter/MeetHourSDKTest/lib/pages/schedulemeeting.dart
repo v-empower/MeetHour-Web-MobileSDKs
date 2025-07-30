@@ -150,40 +150,71 @@ class MyCustomFormState extends State<MyCustomForm> {
     setState(() {
       isInstant = true;
     });
+
     String timezoneResponse = '';
     try {
       timezoneResponse = await FlutterNativeTimezone.getLocalTimezone();
-      var now = new DateTime.now();
-      var formatter = new DateFormat('dd-MM-yyyy');
+
+      var now = DateTime.now();
+      var formatter = DateFormat('dd-MM-yyyy');
       String formattedDate = formatter.format(now);
-      var time = DateFormat.jm().format(now).split(" ")[0];
-      var meridiem = DateFormat.jm().format(now).split(" ")[1];
-      if (time[1] == ':') {
+
+      // Format time and clean up unicode spaces
+      String formattedTime = DateFormat.jm().format(now);
+      print("Raw Formatted Time: $formattedTime");
+
+      // Replace all whitespace (space, non-breaking space, thin space, etc.) with normal space
+      formattedTime = formattedTime.replaceAll(RegExp(r'\s+'), ' ').trim();
+      print("Cleaned Formatted Time: $formattedTime");
+
+      List<String> timeParts = formattedTime.split(" ");
+
+      String time = '';
+      String meridiem = '';
+
+      if (timeParts.length == 2) {
+        time = timeParts[0];
+        meridiem = timeParts[1];
+      } else {
+        throw Exception("Invalid time format: $formattedTime");
+      }
+
+      if (time.length > 0 && time[1] == ':') {
         time = '0' + time;
       }
+
+      print("Time: $time");
+      print("Meridiem: $meridiem");
+
       final prefs = await SharedPreferences.getInstance();
       final String? access_token = prefs.getString('access_token');
+
       Map<String, dynamic> response = await ApiServices.scheduleMeeting(
-          access_token.toString(),
-          ScheduleMeetingType(
-              meetingDate: formattedDate,
-              meetingMeridiem: meridiem,
-              meetingName: "Quick Meeting",
-              meetingTime: time,
-              passcode: "123456",
-              timezone: timezoneResponse));
+        access_token.toString(),
+        ScheduleMeetingType(
+          meetingDate: formattedDate,
+          meetingMeridiem: meridiem,
+          meetingName: "Quick Meeting",
+          meetingTime: time,
+          passcode: "123456",
+          timezone: timezoneResponse,
+        ),
+      );
+
       if (response['success'] == true) {
         prefs.setString('meeting_id', response['data']['meeting_id']);
         return response;
       }
     } catch (e) {
-      print(e);
+      print("Error In InstantMeeting: $e");
     } finally {
       setState(() {
         isInstant = false;
       });
     }
   }
+
+
 
   Future<dynamic> scheduleMeeting() async {
     setState(() {
@@ -550,6 +581,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                         onPressed: () async {
                           // Validate returns true if the form is valid, or false otherwise.
                           var response = await instantMeeting();
+                          print("Response " +response.toString());
                           if (response['success'] == true) {
                             var meetingId = response['data']['meeting_id'];
                             var topic = response['data']['topic'];
