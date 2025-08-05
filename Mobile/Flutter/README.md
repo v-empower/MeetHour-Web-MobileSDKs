@@ -449,7 +449,7 @@ buildTypes {
 ```
 
 Then add a file in the same directory called proguard-rules.pro. See the example 
-app's [proguard-rules.pro](example/android/app/proguard-rules.pro) file to know what to paste in.
+app's [proguard-rules.pro](meethoursdkexample/android/app/proguard-rules.pro) file to know what to paste in.
 
 *Note*  
 If you do not create the proguard-rules.pro file, then your app will 
