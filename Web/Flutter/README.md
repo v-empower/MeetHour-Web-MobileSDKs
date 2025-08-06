@@ -431,36 +431,6 @@ defaultConfig {
 }
 ```
 
-#### Proguard
-
-MeetHour's SDK enables proguard, but without a proguard-rules.pro file, your release 
-apk build will be missing the Flutter Wrapper as well as react-native code. 
-In your Flutter project's android/app/build.gradle file, add proguard support
-
-```groovy
-buildTypes {
-    release {
-        // TODO: Add your own signing config for the release build.
-        // Signing with the debug keys for now, so `flutter run --release` works.
-        signingConfig signingConfigs.debug
-        
-        // Add below 3 lines for proguard
-        minifyEnabled false
-        useProguard true
-        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-    }
-}
-```
-
-Then add a file in the same directory called proguard-rules.pro. See the example 
-app's [proguard-rules.pro](example/android/app/proguard-rules.pro) file to know what to paste in.
-
-*Note*  
-If you do not create the proguard-rules.pro file, then your app will 
-crash when you try to join a meeting or the meeting screen tries to open
-but closes immediately. You will see one of the below errors in logcat.
-
-
 <a name="join-a-meeting"></a>
 
 ## Join A Meeting
