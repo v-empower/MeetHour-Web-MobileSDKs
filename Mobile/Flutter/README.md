@@ -440,16 +440,15 @@ buildTypes {
         // Signing with the debug keys for now, so `flutter run --release` works.
         signingConfig signingConfigs.debug
         
-        // Add below 3 lines for proguard
-        minifyEnabled false
-        useProguard true
+        // Add below 2 lines for proguard
+        minifyEnabled true
         proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
 }
 ```
 
 Then add a file in the same directory called proguard-rules.pro. See the example 
-app's [proguard-rules.pro](meethoursdkexample/android/app/proguard-rules.pro) file to know what to paste in.
+app's [proguard-rules.pro](MeetHourSDKTest/android/app/proguard-rules.pro) file to know what to paste in.
 
 *Note*  
 If you do not create the proguard-rules.pro file, then your app will 
