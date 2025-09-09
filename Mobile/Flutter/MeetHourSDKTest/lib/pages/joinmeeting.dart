@@ -215,14 +215,7 @@ for (var attendee in response['meeting_attendees']) {
       ..audioMuted = isAudioMuted
       ..videoMuted = isVideoMuted
       ..prejoinPageEnabled = true // set this to false if you want to skip the prejoin page.
-      ..disableInviteFunctions = true
-      ..webOptions = {
-        "roomName": meeting_id,
-        "width": "100%",
-        "height": "100%",
-        "enableWelcomePage": false,
-        "chromeExtensionBanner": null,
-      };
+      ..disableInviteFunctions = true;
 
     debugPrint("MeetHourMeetingOptions: $options");
     await MeetHour.joinMeeting(

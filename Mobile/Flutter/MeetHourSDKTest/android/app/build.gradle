@@ -30,7 +30,7 @@ android {
     namespace "go.meethour.io.flutter.example"
     compileSdkVersion 35
     ndkVersion '27.0.12077973'
-    ext.kotlin_version = '2.0.21'
+    ext.kotlin_version = '2.1.0'
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'

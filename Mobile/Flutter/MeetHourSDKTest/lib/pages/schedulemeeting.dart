@@ -194,6 +194,8 @@ class MyCustomFormState extends State<MyCustomForm> {
               meetingName: "Quick Meeting",
               meetingTime: time,
               passcode: "123456",
+              send_calendar_invite: 1,
+              is_show_portal: 1,
               timezone: timezoneResponse));
       if (response['success'] == true) {
         prefs.setString('meeting_id', response['data']['meeting_id']);
@@ -271,6 +273,7 @@ class MyCustomFormState extends State<MyCustomForm> {
       }
       final prefs = await SharedPreferences.getInstance();
       final String? access_token = prefs.getString('access_token');
+
       Map<String, dynamic> response = await ApiServices.scheduleMeeting(
           access_token.toString(),
           ScheduleMeetingType(
@@ -278,6 +281,8 @@ class MyCustomFormState extends State<MyCustomForm> {
               meetingMeridiem: meetingMeridiem,
               meetingName: meetingName,
               meetingTime: meetingTime,
+              send_calendar_invite: 1,
+              is_show_portal: 1,
               passcode: passcode,
               timezone: meetingTimezone,
               attend: attend,
@@ -561,6 +566,7 @@ class MyCustomFormState extends State<MyCustomForm> {
             onConfirm: (selected) {
               setState(() {
                 selectedParticipants = selected;
+                selectedModerators.retainWhere((moderator) => selectedParticipants.contains(moderator));
               });
               addParticipant(selected);
             },
@@ -587,7 +593,7 @@ class MyCustomFormState extends State<MyCustomForm> {
         onPressed: () {
           _showMultiSelectDialog(
             context: context,
-            items: contacts,
+            items: selectedParticipants,
             selectedItems: selectedModerators,
             title: "Select Moderator/s",
             onConfirm: (selected) {

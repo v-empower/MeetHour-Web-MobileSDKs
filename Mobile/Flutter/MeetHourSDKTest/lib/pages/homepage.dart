@@ -38,19 +38,19 @@ class _HomepageState extends State<_Homepage> {
 
   Widget alert() {
     return AlertDialog(
-          title: const Text('AlertDialog Title'),
-          content: const Text('AlertDialog description'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'OK'),
-              child: const Text('OK'),
-            ),
-          ],
-        );
+      title: const Text('AlertDialog Title'),
+      content: const Text('AlertDialog description'),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () => Navigator.pop(context, 'Cancel'),
+          child: const Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: () => Navigator.pop(context, 'OK'),
+          child: const Text('OK'),
+        ),
+      ],
+    );
   }
 
   Widget loader() {
@@ -160,7 +160,7 @@ class _HomepageState extends State<_Homepage> {
                   ElevatedButton(
                     onPressed: () async {
                       // Validate returns true if the form is valid, or false otherwise.
-                      getAccessToken();
+                      getAccessToken(context);
                     },
                     child: const Text(
                       'Get Access Token',
@@ -172,31 +172,65 @@ class _HomepageState extends State<_Homepage> {
             )));
   }
 
-  Future<dynamic> getAccessToken() async {
-    setState(() {
-      isLoader = true;
-    });
-    try {
-      // Obtain shared preferences.
-      LoginType body = LoginType(
-        client_id: CLIENT_ID,
-        client_secret: CLIENT_SECRET,
-        password: PASSWORD,
-        grant_type: 'password',
-        username: USERNAME
+  Future<dynamic> getAccessToken(BuildContext context) async {
+  setState(() {
+    isLoader = true;
+  });
+  try {
+    LoginType body = LoginType(
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET,
+      password: PASSWORD,
+      grant_type: 'password',
+      username: USERNAME,
     );
-      Map<String, dynamic> response = await ApiServices.login(
-          body);
-      final prefs = await SharedPreferences.getInstance();
-      prefs.setString('access_token', response['access_token']);
-      final String? access_token = prefs.getString('access_token');
-      return access_token;
-    } catch (error) {
-      print(error);
-    } finally {
-      setState(() {
-        isLoader = false;
-      });
+    Map<String, dynamic> response = await ApiServices.login(body);
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('access_token', response['access_token']);
+
+    // ✅ Show snackbar
+    if (context.mounted) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Success'),
+            content: Text('Access token received and stored.'),
+            actions: [
+              TextButton(
+                child: Text('OK'),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ],
+          );
+        },
+      );
     }
+
+    return response['access_token'];
+  } catch (error) {
+    print(error);
+    if (context.mounted) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Failed to get access token.'),
+            actions: [
+              TextButton(
+                child: Text('OK'),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ],
+          );
+        },
+      );
+    }
+  } finally {
+    setState(() {
+      isLoader = false;
+    });
   }
+}
 }

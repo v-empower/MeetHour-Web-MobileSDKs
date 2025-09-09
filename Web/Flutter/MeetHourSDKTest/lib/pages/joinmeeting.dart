@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'dart:html' as html;
 import 'package:MeetHourSDKTest/pages/homepage.dart';
 import 'package:MeetHourSDKTest/pages/schedulemeeting.dart';
 import 'package:dropdown_search/dropdown_search.dart';
@@ -85,16 +86,31 @@ class _MeetingState extends State<Meeting> {
     final prefs = await SharedPreferences.getInstance();
     prefs.remove('meeting_id');
     prefs.remove('pCode');
-    Navigator.of(context).push(
+    Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (context) => Homepage()),
     );
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    MeetHour.removeAllListeners();
+void dispose() {
+  MeetHour.removeAllListeners();
+  cleanupWebMeetHourDom();
+  super.dispose();
+}
+
+void cleanupWebMeetHourDom() {
+  // Get all <flt-platform-view> elements
+  final platformViews = html.document.querySelectorAll('flt-platform-view');
+
+  for (var element in platformViews) {
+    // Check if it contains the meet-hour-section (which means it's related to MeetHour)
+    final meetHourSection = element.querySelector('#meet-hour-section');
+
+    if (meetHourSection != null) {
+      element.remove();
+    }
   }
+}
 
   Future<dynamic> viewMeeting() async {
     setState(() {
@@ -199,29 +215,27 @@ class _MeetingState extends State<Meeting> {
     // Enabling Recording
     featureFlags[FeatureFlagEnum.IOS_RECORDING_ENABLED] = true;
     // Define meetings options here
-    var options = MeetHourMeetingOptions(
-      room: meetingId == null ? meeting_id : meetingId.toString())
-      ..serverURL = serverUrl
-      ..token = meetingToken.toString()
-      ..pcode = pCode
-      // ..iosAppBarRGBAColor = iosAppBarRGBAColor.text
-      ..featureFlags.addAll(featureFlags)
-      ..audioOnly = isAudioOnly
-      ..audioMuted = isAudioMuted
-      ..videoMuted = isVideoMuted
-      ..prejoinPageEnabled = true // set this to false if you want to skip the prejoin page.
-      ..disableInviteFunctions = true
+    var options = MeetHourMeetingOptions()
       ..webOptions = {
-        "roomName": meetingId == null ? meeting_id : meetingId.toString(),
-        "width": "100%",
-        "height": "100%",
+        "roomName": meetingId == null ? meeting_id : meetingId, // roomName is the Meeting ID
+        "width": "100%", // Width of the Conference frame
+        "height": "100%", // Height of the Conference frame
+
+        // Add "userInfo" option to auto-fill the user details in conference especially when no jwt token is passed.
+        // When JWT is passed, no need to provide userInfo as user details are taken from JWT under the hood.
+
+        // "userInfo": {
+        // "email": "user@example.com",
+        // "displayName": "John Doe"
+        // },
+        "serverURL": serverUrl,
         "enableWelcomePage": false,
         "chromeExtensionBanner": null,
         "jwt": meetingToken.toString(), // Pass the JWT Token that you receive from Generate JWT API
         "apikey": "",
-        "pcode": pCode, 
+        "pcode": pCode, // When pCode is passed, participant will be joined without asking password.
         "configOverwrite": {
-                "prejoinPageEnabled": true, // make this false to skip the prejoin page 
+                "prejoinPageEnabled": true, // Make this false to skip the prejoin page 
                 "disableInviteFunctions": true,
                 "disableProfile": true,
                 "disableEmail": false // make this `true` to disable Email on Prejoin page.
@@ -291,15 +305,15 @@ class _MeetingState extends State<Meeting> {
           selectedItemColor: Colors.black,
           onTap: (index) {
             if (index == 0) {
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => Homepage()),
               );
             } else if (index == 1) {
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => ScheduleMeeting()),
               );
             } else {
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(builder: (context) => JoinMeeting()),
               );
             }
@@ -319,7 +333,7 @@ class _MeetingState extends State<Meeting> {
                     ),
                     Container(
                         width: width * 0.60,
-                  child: child= Padding(
+                        child: child= Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Card(
                               color: Colors.white54,
