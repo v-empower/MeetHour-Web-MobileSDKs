@@ -467,14 +467,14 @@ _joinMeeting() async {
 	  featureFlag.welcomePageEnabled = false;
 	  featureFlag.resolution = FeatureFlagVideoResolution.MD_RESOLUTION; // Limit video resolution to 360p
 	  
-      var options = MeetHourMeetingOptions()
-        ..room = "TestRoom" // Required, spaces will be trimmed
-        ..serverURL = "https://meethour.io"
+      var options = MeetHourMeetingOptions(
+        room: "MEETINGID")
+        ..serverURL = "https://meethour.io" 
         ..subject = "Meeting with John"
-        ..userDisplayName = "John Delise"
+        ..userDisplayName = "John Delise" // Required to display name when jwt token passed in the options.
         ..token = "" // JWT Token for User authentication as Moderator.
         ..pcode = "" // To Pass meeting password dynamically.
-        ..userEmail = "john@gmail.com"
+        ..userEmail = "john@gmail.com" // Required to display email when jwt token passed in the options.
         ..userAvatarURL = "https://someimageurl.com/image.jpg" // or .png
         ..audioOnly = true
         ..audioMuted = true
@@ -482,33 +482,6 @@ _joinMeeting() async {
         ..prejoinPageEnabled = true // Make it false to Skip PrejoinPage
         ..disableInviteFunctions = true // To disable invite functions in Mobile SDK.
         ..featureFlag = featureFlag;
-        ..webOptions = { // Only for Flutter Web
-        "roomName": meeting_id,
-        "width": "100%",
-        "height": "100%",
-        "enableWelcomePage": false,
-        "chromeExtensionBanner": null,
-        "jwt": meetingToken.toString(), // Pass the JWT Token that you receive from Generate JWT API
-        "apikey": "",
-        "pcode": pCode, 
-        "configOverwrite": {
-                "prejoinPageEnabled": true, // make this false to skip the prejoin page 
-                "disableInviteFunctions": true,
-                "disableProfile": true,
-                "disableEmail": false // make this `true` to disable Email on Prejoin page.
-            },
-        "interfaceConfigOverwrite": {
-            "applyMeetingSettings": true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings
-            "disablePrejoinHeader": true,
-            "disablePrejoinFooter": true,                
-            "SHOW_MEET_HOUR_WATERMARK": false,
-            "ENABLE_DESKTOP_DEEPLINK": false,
-            "HIDE_DEEP_LINKING_LOGO": true,
-            "MOBILE_APP_PROMO": false,
-            "ENABLE_MOBILE_BROWSER": true,
-            "DISABLE_VOICE_COMMAND": true,
-            "CHANGE_MODERATOR_NAME": 'Moderator'
-            },
       }
 
       await MeetHour.joinMeeting(options);

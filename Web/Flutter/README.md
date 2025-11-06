@@ -443,36 +443,31 @@ _joinMeeting() async {
 	  featureFlag.resolution = FeatureFlagVideoResolution.MD_RESOLUTION; // Limit video resolution to 360p
 	  
       var options = MeetHourMeetingOptions()
-        ..room = "TestRoom" // Required, spaces will be trimmed
-        ..serverURL = "https://meethour.io"
-        ..subject = "Meeting with John"
-        ..userDisplayName = "John Delise"
-        ..token = "" // JWT Token for User authentication as Moderator.
-        ..pcode = "" // To Pass meeting password dynamically.
-        ..userEmail = "john@gmail.com"
-        ..userAvatarURL = "https://someimageurl.com/image.jpg" // or .png
-        ..audioOnly = true
-        ..audioMuted = true
-        ..videoMuted = true
-        ..prejoinPageEnabled = true // Make it false to Skip PrejoinPage
-        ..disableInviteFunctions = true // To disable invite functions in Mobile SDK.
-        ..featureFlag = featureFlag;
-        ..webOptions = { // Only for Flutter Web
-        "roomName": meeting_id,
-        "width": "100%",
-        "height": "100%",
+      ..webOptions = {
+        "roomName": "MEETINGID", // roomName is the Meeting ID
+        "width": "100%", // Width of the Conference frame
+        "height": "100%", // Height of the Conference frame
+
+        // Add "userInfo" option to auto-fill the user details in conference especially when no jwt token is passed.
+        // When JWT is passed, no need to provide userInfo as user details are taken from JWT under the hood.
+
+        // "userInfo": {
+        // "email": "user@example.com",
+        // "displayName": "John Doe"
+        // },
+        "serverURL": "https://meethour.io",
         "enableWelcomePage": false,
         "chromeExtensionBanner": null,
-        "jwt": meetingToken.toString(), // Pass the JWT Token that you receive from Generate JWT API
+        "jwt": "", // Pass the JWT Token that you receive from Generate JWT API
         "apikey": "",
-        "pcode": pCode, 
-        "configOverwrite": {
-                "prejoinPageEnabled": true, // make this false to skip the prejoin page 
+        "pcode": "", // When pCode is passed, participant will be joined without asking password.
+        "configOverwrite": { // If you want to reflect the changes from the dashboard, remove configOverwrite from here.
+                "prejoinPageEnabled": true, // Make this false to skip the prejoin page 
                 "disableInviteFunctions": true,
                 "disableProfile": true,
                 "disableEmail": false // make this `true` to disable Email on Prejoin page.
             },
-        "interfaceConfigOverwrite": {
+        "interfaceConfigOverwrite": { // If you want to reflect the changes from the dashboard, remove interfaceConfigOverwrite from here.
             "applyMeetingSettings": true, // This is managed from this page - https://portal.meethour.io/customer/ui_settings
             "disablePrejoinHeader": true,
             "disablePrejoinFooter": true,                

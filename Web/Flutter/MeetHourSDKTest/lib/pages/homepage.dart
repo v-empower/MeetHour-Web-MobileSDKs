@@ -190,9 +190,43 @@ class _HomepageState extends State<_Homepage> {
       final prefs = await SharedPreferences.getInstance();
       prefs.setString('access_token', response['access_token']);
       final String? access_token = prefs.getString('access_token');
+      if (context.mounted) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Success'),
+            content: Text('Access token received and stored.'),
+            actions: [
+              TextButton(
+                child: Text('OK'),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ],
+          );
+        },
+      );
+    }
       return access_token;
     } catch (error) {
-      print("Error in generating accesstoken" + error.toString());
+      print(error);
+      if (context.mounted) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Failed to get access token.'),
+            actions: [
+              TextButton(
+                child: Text('OK'),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+            ],
+          );
+        },
+      );
+    }
     } finally {
       setState(() {
         isLoader = false;
