@@ -26,11 +26,11 @@ export default function JoinMeeting(props) {
   const [isViewSelected, setIsViewSelected] = useState(false);
   const [viewType, setViewType] = useState('');
   const [conferenceOptions, setConferenceOptions] = useState({
-    room: '',
-    token: '',
-    pcode: '',
+    room: 'MHR251117177297',
+    // token: '',
+    // pcode: '',
     serverUrl: 'https://meethour.io',
-    prejoinPageEnabled: false, // Make it false to Skip PrejoinPage
+    prejoinPageEnabled: true, // Make it false to Skip PrejoinPage
     disableInviteFunctions: true // To disable invite functions in Mobile SDK.
   });
   const [meetingId, setMeetingId] = useState('');
@@ -237,7 +237,7 @@ export default function JoinMeeting(props) {
 
           <Pressable
             onPress={() => {
-              viewMeeting(true);
+              props.setShowMeetHourView((prev) => true);
             }}
             style={({ pressed }) => [
               styles.button,

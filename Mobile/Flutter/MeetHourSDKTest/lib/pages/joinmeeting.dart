@@ -76,7 +76,7 @@ class _MeetingState extends State<Meeting> {
     final prefs = await SharedPreferences.getInstance();
     final String? meeting_id = prefs.getString('meeting_id');
     if (meeting_id != null) {
-      this.viewMeeting();
+      // this.viewMeeting();
     }
   }
 
@@ -95,44 +95,6 @@ class _MeetingState extends State<Meeting> {
     MeetHour.removeAllListeners();
   }
 
-  Future<dynamic> viewMeeting() async {
-    setState(() {
-      isLoading = true;
-    });
-    final prefs = await SharedPreferences.getInstance();
-    final String? access_token = prefs.getString('access_token');
-    final String? meetingId = prefs.getString('meeting_id');
-    try {
-      var response = await ApiServices.viewMeeting(
-          access_token.toString(),
-          ViewMeetingType(
-              meeting_id:
-                  meetingId != null ? meetingId.toString() : meeting_id));
-      prefs.setString('pCode', response['meeting']['pcode']);
-      List<String> temporaryArray = [];
-temporaryArray.add(
-  response['organizer']['name'] + ' (Organizer / Account Owner)');
-for (var attendee in response['meeting_attendees']) {
-  temporaryArray.add('ID-' +
-      attendee['contact_id'].toString() +
-      ', Email-' +
-      attendee['email'].toString());
-}
-      
-      setState(() {
-        pCode = prefs.getString('pCode').toString();
-        meetingAttendees = temporaryArray;
-        isScheduled = true;
-      });
-    } catch (error) {
-      print(error);
-    }
-    finally{
-      setState(() {
-        isLoading = false;
-      });
-    }
-  }
 
   Future<dynamic> getJwtToken(String details) async {
     var contactId;
@@ -181,8 +143,7 @@ for (var attendee in response['meeting_attendees']) {
 
   _joinMeeting(String token) async {
     String? serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
-    final prefs = await SharedPreferences.getInstance();
-    final String? meetingId = prefs.getString('meeting_id');
+    // final String? meetingId = prefs.getString('meeting_id');
 
     // Enable or disable any feature flag here
     // If feature flag are not provided, default values will be used
@@ -205,10 +166,10 @@ for (var attendee in response['meeting_attendees']) {
     // Enabling Recording
     featureFlags[FeatureFlagEnum.IOS_RECORDING_ENABLED] = true;
     var options = MeetHourMeetingOptions(
-        room: meetingId == null ? meeting_id : meetingId.toString())
+        room: 'MHR251117177297')
       ..serverURL = serverUrl
-      ..token = token
-      ..pcode = pCode
+      // ..token = token
+      // ..pcode = pCode
       // ..iosAppBarRGBAColor = iosAppBarRGBAColor.text
       ..featureFlags.addAll(featureFlags)
       ..audioOnly = isAudioOnly
@@ -360,7 +321,7 @@ for (var attendee in response['meeting_attendees']) {
                           }).toList(),
                           onChanged: (String? selectedAttendee) {
                             if (selectedAttendee != null) {
-                              getJwtToken(selectedAttendee);
+                              _joinMeeting('token');
                             }
                           },
                         ),
@@ -393,7 +354,7 @@ for (var attendee in response['meeting_attendees']) {
                         ),
                         const SizedBox(height: 20),
                         ElevatedButton(
-                          onPressed: viewMeeting,
+                          onPressed: _joinMeeting(''),
                           child: const Text('Join Meeting'),
                         ),
                       ],
