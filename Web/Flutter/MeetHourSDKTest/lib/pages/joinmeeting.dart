@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'dart:html' as html;
+import 'package:web/web.dart' as web;
 import 'package:MeetHourSDKTest/pages/homepage.dart';
 import 'package:MeetHourSDKTest/pages/schedulemeeting.dart';
 import 'package:dropdown_search/dropdown_search.dart';
@@ -53,14 +53,6 @@ class _MeetingState extends State<Meeting> {
   bool isScheduled = false;
   List<String> meetingAttendees = [];
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   void initState() {
@@ -92,25 +84,25 @@ class _MeetingState extends State<Meeting> {
   }
 
   @override
-void dispose() {
-  MeetHour.removeAllListeners();
-  cleanupWebMeetHourDom();
-  super.dispose();
-}
+  void dispose() {
+    MeetHour.removeAllListeners();
+    cleanupWebMeetHourDom();
+    super.dispose();
+  }
 
-void cleanupWebMeetHourDom() {
-  // Get all <flt-platform-view> elements
-  final platformViews = html.document.querySelectorAll('flt-platform-view');
-
-  for (var element in platformViews) {
-    // Check if it contains the meet-hour-section (which means it's related to MeetHour)
-    final meetHourSection = element.querySelector('#meet-hour-section');
-
-    if (meetHourSection != null) {
-      element.remove();
+  void cleanupWebMeetHourDom() {
+    // Get all <flt-platform-view> elements using package:web
+    final platformViews = web.document.querySelectorAll('flt-platform-view');
+    // NodeList is not Iterable, so use index access
+    for (var i = 0; i < platformViews.length; i++) {
+      final element = platformViews.item(i) as web.Element;
+      // Check if it contains the meet-hour-section (which means it's related to MeetHour)
+      final meetHourSection = element.querySelector('#meet-hour-section');
+      if (meetHourSection != null) {
+        element.remove();
+      }
     }
   }
-}
 
   Future<dynamic> viewMeeting() async {
     setState(() {
@@ -169,24 +161,6 @@ void cleanupWebMeetHourDom() {
     } catch (error) {
       print(error);
     }
-  }
-
-  _onAudioOnlyChanged(bool? value) {
-    setState(() {
-      isAudioOnly = value;
-    });
-  }
-
-  _onAudioMutedChanged(bool? value) {
-    setState(() {
-      isAudioMuted = value;
-    });
-  }
-
-  _onVideoMutedChanged(bool? value) {
-    setState(() {
-      isVideoMuted = value;
-    });
   }
 
   _joinMeeting() async {
@@ -280,7 +254,6 @@ void cleanupWebMeetHourDom() {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    Padding child;
     return MaterialApp(
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
@@ -333,7 +306,7 @@ void cleanupWebMeetHourDom() {
                     ),
                     Container(
                         width: width * 0.60,
-                        child: child= Padding(
+                        child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Card(
                               color: Colors.white54,
