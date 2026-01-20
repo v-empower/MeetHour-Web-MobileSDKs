@@ -25,7 +25,7 @@ PODS:
   - libwebp/sharpyuv (1.5.0)
   - libwebp/webp (1.5.0):
     - libwebp/sharpyuv
-  - MeetHourSDK (5.0.7):
+  - MeetHourSDK (5.0.12):
     - Giphy (= 2.2.12)
   - RCT-Folly (2021.07.22.00):
     - boost
@@ -298,8 +298,8 @@ PODS:
   - React-jsinspector (0.72.4)
   - React-logger (0.72.4):
     - glog
-  - react-native-meet-hour-sdk (3.0.40):
-    - MeetHourSDK (= 5.0.7)
+  - react-native-meet-hour-sdk (3.0.42):
+    - MeetHourSDK (= 5.0.12)
     - React-Core
   - React-NativeModulesApple (0.72.4):
     - React-callinvoker
@@ -563,28 +563,28 @@ SPEC CHECKSUMS:
   Giphy: 83628960ed04e1c3428ff1b4fb2b027f65e82f50
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
-  MeetHourSDK: 4fba46f200ad0632c46443fb9666c270ae0ae0c6
+  MeetHourSDK: c34dab40934dbe2ef178cb83f1eaf9f803439aca
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: c0569ecc035894e4a68baecb30fe6a7ea6e399f9
   RCTTypeSafety: e90354072c21236e0bcf1699011e39acd25fea2f
   React: a1be3c6dc0a6e949ccd3e659781aa47bbae1868f
   React-callinvoker: 1020b33f6cb1a1824f9ca2a86609fbce2a73c6ed
-  React-Codegen: 97df9239bfc44a4504c4840dfae3a200e4500afe
-  React-Core: 9df7960451a433053f30a5862728f92088a9150d
-  React-CoreModules: 21abab85d7ad9038ce2b1c33d39e3baaf7dc9244
-  React-cxxreact: 9f0bd765bbffbd2038936d1f0ba1c80ea7649e28
+  React-Codegen: 737d64c442d145fedf67c8ecd34d758f8a5ae52d
+  React-Core: 7e85bffed8cbb93a4355fb37d5f986777de8f610
+  React-CoreModules: b934bf2d99a27be649d5682b5057268b5df91928
+  React-cxxreact: 550099f12a39afd3503ac489e4cd008e2cf7a07d
   React-debug: 17366a3d5c5d2f5fc04f09101a4af38cb42b54ae
   React-jsc: 844ccd35b8dbd105aa0430b658611a43f10ba8a5
-  React-jsi: 8c012b3699d7427e96866dd3a539ca9611fa2546
-  React-jsiexecutor: bc8a9ad812a2c88b3a41c08b5f4b3ed32d6d4766
+  React-jsi: 95dad58d773cb439c3fc71046d5041b6fea5e550
+  React-jsiexecutor: a5d2f70d7a791ea562ca23c443c974e584630d14
   React-jsinspector: aaed4cf551c4a1c98092436518c2d267b13a673f
-  React-logger: da1ebe05ae06eb6db4b162202faeafac4b435e77
-  react-native-meet-hour-sdk: 283159076416871d16b8d86642206c7330d9193e
-  React-NativeModulesApple: 759309419da76ef4c9f331968b840022ee2aa5b1
+  React-logger: 005cf0fc175b43fd5a1abca9ad02fc50c5db45d3
+  react-native-meet-hour-sdk: ddb6b715a6e92e45c614ee6a305a32a64939a455
+  React-NativeModulesApple: 2034acfb29f1cbd716ac5f1808951c0c5b3957e8
   React-perflogger: 496a1a3dc6737f964107cb3ddae7f9e265ddda58
   React-RCTActionSheet: 02904b932b50e680f4e26e7a686b33ebf7ef3c00
   React-RCTAnimation: 88feaf0a85648fb8fd497ce749829774910276d6
-  React-RCTAppDelegate: b9e5fe0e4b71f30f3742225dc7085ae10681a1cd
+  React-RCTAppDelegate: 4946740e9cec5bd6a9c19c35eb4c3c7f63f6be7e
   React-RCTBlob: 455b680e457c36f8d98f4338b51cd3cbf48744bd
   React-RCTImage: b111645ab901f8e59fc68fbe31f5731bdbeef087
   React-RCTLinking: 3d719727b4c098aad3588aa3559361ee0579f5de
@@ -594,12 +594,12 @@ SPEC CHECKSUMS:
   React-RCTVibration: 691c67f3beaf1d084ceed5eb5c1dddd9afa8591e
   React-rncore: 142268f6c92e296dc079aadda3fade778562f9e4
   React-runtimeexecutor: d465ba0c47ef3ed8281143f59605cacc2244d5c7
-  React-runtimescheduler: cbd78e16328bde1e5abac4ceb0cb635d03c359c6
-  React-utils: b79f2411931f9d3ea5781404dcbb2fa8a837e13a
-  ReactCommon: 2635a013764a291989765d6ec136513911f478c6
-  RNCAsyncStorage: c913ede1fa163a71cea118ed4670bbaaa4b511bb
-  RNDateTimePicker: ccd988deb223cbb2e669e157ec576c2c6217128c
-  RNLocalize: dbea38dcb344bf80ff18a1757b1becf11f70cae4
+  React-runtimescheduler: 255945245bcf8d402d106f5991a8486a7897e529
+  React-utils: 5af1d6c958748398eae8030a2fa08af220f4a2e6
+  ReactCommon: e1d24200e93da4f6f93d54b2da9a7dd8c2b81c28
+  RNCAsyncStorage: b934e5ab140257f25f5d67ded2464646731e4349
+  RNDateTimePicker: 677da056ad5f0f6807c2f2e94700acd2c83872ae
+  RNLocalize: 01b15a24a8f1856eeaeeb77f4179ccd88c117a73
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 3efc43e0d48686ce2e8c60f99d4e6bd349aff981
 

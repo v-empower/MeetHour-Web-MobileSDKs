@@ -18,8 +18,8 @@ PODS:
     - libwebp/sharpyuv
   - meet_hour (0.0.1):
     - Flutter
-    - MeetHourSDK (= 5.0.7)
-  - MeetHourSDK (5.0.7):
+    - MeetHourSDK (= 5.0.12)
+  - MeetHourSDK (5.0.12):
     - Giphy (= 2.2.12)
   - shared_preferences_foundation (0.0.1):
     - Flutter
@@ -49,13 +49,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_native_timezone: 5f05b2de06c9776b4cc70e1839f03de178394d22
+  flutter_native_timezone: 5fe32678d72d1894880e94303ef41c2919f014e5
   Giphy: 83628960ed04e1c3428ff1b4fb2b027f65e82f50
   libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
-  meet_hour: 433cbb3abfc0913257e7a735ae70ff57a52730e1
-  MeetHourSDK: 4fba46f200ad0632c46443fb9666c270ae0ae0c6
-  shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
+  meet_hour: 8f2658062de2893de3f303e3bec6226b5735eddd
+  MeetHourSDK: c34dab40934dbe2ef178cb83f1eaf9f803439aca
+  shared_preferences_foundation: 9e1978ff2562383bd5676f64ec4e9aa8fa06a6f7
 
-PODFILE CHECKSUM: 1cb11e2ed4614277483a488ac74fd8b7309d1db8
+PODFILE CHECKSUM: 9d05885b4a80dd7f78f731481ae159d8aeb35f43
 
 COCOAPODS: 1.16.2
