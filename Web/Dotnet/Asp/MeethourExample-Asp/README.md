@@ -2,8 +2,8 @@
 
 ![Alt text](https://raw.githubusercontent.com/v-empower/MeetHour-Python-SDK/master/logo.png)
 
-[Meet Hour - 100% free video conference solution](https://meethour.io)
-Meet Hour is 100% free video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc.
+[Meet Hour - HD Quality video conference solution](https://meethour.io)
+Meet Hour is HD Quality video conference solution with End to End Encrypted and many other features such as lobby mode, Donor box & Click&Pledge Connect for fundraising, Video call recording, Youtube Live Stream etc.
 
 # Features:
 
