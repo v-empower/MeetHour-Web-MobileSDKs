@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:meet_hour/meet_hour.dart';
 import 'package:meet_hour/types/login_type.dart';
 import 'package:MeetHourSDKTest/constants/index.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:MeetHourSDKTest/utils/app_storage.dart';
 
 void main() {
   runApp(Homepage());
@@ -187,9 +187,9 @@ class _HomepageState extends State<_Homepage> {
     );
       Map<String, dynamic> response = await ApiServices.login(
           body);
-      final prefs = await SharedPreferences.getInstance();
-      prefs.setString('access_token', response['access_token']);
-      final String? access_token = prefs.getString('access_token');
+        await AppStorage.setString(
+          'access_token', response['access_token'].toString());
+      final String? access_token = await AppStorage.getString('access_token');
       if (context.mounted) {
       showDialog(
         context: context,

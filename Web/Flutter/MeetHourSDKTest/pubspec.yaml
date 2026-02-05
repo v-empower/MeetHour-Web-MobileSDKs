@@ -5,14 +5,14 @@ publish_to: 'none'
 
 
 environment:
-  sdk: '>=2.17.0'
+  sdk: ^3.10.7
 
 dependencies:
   flutter:
     sdk: flutter
 
   web: ^1.1.1
-  meet_hour: '>=5.0.36'
+  meet_hour: '>=5.0.38'
   js_interop: ^0.0.1
 
   cupertino_icons: ^1.0.2
@@ -24,11 +24,6 @@ dependencies:
 
   flutter_datetime_picker_plus: ^2.2.0
   dropdown_search: ^5.0.6
-  shared_preferences: ^2.2.2
-  flutter_native_timezone:
-    git:
-      url: https://github.com/v-empower/flutter_native_timezone.git
-      ref: b641bacecbbdd0ca1a8bf840639ca263444a2a81 # commit hash
 dev_dependencies:
   flutter_test:
     sdk: flutter
