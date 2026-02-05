@@ -202,6 +202,11 @@ class _MeetingState extends State<Meeting> {
         "serverURL": serverUrl,
         "enableWelcomePage": false,
         "chromeExtensionBanner": null,
+        /// When running Flutter in WASM web using the command:
+        /// `flutter run -d web --wasm`
+        /// 
+        /// Note: This dependency/configuration is only needed when you run Flutter in WASM scenario.
+        // "credentialless": true,
         "jwt": meetingToken.toString(), // Pass the JWT Token that you receive from Generate JWT API
         "apikey": "",
         "pcode": pCode, // When pCode is passed, participant will be joined without asking password.
