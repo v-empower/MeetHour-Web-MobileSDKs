@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:meet_hour/meet_hour.dart';
 import 'package:meet_hour/types/generate_jwt_type.dart';
 import 'package:meet_hour/types/view_meeting_type.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:MeetHourSDKTest/utils/app_storage.dart';
 
 void main() => runApp(JoinMeeting());
 
@@ -67,17 +67,15 @@ class _MeetingState extends State<Meeting> {
   }
 
   void meetingCheck() async {
-    final prefs = await SharedPreferences.getInstance();
-    final String? meeting_id = prefs.getString('meeting_id');
+    final String? meeting_id = await AppStorage.getString('meeting_id');
     if (meeting_id != null) {
       this.viewMeeting();
     }
   }
 
   void resetMeetingDetails() async {
-    final prefs = await SharedPreferences.getInstance();
-    prefs.remove('meeting_id');
-    prefs.remove('pCode');
+    await AppStorage.remove('meeting_id');
+    await AppStorage.remove('pCode');
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (context) => Homepage()),
     );
@@ -108,18 +106,18 @@ class _MeetingState extends State<Meeting> {
     setState(() {
       isLoading = true;
     });
-    final prefs = await SharedPreferences.getInstance();
-    final String? access_token = prefs.getString('access_token');
-    final String? meetingId = prefs.getString('meeting_id');
+    final String? access_token = await AppStorage.getString('access_token');
+    final String? meetingId = await AppStorage.getString('meeting_id');
     try {
       var response = await ApiServices.viewMeeting(
           access_token.toString(),
           ViewMeetingType(
               meeting_id:
                   meetingId != null ? meetingId.toString() : meeting_id));
-      prefs.setString('pCode', response['meeting']['pcode']);
+        await AppStorage.setString(
+          'pCode', response['meeting']['pcode'].toString());
       setState(() {
-        pCode = prefs.getString('pCode').toString();
+        pCode = response['meeting']['pcode'].toString();
         meetingAttendees.add(
             (response['organizer']['name'] + '( Organizer / Account Owner )'));
         for (var attendee in response['meeting_attendees']) {
@@ -145,9 +143,8 @@ class _MeetingState extends State<Meeting> {
     if (details.contains(", Email")) {
       contactId = int.parse(details.toString().split(',')[0].split('-')[1]);
     }
-    final prefs = await SharedPreferences.getInstance();
-    final String? meetingId = prefs.getString('meeting_id');
-    final String? access_token = prefs.getString('access_token');
+    final String? meetingId = await AppStorage.getString('meeting_id');
+    final String? access_token = await AppStorage.getString('access_token');
     try {
       var response = await ApiServices.generateJwt(
           access_token.toString(),
@@ -165,8 +162,8 @@ class _MeetingState extends State<Meeting> {
 
   _joinMeeting() async {
     String? serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
-    final prefs = await SharedPreferences.getInstance();
-    final String? meetingId = prefs.getString('meeting_id') ?? this.meeting_id;
+    final String? meetingId =
+        (await AppStorage.getString('meeting_id')) ?? this.meeting_id;
 
     // Enable or disable any feature flag here
     // If feature flag are not provided, default values will be used

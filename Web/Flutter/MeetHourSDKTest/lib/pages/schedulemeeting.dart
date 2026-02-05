@@ -5,11 +5,11 @@ import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart'
 import 'package:meet_hour/meet_hour.dart';
 import 'package:meet_hour/types/contacts_type.dart';
 import 'package:meet_hour/types/schedule_meeting_type.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_native_timezone/flutter_native_timezone.dart';
 import 'joinmeeting.dart';
+import 'package:MeetHourSDKTest/utils/app_storage.dart';
+import 'package:MeetHourSDKTest/utils/timezone_util.dart';
 
 void main() {
   runApp(ScheduleMeeting());
@@ -101,8 +101,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   Future<void> getTimezone() async {
     try {
-      final prefs = await SharedPreferences.getInstance();
-      final String? access_token = prefs.getString('access_token');
+      final String? access_token = await AppStorage.getString('access_token');
       if (access_token == null) {
         print('Error: access_token is null');
         return;
@@ -150,8 +149,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   }
 
   Future<dynamic> getContacts() async {
-    final prefs = await SharedPreferences.getInstance();
-    final String? access_token = prefs.getString('access_token');
+    final String? access_token = await AppStorage.getString('access_token');
     Map<String, dynamic> response = await ApiServices.contactsList(
         access_token.toString(),
         ContactsType(exclude_hosts: 0, limit: 0, page: 0));
@@ -173,7 +171,12 @@ class MyCustomFormState extends State<MyCustomForm> {
 
     String timezoneResponse = '';
     try {
-      timezoneResponse = await FlutterNativeTimezone.getLocalTimezone();
+      // Get timezone using browser's local timezone with fallback
+      timezoneResponse = getLocalTimezoneWithFallback(
+        selectedTimezone: meetingTimezone,
+        availableTimezones: timezones,
+        defaultTimezone: 'UTC',
+      );
       var now = DateTime.now();
 
       String formattedDate = DateFormat('dd-MM-yyyy').format(now);
@@ -191,8 +194,7 @@ class MyCustomFormState extends State<MyCustomForm> {
         time = parts[0];
         meridiem = 'AM'; // or handle error
       }
-      final prefs = await SharedPreferences.getInstance();
-      final String? access_token = prefs.getString('access_token');
+        final String? access_token = await AppStorage.getString('access_token');
 
       Map<String, dynamic> response = await ApiServices.scheduleMeeting(
           access_token.toString(),
@@ -207,7 +209,8 @@ class MyCustomFormState extends State<MyCustomForm> {
               passcode: "123456",
               timezone: timezoneResponse));
       if (response['success'] == true) {
-        prefs.setString('meeting_id', response['data']['meeting_id']);
+        await AppStorage.setString(
+          'meeting_id', response['data']['meeting_id'].toString());
         return response;
       }
     } catch (e) {
@@ -280,8 +283,7 @@ class MyCustomFormState extends State<MyCustomForm> {
       if (meetingTime.split(':')[0].length == 1) {
         time = '0' + meetingTime;
       }
-      final prefs = await SharedPreferences.getInstance();
-      final String? access_token = prefs.getString('access_token');
+        final String? access_token = await AppStorage.getString('access_token');
       Map<String, dynamic> response = await ApiServices.scheduleMeeting(
           access_token.toString(),
           ScheduleMeetingType(
@@ -297,7 +299,8 @@ class MyCustomFormState extends State<MyCustomForm> {
               options: ['ALLOW_GUEST', 'ENABLE_LOBBY', 'JOIN_ANYTIME', 'LIVEPAD', 'WHITE_BOARD', 'ENABLE_RECORDING'],
               hostusers: hostusers));
       if (response['success'] == true) {
-        prefs.setString('meeting_id', response['data']['meeting_id']);
+        await AppStorage.setString(
+          'meeting_id', response['data']['meeting_id'].toString());
         return response;
       }
     } catch (error) {
