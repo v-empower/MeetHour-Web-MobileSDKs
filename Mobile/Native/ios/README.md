@@ -34,7 +34,7 @@ For Apple M1 Silicon Chip
 arch -x86_64 pod update MeetHourSDK or arch -x86_64 pod install --repo-update
 ```
 
-## Latest Verion - 5.0.12
+## Latest Verion - 5.0.13
 
 This repository contains the binaries for the **[Meet Hour]() iOS SDK**. Each
 release is tagged in this repository and is composed of 2 frameworks:
@@ -59,7 +59,7 @@ a new one following this example:
 platform :ios, '13.1'
 
 target 'MeetHourSDKTest' do
-    pod 'MeetHourSDK', '~> 5.0.12'
+    pod 'MeetHourSDK', '~> 5.0.13'
 
     post_install do |installer|
         installer.pods_project.targets.each do |target|
