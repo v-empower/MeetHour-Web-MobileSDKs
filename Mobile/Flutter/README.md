@@ -18,7 +18,7 @@ Example Projects
 Pub dev - https://pub.dev/packages/meet_hour
 
 ```
-  meet_hour: '>=5.0.39'
+  meet_hour: '>=5.0.40'
 ```
 
 # MeetHour SDK Implementation - Subscribe for Developer or Above Plan.
