@@ -36,10 +36,67 @@ Pub dev - https://pub.dev/packages/meet_hour
 5. Then Try Schedule a Meeting & Join Meeting.
 
 
+## Getting Started - Running the Example
+<a name="running-the-example"></a>
+
+The runnable example project lives at `Web/Flutter/MeetHourSDKTest`.
+
+### Prerequisites
+
+- Flutter SDK (stable channel) with the `flutter` CLI on your `PATH`.
+- Chrome installed (only needed if you plan to run/debug via `-d chrome`).
+- Your Client ID, Client Secret and Api Key from the [Meet Hour developer portal](https://portal.meethour.io/customer/developers), set in `lib/constants/index.dart`.
+
+### Setup
+
+```bash
+cd Web/Flutter/MeetHourSDKTest
+flutter pub get
+```
+
+### Run in the browser
+
+```bash
+# Default (canvaskit/html) renderer
+flutter run -d chrome
+
+# WASM (skwasm) renderer
+flutter run -d chrome --wasm
+```
+
+> **Blank white page with `--wasm`?** The skwasm renderer requires a working WebGL context. Recent versions of Chrome removed the automatic SwiftShader software-WebGL fallback, so on machines without GPU-accelerated WebGL the launched Chrome window renders nothing. Use the wrapper script in `tools/chrome-wasm.sh` to force software WebGL back on:
+> ```bash
+> CHROME_EXECUTABLE="$(pwd)/tools/chrome-wasm.sh" flutter run -d chrome --wasm
+> ```
+> Or export `CHROME_EXECUTABLE` once in your shell profile so plain `flutter run -d chrome --wasm` picks it up automatically.
+
+> **`Uncaught FlutterLoader could not find a build compatible with configuration and environment`?** This means Chrome is serving a stale, cached service worker from a previous build. Clear it with:
+> ```bash
+> rm -rf .dart_tool/chrome-device
+> ```
+> (or open DevTools → Application → Service Workers → Unregister, then Clear site data, then hard reload).
+
+### Build for production
+
+```bash
+flutter build web            # default renderer
+flutter build web --wasm     # skwasm/wasm renderer
+```
+
+Output is written to `build/web`; serve it with any static file server.
+
+### Static analysis
+
+```bash
+flutter analyze
+```
+
+
 ## Screenshot
 ![](screenshot.png)
 
 ## Table of Contents
+  - [Getting Started - Running the Example](#running-the-example)
   - [API End Points Supported](#api)
   - [Configuration](#configuration)
     - [WEB](#web)
@@ -326,18 +383,13 @@ To implement you need to include Meet Hour External API by passing API Keys avai
 Example:
 ```html
 <body>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/flutter_service_worker.js');
-      });
-    }
-  </script>
   <script src="https://api.meethour.io/libs/v2.4.6/external_api.min.js?apiKey=${API_KEY}" type="application/javascript"></script>
-  <script src="main.dart.js" type="application/javascript"></script>
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
 ```
+
+> Modern Flutter web (including `--wasm` builds) uses `flutter_bootstrap.js` as the entrypoint instead of manually loading `main.dart.js` or registering a service worker. See [Getting Started - Running the Example](#running-the-example) above for troubleshooting a blank page or stale build errors.
 
 
 ### Configuration for Android & iOS
