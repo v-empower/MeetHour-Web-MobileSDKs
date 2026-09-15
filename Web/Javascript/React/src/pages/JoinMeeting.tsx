@@ -40,7 +40,7 @@ function JoinMeeting() {
 
   const handleMeetHourIFrameRef1 = (iframeRef: any) => {
     iframeRef.allow =
-      "camera; microphone; display-capture; autoplay; clipboard-write";
+  "autoplay; camera; clipboard-write; compute-pressure; display-capture; fullscreen; microphone; screen-wake-lock; speaker-selection";
     iframeRef.style.border = "10px solid #3d3d3d";
     iframeRef.style.background = "#3d3d3d";
     iframeRef.style.height = "100%";
