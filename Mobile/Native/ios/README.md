@@ -20,6 +20,14 @@ id: dev-guide-ios-sdk
 title: Meet Hour iOS SDK
 ---
 
+## Using the SDK via Swift Package Manager (SPM)
+
+Consumers then use File → Add Package Dependencies with https://github.com/v-empower/meethour-ios-sdk-releases, Pick 
+1. MeetHourSDK-Native (For ObjC/Swift/Flutter projects)
+2. MeetHourSDK-ReactNative.(For React Native project.)
+
+## Using the SDK via Cocoapods
+
 ## For iOS - Pod Update
 
 Always run below command if you want to get latest MeetHourSDK Pod file.
@@ -34,7 +42,7 @@ For Apple M1 Silicon Chip
 arch -x86_64 pod update MeetHourSDK or arch -x86_64 pod install --repo-update
 ```
 
-## Latest Verion - 5.0.14
+## Latest Verion - 5.0.25
 
 This repository contains the binaries for the **[Meet Hour]() iOS SDK**. Each
 release is tagged in this repository and is composed of 2 frameworks:
