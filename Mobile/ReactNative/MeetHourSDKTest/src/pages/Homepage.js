@@ -3,14 +3,14 @@ import {ApiServices} from 'react-native-meet-hour-sdk';
 import {View, Text, StyleSheet, Pressable, Button, Alert} from 'react-native';
 import {useState} from 'react';
 import Description from '../components/Description';
-import {CLIENT_ID, CLIENT_SECRET, EMAIL, PASSWORD} from '../constants/index';
+import {CLIENT_ID, CLIENT_SECRET, USERNAME, PASSWORD} from '../constants/index';
 import ButtonComponent from '../components/ButtonComponent';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const loginBody = {
   client_id: CLIENT_ID,
   client_secret: CLIENT_SECRET,
-  username: EMAIL,
+  username: USERNAME,
   password: PASSWORD,
 };
 

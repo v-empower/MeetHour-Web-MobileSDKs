@@ -1,23 +1,25 @@
 PODS:
   - Giphy (2.2.12):
     - libwebp
-  - libwebp (1.5.0):
-    - libwebp/demux (= 1.5.0)
-    - libwebp/mux (= 1.5.0)
-    - libwebp/sharpyuv (= 1.5.0)
-    - libwebp/webp (= 1.5.0)
-  - libwebp/demux (1.5.0):
+  - libwebp (1.6.0):
+    - libwebp/demux (= 1.6.0)
+    - libwebp/mux (= 1.6.0)
+    - libwebp/sharpyuv (= 1.6.0)
+    - libwebp/webp (= 1.6.0)
+  - libwebp/demux (1.6.0):
     - libwebp/webp
-  - libwebp/mux (1.5.0):
+  - libwebp/mux (1.6.0):
     - libwebp/demux
-  - libwebp/sharpyuv (1.5.0)
-  - libwebp/webp (1.5.0):
+  - libwebp/sharpyuv (1.6.0)
+  - libwebp/webp (1.6.0):
     - libwebp/sharpyuv
-  - MeetHourSDK (4.6.1):
+  - MeetHourSDK (5.0.25):
+    - MeetHourSDK/Native (= 5.0.25)
+  - MeetHourSDK/Native (5.0.25):
     - Giphy (= 2.2.12)
 
 DEPENDENCIES:
-  - MeetHourSDK (~> 4.6.1)
+  - MeetHourSDK (~> 5.0.25)
 
 SPEC REPOS:
   trunk:
@@ -27,9 +29,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Giphy: 83628960ed04e1c3428ff1b4fb2b027f65e82f50
-  libwebp: 02b23773aedb6ff1fd38cec7a77b81414c6842a8
-  MeetHourSDK: 0067d70647111238128611a1c11ef79a3d788b99
+  libwebp: af5937a13536ef73f3784d69cc342b98961acf33
+  MeetHourSDK: 5cb177ebb4c782a133ae882c92543c7c2ac3cf65
 
-PODFILE CHECKSUM: e05aa4e58de6c3faef1bd47d630d884b022d9b78
+PODFILE CHECKSUM: ff853d70bb62c2f7aa8bbcf2ac58a5d3c890ed03
 
-COCOAPODS: 1.16.2
+COCOAPODS: 1.17.0

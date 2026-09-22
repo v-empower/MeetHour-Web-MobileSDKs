@@ -50,14 +50,11 @@
             builder.audioMuted = self.isAudioMuted;
             builder.videoMuted = self.isVideoOn;
             [builder setFeatureFlag:@"ios.recording.enabled" withBoolean:YES];
-            [builder setFeatureFlag:@"pip.enabled" withBoolean:YES];
+            // PiP needs a host-side PiPViewCoordinator, which is Swift-only. See above.
+            [builder setFeatureFlag:@"pip.enabled" withBoolean:NO];
     }];
     
     [self.MHView join:options];
-
-    // Initialize PiPViewCoordinator
-    self.pipViewCoordinator = [[NSFileCoordinator alloc] init:self.MHView];
-    [self.pipViewCoordinator configureAsStickyViewWithParentView:self.view];
 
     // Animate in
     self.MHView.alpha = 0;
@@ -69,7 +66,6 @@
 - (void)cleanUp {
     [self.MHView removeFromSuperview];
     self.MHView = nil;
-    self.pipViewCoordinator = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -78,9 +74,10 @@
 }
 
 - (void)enterPictureInPicture:(NSDictionary *)data {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.pipViewCoordinator enterPictureInPicture];
-    });
+    // Picture-in-Picture is driven by PiPViewCoordinator, which the SDK does not
+    // expose to Objective-C (it is a plain Swift class, not @objc). See the Swift
+    // sample (swift/MeetHourSDKTest/ViewController.swift) for the PiP integration.
+    NSLog(@"Picture-in-Picture requested; not available from Objective-C.");
 }
 
 - (void)conferenceJoined:(NSDictionary *)data {

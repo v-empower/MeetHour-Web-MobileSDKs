@@ -11,32 +11,33 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^1.19.3",
-    "@react-native-community/datetimepicker": "^7.6.0",
-    "react": "18.2.0",
-    "react-native": "^0.72.4",
+    "@react-native-async-storage/async-storage": "^3.1.1",
+    "@react-native-community/datetimepicker": "9.1.0",
+    "react": "19.2.3",
+    "react-native": "^0.84.1",
     "react-native-dropdown-select-list": "^2.0.5",
-    "react-native-localize": "^3.0.2",
+    "react-native-localize": "^3.7.0",
     "react-native-meet-hour-sdk": "^3.0.46"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0",
-    "@babel/preset-env": "^7.20.0",
-    "@babel/runtime": "^7.20.0",
-    "@react-native/eslint-config": "^0.72.2",
-    "@react-native/metro-config": "^0.72.11",
-    "@tsconfig/react-native": "^3.0.0",
-    "@types/react": "^18.0.24",
-    "@types/react-test-renderer": "^18.0.0",
-    "babel-jest": "^29.2.1",
-    "eslint": "^8.19.0",
-    "jest": "^29.2.1",
-    "metro-react-native-babel-preset": "0.76.8",
-    "prettier": "^2.4.1",
-    "react-test-renderer": "18.2.0",
-    "typescript": "4.8.4"
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "@babel/runtime": "^7.29.2",
+    "@react-native-community/cli": "^20.1.3",
+    "@react-native/babel-preset": "0.84.1",
+    "@react-native/eslint-config": "0.84.1",
+    "@react-native/metro-config": "0.84.1",
+    "@react-native/typescript-config": "0.84.1",
+    "@types/react": "^19.2.14",
+    "@types/react-test-renderer": "^19.1.0",
+    "babel-jest": "^30.3.0",
+    "eslint": "^8.57.0",
+    "jest": "^30.3.0",
+    "prettier": "^3.8.1",
+    "react-test-renderer": "19.2.3",
+    "typescript": "^5.9.0"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   }
 }
