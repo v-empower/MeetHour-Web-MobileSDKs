@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace = "go.meethour.io.android.sdktest"
-    compileSdkVersion 34
+    compileSdkVersion 35
     defaultConfig {
         buildToolsVersion '34.0.0'
         applicationId "go.meethour.io.sdktest"
-        minSdkVersion 23
-        targetSdkVersion 34
+        minSdkVersion 24
+        targetSdkVersion 35
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             val options = MeetHourConferenceOptions.Builder()
                     .setRoom(text)
                     .setPcode("5b40602cfea7708895781a8cad71be5b")
-                    .setPrejoinPageEnabled(false) // set it to false to disable prejoin page.
+                    .setPrejoinPageEnabled(true) // set it to true to enable prejoin page.
                     .setDisableInviteFunctions(true) // To disable invite functions in sdk.
 //                  .setUserInfo(userInfo)
                     // Settings for audio and video
